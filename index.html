@@ -932,42 +932,53 @@
         }
 
 
-        /* --- Hero jadi flex-column dan center --- */
+        /* 1. Batasi lebar hero-content, agar tidak melebar terlalu jauh di desktop */
         .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            padding: 4rem 1rem 2rem;  /* ruang vertikal lebih longgar */
-            gap: 1.5rem;              /* spasi antar elemen */
+            gap: 2rem;
+            padding: 4rem 1rem 2rem;
         }
 
-/* --- Logo responsif --- */
+/* 2. Logo responsif dengan clamp(): 
+   - minimal 240px, 
+   - ideal 30vw (30% viewport width), 
+   - maksimal 600px */
         .hero-logo {
-            width: 100%;
-            max-width: 320px; /* batas maksimal lebar logo */
+            width: clamp(240px, 30vw, 600px);
             height: auto;
         }
 
-/* --- Breakpoints untuk mobile --- */
-        @media (max-width: 768px) {
-            .hero-logo {
-                max-width: 240px;
-            }
+/* 3. Subtitle juga bisa dibuat fluid */
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+        }
+
+/* 4. Stats container: horizontal di desktop, vertikal di mobile */
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
         }
         
-        @media (max-width: 480px) {
-            .hero-logo {
-                max-width: 180px;
+        @media (max-width: 768px) {
+            .stats-container {
+                flex-direction: column;
             }
         }
 
-/* (Opsional) Kurangi padding hero di mobile */
-        @media (max-width: 480px) {
+/* 5. (Opsional) Tambah padding lebih lapang di very-large screens */
+        @media (min-width: 1600px) {
             .hero-content {
-                padding: 3rem 0.5rem 1.5rem;
+                padding: 6rem 2rem 4rem;
             }
         }
+
 
 
         /* Container for crypto icons */
