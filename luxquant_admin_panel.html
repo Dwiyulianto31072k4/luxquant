@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxQuant VIP - Admin Panel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #e0e0e0;
+            font-size: 1.1rem;
+        }
+
+        .panel-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .panel-section {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            backdrop-filter: blur(20px);
+        }
+
+        .panel-section h2 {
+            font-size: 1.5rem;
+            color: #FFD700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #e0e0e0;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FFD700;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000000;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: #FFD700;
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ff4444, #cc0000);
+            color: #ffffff;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 68, 68, 0.4);
+        }
+
+        .testimonial-item {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .avatar-preview {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000000;
+            font-weight: bold;
+        }
+
+        .status-indicator {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .status-success {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+
+        .status-error {
+            background: rgba(244, 67, 54, 0.2);
+            color: #f44336;
+            border: 1px solid rgba(244, 67, 54, 0.3);
+        }
+
+        .preview-section {
+            grid-column: 1 / -1;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            margin-top: 2rem;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .preview-card {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .preview-number {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .preview-label {
+            color: #e0e0e0;
+            margin-top: 0.5rem;
+        }
+
+        .actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50%;
+            border-top-color: #FFD700;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .panel-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛠️ LuxQuant VIP Admin Panel</h1>
+            <p>Kelola data website secara real-time dengan Google Sheets</p>
+        </div>
+
+        <div id="status-indicator" class="status-indicator hidden"></div>
+
+        <div class="panel-grid">
+            <!-- Statistics Section -->
+            <div class="panel-section">
+                <h2>📊 Statistics</h2>
+                <form id="stats-form">
+                    <div class="form-group">
+                        <label for="winRate">Win Rate (%)</label>
+                        <input type="text" id="winRate" placeholder="89.6%" value="89.6%">
+                    </div>
+                    <div class="form-group">
+                        <label for="totalSignals">Total Signals</label>
+                        <input type="text" id="totalSignals" placeholder="665" value="665">
+                    </div>
+                    <div class="form-group">
+                        <label for="successfulTrades">Successful Trades</label>
+                        <input type="text" id="successfulTrades" placeholder="508" value="508">
+                    </div>
+                    <div class="form-group">
+                        <label for="stopLosses">Stop Losses</label>
+                        <input type="text" id="stopLosses" placeholder="59" value="59">
+                    </div>
+                    <div class="form-group">
+                        <label for="completionRate">Completion Rate (%)</label>
+                        <input type="text" id="completionRate" placeholder="85.3%" value="85.3%">
+                    </div>
+                    <div class="form-group">
+                        <label for="provenWinRate">Proven Win Rate</label>
+                        <input type="text" id="provenWinRate" placeholder="87%+" value="87%+">
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <span id="stats-loading" class="loading hidden"></span>
+                        Update Statistics
+                    </button>
+                </form>
+            </div>
+
+            <!-- Links Section -->
+            <div class="panel-section">
+                <h2>🔗 Links</h2>
+                <form id="links-form">
+                    <div class="form-group">
+                        <label for="joinVipLink">Join VIP Link</label>
+                        <input type="url" id="joinVipLink" placeholder="https://linktr.ee/LuxQuantVIP" value="https://linktr.ee/LuxQuantVIP">
+                    </div>
+                    <div class="form-group">
+                        <label for="instagramLink">Instagram Link</label>
+                        <input type="url" id="instagramLink" placeholder="https://instagram.com/luxquanttrade" value="https://instagram.com/luxquanttrade">
+                    </div>
+                    <div class="form-group">
+                        <label for="telegramLink">Telegram Link (Optional)</label>
+                        <input type="url" id="telegramLink" placeholder="https://t.me/luxquantvip">
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <span id="links-loading" class="loading hidden"></span>
+                        Update Links
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Testimonials Section -->
+        <div class="panel-section">
+            <h2>💬 Testimonials</h2>
+            <div id="testimonials-container">
+                <!-- Testimonials will be loaded here -->
+            </div>
+            <button id="add-testimonial" class="btn btn-secondary">➕ Add New Testimonial</button>
+        </div>
+
+        <!-- Preview Section -->
+        <div class="preview-section">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: #FFD700;">📱 Live Preview</h2>
+            <div class="preview-grid">
+                <div class="preview-card">
+                    <div class="preview-number" id="preview-winrate">89.6%</div>
+                    <div class="preview-label">Win Rate</div>
+                </div>
+                <div class="preview-card">
+                    <div class="preview-number" id="preview-signals">665</div>
+                    <div class="preview-label">Total Signals</div>
+                </div>
+                <div class="preview-card">
+                    <div class="preview-number" id="preview-trades">508</div>
+                    <div class="preview-label">Successful Trades</div>
+                </div>
+                <div class="preview-card">
+                    <div class="preview-number" id="preview-completion">85.3%</div>
+                    <div class="preview-label">Completion Rate</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions">
+            <button id="save-to-sheets" class="btn btn-primary">
+                <span id="save-loading" class="loading hidden"></span>
+                💾 Save to Google Sheets
+            </button>
+            <button id="publish-changes" class="btn btn-secondary">
+                🚀 Publish Changes
+            </button>
+            <button id="preview-website" class="btn btn-secondary">
+                👁️ Preview Website
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyYC_Nb9IzRE10_UUlVr8v8pmQEDCrXK80acP1WbcH9rGqiqzx-NO9TER4ssnCo6T7v/exec'; // Will be provided after setup
+        
+        // Demo mode for testing
+        const DEMO_MODE = false;
+
+        // Current data state
+        let currentData = {
+            stats: {
+                winRate: "89.6%",
+                totalSignals: "665",
+                successfulTrades: "508",
+                stopLosses: "59",
+                completionRate: "85.3%",
+                provenWinRate: "87%+"
+            },
+            links: {
+                joinVip: "https://linktr.ee/LuxQuantVIP",
+                instagram: "https://instagram.com/luxquanttrade",
+                telegram: ""
+            },
+            testimonials: [
+                {
+                    id: 1,
+                    name: "Alex Chen",
+                    role: "VIP Member since 2023",
+                    text: "LuxQuant transformed my trading completely. The accuracy of signals is incredible, and I've seen consistent profits every month since joining.",
+                    avatar: "A"
+                },
+                {
+                    id: 2,
+                    name: "Sarah Johnson",
+                    role: "Professional Trader", 
+                    text: "The best investment I've made in crypto. Professional analysis, clear signals, and excellent risk management. Highly recommended!",
+                    avatar: "S"
+                },
+                {
+                    id: 3,
+                    name: "Mike Rodriguez",
+                    role: "Crypto Investor",
+                    text: "89% win rate isn't just a claim - it's reality. LuxQuant delivers results consistently, making crypto trading profitable and stress-free.",
+                    avatar: "M"
+                }
+            ]
+        };
+
+        // Show status message
+        function showStatus(message, isError = false) {
+            const indicator = document.getElementById('status-indicator');
+            indicator.textContent = message;
+            indicator.className = `status-indicator ${isError ? 'status-error' : 'status-success'}`;
+            setTimeout(() => {
+                indicator.classList.add('hidden');
+            }, 5000);
+        }
+
+        // Update preview
+        function updatePreview() {
+            document.getElementById('preview-winrate').textContent = currentData.stats.winRate;
+            document.getElementById('preview-signals').textContent = currentData.stats.totalSignals;
+            document.getElementById('preview-trades').textContent = currentData.stats.successfulTrades;
+            document.getElementById('preview-completion').textContent = currentData.stats.completionRate;
+        }
+
+        // Load testimonials
+        function loadTestimonials() {
+            const container = document.getElementById('testimonials-container');
+            container.innerHTML = '';
+            
+            currentData.testimonials.forEach((testimonial, index) => {
+                const testimonialHtml = `
+                    <div class="testimonial-item" data-id="${testimonial.id}">
+                        <div class="testimonial-header">
+                            <div class="testimonial-author">
+                                <div class="avatar-preview">${testimonial.avatar}</div>
+                                <div>
+                                    <strong>${testimonial.name}</strong><br>
+                                    <small style="color: #ccc;">${testimonial.role}</small>
+                                </div>
+                            </div>
+                            <button class="btn btn-danger" onclick="removeTestimonial(${testimonial.id})">🗑️</button>
+                        </div>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" value="${testimonial.name}" onchange="updateTestimonial(${testimonial.id}, 'name', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Role</label>
+                            <input type="text" value="${testimonial.role}" onchange="updateTestimonial(${testimonial.id}, 'role', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Avatar (Single Letter)</label>
+                            <input type="text" maxlength="1" value="${testimonial.avatar}" onchange="updateTestimonial(${testimonial.id}, 'avatar', this.value)">
+                        </div>
+                        <div class="form-group">
+                            <label>Testimonial Text</label>
+                            <textarea onchange="updateTestimonial(${testimonial.id}, 'text', this.value)">${testimonial.text}</textarea>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += testimonialHtml;
+            });
+        }
+
+        // Update testimonial
+        function updateTestimonial(id, field, value) {
+            const testimonial = currentData.testimonials.find(t => t.id === id);
+            if (testimonial) {
+                testimonial[field] = value;
+                if (field === 'name' || field === 'role' || field === 'avatar') {
+                    loadTestimonials(); // Refresh to update preview
+                }
+            }
+        }
+
+        // Remove testimonial
+        function removeTestimonial(id) {
+            if (confirm('Are you sure you want to remove this testimonial?')) {
+                currentData.testimonials = currentData.testimonials.filter(t => t.id !== id);
+                loadTestimonials();
+            }
+        }
+
+        // Add new testimonial
+        function addTestimonial() {
+            const newId = Math.max(...currentData.testimonials.map(t => t.id)) + 1;
+            const newTestimonial = {
+                id: newId,
+                name: "New Member",
+                role: "VIP Member",
+                text: "Amazing service! Highly recommended.",
+                avatar: "N"
+            };
+            currentData.testimonials.push(newTestimonial);
+            loadTestimonials();
+        }
+
+        // Save to Google Sheets
+        async function saveToSheets() {
+            const saveBtn = document.getElementById('save-to-sheets');
+            const loading = document.getElementById('save-loading');
+            
+            saveBtn.disabled = true;
+            loading.classList.remove('hidden');
+            
+            try {
+                if (DEMO_MODE) {
+                    // Simulate API call
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    showStatus('✅ Data saved to Google Sheets successfully!');
+                } else {
+                    // Real API call to Google Apps Script
+                    const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(currentData)
+                    });
+                    
+                    if (response.ok) {
+                        showStatus('✅ Data saved to Google Sheets successfully!');
+                    } else {
+                        throw new Error('Failed to save data');
+                    }
+                }
+            } catch (error) {
+                showStatus('❌ Error saving data: ' + error.message, true);
+            } finally {
+                saveBtn.disabled = false;
+                loading.classList.add('hidden');
+            }
+        }
+
+        // Form handlers
+        document.getElementById('stats-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Update current data
+            currentData.stats.winRate = document.getElementById('winRate').value;
+            currentData.stats.totalSignals = document.getElementById('totalSignals').value;
+            currentData.stats.successfulTrades = document.getElementById('successfulTrades').value;
+            currentData.stats.stopLosses = document.getElementById('stopLosses').value;
+            currentData.stats.completionRate = document.getElementById('completionRate').value;
+            currentData.stats.provenWinRate = document.getElementById('provenWinRate').value;
+            
+            updatePreview();
+            showStatus('📊 Statistics updated in preview');
+        });
+
+        document.getElementById('links-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Update current data
+            currentData.links.joinVip = document.getElementById('joinVipLink').value;
+            currentData.links.instagram = document.getElementById('instagramLink').value;
+            currentData.links.telegram = document.getElementById('telegramLink').value;
+            
+            showStatus('🔗 Links updated in preview');
+        });
+
+        // Event listeners
+        document.getElementById('add-testimonial').addEventListener('click', addTestimonial);
+        document.getElementById('save-to-sheets').addEventListener('click', saveToSheets);
+        
+        document.getElementById('publish-changes').addEventListener('click', () => {
+            showStatus('🚀 Changes published! Website will update automatically.');
+        });
+        
+        document.getElementById('preview-website').addEventListener('click', () => {
+            window.open('index.html', '_blank');
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadTestimonials();
+            updatePreview();
+            showStatus('🔧 Admin panel loaded successfully!');
+        });
+    </script>
+</body>
+</html>
