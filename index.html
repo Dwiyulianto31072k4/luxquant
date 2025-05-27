@@ -931,6 +931,45 @@
             }
         }
 
+
+        /* --- Hero jadi flex-column dan center --- */
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 1rem 2rem;  /* ruang vertikal lebih longgar */
+            gap: 1.5rem;              /* spasi antar elemen */
+        }
+
+/* --- Logo responsif --- */
+        .hero-logo {
+            width: 100%;
+            max-width: 320px; /* batas maksimal lebar logo */
+            height: auto;
+        }
+
+/* --- Breakpoints untuk mobile --- */
+        @media (max-width: 768px) {
+            .hero-logo {
+                max-width: 240px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-logo {
+                max-width: 180px;
+            }
+        }
+
+/* (Opsional) Kurangi padding hero di mobile */
+        @media (max-width: 480px) {
+            .hero-content {
+                padding: 3rem 0.5rem 1.5rem;
+            }
+        }
+
+
         /* Container for crypto icons */
         .crypto-container {
             position: fixed;
