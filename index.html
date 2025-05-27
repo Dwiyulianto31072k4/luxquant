@@ -269,6 +269,28 @@
             50% { transform: scale(1.05); opacity: 1; }
         }
 
+        /* Hero Logo */
+        .hero-logo {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            margin: 2rem auto;
+            display: block;
+            filter: drop-shadow(0 10px 40px rgba(255, 215, 0, 0.3));
+            animation: logoFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { 
+                transform: translateY(0) scale(1); 
+                filter: drop-shadow(0 10px 40px rgba(255, 215, 0, 0.3));
+            }
+            50% { 
+                transform: translateY(-10px) scale(1.02); 
+                filter: drop-shadow(0 20px 60px rgba(255, 215, 0, 0.5));
+            }
+        }
+
         .hero h1 {
             font-size: clamp(3.5rem, 8vw, 6rem);
             font-weight: 900;
@@ -987,6 +1009,10 @@
                 padding: 6rem 1rem 3rem;
             }
 
+            .hero-logo {
+                max-width: 90%;
+            }
+
             .hero h1 {
                 font-size: 3.5rem;
             }
@@ -1049,6 +1075,10 @@
         @media (max-width: 480px) {
             .logo {
                 font-size: 1.6rem;
+            }
+
+            .hero-logo {
+                max-width: 85%;
             }
 
             .hero h1 {
@@ -1205,9 +1235,11 @@
         <section id="home" class="hero">
             <div class="hero-content">
                 <div class="hero-badge fade-in">✨ AI-Powered Trading Excellence</div>
-                <h1 class="fade-in fade-in-delay-1">LuxQuant VIP</h1>
+                <img src="https://github.com/Dwiyulianto31072k4/luxquant/blob/main/LuxQuant%20VIP%20Logo%20Design-Photoroom.png?raw=true" 
+                     alt="LuxQuant VIP - 24/7 Automated Trading Signals with 89.6% Win Rate" 
+                     class="hero-logo fade-in fade-in-delay-1">
                 <p class="hero-subtitle fade-in fade-in-delay-2">
-                    24/7 Automated Trading Signals with <span class="highlight" id="heroWinRate">89.6%</span> Win Rate
+                    Premium Crypto Trading Signals Platform
                 </p>
                 
                 <div class="stats-container fade-in fade-in-delay-3">
