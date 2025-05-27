@@ -1,16 +1,4 @@
-<img src="https://github.com/Dwiyulianto31072k4/luxquant/blob/main/LuxQuant%20VIP%20Logo%20Design-Photoroom.png?raw=true" 
-                     alt="LuxQuant VIP - 24/7 Automated Trading Signals with 89.6% Win Rate" 
-                     class="hero-logo fade-in fade-in-delay-1">
-                <p class="hero-subtitle fade-in fade-in-delay-2">
-                    Premium Crypto Trading Signals Platform
-                </p>
-                
-                <!-- Chart Container -->
-                <div class="chart-container fade-in fade-in-delay-3">
-                    <canvas id="performanceChart"></canvas>
-                </div>
-                
-                <div class="stats-container fade-<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -279,93 +267,6 @@
         @keyframes badgePulse {
             0%, 100% { transform: scale(1); opacity: 0.9; }
             50% { transform: scale(1.05); opacity: 1; }
-        }
-
-        /* Chart Styles */
-        .chart-card {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin: 3rem auto;
-            background: linear-gradient(135deg, rgba(16, 16, 18, 0.9), rgba(20, 20, 22, 0.9));
-            border: 1px solid var(--border-gold);
-            border-radius: 20px;
-            padding: 24px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-        }
-
-        .chart-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .chart-logo {
-            font-size: 1.5rem;
-            filter: drop-shadow(0 0 10px var(--primary-gold));
-        }
-
-        .chart-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--primary-gold);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .chart-content {
-            display: flex;
-            gap: 24px;
-        }
-
-        .chart-wrapper {
-            flex: 1;
-            height: 280px;
-            position: relative;
-        }
-
-        .chart-wrapper canvas {
-            width: 100% !important;
-            height: 100% !important;
-        }
-
-        .chart-legend {
-            min-width: 200px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .legend-item {
-            background: rgba(255, 215, 0, 0.05);
-            padding: 12px 16px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .legend-item:hover {
-            background: rgba(255, 215, 0, 0.1);
-            transform: translateX(5px);
-        }
-
-        .legend-item .label {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-        }
-
-        .legend-item .value {
-            font-size: 1.3rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         /* Hero Logo */
@@ -1103,68 +1004,9 @@
                 transform: rotate(-45deg) translateY(-10px);
             }
 
-            /* Chart responsive */
-            .chart-card {
-                margin: 2rem auto;
-                padding: 16px;
-            }
-
-            .chart-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .chart-wrapper {
-                height: 200px;
-            }
-
-            .chart-legend {
-                min-width: auto;
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-
-            .legend-item {
-                padding: 10px 12px;
-            }
-
-            .legend-item .value {
-                font-size: 1.1rem;
-            }
-
             /* Hero adjustments */
             .hero {
                 padding: 6rem 1rem 3rem;
-            }
-
-            .chart-card {
-                padding: 12px;
-            }
-
-            .chart-title {
-                font-size: 1.1rem;
-            }
-
-            .chart-wrapper {
-                height: 180px;
-            }
-
-            .chart-legend {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
-
-            .legend-item {
-                padding: 8px 10px;
-            }
-
-            .legend-item .label {
-                font-size: 0.75rem;
-            }
-
-            .legend-item .value {
-                font-size: 1rem;
             }
 
             .hero-logo {
@@ -1393,28 +1235,14 @@
         <section id="home" class="hero">
             <div class="hero-content">
                 <div class="hero-badge fade-in">✨ AI-Powered Trading Excellence</div>
-                <img src="https://github.com/Dwiyulianto31072k4/luxquant/blob/main/LuxQuant%20VIP%20Logo%20Design-Photoroom.png?raw=true" 
+                <img src="LuxQuant VIP Logo Design-Photoroom.png" 
                      alt="LuxQuant VIP - 24/7 Automated Trading Signals with 89.6% Win Rate" 
                      class="hero-logo fade-in fade-in-delay-1">
                 <p class="hero-subtitle fade-in fade-in-delay-2">
                     Premium Crypto Trading Signals Platform
                 </p>
                 
-                <!-- Chart Container -->
-                <div class="chart-card fade-in fade-in-delay-3">
-                    <div class="chart-header">
-                        <div class="chart-logo">📊</div>
-                        <div class="chart-title">Monthly Win Rate Performance</div>
-                    </div>
-                    <div class="chart-content">
-                        <div class="chart-wrapper">
-                            <canvas id="winChart"></canvas>
-                        </div>
-                        <div class="chart-legend" id="chartLegend"></div>
-                    </div>
-                </div>
-                
-                <div class="stats-container fade-in fade-in-delay-4">
+                <div class="stats-container fade-in fade-in-delay-3">
                     <div class="stat-card">
                         <span class="stat-number" id="statWinRate">89.6%</span>
                         <span class="stat-label">Win Rate</span>
@@ -1566,7 +1394,6 @@
         </section>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         // Loading Screen
         window.addEventListener('load', () => {
@@ -1736,147 +1563,6 @@
 
         // Initialize with default data
         updateStats(siteData);
-
-        // Chart.js Integration
-        function initializeChart() {
-            // Monthly performance data
-            const chartData = [
-                { d:"05/05", wr:66.67, sig:48, tp:32, sl:16 },
-                { d:"05/06", wr:91.18, sig:49, tp:31, sl: 3 },
-                { d:"05/07", wr:97.21, sig:191, tp:174, sl: 5 },
-                { d:"05/08", wr:98.90, sig:188, tp:180, sl: 2 },
-                { d:"05/09", wr:89.92, sig:167, tp:116, sl:13 },
-                { d:"05/10", wr:91.12, sig:174, tp:154, sl:15 },
-                { d:"05/11", wr:84.34, sig:176, tp:140, sl:26 },
-                { d:"05/12", wr:76.19, sig: 50, tp: 32, sl:10 },
-                { d:"05/13", wr:81.05, sig:101, tp: 77, sl:18 },
-                { d:"05/14", wr:56.25, sig: 17, tp:  9, sl: 7 },
-                { d:"05/15", wr:91.67, sig: 20, tp: 11, sl: 1 },
-                { d:"05/16", wr:52.63, sig: 20, tp: 10, sl: 9 },
-                { d:"05/18", wr:56.60, sig: 54, tp: 30, sl:23 },
-                { d:"05/19", wr:86.11, sig: 41, tp: 31, sl: 5 },
-                { d:"05/20", wr:74.71, sig:123, tp: 65, sl:22 },
-                { d:"05/21", wr:97.03, sig:234, tp:196, sl: 6 },
-                { d:"05/22", wr:90.54, sig:148, tp:134, sl:14 },
-                { d:"05/23", wr:90.91, sig: 13, tp: 10, sl: 1 },
-                { d:"05/24", wr:79.31, sig: 31, tp: 23, sl: 6 },
-                { d:"05/25", wr:90.74, sig: 75, tp: 49, sl: 5 },
-            ];
-
-            // Calculate summary
-            const summary = chartData.reduce((acc, r) => {
-                acc.signals += r.sig;
-                acc.tp += r.tp;
-                acc.sl += r.sl;
-                return acc;
-            }, { signals: 0, tp: 0, sl: 0 });
-
-            summary.winrate = summary.tp + summary.sl
-                ? (100 * summary.tp / (summary.tp + summary.sl)).toFixed(1) + '%'
-                : '–';
-            summary.completion = summary.signals
-                ? (100 * (summary.tp + summary.sl) / summary.signals).toFixed(1) + '%'
-                : '–';
-
-            // Render legend
-            const legendEl = document.getElementById('chartLegend');
-            if (legendEl) {
-                [
-                    { label:'Total Signals', value: summary.signals },
-                    { label:'Total TP', value: summary.tp },
-                    { label:'Total SL', value: summary.sl },
-                    { label:'Overall Winrate', value: summary.winrate },
-                    { label:'Completion Rate', value: summary.completion },
-                ].forEach(item => {
-                    const div = document.createElement('div');
-                    div.className = 'legend-item';
-                    div.innerHTML = `
-                        <div class="label">${item.label}</div>
-                        <div class="value">${item.value}</div>
-                    `;
-                    legendEl.appendChild(div);
-                });
-            }
-
-            // Draw Chart
-            const ctx = document.getElementById('winChart');
-            if (ctx) {
-                new Chart(ctx.getContext('2d'), {
-                    type: 'line',
-                    data: {
-                        labels: chartData.map(r => r.d),
-                        datasets: [{
-                            data: chartData.map(r => r.wr),
-                            borderColor: '#fcd535',
-                            borderWidth: 2,
-                            pointRadius: 0,
-                            pointHoverRadius: 6,
-                            pointBackgroundColor: '#fcd535',
-                            pointBorderColor: '#fcd535',
-                            pointHoverBackgroundColor: '#fff',
-                            pointHoverBorderColor: '#fcd535',
-                            tension: 0.3,
-                            fill: {
-                                target: 'origin',
-                                above: 'rgba(252, 213, 53, 0.1)'
-                            }
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        interaction: {
-                            mode: 'nearest',
-                            axis: 'x',
-                            intersect: false
-                        },
-                        scales: {
-                            x: {
-                                display: false,
-                                grid: { display: false }
-                            },
-                            y: {
-                                display: false,
-                                min: 0,
-                                max: 100,
-                                grid: { display: false }
-                            }
-                        },
-                        plugins: {
-                            legend: { display: false },
-                            tooltip: {
-                                enabled: true,
-                                backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                                titleColor: '#fcd535',
-                                bodyColor: '#fff',
-                                borderColor: '#fcd535',
-                                borderWidth: 1,
-                                cornerRadius: 8,
-                                padding: 12,
-                                displayColors: false,
-                                callbacks: {
-                                    title: (ctx) => `Date: ${ctx[0].label}`,
-                                    label: (ctx) => {
-                                        const index = ctx.dataIndex;
-                                        const data = chartData[index];
-                                        return [
-                                            `Win Rate: ${ctx.parsed.y.toFixed(1)}%`,
-                                            `Signals: ${data.sig}`,
-                                            `TP: ${data.tp} | SL: ${data.sl}`
-                                        ];
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        }
-
-        // Initialize chart after page load
-        window.addEventListener('load', () => {
-            setTimeout(initializeChart, 1500);
-        });
 
         // Add hover effect to cards
         const cards = document.querySelectorAll('.stat-card, .feature-card, .perf-stat, .testimonial-card');
