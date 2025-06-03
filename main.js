@@ -121,7 +121,7 @@ async function fetchAndUpdateCryptoData() {
         
         // Fallback to Coinlore if CoinGecko fails
         if (!data) {
-            console.log('⚠️ CoinGecko failed, trying fallback API...');
+
             data = await fetchFromCoinlore();
         }
         
@@ -130,7 +130,6 @@ async function fetchAndUpdateCryptoData() {
             cryptoCache.lastUpdate = now;
             updateTickerDisplay();
             updateLiveStatsWithRealData();
-            console.log('✅ Crypto data updated successfully');
         } else {
             console.error('❌ All APIs failed, using cached data');
             handleAPIError();
