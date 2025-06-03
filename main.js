@@ -762,7 +762,7 @@ window.addEventListener('load', function() {
     // Show success notification when crypto data loads
     setTimeout(() => {
         if (cryptoCache.data) {
-            showNotification('✅ Real-time crypto prices loaded successfully!', 'success', 3000);
+           
         }
     }, 3000);
 });
