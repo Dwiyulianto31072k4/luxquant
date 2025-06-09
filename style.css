@@ -1029,9 +1029,10 @@ section {
     }
 }
 
+/* ===== SOCIAL MEDIA CARDS WITH YELLOW STYLE ===== */
 .social-card {
     background: rgba(20, 20, 20, 0.9);
-    border: 2px solid;
+    border: 2px solid var(--primary-gold); /* Semua border jadi kuning */
     border-radius: 16px;
     padding: 2rem;
     text-align: center;
@@ -1039,34 +1040,34 @@ section {
     text-decoration: none;
     color: var(--text-primary);
     display: block;
-}
-
-.social-card.instagram {
-    border-color: #E4405F;
-}
-
-.social-card.tiktok {
-    border-color: #FF0050;
-}
-
-.social-card.twitter {
-    border-color: #1DA1F2;
+    position: relative;
+    overflow: hidden;
 }
 
 .social-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+    background: rgba(255, 215, 0, 0.05);
+    border-color: var(--secondary-gold);
 }
 
-.social-icon {
-    margin-bottom: 1rem;
-    display: inline-block;
+.social-card .social-icon svg {
+    width: 48px;
+    height: 48px;
+    fill: var(--primary-gold); /* Logo jadi kuning */
+    transition: all var(--transition-base);
+}
+
+.social-card:hover .social-icon svg {
+    fill: var(--secondary-gold);
+    transform: scale(1.1);
 }
 
 .social-card h3 {
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
     font-weight: 700;
+    color: var(--primary-gold); /* Title jadi kuning */
 }
 
 .social-card p {
