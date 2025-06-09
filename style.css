@@ -1,6 +1,6 @@
 /* =====================================================
-   LUXQUANT VIP - FINAL OPTIMIZED CSS
-   Version: 4.0 - Mobile First & Performance Optimized
+   LUXQUANT VIP - OPTIMAL CSS WITH FIXED TICKER
+   Version: 5.0 - Mobile First & Performance Optimized
    ===================================================== */
 
 /* ===== CSS VARIABLES ===== */
@@ -32,6 +32,9 @@
     --transition-fast: 150ms ease;
     --transition-base: 300ms ease;
     --transition-slow: 600ms ease;
+    
+    /* Ticker Animation Duration - Consistent across all devices */
+    --ticker-duration: 80s;
 }
 
 /* ===== BASE STYLES ===== */
@@ -54,6 +57,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* ===== UTILITY CLASSES ===== */
@@ -79,6 +83,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    color: var(--primary-gold); /* Fallback for older browsers */
 }
 
 /* ===== LOADER ===== */
@@ -135,7 +140,7 @@ body {
     opacity: 0.5;
 }
 
-/* ===== PRICE TICKER ===== */
+/* ===== OPTIMIZED PRICE TICKER ===== */
 .price-ticker-wrapper {
     position: fixed;
     top: 0;
@@ -146,23 +151,44 @@ body {
     height: 40px;
     overflow: hidden;
     z-index: 100;
+    /* Performance optimizations */
+    contain: layout style paint;
+    will-change: auto;
 }
 
 .price-ticker {
     display: flex;
-    animation: ticker 30s linear infinite;
+    width: max-content;
+    height: 100%;
+    /* Consistent animation duration for all devices */
+    animation: tickerMove var(--ticker-duration) linear infinite;
+    /* Performance optimizations */
+    will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000px;
+    transform: translateZ(0); /* Hardware acceleration */
 }
 
-@keyframes ticker {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+/* Optimized keyframe animation */
+@keyframes tickerMove {
+    0% { 
+        transform: translate3d(0, 0, 0); 
+    }
+    100% { 
+        transform: translate3d(-50%, 0, 0); 
+    }
 }
 
 .ticker-content {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    height: 100%;
+    /* Responsive gap that scales properly */
+    gap: clamp(1.5rem, 3vw, 2.5rem);
     white-space: nowrap;
+    padding: 0 1rem;
+    /* Prevent content from being cut off */
+    min-width: max-content;
 }
 
 .ticker-item {
@@ -170,26 +196,90 @@ body {
     align-items: center;
     gap: 0.5rem;
     font-size: 0.75rem;
+    white-space: nowrap;
+    /* Prevent flex shrinking */
+    flex-shrink: 0;
+    flex-grow: 0;
+    /* Ensure consistent spacing */
+    min-width: max-content;
 }
 
 .ticker-symbol {
     font-weight: 700;
+    color: var(--primary-gold);
 }
 
 .ticker-price {
     color: var(--text-secondary);
+    font-weight: 500;
 }
 
 .ticker-change {
     font-weight: 600;
+    font-size: 0.7rem;
+    border-radius: 4px;
+    padding: 0.125rem 0.25rem;
 }
 
 .ticker-change.positive {
     color: var(--success);
+    background: rgba(0, 255, 136, 0.1);
 }
 
 .ticker-change.negative {
     color: var(--danger);
+    background: rgba(255, 51, 102, 0.1);
+}
+
+/* ===== CRYPTO ICONS STYLING ===== */
+.ticker-icon {
+    width: 22px;
+    height: 22px;
+    margin-right: 0.375rem;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform var(--transition-fast);
+    /* Image optimization */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* Fallback for when images fail to load */
+.ticker-symbol[data-fallback] {
+    font-size: 0;
+    margin-left: 0;
+}
+
+.ticker-symbol[data-fallback]::before {
+    content: attr(data-fallback);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid var(--border-gold);
+    border-radius: 50%;
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: var(--primary-gold);
+    margin-right: 0.375rem;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+
+/* Loading state animation */
+.ticker-icon.loading,
+.ticker-symbol[data-fallback]::before {
+    animation: tickerPulse 2s ease-in-out infinite;
+}
+
+@keyframes tickerPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
 }
 
 /* ===== HEADER ===== */
@@ -234,6 +324,7 @@ body {
     background: none;
     border: none;
     cursor: pointer;
+    z-index: 101;
 }
 
 .mobile-menu-btn span {
@@ -267,6 +358,7 @@ body {
     list-style: none;
     padding: 2rem;
     transition: left var(--transition-base);
+    z-index: 100;
 }
 
 .nav-links.active {
@@ -284,7 +376,8 @@ body {
     transition: color var(--transition-base);
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
     color: var(--primary-gold);
 }
 
@@ -297,6 +390,11 @@ body {
     font-weight: 700;
     text-decoration: none;
     transition: all var(--transition-base);
+}
+
+.nav-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
 }
 
 /* Desktop Navigation */
@@ -329,7 +427,7 @@ body {
 /* ===== HERO SECTION ===== */
 .hero {
     min-height: 100vh;
-    padding: 120px 1rem 3rem;
+    padding: 140px 1rem 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -418,6 +516,12 @@ body {
     border-radius: 16px;
     padding: 1.5rem;
     text-align: center;
+    transition: all var(--transition-base);
+}
+
+.stat-card:hover {
+    background: rgba(255, 215, 0, 0.1);
+    transform: translateY(-2px);
 }
 
 .stat-icon {
@@ -433,6 +537,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    color: var(--primary-gold); /* Fallback */
     margin-bottom: 0.25rem;
 }
 
@@ -440,6 +545,7 @@ body {
     color: var(--text-secondary);
     font-size: 0.75rem;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* ===== BUTTONS ===== */
@@ -470,6 +576,8 @@ body {
     font-size: 0.875rem;
     letter-spacing: 0.5px;
     min-width: 200px;
+    border: none;
+    cursor: pointer;
 }
 
 .btn-primary {
@@ -491,6 +599,11 @@ body {
 
 .btn-secondary:hover {
     background: rgba(255, 215, 0, 0.1);
+}
+
+.btn-large {
+    font-size: 1rem;
+    padding: 1.25rem 2.5rem;
 }
 
 /* ===== SECTIONS ===== */
@@ -727,7 +840,7 @@ section {
     line-height: 1.4;
 }
 
-/* ===== TESTIMONIALS SECTION - FIXED ===== */
+/* ===== TESTIMONIALS SECTION ===== */
 .testimonials {
     padding: 3rem 0;
     background: linear-gradient(180deg, transparent 0%, rgba(255, 215, 0, 0.02) 50%, transparent 100%);
@@ -891,6 +1004,7 @@ section {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    color: var(--primary-gold); /* Fallback */
     margin-bottom: 0.5rem;
 }
 
@@ -976,6 +1090,12 @@ section {
     width: 100%;
     position: relative;
     overflow: hidden;
+    transition: all var(--transition-base);
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
 }
 
 .pricing-badge {
@@ -1009,6 +1129,7 @@ section {
     align-items: baseline;
     justify-content: center;
     gap: 0.25rem;
+    margin-bottom: 0.5rem;
 }
 
 .currency {
@@ -1023,6 +1144,7 @@ section {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    color: var(--primary-gold); /* Fallback */
 }
 
 .period {
@@ -1038,7 +1160,6 @@ section {
     border-radius: 20px;
     font-size: 0.75rem;
     font-weight: 600;
-    margin-top: 0.5rem;
 }
 
 .pricing-features {
@@ -1073,6 +1194,8 @@ section {
     transition: all var(--transition-base);
     text-transform: uppercase;
     font-size: 0.875rem;
+    border: none;
+    cursor: pointer;
 }
 
 .pricing-btn:hover {
@@ -1093,6 +1216,12 @@ section {
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
+    transition: all var(--transition-base);
+}
+
+.cta-content:hover {
+    background: rgba(255, 215, 0, 0.08);
+    transform: translateY(-2px);
 }
 
 .cta-title {
@@ -1126,17 +1255,13 @@ section {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    color: var(--primary-gold); /* Fallback */
 }
 
 .cta-stat-label {
     color: var(--text-secondary);
     font-size: 0.75rem;
     text-transform: uppercase;
-}
-
-.btn-large {
-    font-size: 1rem;
-    padding: 1.25rem 2.5rem;
 }
 
 /* ===== FOOTER ===== */
@@ -1318,7 +1443,7 @@ section {
     border: 1px solid var(--border-light);
 }
 
-/* ===== NOTIFICATION ===== */
+/* ===== NOTIFICATION SYSTEM ===== */
 .notification-container {
     position: fixed;
     top: 100px;
@@ -1330,290 +1455,149 @@ section {
     max-width: 350px;
 }
 
-/* ===== ANIMATIONS ===== */
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
+.notification {
+    background: rgba(20, 20, 20, 0.95);
+    border-left: 4px solid;
+    border-radius: 8px;
+    padding: 1rem;
+    backdrop-filter: blur(10px);
+    animation: slideInRight 0.3s ease;
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+.notification.info {
+    border-color: var(--primary-gold);
 }
 
-/* ===== RESPONSIVE ADJUSTMENTS ===== */
+.notification.success {
+    border-color: var(--success);
+}
+
+.notification.warning {
+    border-color: #FFA500;
+}
+
+.notification.error {
+    border-color: var(--danger);
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.notification-icon {
+    flex-shrink: 0;
+}
+
+.notification-text {
+    flex-grow: 1;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0.25rem;
+    flex-shrink: 0;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ===== MOBILE RESPONSIVE OPTIMIZATIONS ===== */
 @media (max-width: 768px) {
-    /* Disable heavy animations on mobile */
-    * {
-        animation-duration: 0.3s !important;
+    /* Ticker mobile optimizations */
+    .price-ticker-wrapper {
+        height: 36px; /* Slightly smaller on mobile */
     }
     
-    .hero-bg-effects,
-    .showcase-glow,
-    .pricing-glow {
-        display: none;
+    .ticker-item {
+        font-size: 0.7rem;
+        gap: 0.375rem;
     }
     
-    /* Simplify hover effects */
+    .ticker-icon,
+    .ticker-symbol[data-fallback]::before {
+        width: 18px;
+        height: 18px;
+        margin-right: 0.25rem;
+    }
+    
+    .ticker-symbol[data-fallback]::before {
+        font-size: 0.5rem;
+    }
+    
+    .ticker-change {
+        font-size: 0.65rem;
+        padding: 0.1rem 0.2rem;
+    }
+    
+    /* Ensure ticker animation stays consistent */
+    .price-ticker {
+        animation: tickerMove var(--ticker-duration) linear infinite !important;
+    }
+    
+    /* General mobile optimizations */
+    .hero {
+        padding: 120px 1rem 2rem;
+    }
+    
+    .section-header {
+        margin-bottom: 2rem;
+    }
+    
+    .feature-card,
+    .testimonial-card,
+    .social-card {
+        padding: 1.5rem;
+    }
+    
     .feature-card:hover,
     .testimonial-card:hover,
     .social-card:hover {
-        transform: translateY(-2px);
+        transform: translateY(-2px); /* Reduced hover effect on mobile */
+    }
+    
+    .cta-content {
+        padding: 2rem 1.5rem;
+    }
+    
+    .back-to-top {
+        bottom: 1rem;
+        right: 1rem;
+        width: 44px;
+        height: 44px;
     }
 }
 
 /* ===== ACCESSIBILITY ===== */
 @media (prefers-reduced-motion: reduce) {
     * {
-        animation: none !important;
-        transition: none !important;
-    }
-}
-
-
-/* ===== CRYPTO ICONS STYLING - REAL IMAGES FROM CMC ===== */
-/* ===== CRYPTO ICONS STYLING - REAL IMAGES FROM CMC ===== */
-.ticker-icon {
-    width: 24px;
-    height: 24px;
-    margin-right: 0.5rem;
-    border-radius: 50%;
-    object-fit: cover;
-    flex-shrink: 0;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-
-/* Fallback for when images fail to load */
-.ticker-symbol[data-fallback]::before {
-    content: attr(data-fallback);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    background: rgba(255, 215, 0, 0.1);
-    border: 1px solid rgba(255, 215, 0, 0.3);
-    border-radius: 50%;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--primary-gold);
-    margin-right: 0.5rem;
-    text-transform: uppercase;
-}
-
-/* Hide symbol margin when fallback is shown */
-.ticker-symbol[data-fallback] {
-    margin-left: 0;
-}
-
-/* Hover effects for crypto icons */
-.ticker-item:hover .ticker-icon {
-    transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-    border-color: var(--primary-gold);
-}
-
-.ticker-item:hover .ticker-symbol[data-fallback]::before {
-    transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-    border-color: var(--primary-gold);
-}
-
-/* Specific coin styling for enhanced visual appeal */
-.ticker-btc:hover .ticker-icon,
-.ticker-btc:hover .ticker-symbol[data-fallback]::before {
-    box-shadow: 0 4px 15px rgba(247, 147, 26, 0.4);
-}
-
-.ticker-eth:hover .ticker-icon,
-.ticker-eth:hover .ticker-symbol[data-fallback]::before {
-    box-shadow: 0 4px 15px rgba(98, 126, 234, 0.4);
-}
-
-.ticker-bnb:hover .ticker-icon,
-.ticker-bnb:hover .ticker-symbol[data-fallback]::before {
-    box-shadow: 0 4px 15px rgba(243, 186, 47, 0.4);
-}
-
-.ticker-sol:hover .ticker-icon,
-.ticker-sol:hover .ticker-symbol[data-fallback]::before {
-    box-shadow: 0 4px 15px rgba(153, 69, 255, 0.4);
-}
-
-.ticker-ada:hover .ticker-icon,
-.ticker-ada:hover .ticker-symbol[data-fallback]::before {
-    box-shadow: 0 4px 15px rgba(0, 51, 173, 0.4);
-}
-
-.ticker-xrp:hover .ticker-icon,
-.ticker-xrp:hover .ticker-symbol[data-fallback]::before {
-    box-shadow: 0 4px 15px rgba(35, 41, 47, 0.4);
-}
-
-.ticker-doge:hover .ticker-icon,
-.ticker-doge:hover .ticker-symbol[data-fallback]::before {
-    box-shadow: 0 4px 15px rgba(194, 166, 51, 0.4);
-}
-
-.ticker-matic:hover .ticker-icon,
-.ticker-matic:hover .ticker-symbol[data-fallback]::before {
-    box-shadow: 0 4px 15px rgba(130, 71, 229, 0.4);
-}
-
-.ticker-link:hover .ticker-icon,
-.ticker-link:hover .ticker-symbol[data-fallback]::before {
-    box-shadow: 0 4px 15px rgba(55, 91, 210, 0.4);
-}
-
-.ticker-avax:hover .ticker-icon,
-.ticker-avax:hover .ticker-symbol[data-fallback]::before {
-    box-shadow: 0 4px 15px rgba(232, 65, 66, 0.4);
-}
-
-/* Specific fallback colors */
-.ticker-btc .ticker-symbol[data-fallback]::before {
-    background: rgba(247, 147, 26, 0.2);
-    color: #F7931A;
-    border-color: #F7931A;
-}
-
-.ticker-eth .ticker-symbol[data-fallback]::before {
-    background: rgba(98, 126, 234, 0.2);
-    color: #627EEA;
-    border-color: #627EEA;
-}
-
-.ticker-bnb .ticker-symbol[data-fallback]::before {
-    background: rgba(243, 186, 47, 0.2);
-    color: #F3BA2F;
-    border-color: #F3BA2F;
-}
-
-.ticker-sol .ticker-symbol[data-fallback]::before {
-    background: rgba(153, 69, 255, 0.2);
-    color: #9945FF;
-    border-color: #9945FF;
-}
-
-.ticker-ada .ticker-symbol[data-fallback]::before {
-    background: rgba(0, 51, 173, 0.2);
-    color: #0033AD;
-    border-color: #0033AD;
-}
-
-.ticker-xrp .ticker-symbol[data-fallback]::before {
-    background: rgba(35, 41, 47, 0.2);
-    color: #FFFFFF;
-    border-color: #23292F;
-}
-
-.ticker-doge .ticker-symbol[data-fallback]::before {
-    background: rgba(194, 166, 51, 0.2);
-    color: #C2A633;
-    border-color: #C2A633;
-}
-
-.ticker-matic .ticker-symbol[data-fallback]::before {
-    background: rgba(130, 71, 229, 0.2);
-    color: #8247E5;
-    border-color: #8247E5;
-}
-
-/* Animation for loading state */
-.ticker-icon.loading {
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-    .ticker-icon,
-    .ticker-symbol[data-fallback]::before {
-        width: 20px;
-        height: 20px;
-        margin-right: 0.375rem;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
     
-    .ticker-symbol[data-fallback]::before {
-        font-size: 0.625rem;
+    /* Keep ticker animation but slower */
+    .price-ticker {
+        animation: tickerMove 120s linear infinite !important;
     }
-}
-
-/* High DPI displays */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .ticker-icon {
-        image-rendering: -webkit-optimize-contrast;
-        image-rendering: crisp-edges;
-    }
-}
-
-/* Fallback for when images fail to load */
-.ticker-symbol[data-fallback]::before {
-    content: attr(data-fallback);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    background: rgba(255, 215, 0, 0.1);
-    border: 1px solid rgba(255, 215, 0, 0.3);
-    border-radius: 50%;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--primary-gold);
-    margin-right: 0.5rem;
-    text-transform: uppercase;
-}
-
-/* Hide text content when fallback is shown */
-.ticker-symbol[data-fallback] {
-    font-size: 0;
-    margin-left: 0;
-}
-
-/* But keep the pseudo-element visible */
-.ticker-symbol[data-fallback]::before {
-    font-size: 0.75rem;
-}
-
-/* Fallback icon for static data */
-.ticker-icon-fallback {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    background: rgba(255, 215, 0, 0.1);
-    border: 1px solid rgba(255, 215, 0, 0.3);
-    border-radius: 50%;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--primary-gold);
-    margin-right: 0.5rem;
-    text-transform: uppercase;
-}
-
-.ticker-icon-fallback::before {
-    content: attr(data-icon);
 }
 
 /* Focus states for accessibility */
-.ticker-item:focus .ticker-icon,
-.ticker-item:focus-within .ticker-icon,
-.ticker-item:focus .ticker-symbol[data-fallback]::before,
-.ticker-item:focus-within .ticker-symbol[data-fallback]::before {
-    outline: 2px solid var(--primary-gold);
-    outline-offset: 2px;
-}
-
-/* Focus styles */
 a:focus,
 button:focus,
 input:focus {
@@ -1621,11 +1605,80 @@ input:focus {
     outline-offset: 2px;
 }
 
-/* ===== UTILITIES ===== */
-.text-center { text-align: center; }
-.hidden { display: none !important; }
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --bg-dark: #000000;
+        --text-primary: #FFFFFF;
+        --primary-gold: #FFFF00;
+        --border-gold: #FFFF00;
+    }
+}
 
-/* Ensure text is readable */
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+/* Improve paint performance */
+.price-ticker,
+.feature-card,
+.testimonial-card,
+.social-card {
+    contain: layout style paint;
+}
+
+/* GPU acceleration for smooth animations */
+.btn,
+.back-to-top,
+.feature-card,
+.testimonial-card {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* ===== UTILITIES ===== */
+.text-center { 
+    text-align: center; 
+}
+
+.hidden { 
+    display: none !important; 
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Ensure text is readable on all devices */
 * {
     -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    .price-ticker-wrapper,
+    .header,
+    .back-to-top,
+    .cookie-consent,
+    .notification-container {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .hero {
+        padding: 2rem 0;
+    }
 }
