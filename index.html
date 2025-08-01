@@ -960,8 +960,8 @@
 
     <script>
       const stats = {
-        winRate:        "90.0%",
-        winRateNumber:  "90.0%",
+        winRate:        "88.0%",
+        winRateNumber:  "88.0%",
         globalUsers:    "8,561+",
         totalSignals:   "1,822",
         userRating:     "4.9/5",
@@ -969,9 +969,35 @@
         price:          "$69.99"
       };
       document.addEventListener("DOMContentLoaded", () => {
+        // Update elements with data-stat attributes
         document.querySelectorAll("[data-stat]").forEach(el => {
           const k = el.dataset.stat;
           if (stats[k] !== undefined) el.textContent = stats[k];
+        });
+        
+        // Also search for any hardcoded win rate numbers that might be missed
+        // This is a fallback to catch any 88.6% or 89.6% that don't have data-stat
+        document.querySelectorAll('*').forEach(el => {
+          if (el.children.length === 0 && el.textContent) {
+            if (el.textContent.trim() === '88.6%' || el.textContent.trim() === '89.6%') {
+              el.textContent = stats.winRate;
+            }
+            if (el.textContent.trim() === '8,561+') {
+              el.textContent = stats.globalUsers;
+            }
+            if (el.textContent.trim() === '1,822') {
+              el.textContent = stats.totalSignals;
+            }
+            if (el.textContent.trim() === '4.9/5') {
+              el.textContent = stats.userRating;
+            }
+            if (el.textContent.trim() === '95%') {
+              el.textContent = stats.satisfiedUsers;
+            }
+            if (el.textContent.trim() === '$69.99') {
+              el.textContent = stats.price;
+            }
+          }
         });
       });
     </script>
