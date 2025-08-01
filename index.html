@@ -230,7 +230,7 @@
 
           <p class="hero-subtitle">
             Help traders identify market opportunities without having to monitor charts continuously.
-            <br />with <span class="highlight-number">Historical Accuracy of 89.6%</span> (No Future Guarantee)
+            <br />with <span class="highlight-number">Historical Accuracy of <span data-stat="winRate"></span></span> (No Future Guarantee)
           </p>
 
           <!-- Marketing Text -->
@@ -245,7 +245,7 @@
             <div class="stat-card live">
               <div class="stat-icon">📈</div>
               <div class="stat-content">
-                <span class="stat-number" id="liveWinRate">89.6%</span>
+                <span class="stat-number" id="liveWinRate" data-stat="winRate"></span>
                 <span class="stat-label">Historical System Accuracy (Win-Rate)</span>
               </div>
             </div>
@@ -253,7 +253,7 @@
             <div class="stat-card live">
               <div class="stat-icon">⚡</div>
               <div class="stat-content">
-                <span class="stat-number" id="liveTotalSignals">1,822</span>
+                <span class="stat-number" id="liveTotalSignals" data-stat="totalSignals"></span>
                 <span class="stat-label">Total System Output</span>
               </div>
             </div>
@@ -261,7 +261,7 @@
             <div class="stat-card live">
               <div class="stat-icon">🟢</div>
               <div class="stat-content">
-                <span class="stat-number" >8,561+</span>
+                <span class="stat-number" data-stat="globalUsers"></span>
                 <span class="stat-label">Global Users</span>
               </div>
             </div>
@@ -547,15 +547,15 @@
           <!-- Testimonial Stats -->
           <div class="testimonial-stats">
             <div class="stat-box">
-              <div class="stat-number">8,561+</div>
+              <div class="stat-number" data-stat="globalUsers"></div>
               <div class="stat-label">Global User (Taiwan as main brand and Global)</div>
             </div>
             <div class="stat-box">
-              <div class="stat-number">4.9/5</div>
+              <div class="stat-number" data-stat="userRating"></div>
               <div class="stat-label">User Rating</div>
             </div>
             <div class="stat-box">
-              <div class="stat-number">95%</div>
+              <div class="stat-number" data-stat="satisfiedUsers"></div>
               <div class="stat-label">Satisfied Users</div>
             </div>
           </div>
@@ -652,7 +652,7 @@
                 <h3>Lifetime Access</h3>
                 <div class="pricing-price">
                   <span class="currency">Only</span>
-                  <span class="amount">$69.99</span>
+                  <span class="amount" data-stat="price"></span>
                   <span class="period">/lifetime</span>
                 </div>
                 <span class="pricing-save">One-time payment only use USDT</span>
@@ -793,11 +793,11 @@
             </p>
             <div class="cta-stats">
               <div class="cta-stat">
-                <span class="cta-stat-number">8,561+</span>
+                <span class="cta-stat-number" data-stat="globalUsers"></span>
                 <span class="cta-stat-label">Global Users</span>
               </div>
               <div class="cta-stat">
-                <span class="cta-stat-number">89.6%</span>
+                <span class="cta-stat-number" data-stat="winRate"></span>
                 <span class="cta-stat-label">Win Rate</span>
               </div>
               <div class="cta-stat">
@@ -957,5 +957,23 @@
 
     <!-- Main JavaScript -->
     <script src="main.js" defer></script>
+
+    <script>
+      const stats = {
+        winRate:        "89.6%",
+        winRateNumber:  "89.6",
+        globalUsers:    "8,561+",
+        totalSignals:   "1,822",
+        userRating:     "4.9/5",
+        satisfiedUsers: "95%",
+        price:          "$69.99"
+      };
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll("[data-stat]").forEach(el => {
+          const k = el.dataset.stat;
+          if (stats[k] !== undefined) el.textContent = stats[k];
+        });
+      });
+    </script>
   </body>
 </html>
