@@ -136,26 +136,27 @@
         align-items: center;
       }
 
-      /* Enhanced iPhone Mockup Styles */
+      /* Enhanced iPhone Mockup Styles - MODERN DENGAN BORDER TIPIS */
       .showcase-phone {
         position: relative;
-        height: 600px;
-        width: 300px;
-        padding: 0 8px;
+        height: 650px; /* Disesuaikan untuk aspect ratio 1242x2688 */
+        width: 300px; /* Tetap 300px untuk tampilan web */
+        padding: 0 4px; /* Dikurangi dari 8px ke 4px */
         display: flex;
         justify-content: center;
         align-items: center;
-        background: #111;
-        border: 3px solid #3D3D3D;
+        background: #1a1a1a; /* Warna lebih gelap untuk kesan premium */
+        border: 1px solid #2a2a2a; /* Dikurangi dari 3px ke 1px dan warna lebih subtle */
         border-radius: 45px;
         box-shadow: 
-          inset 0 0 3px 0 rgba(0,0,0,0.2), 
-          0 0 0 1px #999, 
-          0 0 30px 0px rgba(0,0,0,0.7);
+          inset 0 0 2px 0 rgba(0,0,0,0.3), /* Lebih subtle */
+          0 0 0 0.5px #444, /* Border luar tipis */
+          0 0 30px 0px rgba(0,0,0,0.7),
+          0 0 50px 0px rgba(0,0,0,0.3); /* Shadow tambahan untuk depth */
         transform: scale(0.8);
       }
 
-      /* iPhone Buttons */
+      /* iPhone Buttons - Lebih tipis dan subtle */
       .iphone-buttons {
         position: absolute;
       }
@@ -164,23 +165,23 @@
       .vol-up,
       .vol-down,
       .sleep {
-        background: #111;
+        background: #2a2a2a; /* Warna lebih terang dari body phone */
         position: absolute;
-        border-radius: 2px 0 0 2px;
+        border-radius: 1px 0 0 1px; /* Radius lebih kecil */
       }
 
       .silent {
-        height: 30px;
-        width: 3px;
+        height: 28px; /* Sedikit lebih kecil */
+        width: 2px; /* Dikurangi dari 3px ke 2px */
         top: 80px;
-        left: -6px;
+        left: -3px; /* Dikurangi dari -6px ke -3px */
       }
 
       .vol-up,
       .vol-down {
-        left: -6px;
-        height: 45px;
-        width: 3px;
+        left: -3px; /* Dikurangi dari -6px ke -3px */
+        height: 42px; /* Sedikit lebih kecil */
+        width: 2px; /* Dikurangi dari 3px ke 2px */
       }
 
       .vol-up {
@@ -193,17 +194,17 @@
 
       .sleep {
         left: auto;
-        right: -6px;
+        right: -3px; /* Dikurangi dari -6px ke -3px */
         top: 140px;
-        height: 70px;
-        width: 3px;
-        border-radius: 0 2px 2px 0;
+        height: 65px; /* Sedikit lebih kecil */
+        width: 2px; /* Dikurangi dari 3px ke 2px */
+        border-radius: 0 1px 1px 0; /* Radius lebih kecil */
       }
 
-      /* iPhone Top Notch */
+      /* iPhone Top Notch - Lebih refined */
       .iphone-top {
         position: absolute;
-        top: 3px;
+        top: 2px; /* Dikurangi dari 3px */
         width: 100%;
         display: flex;
         justify-content: center;
@@ -214,26 +215,26 @@
         position: absolute;
         height: 1px;
         width: 60%;
-        padding-top: 2px;
-        background: #111;
+        padding-top: 1px; /* Dikurangi */
+        background: #1a1a1a;
       }
 
       .notch {
         position: relative;
-        height: 30px;
+        height: 28px; /* Sedikit lebih kecil */
         width: 45%;
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 0 0 15px 15px;
-        background: #111;
+        border-radius: 0 0 14px 14px; /* Radius lebih kecil */
+        background: #1a1a1a;
         z-index: 2;
       }
 
       /* iPhone Components */
       .iphone-components {
         position: absolute;
-        top: 15px;
+        top: 14px; /* Disesuaikan */
         padding-left: 8px;
         display: flex;
         justify-content: center;
@@ -242,21 +243,21 @@
       }
 
       .speaker {
-        height: 4px;
-        width: 50px;
-        margin: 0 20px;
-        border-radius: 4px;
+        height: 3px; /* Dikurangi */
+        width: 45px; /* Dikurangi */
+        margin: 0 18px; /* Disesuaikan */
+        border-radius: 3px;
         border-bottom: 1px solid #333;
         background: #222;
       }
 
       .camera {
-        height: 12px;
-        width: 12px;
+        height: 11px; /* Sedikit dikurangi */
+        width: 11px;
         border-radius: 50%;
         border-bottom: 1px solid #444;
         background: radial-gradient(black, #333);
-        opacity: 0.7;
+        opacity: 0.8; /* Sedikit lebih terlihat */
         position: relative;
       }
 
@@ -265,153 +266,34 @@
         position: absolute;
         top: 2px;
         left: 2px;
-        height: 6px;
-        width: 6px;
-        border-left: 2px solid dodgerblue;
+        height: 5px; /* Disesuaikan */
+        width: 5px;
+        border-left: 1.5px solid dodgerblue; /* Sedikit dikurangi */
         border-radius: 50%;
-        filter: blur(1px);
+        filter: blur(0.8px); /* Sedikit dikurangi */
       }
 
-      /* iPhone Screen */
+      /* iPhone Screen - Border dalam lebih tipis */
       .phone-screen {
         position: absolute;
-        height: calc(100% - 8px);
-        width: calc(100% - 8px);
+        height: calc(100% - 4px); /* Dikurangi dari 8px ke 4px */
+        width: calc(100% - 4px);
         margin: 0 auto;
-        border: 1px solid rgba(0,0,0,0.9);
-        border-radius: 35px;
+        border: 0.5px solid rgba(0,0,0,0.5); /* Dikurangi dari 1px ke 0.5px */
+        border-radius: 42px; /* Disesuaikan dengan border luar */
         overflow: hidden;
         background: transparent;
       }
 
-      /* Status Bar */
-      .status-bar {
+      /* Content area - DISESUAIKAN UNTUK 1242x2688px, TANPA STATUS BAR & HOME INDICATOR */
+      .screen-content {
         position: absolute;
         top: 0;
+        bottom: 0; /* Full screen tanpa home indicator */
         left: 0;
         right: 0;
-        height: 44px;
-        background: rgba(0,0,0,0.8);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 20px;
-        font-size: 14px;
-        font-weight: 500;
-        color: white;
-        z-index: 20;
-      }
-
-      .status-left {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-      }
-
-      .signal-bars {
-        display: flex;
-        gap: 2px;
-        align-items: flex-end;
-      }
-
-      .signal-bar {
-        width: 3px;
-        background: white;
-        border-radius: 1px;
-      }
-
-      .signal-bar:nth-child(1) { height: 4px; }
-      .signal-bar:nth-child(2) { height: 6px; }
-      .signal-bar:nth-child(3) { height: 8px; }
-      .signal-bar:nth-child(4) { height: 10px; }
-
-      .status-right {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .battery-icon {
-        width: 24px;
-        height: 12px;
-        border: 1px solid white;
-        border-radius: 2px;
-        position: relative;
-        display: flex;
-        align-items: center;
-      }
-
-      .battery-icon::after {
-        content: '';
-        position: absolute;
-        right: -3px;
-        width: 2px;
-        height: 6px;
-        background: white;
-        border-radius: 0 2px 2px 0;
-      }
-
-      .battery-level {
-        height: 8px;
-        width: 70%;
-        background: white;
-        border-radius: 1px;
-        margin: 1px;
-      }
-
-      /* Home Indicator */
-      .home-indicator {
-        position: absolute;
-        bottom: 8px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 134px;
-        height: 5px;
-        background: rgba(255,255,255,0.4);
-        border-radius: 3px;
-        z-index: 20;
-      }
-
-      /* Responsive */
-      @media (max-width: 768px) {
-        .showcase-phone {
-          transform: scale(0.65);
-          height: 500px;
-          width: 250px;
-        }
-        
-        .silent {
-          height: 25px;
-          top: 65px;
-        }
-        
-        .vol-up, .vol-down {
-          height: 35px;
-        }
-        
-        .vol-up {
-          top: 105px;
-        }
-        
-        .vol-down {
-          top: 155px;
-        }
-        
-        .sleep {
-          height: 55px;
-          top: 115px;
-        }
-        
-        .speaker {
-          width: 40px;
-          height: 3px;
-          margin: 0 15px;
-        }
-        
-        .camera {
-          height: 10px;
-          width: 10px;
-        }
+        background: #f5f5f5;
+        overflow: hidden;
       }
 
       /* Image Carousel Styles */
@@ -420,7 +302,7 @@
         height: 100%;
         position: relative;
         overflow: hidden;
-        border-radius: 32px;
+        border-radius: 40px; /* Disesuaikan dengan border phone */
       }
 
       .carousel-container {
@@ -433,7 +315,8 @@
       .signal-screenshot {
         width: 20%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover; /* Akan crop sesuai dengan aspect ratio frame */
+        object-position: center; /* Posisi gambar di tengah */
         flex-shrink: 0;
         background: white;
       }
@@ -550,7 +433,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 32px;
+        border-radius: 40px;
         opacity: 0;
         visibility: hidden;
         transition: all 0.3s ease;
@@ -575,7 +458,7 @@
         100% { transform: rotate(360deg); }
       }
 
-      /* Responsive */
+      /* Responsive - DISESUAIKAN UNTUK UKURAN BARU */
       @media (max-width: 768px) {
         .features-showcase {
           grid-template-columns: 1fr;
@@ -584,8 +467,42 @@
         }
         
         .showcase-phone {
+          transform: scale(0.7);
+          height: 550px; /* Disesuaikan untuk mobile */
           width: 250px;
-          height: 500px;
+        }
+
+        .silent {
+          height: 22px;
+          top: 70px; /* Disesuaikan dengan tinggi baru */
+        }
+        
+        .vol-up, .vol-down {
+          height: 32px;
+        }
+        
+        .vol-up {
+          top: 110px;
+        }
+        
+        .vol-down {
+          top: 155px;
+        }
+        
+        .sleep {
+          height: 50px;
+          top: 120px;
+        }
+        
+        .speaker {
+          width: 35px;
+          height: 2.5px;
+          margin: 0 15px;
+        }
+        
+        .camera {
+          height: 9px;
+          width: 9px;
         }
 
         .nav-btn {
@@ -855,6 +772,25 @@
           <div class="features-showcase">
             <div class="showcase-main">
               <div class="showcase-phone">
+                <!-- iPhone Buttons -->
+                <div class="iphone-buttons">
+                  <div class="silent"></div>
+                  <div class="vol-up"></div>
+                  <div class="vol-down"></div>
+                  <div class="sleep"></div>
+                </div>
+
+                <!-- iPhone Top -->
+                <div class="iphone-top">
+                  <div class="black-bar"></div>
+                  <div class="notch">
+                    <div class="iphone-components">
+                      <div class="speaker"></div>
+                      <div class="camera"></div>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="phone-screen">
                   <!-- Image Carousel -->
                   <div class="image-carousel">
