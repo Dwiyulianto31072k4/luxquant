@@ -313,9 +313,12 @@
       }
 
       .signal-screenshot {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
+        width: 20%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center; /* Posisi gambar di tengah */
+        flex-shrink: 0;
+        background: white;
       }
 
       /* Carousel Navigation */
