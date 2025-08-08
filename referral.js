@@ -9,7 +9,7 @@ class ReferralSystem {
       '01258Lux', '09874Lux', '04569Lux',
       'KOL001Lux', 'KOL002Lux', 'KOL003Lux'
     ];
-    this.originalPrice = 69.99;
+    this.originalPrice = 70.99;
     this.discountPercent = 12.5;
     this.discountPrice = this.originalPrice * (1 - this.discountPercent / 100);
     this.init();
