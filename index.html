@@ -1020,6 +1020,41 @@
         </div>
       </section>
 
+      <!-- Embedded Trading Platform Section -->
+      <section class="embedded-platform-section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-label">Daily Updated System Performance</span>
+            <h2 class="section-title">
+              <span>Experience LuxQuant</span>
+              <span class="gradient-text">Trading Platform</span>
+            </h2>
+            <p class="section-subtitle">
+              Try our advanced trading interface with real-time market data
+            </p>
+          </div>
+
+          <div class="embedded-wrapper">
+            <div class="iframe-container">
+              <div class="loading-overlay" id="loadingOverlay">
+                <div class="loading-spinner"></div>
+                <div class="loading-text">Loading trading platform...</div>
+              </div>
+              <iframe
+                id="embeddedSite"
+                class="embedded-iframe"
+                src="http://141.11.25.194/"
+                title="LuxQuant Trading Platform"
+                loading="lazy"
+                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                onload="hideLoading()"
+                onerror="showError()"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Social Media Section -->
       <!-- Social Media Section with Yellow Styling -->
       <section class="social-media-section">
