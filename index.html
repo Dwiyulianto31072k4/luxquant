@@ -1,1709 +1,1566 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
-    />
-    <meta
-      name="description"
-      content="LuxQuant VIP - Premium AI-Powered Crypto Trading Signals with high Win Rate. Join elite traders using advanced automation."
-    />
-    <meta
-      name="keywords"
-      content="crypto trading, trading signals, bitcoin, ethereum, AI trading, automated trading"
-    />
-    <meta name="author" content="LuxQuant VIP" />
-    <meta name="theme-color" content="#FFD700" />
 
-    <!-- Open Graph Meta Tags -->
-    <meta
-      property="og:title"
-      content="LuxQuant VIP - Premium Crypto Trading Signals"
-    />
-    <meta
-      property="og:description"
-      content="AI-Powered Trading Excellence with High Win Rate"
-    />
-    <meta property="og:image" content="/og-image.jpg" />
-    <meta property="og:url" content="https://luxquant.online" />
-    <meta property="og:type" content="website" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="description"
+    content="LuxQuant VIP - Premium AI-Powered Crypto Trading Signals with high Win Rate. Join elite traders using advanced automation." />
+  <meta name="keywords" content="crypto trading, trading signals, bitcoin, ethereum, AI trading, automated trading" />
+  <meta name="author" content="LuxQuant VIP" />
+  <meta name="theme-color" content="#FFD700" />
 
-    <title>LuxQuant VIP - Premium AI Crypto Trading Signals</title>
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="LuxQuant VIP - Premium Crypto Trading Signals" />
+  <meta property="og:description" content="AI-Powered Trading Excellence with High Win Rate" />
+  <meta property="og:image" content="/og-image.jpg" />
+  <meta property="og:url" content="https://luxquant.online" />
+  <meta property="og:type" content="website" />
 
-    <!-- DNS Prefetch -->
-    <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
-    <link rel="dns-prefetch" href="//unpkg.com" />
+  <title>LuxQuant VIP - Premium AI Crypto Trading Signals</title>
 
-    <!-- Critical CSS -->
-    <style>
-      :root {
-        --primary-gold: #ffd700;
-        --bg-dark: #0a0a0a;
-        --text-primary: #ffffff;
+  <!-- DNS Prefetch -->
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+  <link rel="dns-prefetch" href="//unpkg.com" />
+
+  <!-- Critical CSS -->
+  <style>
+    :root {
+      --primary-gold: #ffd700;
+      --bg-dark: #0a0a0a;
+      --text-primary: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        sans-serif;
+      overflow-x: hidden;
+    }
+
+    body.loading {
+      overflow: hidden;
+    }
+
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #050505;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.6s;
+    }
+
+    .loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-content {
+      text-align: center;
+    }
+
+    .loader-logo {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+
+    .loader-logo img {
+      max-width: 200px;
+      height: auto;
+    }
+
+    .loader-progress {
+      width: 200px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      margin: 0 auto 1rem;
+    }
+
+    .loader-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #ffd700, #ffa500);
+      width: 0;
+      transition: width 0.3s ease;
+    }
+  </style>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <link rel="stylesheet" href="referral.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="LuxQuant VIP Logo Design-Photoroom.png" type="image/png" sizes="64x64" />
+
+  <style>
+    /* Additional styles for the updated features section */
+    .features-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    /* Enhanced iPhone Mockup Styles - MODERN DENGAN BORDER TIPIS */
+    .showcase-phone {
+      position: relative;
+      height: 650px;
+      /* Disesuaikan untuk aspect ratio 1242x2688 */
+      width: 300px;
+      /* Tetap 300px untuk tampilan web */
+      padding: 0 0.5px;
+      /* Dikurangi dari 8px ke 4px */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #1a1a1a;
+      /* Warna lebih gelap untuk kesan premium */
+      border: 0.5px solid #2a2a2a;
+      /* Dikurangi dari 3px ke 1px dan warna lebih subtle */
+      border-radius: 45px;
+      box-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.3),
+        /* Lebih subtle */
+        0 0 0 0.5px #444,
+        /* Border luar tipis */
+        0 0 30px 0px rgba(0, 0, 0, 0.7),
+        0 0 50px 0px rgba(0, 0, 0, 0.3);
+      /* Shadow tambahan untuk depth */
+      transform: scale(0.8);
+    }
+
+    /* iPhone Buttons - Lebih tipis dan subtle */
+    .iphone-buttons {
+      position: absolute;
+    }
+
+    .silent,
+    .vol-up,
+    .vol-down,
+    .sleep {
+      background: #2a2a2a;
+      /* Warna lebih terang dari body phone */
+      position: absolute;
+      border-radius: 1px 0 0 1px;
+      /* Radius lebih kecil */
+    }
+
+    .silent {
+      height: 28px;
+      /* Sedikit lebih kecil */
+      width: 2px;
+      /* Dikurangi dari 3px ke 2px */
+      top: 80px;
+      left: -3px;
+      /* Dikurangi dari -6px ke -3px */
+    }
+
+    .vol-up,
+    .vol-down {
+      left: -3px;
+      /* Dikurangi dari -6px ke -3px */
+      height: 42px;
+      /* Sedikit lebih kecil */
+      width: 2px;
+      /* Dikurangi dari 3px ke 2px */
+    }
+
+    .vol-up {
+      top: 130px;
+    }
+
+    .vol-down {
+      top: 190px;
+    }
+
+    .sleep {
+      left: auto;
+      right: -3px;
+      /* Dikurangi dari -6px ke -3px */
+      top: 140px;
+      height: 65px;
+      /* Sedikit lebih kecil */
+      width: 2px;
+      /* Dikurangi dari 3px ke 2px */
+      border-radius: 0 1px 1px 0;
+      /* Radius lebih kecil */
+    }
+
+    /* iPhone Top Notch - Lebih refined */
+    .iphone-top {
+      position: absolute;
+      top: 2px;
+      /* Dikurangi dari 3px */
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 4;
+    }
+
+    .black-bar {
+      position: absolute;
+      height: 1px;
+      width: 60%;
+      padding-top: 1px;
+      /* Dikurangi */
+      background: #1a1a1a;
+    }
+
+    .notch {
+      position: relative;
+      height: 28px;
+      /* Sedikit lebih kecil */
+      width: 45%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0 0 14px 14px;
+      /* Radius lebih kecil */
+      background: #1a1a1a;
+      z-index: 2;
+    }
+
+    /* iPhone Components */
+    .iphone-components {
+      position: absolute;
+      top: 14px;
+      /* Disesuaikan */
+      padding-left: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .speaker {
+      height: 3px;
+      /* Dikurangi */
+      width: 45px;
+      /* Dikurangi */
+      margin: 0 18px;
+      /* Disesuaikan */
+      border-radius: 3px;
+      border-bottom: 1px solid #333;
+      background: #222;
+    }
+
+    .camera {
+      height: 11px;
+      /* Sedikit dikurangi */
+      width: 11px;
+      border-radius: 50%;
+      border-bottom: 1px solid #444;
+      background: radial-gradient(black, #333);
+      opacity: 0.8;
+      /* Sedikit lebih terlihat */
+      position: relative;
+    }
+
+    .camera::before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      height: 5px;
+      /* Disesuaikan */
+      width: 5px;
+      border-left: 1.5px solid dodgerblue;
+      /* Sedikit dikurangi */
+      border-radius: 50%;
+      filter: blur(0.8px);
+      /* Sedikit dikurangi */
+    }
+
+    /* iPhone Screen - Border dalam lebih tipis */
+    .phone-screen {
+      position: absolute;
+      height: calc(100% - 1px);
+      /* Dikurangi dari 8px ke 4px */
+      width: calc(100% - 1px);
+      margin: 0 auto;
+      border: 0.25px solid rgba(0, 0, 0, 0.5);
+      /* Dikurangi dari 1px ke 0.5px */
+      border-radius: 42px;
+      /* Disesuaikan dengan border luar */
+      overflow: hidden;
+      background: transparent;
+    }
+
+    /* Content area - DISESUAIKAN UNTUK 1242x2688px, TANPA STATUS BAR & HOME INDICATOR */
+    .screen-content {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      /* Full screen tanpa home indicator */
+      left: 0;
+      right: 0;
+      background: #f5f5f5;
+      overflow: hidden;
+    }
+
+    /* Image Carousel Styles */
+    .image-carousel {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      border-radius: 40px;
+      /* Disesuaikan dengan border phone */
+    }
+
+    .carousel-container {
+      display: flex;
+      transition: transform 0.5s ease;
+      width: 500%;
+      height: 100%;
+    }
+
+    .signal-screenshot {
+      width: 20%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      /* Posisi gambar di tengah */
+      flex-shrink: 0;
+      background: white;
+    }
+
+    /* Carousel Navigation */
+    .carousel-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .nav-btn {
+      width: 45px;
+      height: 45px;
+      border: none;
+      background: linear-gradient(135deg, #ffd700, #ffa500);
+      color: #000;
+      border-radius: 50%;
+      font-size: 24px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+      background: linear-gradient(135deg, #fff700, #ffb500);
+    }
+
+    .nav-btn:active {
+      transform: translateY(-1px);
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .dot:hover {
+      background: rgba(255, 215, 0, 0.7);
+      transform: scale(1.2);
+    }
+
+    .dot.active {
+      background: #ffd700;
+      border: 2px solid #fff;
+      transform: scale(1.3);
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+    }
+
+    /* Features List */
+    .showcase-features {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .showcase-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .feature-icon-box {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #ffd700, #ffa500);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .feature-content h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: white;
+    }
+
+    .feature-content p {
+      color: #aaa;
+      line-height: 1.6;
+    }
+
+    /* Loading Animation */
+    .loading-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 40px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .loading-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(255, 215, 0, 0.3);
+      border-top: 3px solid #ffd700;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
       }
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+      100% {
+        transform: rotate(360deg);
       }
+    }
 
-      body {
-        background: var(--bg-dark);
-        color: var(--text-primary);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          sans-serif;
-        overflow-x: hidden;
-      }
-
-      body.loading {
-        overflow: hidden;
-      }
-
-      .loader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #050505;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-        transition: opacity 0.6s;
-      }
-
-      .loader.hidden {
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-      }
-
-      .loader-content {
+    /* Responsive - DISESUAIKAN UNTUK UKURAN BARU */
+    @media (max-width: 768px) {
+      .features-showcase {
+        grid-template-columns: 1fr;
+        gap: 2rem;
         text-align: center;
       }
 
-      .loader-logo {
-        font-size: 3rem;
-        font-weight: 900;
-        margin-bottom: 1rem;
-      }
-
-      .loader-logo img {
-        max-width: 200px;
-        height: auto;
-      }
-
-      .loader-progress {
-        width: 200px;
-        height: 4px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 2px;
-        overflow: hidden;
-        margin: 0 auto 1rem;
-      }
-
-      .loader-progress-bar {
-        height: 100%;
-        background: linear-gradient(90deg, #ffd700, #ffa500);
-        width: 0;
-        transition: width 0.3s ease;
-      }
-    </style>
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="style.css" />
-
-    <link rel="stylesheet" href="referral.css" />
-
-    <!-- Favicon -->
-    <link
-      rel="icon"
-      href="LuxQuant VIP Logo Design-Photoroom.png"
-      type="image/png"
-      sizes="64x64"
-    />
-
-    <style>
-      /* Additional styles for the updated features section */
-      .features-showcase {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: center;
-      }
-
-      /* Enhanced iPhone Mockup Styles - MODERN DENGAN BORDER TIPIS */
       .showcase-phone {
-        position: relative;
-        height: 650px; /* Disesuaikan untuk aspect ratio 1242x2688 */
-        width: 300px; /* Tetap 300px untuk tampilan web */
-        padding: 0 0.5px; /* Dikurangi dari 8px ke 4px */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #1a1a1a; /* Warna lebih gelap untuk kesan premium */
-        border: 0.5px solid #2a2a2a; /* Dikurangi dari 3px ke 1px dan warna lebih subtle */
-        border-radius: 45px;
-        box-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.3),
-          /* Lebih subtle */ 0 0 0 0.5px #444,
-          /* Border luar tipis */ 0 0 30px 0px rgba(0, 0, 0, 0.7),
-          0 0 50px 0px rgba(0, 0, 0, 0.3); /* Shadow tambahan untuk depth */
-        transform: scale(0.8);
-      }
-
-      /* iPhone Buttons - Lebih tipis dan subtle */
-      .iphone-buttons {
-        position: absolute;
-      }
-
-      .silent,
-      .vol-up,
-      .vol-down,
-      .sleep {
-        background: #2a2a2a; /* Warna lebih terang dari body phone */
-        position: absolute;
-        border-radius: 1px 0 0 1px; /* Radius lebih kecil */
+        transform: scale(0.7);
+        height: 550px;
+        /* Disesuaikan untuk mobile */
+        width: 250px;
       }
 
       .silent {
-        height: 28px; /* Sedikit lebih kecil */
-        width: 2px; /* Dikurangi dari 3px ke 2px */
-        top: 80px;
-        left: -3px; /* Dikurangi dari -6px ke -3px */
+        height: 22px;
+        top: 70px;
+        /* Disesuaikan dengan tinggi baru */
       }
 
       .vol-up,
       .vol-down {
-        left: -3px; /* Dikurangi dari -6px ke -3px */
-        height: 42px; /* Sedikit lebih kecil */
-        width: 2px; /* Dikurangi dari 3px ke 2px */
+        height: 32px;
       }
 
       .vol-up {
-        top: 130px;
+        top: 110px;
       }
 
       .vol-down {
-        top: 190px;
+        top: 155px;
       }
 
       .sleep {
-        left: auto;
-        right: -3px; /* Dikurangi dari -6px ke -3px */
-        top: 140px;
-        height: 65px; /* Sedikit lebih kecil */
-        width: 2px; /* Dikurangi dari 3px ke 2px */
-        border-radius: 0 1px 1px 0; /* Radius lebih kecil */
-      }
-
-      /* iPhone Top Notch - Lebih refined */
-      .iphone-top {
-        position: absolute;
-        top: 2px; /* Dikurangi dari 3px */
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        z-index: 4;
-      }
-
-      .black-bar {
-        position: absolute;
-        height: 1px;
-        width: 60%;
-        padding-top: 1px; /* Dikurangi */
-        background: #1a1a1a;
-      }
-
-      .notch {
-        position: relative;
-        height: 28px; /* Sedikit lebih kecil */
-        width: 45%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 0 0 14px 14px; /* Radius lebih kecil */
-        background: #1a1a1a;
-        z-index: 2;
-      }
-
-      /* iPhone Components */
-      .iphone-components {
-        position: absolute;
-        top: 14px; /* Disesuaikan */
-        padding-left: 8px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 10;
+        height: 50px;
+        top: 120px;
       }
 
       .speaker {
-        height: 3px; /* Dikurangi */
-        width: 45px; /* Dikurangi */
-        margin: 0 18px; /* Disesuaikan */
-        border-radius: 3px;
-        border-bottom: 1px solid #333;
-        background: #222;
+        width: 35px;
+        height: 2.5px;
+        margin: 0 15px;
       }
 
       .camera {
-        height: 11px; /* Sedikit dikurangi */
-        width: 11px;
-        border-radius: 50%;
-        border-bottom: 1px solid #444;
-        background: radial-gradient(black, #333);
-        opacity: 0.8; /* Sedikit lebih terlihat */
-        position: relative;
-      }
-
-      .camera::before {
-        content: "";
-        position: absolute;
-        top: 2px;
-        left: 2px;
-        height: 5px; /* Disesuaikan */
-        width: 5px;
-        border-left: 1.5px solid dodgerblue; /* Sedikit dikurangi */
-        border-radius: 50%;
-        filter: blur(0.8px); /* Sedikit dikurangi */
-      }
-
-      /* iPhone Screen - Border dalam lebih tipis */
-      .phone-screen {
-        position: absolute;
-        height: calc(100% - 1px); /* Dikurangi dari 8px ke 4px */
-        width: calc(100% - 1px);
-        margin: 0 auto;
-        border: 0.25px solid rgba(0, 0, 0, 0.5); /* Dikurangi dari 1px ke 0.5px */
-        border-radius: 42px; /* Disesuaikan dengan border luar */
-        overflow: hidden;
-        background: transparent;
-      }
-
-      /* Content area - DISESUAIKAN UNTUK 1242x2688px, TANPA STATUS BAR & HOME INDICATOR */
-      .screen-content {
-        position: absolute;
-        top: 0;
-        bottom: 0; /* Full screen tanpa home indicator */
-        left: 0;
-        right: 0;
-        background: #f5f5f5;
-        overflow: hidden;
-      }
-
-      /* Image Carousel Styles */
-      .image-carousel {
-        width: 100%;
-        height: 100%;
-        position: relative;
-        overflow: hidden;
-        border-radius: 40px; /* Disesuaikan dengan border phone */
-      }
-
-      .carousel-container {
-        display: flex;
-        transition: transform 0.5s ease;
-        width: 500%;
-        height: 100%;
-      }
-
-      .signal-screenshot {
-        width: 20%;
-        height: 100%;
-        object-fit: contain;
-        object-position: center; /* Posisi gambar di tengah */
-        flex-shrink: 0;
-        background: white;
-      }
-
-      /* Carousel Navigation */
-      .carousel-nav {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        margin-top: 1.5rem;
+        height: 9px;
+        width: 9px;
       }
 
       .nav-btn {
-        width: 45px;
-        height: 45px;
-        border: none;
-        background: linear-gradient(135deg, #ffd700, #ffa500);
-        color: #000;
-        border-radius: 50%;
-        font-size: 24px;
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .nav-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
-        background: linear-gradient(135deg, #fff700, #ffb500);
-      }
-
-      .nav-btn:active {
-        transform: translateY(-1px);
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
       }
 
       .carousel-dots {
-        display: flex;
-        gap: 0.7rem;
-        align-items: center;
+        gap: 0.5rem;
       }
 
       .dot {
-        width: 14px;
-        height: 14px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.3);
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: 2px solid transparent;
+        width: 12px;
+        height: 12px;
       }
+    }
+  </style>
+</head>
 
-      .dot:hover {
-        background: rgba(255, 215, 0, 0.7);
-        transform: scale(1.2);
-      }
+<body class="loading">
+  <!-- Loading Screen -->
+  <div class="loader" id="loader">
+    <div class="loader-content">
+      <div class="loader-logo">
+        <img src="LuxQuant VIP Logo Design-Photoroom.png" alt="LuxQuant VIP" width="200" height="67" />
+      </div>
+      <div class="loader-tagline">Premium Trading Excellence</div>
+      <div class="loader-progress">
+        <div class="loader-progress-bar" id="loaderProgressBar"></div>
+      </div>
+      <div class="loader-percentage" id="loaderPercentage">0%</div>
+    </div>
+  </div>
 
-      .dot.active {
-        background: #ffd700;
-        border: 2px solid #fff;
-        transform: scale(1.3);
-        box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
-      }
+  <!-- Mouse Effects (Desktop Only) -->
+  <div class="mouse-follower desktop-only"></div>
+  <div class="mouse-dot desktop-only"></div>
 
-      /* Features List */
-      .showcase-features {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-      }
+  <!-- Background Effects -->
+  <div class="bg-container">
+    <div class="bg-gradient"></div>
+    <canvas id="particles-canvas" class="desktop-only"></canvas>
+  </div>
 
-      .showcase-feature {
-        display: flex;
-        align-items: flex-start;
-        gap: 1rem;
-      }
-
-      .feature-icon-box {
-        width: 48px;
-        height: 48px;
-        background: linear-gradient(135deg, #ffd700, #ffa500);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 20px;
-        flex-shrink: 0;
-      }
-
-      .feature-content h4 {
-        font-size: 1.2rem;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-        color: white;
-      }
-
-      .feature-content p {
-        color: #aaa;
-        line-height: 1.6;
-      }
-
-      /* Loading Animation */
-      .loading-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.7);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 40px;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-      }
-
-      .loading-overlay.show {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      .loading-spinner {
-        width: 40px;
-        height: 40px;
-        border: 3px solid rgba(255, 215, 0, 0.3);
-        border-top: 3px solid #ffd700;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-      }
-
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      /* Responsive - DISESUAIKAN UNTUK UKURAN BARU */
-      @media (max-width: 768px) {
-        .features-showcase {
-          grid-template-columns: 1fr;
-          gap: 2rem;
-          text-align: center;
-        }
-
-        .showcase-phone {
-          transform: scale(0.7);
-          height: 550px; /* Disesuaikan untuk mobile */
-          width: 250px;
-        }
-
-        .silent {
-          height: 22px;
-          top: 70px; /* Disesuaikan dengan tinggi baru */
-        }
-
-        .vol-up,
-        .vol-down {
-          height: 32px;
-        }
-
-        .vol-up {
-          top: 110px;
-        }
-
-        .vol-down {
-          top: 155px;
-        }
-
-        .sleep {
-          height: 50px;
-          top: 120px;
-        }
-
-        .speaker {
-          width: 35px;
-          height: 2.5px;
-          margin: 0 15px;
-        }
-
-        .camera {
-          height: 9px;
-          width: 9px;
-        }
-
-        .nav-btn {
-          width: 40px;
-          height: 40px;
-          font-size: 20px;
-        }
-
-        .carousel-dots {
-          gap: 0.5rem;
-        }
-
-        .dot {
-          width: 12px;
-          height: 12px;
-        }
-      }
-    </style>
-  </head>
-  <body class="loading">
-    <!-- Loading Screen -->
-    <div class="loader" id="loader">
-      <div class="loader-content">
-        <div class="loader-logo">
-          <img
-            src="LuxQuant VIP Logo Design-Photoroom.png"
-            alt="LuxQuant VIP"
-            width="200"
-            height="67"
-          />
-        </div>
-        <div class="loader-tagline">Premium Trading Excellence</div>
-        <div class="loader-progress">
-          <div class="loader-progress-bar" id="loaderProgressBar"></div>
-        </div>
-        <div class="loader-percentage" id="loaderPercentage">0%</div>
+  <!-- Live Price Ticker -->
+  <div class="price-ticker-wrapper">
+    <div class="price-ticker" id="priceTicker">
+      <div class="ticker-content">
+        <!-- Ticker items will be dynamically added -->
       </div>
     </div>
+  </div>
 
-    <!-- Mouse Effects (Desktop Only) -->
-    <div class="mouse-follower desktop-only"></div>
-    <div class="mouse-dot desktop-only"></div>
-
-    <!-- Background Effects -->
-    <div class="bg-container">
-      <div class="bg-gradient"></div>
-      <canvas id="particles-canvas" class="desktop-only"></canvas>
-    </div>
-
-    <!-- Live Price Ticker -->
-    <div class="price-ticker-wrapper">
-      <div class="price-ticker" id="priceTicker">
-        <div class="ticker-content">
-          <!-- Ticker items will be dynamically added -->
-        </div>
-      </div>
-    </div>
-
-    <!-- Header -->
-    <header id="header" class="header">
-      <nav class="nav">
-        <div class="nav-container">
-          <div class="logo-wrapper">
-            <a href="#home" class="logo">
-              <img
-                src="LuxQuant VIP Logo Design-Photoroom.png"
-                alt="LuxQuant VIP"
-                width="150"
-                height="50"
-              />
-            </a>
-          </div>
-
-          <ul class="nav-links" id="navLinks">
-            <li><a href="#home" data-nav="home">Home</a></li>
-            <li><a href="#why-choose" data-nav="why-choose">Why Choose</a></li>
-            <li><a href="#features" data-nav="features">Features</a></li>
-            <li><a href="#testimonials" data-nav="testimonials">Reviews</a></li>
-            <li><a href="#pricing" data-nav="pricing">Pricing</a></li>
-            <li class="nav-cta">
-              <a href="https://t.me/luxquantadmin" class="nav-btn-primary">
-                <span>SUBSCRIBE NOW</span>
-              </a>
-            </li>
-          </ul>
-
-          <button
-            class="mobile-menu-btn"
-            id="mobileMenuBtn"
-            aria-label="Toggle menu"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
-      </nav>
-    </header>
-
-    <!-- Main Content -->
-    <main id="main">
-      <!-- Hero Section -->
-      <section id="home" class="hero">
-        <div class="hero-bg-effects desktop-only">
-          <div class="hero-glow"></div>
-          <div class="hero-grid"></div>
+  <!-- Header -->
+  <header id="header" class="header">
+    <nav class="nav">
+      <div class="nav-container">
+        <div class="logo-wrapper">
+          <a href="#home" class="logo">
+            <img src="LuxQuant VIP Logo Design-Photoroom.png" alt="LuxQuant VIP" width="150" height="50" />
+          </a>
         </div>
 
-        <div class="hero-content">
-          <div class="hero-badge">
-            <span class="badge-icon">₿</span>
-            <span>24/7 Automated Signals</span>
-            <span class="badge-icon">₿</span>
-          </div>
-
-          <h1 class="hero-title">
-            <span class="title-line">Tools for Automated Crypto</span>
-            <span class="title-line gradient-text">Trading Setup 24/7</span>
-          </h1>
-
-          <p class="hero-subtitle">
-            Help traders identify market opportunities without having to monitor
-            charts continuously.
-            <br />with
-            <span class="highlight-number"
-              >Historical Accuracy of <span data-stat="winRate"></span
-            ></span>
-            (No Future Guarantee)
-          </p>
-
-          <!-- Marketing Text -->
-          <div class="hero-marketing">
-            <p class="marketing-text">
-              <strong>Optimize Your Trading Today! 🚀</strong> Get direct access
-              to 24-hour automated tools that provide crypto market setup
-              detection, complete with real-time updates from the LuxQuant
-              system.
-            </p>
-          </div>
-
-          <!-- Live Stats Cards -->
-          <div class="live-stats">
-            <div class="stat-card live">
-              <div class="stat-icon">📈</div>
-              <div class="stat-content">
-                <span class="stat-number" data-stat="winRate"></span>
-                <span class="stat-label"
-                  >Historical System Accuracy (Win-Rate)</span
-                >
-              </div>
-            </div>
-
-            <div class="stat-card live">
-              <div class="stat-icon">⚡</div>
-              <div class="stat-content">
-                <span class="stat-number" data-stat="totalSignals"></span>
-                <span class="stat-label">Total System Output</span>
-              </div>
-            </div>
-
-            <div class="stat-card live">
-              <div class="stat-icon">🟢</div>
-              <div class="stat-content">
-                <span class="stat-number" data-stat="globalUsers"></span>
-                <span class="stat-label">Global Users</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- CTA Buttons -->
-          <div class="hero-cta">
-            <a
-              href="https://t.me/luxquantadmin"
-              class="btn btn-primary btn-glow"
-            >
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home" data-nav="home">Home</a></li>
+          <li><a href="#why-choose" data-nav="why-choose">Why Choose</a></li>
+          <li><a href="#features" data-nav="features">Features</a></li>
+          <li><a href="#testimonials" data-nav="testimonials">Reviews</a></li>
+          <li><a href="#pricing" data-nav="pricing">Pricing</a></li>
+          <li class="nav-cta">
+            <a href="https://t.me/luxquantadmin" class="nav-btn-primary">
               <span>SUBSCRIBE NOW</span>
             </a>
-            <a href="#pricing" class="btn btn-secondary">
-              <span>VIEW PACKAGES</span>
-            </a>
-          </div>
-        </div>
-      </section>
+          </li>
+        </ul>
 
-      <!-- Why Choose Section -->
-      <section id="why-choose" class="why-choose">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-label">LuxQuant Advantages</span>
-            <h2 class="section-title">
-              <span>Why Choose</span>
-              <span class="gradient-text">LuxQuant VIP?</span>
-            </h2>
-            <p class="section-subtitle">
-              Automated crypto market monitoring system that provides proven
-              efficient and responsive trade setups
-            </p>
-          </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
 
-          <div class="features-grid">
-            <div class="feature-card">
-              <div class="feature-icon-wrapper">
-                <span class="feature-icon">🎯</span>
-              </div>
-              <h3>Precision Signals</h3>
-              <p>
-                Automated system provides detection of entry and exit price
-                zones based on real-time market data.
-              </p>
-            </div>
+  <!-- Main Content -->
+  <main id="main">
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-bg-effects desktop-only">
+        <div class="hero-glow"></div>
+        <div class="hero-grid"></div>
+      </div>
 
-            <div class="feature-card">
-              <div class="feature-icon-wrapper">
-                <span class="feature-icon">⚡</span>
-              </div>
-              <h3>Real-Time Alerts</h3>
-              <p>
-                Real-time notifications via Telegram so users stay connected
-                with market movements quickly and responsively.
-              </p>
-            </div>
-
-            <div class="feature-card">
-              <div class="feature-icon-wrapper">
-                <span class="feature-icon">📊</span>
-              </div>
-              <h3>Advanced Analytics</h3>
-              <p>
-                Output provided includes volume ranking monitoring and risk
-                level indicators that are automatically read by the system.
-              </p>
-            </div>
-
-            <div class="feature-card">
-              <div class="feature-icon-wrapper">
-                <span class="feature-icon">🔒</span>
-              </div>
-              <h3>Risk Management</h3>
-              <p>
-                Every system output includes risk point estimation (stop-loss).
-              </p>
-            </div>
-
-            <div class="feature-card">
-              <div class="feature-icon-wrapper">
-                <span class="feature-icon">📈</span>
-              </div>
-              <h3>Proven Track Record</h3>
-              <p>
-                Transparent historical performance tracking based on the system
-                — no future results promised.
-              </p>
-            </div>
-
-            <div class="feature-card">
-              <div class="feature-icon-wrapper">
-                <span class="feature-icon">🤖</span>
-              </div>
-              <h3>24/7 Automation</h3>
-              <p>
-                Full 24-hour automatic market monitoring that processes data and
-                provides systematic output continuously.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Features Section with Updated Carousel -->
-      <section id="features" class="features">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-label">VIP Features</span>
-            <h2 class="section-title">
-              <span>Advanced Crypto Trading</span>
-              <span class="gradient-text">Technology</span>
-            </h2>
-            <p class="section-subtitle">
-              Everything you need to respond to volatile crypto markets in
-              real-time
-            </p>
-          </div>
-
-          <div class="features-showcase">
-            <div class="showcase-main">
-              <div class="showcase-phone">
-                <!-- iPhone Buttons -->
-                <div class="iphone-buttons">
-                  <div class="silent"></div>
-                  <div class="vol-up"></div>
-                  <div class="vol-down"></div>
-                  <div class="sleep"></div>
-                </div>
-
-                <!-- iPhone Top -->
-                <div class="iphone-top">
-                  <div class="black-bar"></div>
-                  <div class="notch">
-                    <div class="iphone-components">
-                      <div class="speaker"></div>
-                      <div class="camera"></div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="phone-screen">
-                  <!-- Image Carousel -->
-                  <div class="image-carousel">
-                    <div class="carousel-container" id="carouselContainer">
-                      <img
-                        src="fiturlq1.png"
-                        alt="LuxQuant Telegram Channels"
-                        class="signal-screenshot"
-                      />
-                      <img
-                        src="fiturlq2.png"
-                        alt="LuxQuant Signal Details"
-                        class="signal-screenshot"
-                      />
-                      <img
-                        src="fiturlq3.png"
-                        alt="LuxQuant Trading Results"
-                        class="signal-screenshot"
-                      />
-                      <img
-                        src="fiturlq4.png"
-                        alt="LuxQuant Market Analysis"
-                        class="signal-screenshot"
-                      />
-                      <img
-                        src="fiturlq5.png"
-                        alt="LuxQuant AI Consultant"
-                        class="signal-screenshot"
-                      />
-                    </div>
-                    <!-- Loading Overlay -->
-                    <div class="loading-overlay" id="loadingOverlay">
-                      <div class="loading-spinner"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Carousel Navigation -->
-              <div class="carousel-nav">
-                <button class="nav-btn prev-btn" id="prevBtn">‹</button>
-                <div class="carousel-dots" id="carouselDots">
-                  <span class="dot active" data-slide="0"></span>
-                  <span class="dot" data-slide="1"></span>
-                  <span class="dot" data-slide="2"></span>
-                  <span class="dot" data-slide="3"></span>
-                  <span class="dot" data-slide="4"></span>
-                </div>
-                <button class="nav-btn next-btn" id="nextBtn">›</button>
-              </div>
-            </div>
-
-            <div class="showcase-features">
-              <div class="showcase-feature">
-                <div class="feature-icon-box">
-                  <span>🎯</span>
-                </div>
-                <div class="feature-content">
-                  <h4>AI-Powered Analysis</h4>
-                  <p>
-                    Automated algorithms analyze market patterns 24/7 to detect
-                    potential price movements based on real-time data.
-                  </p>
-                </div>
-              </div>
-
-              <div class="showcase-feature">
-                <div class="feature-icon-box">
-                  <span>⚡</span>
-                </div>
-                <div class="feature-content">
-                  <h4>Instant Notifications</h4>
-                  <p>
-                    Real-time notifications directly to your Telegram when the
-                    system detects important price zones in market movements.
-                  </p>
-                </div>
-              </div>
-
-              <div class="showcase-feature">
-                <div class="feature-icon-box">
-                  <span>📊</span>
-                </div>
-                <div class="feature-content">
-                  <h4>Market Analytics</h4>
-                  <p>
-                    Automatic market analysis based on technical indicators,
-                    volume, and risk to market conditions.
-                  </p>
-                </div>
-              </div>
-
-              <div class="showcase-feature">
-                <div class="feature-icon-box">
-                  <span>💎</span>
-                </div>
-                <div class="feature-content">
-                  <h4>VIP Support</h4>
-                  <p>
-                    VIP support team ready to help 24/7 to answer questions and
-                    issues related to system usage.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Testimonials Section -->
-      <section id="testimonials" class="testimonials">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-label">Success Stories</span>
-            <h2 class="section-title">
-              <span>What Users Say About LuxQuant</span>
-              <span class="gradient-text"
-                >Real Stories from Their Experience</span
-              >
-            </h2>
-          </div>
-
-          <div class="testimonials-grid">
-            <div class="testimonial-item">
-              <div class="testimonial-card">
-                <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-                <p class="testimonial-text">
-                  "LuxQuant is excellent. First trial already proven. Besides
-                  updated predictions, we are also equipped with AI consultant
-                  for live consultation and knowledge about macro and economic
-                  data. 👌🏻🙏🏻"
-                </p>
-                <div class="testimonial-author">
-                  <div class="author-avatar">
-                    <span>AC</span>
-                  </div>
-                  <div class="author-info">
-                    <h4>Il**m A G</h4>
-                    <span>Head of Car Repair Shop</span>
-                  </div>
-                  <div class="testimonial-badge">Verified</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="testimonial-item">
-              <div class="testimonial-card">
-                <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-                <p class="testimonial-text">
-                  "Great, I can work while trading. Just check Telegram every 5
-                  minutes then follow the signals, so I don't need to spend time
-                  looking for market potential myself with this LuxQuant"
-                </p>
-                <div class="testimonial-author">
-                  <div class="author-avatar">
-                    <span>SJ</span>
-                  </div>
-                  <div class="author-info">
-                    <h4>Fab**a FMZ</h4>
-                    <span>University Student</span>
-                  </div>
-                  <div class="testimonial-badge">Verified</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="testimonial-item">
-              <div class="testimonial-card">
-                <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-                <p class="testimonial-text">
-                  "Initially I was hesitant, but after trying it, I feel the
-                  LuxQuant system is quite consistent in presenting relevant
-                  data and equipped with clear risk settings."
-                </p>
-                <div class="testimonial-author">
-                  <div class="author-avatar">
-                    <span>MR</span>
-                  </div>
-                  <div class="author-info">
-                    <h4>R**n*ld G</h4>
-                    <span>Crypto Investor</span>
-                  </div>
-                  <div class="testimonial-badge">Verified</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testimonial Stats -->
-          <div class="testimonial-stats">
-            <div class="stat-box">
-              <div class="stat-number" data-stat="globalUsers"></div>
-              <div class="stat-label">
-                Global User (Taiwan as main brand and Global)
-              </div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-number" data-stat="userRating"></div>
-              <div class="stat-label">User Rating</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-number" data-stat="satisfiedUsers"></div>
-              <div class="stat-label">Satisfied Users</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Embedded Trading Platform Section -->
-      <section class="embedded-platform-section">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-label">Daily Updated System Performance</span>
-            <h2 class="section-title">
-              <span>Experience LuxQuant</span>
-              <span class="gradient-text">Trading Platform</span>
-            </h2>
-            <p class="section-subtitle">
-              Try our advanced trading interface with real-time market data
-            </p>
-          </div>
-
-          <div class="embedded-wrapper">
-            <div class="iframe-container">
-              <div class="loading-overlay" id="loadingOverlay">
-                <div class="loading-spinner"></div>
-                <div class="loading-text">Loading trading platform...</div>
-              </div>
-              <iframe
-                id="embeddedSite"
-                class="embedded-iframe"
-                src="http://141.11.25.194/"
-                title="LuxQuant Trading Platform"
-                loading="lazy"
-                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-                onload="hideLoading()"
-                onerror="showError()"
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Social Media Section -->
-      <!-- Social Media Section with Yellow Styling -->
-      <section class="social-media-section">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-label">Connect With Us</span>
-            <h2 class="section-title">
-              <span>Follow Us on</span>
-              <span class="gradient-text">Social Media</span>
-            </h2>
-            <p class="section-subtitle">
-              Get the latest updates about LuxQuant system services
-            </p>
-          </div>
-
-          <div class="social-media-grid">
-            <a
-              href="https://instagram.com/luxquanttrade"
-              class="social-card instagram"
-              target="_blank"
-              rel="noopener"
-            >
-              <div class="social-icon">
-                <!-- Instagram Icon dengan fill kuning -->
-                <svg width="48" height="48" viewBox="0 0 24 24">
-                  <path
-                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"
-                  />
-                </svg>
-              </div>
-              <h3>Instagram</h3>
-              <p>Get the latest info about our services on Instagram</p>
-            </a>
-
-            <a
-              href="https://tiktok.com/@luxquant.trade"
-              class="social-card tiktok"
-              target="_blank"
-              rel="noopener"
-            >
-              <div class="social-icon">
-                <!-- TikTok Icon dengan fill kuning -->
-                <svg width="48" height="48" viewBox="0 0 24 24">
-                  <path
-                    d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"
-                  />
-                </svg>
-              </div>
-              <h3>TikTok</h3>
-              <p>Get the latest info about our services on TikTok</p>
-            </a>
-
-            <a
-              href="https://x.com/luxquanttrade"
-              class="social-card twitter"
-              target="_blank"
-              rel="noopener"
-            >
-              <div class="social-icon">
-                <!-- X/Twitter Icon dengan fill kuning -->
-                <svg width="48" height="48" viewBox="0 0 24 24">
-                  <path
-                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-                  />
-                </svg>
-              </div>
-              <h3>X (@luxquanttrade)</h3>
-              <p>Get updates about crypto and LuxQuant</p>
-            </a>
-          </div>
-        </div>
-      </section>
-      <!-- Pricing Section -->
-      <!-- Pricing Section -->
-      <section id="pricing" class="pricing">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-label">Membership Plans</span>
-            <h2 class="section-title">
-              <span>Choose Access Package</span>
-              <span class="gradient-text">LuxQuant System</span>
-            </h2>
-          </div>
-
-          <div class="pricing-wrapper">
-            <div class="pricing-card featured">
-              <div class="pricing-badge">BEST VALUE</div>
-              <div class="pricing-header">
-                <h3>Lifetime Access</h3>
-                <div class="pricing-price">
-                  <span class="currency">Only</span>
-                  <span class="amount" id="priceAmount">$79.99</span>
-                  <span class="period">/lifetime</span>
-                </div>
-                <div class="price-info">
-                  <span class="pricing-save" id="originalPrice"
-                    >One-time payment only use USDT</span
-                  >
-                  <div
-                    class="discount-info"
-                    id="discountInfo"
-                    style="display: none"
-                  >
-                    <div class="original-price">
-                      Regular:
-                      <span style="text-decoration: line-through">$79.99</span>
-                    </div>
-                    <div class="discount-price">
-                      KOL Discount:
-                      <span style="color: #4ade80; font-weight: 700"
-                        >$69.99 (12.5% OFF)</span
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- REFERRAL SECTION - BAGIAN BARU INI -->
-              <div class="referral-section">
-                <div class="referral-title">
-                  🎁 Have KOL Referral Code? (Optional)
-                </div>
-                <div class="referral-subtitle">
-                  Enter your KOL code to get 12.5% discount
-                </div>
-                <div class="referral-input-group">
-                  <input
-                    type="text"
-                    id="referralCode"
-                    class="referral-input"
-                    placeholder="Enter KOL referral code (optional)..."
-                    maxlength="20"
-                  />
-                  <button class="verify-btn" id="verifyBtn">Apply</button>
-                </div>
-                <div class="referral-status" id="referralStatus"></div>
-                <div class="generated-code" id="generatedCode">
-                  <div>🎉 Discount Applied! Your Access Code:</div>
-                  <div id="accessCodeDisplay"></div>
-                  <div class="discount-activated">
-                    ✅ 12.5% discount activated!
-                  </div>
-                  <button class="copy-btn" id="copyBtn">Copy Code</button>
-                </div>
-              </div>
-
-              <div class="requirement-note">
-                💡 <strong>Optional:</strong> Enter KOL referral code to get
-                12.5% discount. You can subscribe directly without code at
-                regular price.
-              </div>
-
-              <ul class="pricing-features">
-                <li>
-                  <svg
-                    class="check-icon"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      d="M7 10l2 2 4-4"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      fill="none"
-                    />
-                  </svg>
-                  <span>Complete trade setup outputs</span>
-                </li>
-                <li>
-                  <svg
-                    class="check-icon"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      d="M7 10l2 2 4-4"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      fill="none"
-                    />
-                  </svg>
-                  <span>Real-time notifications via Telegram</span>
-                </li>
-                <li>
-                  <svg
-                    class="check-icon"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      d="M7 10l2 2 4-4"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      fill="none"
-                    />
-                  </svg>
-                  <span>Analysis equipped with volume ranking</span>
-                </li>
-                <li>
-                  <svg
-                    class="check-icon"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      d="M7 10l2 2 4-4"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      fill="none"
-                    />
-                  </svg>
-                  <span>Equipped with risk info for user risk management</span>
-                </li>
-                <li>
-                  <svg
-                    class="check-icon"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      d="M7 10l2 2 4-4"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      fill="none"
-                    />
-                  </svg>
-                  <span>24/7 VIP Support</span>
-                </li>
-                <li>
-                  <svg
-                    class="check-icon"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      d="M7 10l2 2 4-4"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      fill="none"
-                    />
-                  </svg>
-                  <span>Access to AI Consultant from LuxQuant Team</span>
-                </li>
-                <li>
-                  <svg
-                    class="check-icon"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      d="M7 10l2 2 4-4"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      fill="none"
-                    />
-                  </svg>
-                  <span>Get access to advanced service development</span>
-                </li>
-              </ul>
-
-              <!-- UBAH TOMBOL JADI DINAMIS -->
-              <button class="pricing-btn primary" id="accessBtn">
-                <span id="btnText">Get Lifetime Access</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA Section -->
-      <section class="cta-section">
-        <div class="container">
-          <div class="cta-content">
-            <h2 class="cta-title">
-              Ready to Start Your
-              <span class="gradient-text">Profitable Trading Journey?</span>
-            </h2>
-            <p class="cta-subtitle">
-              Join thousands of successful traders who trust LuxQuant for
-              consistent profits
-            </p>
-            <div class="cta-stats">
-              <div class="cta-stat">
-                <span class="cta-stat-number" data-stat="globalUsers"></span>
-                <span class="cta-stat-label">Global Users</span>
-              </div>
-              <div class="cta-stat">
-                <span class="cta-stat-number" data-stat="winRate"></span>
-                <span class="cta-stat-label">Win Rate</span>
-              </div>
-              <div class="cta-stat">
-                <span class="cta-stat-number">24/7</span>
-                <span class="cta-stat-label">Support</span>
-              </div>
-            </div>
-            <div class="cta-buttons">
-              <a
-                href="https://t.me/luxquant11"
-                class="btn btn-primary btn-large"
-              >
-                <span>Subscribe Now</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-brand">
-            <div class="footer-logo">
-              <img
-                src="LuxQuant VIP Logo Design-Photoroom.png"
-                alt="LuxQuant VIP"
-                width="150"
-                height="50"
-              />
-            </div>
-            <p class="footer-desc">
-              Premium AI-powered crypto trading signals with proven results.
-            </p>
-          </div>
-
-          <div class="footer-links">
-            <div class="footer-column">
-              <h4>Quick Links</h4>
-              <ul>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#testimonials">Reviews</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-              </ul>
-            </div>
-            <div class="footer-column">
-              <h4>Support</h4>
-              <ul>
-                <li><a href="https://t.me/luxquantadmin">Contact Us</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Terms of Service</a></li>
-              </ul>
-            </div>
-          </div>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-icon">₿</span>
+          <span>24/7 Automated Signals</span>
+          <span class="badge-icon">₿</span>
         </div>
 
-        <div class="footer-bottom">
-          <p>&copy; 2024 LuxQuant VIP. All rights reserved.</p>
-          <p class="footer-disclaimer">
-            Trading involves risk. Past performance is not indicative of future
-            results.
+        <h1 class="hero-title">
+          <span class="title-line">Tools for Automated Crypto</span>
+          <span class="title-line gradient-text">Trading Setup 24/7</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Help traders identify market opportunities without having to monitor
+          charts continuously.
+          <br />with
+          <span class="highlight-number">Historical Accuracy of <span data-stat="winRate"></span></span>
+          (No Future Guarantee)
+        </p>
+
+        <!-- Marketing Text -->
+        <div class="hero-marketing">
+          <p class="marketing-text">
+            <strong>Optimize Your Trading Today! 🚀</strong> Get direct access
+            to 24-hour automated tools that provide crypto market setup
+            detection, complete with real-time updates from the LuxQuant
+            system.
           </p>
         </div>
-      </div>
-    </footer>
 
-    <!-- Back to Top -->
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
-      <svg width="24" height="24" viewBox="0 0 24 24">
-        <path
-          d="M12 19V5m0 0l-6 6m6-6l6 6"
-          stroke="currentColor"
-          stroke-width="2"
-          fill="none"
-        />
-      </svg>
-    </button>
+        <!-- Live Stats Cards -->
+        <div class="live-stats">
+          <div class="stat-card live">
+            <div class="stat-icon">📈</div>
+            <div class="stat-content">
+              <span class="stat-number" data-stat="winRate"></span>
+              <span class="stat-label">Historical System Accuracy (Win-Rate)</span>
+            </div>
+          </div>
 
-    <!-- Cookie Consent -->
-    <div class="cookie-consent" id="cookieConsent">
-      <div class="cookie-content">
-        <p>We use cookies to enhance your experience.</p>
-        <div class="cookie-actions">
-          <button class="cookie-accept" id="acceptCookies">Accept</button>
-          <button class="cookie-decline" id="declineCookies">Decline</button>
+          <div class="stat-card live">
+            <div class="stat-icon">⚡</div>
+            <div class="stat-content">
+              <span class="stat-number" data-stat="totalSignals"></span>
+              <span class="stat-label">Total System Output</span>
+            </div>
+          </div>
+
+          <div class="stat-card live">
+            <div class="stat-icon">🟢</div>
+            <div class="stat-content">
+              <span class="stat-number" data-stat="globalUsers"></span>
+              <span class="stat-label">Global Users</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="hero-cta">
+          <a href="https://t.me/luxquantadmin" class="btn btn-primary btn-glow">
+            <span>SUBSCRIBE NOW</span>
+          </a>
+          <a href="#pricing" class="btn btn-secondary">
+            <span>VIEW PACKAGES</span>
+          </a>
         </div>
       </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section id="why-choose" class="why-choose">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">LuxQuant Advantages</span>
+          <h2 class="section-title">
+            <span>Why Choose</span>
+            <span class="gradient-text">LuxQuant VIP?</span>
+          </h2>
+          <p class="section-subtitle">
+            Automated crypto market monitoring system that provides proven
+            efficient and responsive trade setups
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">
+              <span class="feature-icon">🎯</span>
+            </div>
+            <h3>Precision Signals</h3>
+            <p>
+              Automated system provides detection of entry and exit price
+              zones based on real-time market data.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">
+              <span class="feature-icon">⚡</span>
+            </div>
+            <h3>Real-Time Alerts</h3>
+            <p>
+              Real-time notifications via Telegram so users stay connected
+              with market movements quickly and responsively.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">
+              <span class="feature-icon">📊</span>
+            </div>
+            <h3>Advanced Analytics</h3>
+            <p>
+              Output provided includes volume ranking monitoring and risk
+              level indicators that are automatically read by the system.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">
+              <span class="feature-icon">🔒</span>
+            </div>
+            <h3>Risk Management</h3>
+            <p>
+              Every system output includes risk point estimation (stop-loss).
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">
+              <span class="feature-icon">📈</span>
+            </div>
+            <h3>Proven Track Record</h3>
+            <p>
+              Transparent historical performance tracking based on the system
+              — no future results promised.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">
+              <span class="feature-icon">🤖</span>
+            </div>
+            <h3>24/7 Automation</h3>
+            <p>
+              Full 24-hour automatic market monitoring that processes data and
+              provides systematic output continuously.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section with Updated Carousel -->
+    <section id="features" class="features">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">VIP Features</span>
+          <h2 class="section-title">
+            <span>Advanced Crypto Trading</span>
+            <span class="gradient-text">Technology</span>
+          </h2>
+          <p class="section-subtitle">
+            Everything you need to respond to volatile crypto markets in
+            real-time
+          </p>
+        </div>
+
+        <div class="features-showcase">
+          <div class="showcase-main">
+            <div class="showcase-phone">
+              <!-- iPhone Buttons -->
+              <div class="iphone-buttons">
+                <div class="silent"></div>
+                <div class="vol-up"></div>
+                <div class="vol-down"></div>
+                <div class="sleep"></div>
+              </div>
+
+              <!-- iPhone Top -->
+              <div class="iphone-top">
+                <div class="black-bar"></div>
+                <div class="notch">
+                  <div class="iphone-components">
+                    <div class="speaker"></div>
+                    <div class="camera"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="phone-screen">
+                <!-- Image Carousel -->
+                <div class="image-carousel">
+                  <div class="carousel-container" id="carouselContainer">
+                    <img src="fiturlq1.png" alt="LuxQuant Telegram Channels" class="signal-screenshot" />
+                    <img src="fiturlq2.png" alt="LuxQuant Signal Details" class="signal-screenshot" />
+                    <img src="fiturlq3.png" alt="LuxQuant Trading Results" class="signal-screenshot" />
+                    <img src="fiturlq4.png" alt="LuxQuant Market Analysis" class="signal-screenshot" />
+                    <img src="fiturlq5.png" alt="LuxQuant AI Consultant" class="signal-screenshot" />
+                  </div>
+                  <!-- Loading Overlay -->
+                  <div class="loading-overlay" id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Carousel Navigation -->
+            <div class="carousel-nav">
+              <button class="nav-btn prev-btn" id="prevBtn">‹</button>
+              <div class="carousel-dots" id="carouselDots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+                <span class="dot" data-slide="4"></span>
+              </div>
+              <button class="nav-btn next-btn" id="nextBtn">›</button>
+            </div>
+          </div>
+
+          <div class="showcase-features">
+            <div class="showcase-feature">
+              <div class="feature-icon-box">
+                <span>🎯</span>
+              </div>
+              <div class="feature-content">
+                <h4>AI-Powered Analysis</h4>
+                <p>
+                  Automated algorithms analyze market patterns 24/7 to detect
+                  potential price movements based on real-time data.
+                </p>
+              </div>
+            </div>
+
+            <div class="showcase-feature">
+              <div class="feature-icon-box">
+                <span>⚡</span>
+              </div>
+              <div class="feature-content">
+                <h4>Instant Notifications</h4>
+                <p>
+                  Real-time notifications directly to your Telegram when the
+                  system detects important price zones in market movements.
+                </p>
+              </div>
+            </div>
+
+            <div class="showcase-feature">
+              <div class="feature-icon-box">
+                <span>📊</span>
+              </div>
+              <div class="feature-content">
+                <h4>Market Analytics</h4>
+                <p>
+                  Automatic market analysis based on technical indicators,
+                  volume, and risk to market conditions.
+                </p>
+              </div>
+            </div>
+
+            <div class="showcase-feature">
+              <div class="feature-icon-box">
+                <span>💎</span>
+              </div>
+              <div class="feature-content">
+                <h4>VIP Support</h4>
+                <p>
+                  VIP support team ready to help 24/7 to answer questions and
+                  issues related to system usage.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Success Stories</span>
+          <h2 class="section-title">
+            <span>What Users Say About LuxQuant</span>
+            <span class="gradient-text">Real Stories from Their Experience</span>
+          </h2>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-item">
+            <div class="testimonial-card">
+              <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+              <p class="testimonial-text">
+                "LuxQuant is excellent. First trial already proven. Besides
+                updated predictions, we are also equipped with AI consultant
+                for live consultation and knowledge about macro and economic
+                data. 👌🏻🙏🏻"
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <span>AC</span>
+                </div>
+                <div class="author-info">
+                  <h4>Il**m A G</h4>
+                  <span>Head of Car Repair Shop</span>
+                </div>
+                <div class="testimonial-badge">Verified</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-item">
+            <div class="testimonial-card">
+              <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+              <p class="testimonial-text">
+                "Great, I can work while trading. Just check Telegram every 5
+                minutes then follow the signals, so I don't need to spend time
+                looking for market potential myself with this LuxQuant"
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <span>SJ</span>
+                </div>
+                <div class="author-info">
+                  <h4>Fab**a FMZ</h4>
+                  <span>University Student</span>
+                </div>
+                <div class="testimonial-badge">Verified</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-item">
+            <div class="testimonial-card">
+              <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+              <p class="testimonial-text">
+                "Initially I was hesitant, but after trying it, I feel the
+                LuxQuant system is quite consistent in presenting relevant
+                data and equipped with clear risk settings."
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <span>MR</span>
+                </div>
+                <div class="author-info">
+                  <h4>R**n*ld G</h4>
+                  <span>Crypto Investor</span>
+                </div>
+                <div class="testimonial-badge">Verified</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial Stats -->
+        <div class="testimonial-stats">
+          <div class="stat-box">
+            <div class="stat-number" data-stat="globalUsers"></div>
+            <div class="stat-label">
+              Global User (Taiwan as main brand and Global)
+            </div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number" data-stat="userRating"></div>
+            <div class="stat-label">User Rating</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number" data-stat="satisfiedUsers"></div>
+            <div class="stat-label">Satisfied Users</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Embedded Trading Platform Section -->
+    <section class="embedded-platform-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Daily-Updated Trading Performance</span>
+          <h2 class="section-title">
+            <span>Trade Smarter with</span>
+            <span class="gradient-text">LuxQuant</span>
+          </h2>
+          <p class="section-subtitle">
+            See How LuxQuant Performs — Fresh Daily Data
+          </p>
+        </div>
+
+        <div class="embedded-wrapper">
+          <!-- YANG BARU (gambar) -->
+          <img id="embeddedSite" class="embedded-iframe" src="luxquant-performace.png"
+            alt="LuxQuant Trading Platform Dashboard" loading="lazy" onload="hideLoading()" onerror="showError()">
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <!-- Social Media Section with Yellow Styling -->
+    <section class="social-media-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Connect With Us</span>
+          <h2 class="section-title">
+            <span>Follow Us on</span>
+            <span class="gradient-text">Social Media</span>
+          </h2>
+          <p class="section-subtitle">
+            Get the latest updates about LuxQuant system services
+          </p>
+        </div>
+
+        <div class="social-media-grid">
+          <a href="https://instagram.com/luxquanttrade" class="social-card instagram" target="_blank" rel="noopener">
+            <div class="social-icon">
+              <!-- Instagram Icon dengan fill kuning -->
+              <svg width="48" height="48" viewBox="0 0 24 24">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z" />
+              </svg>
+            </div>
+            <h3>Instagram</h3>
+            <p>Get the latest info about our services on Instagram</p>
+          </a>
+
+          <a href="https://tiktok.com/@luxquant.trade" class="social-card tiktok" target="_blank" rel="noopener">
+            <div class="social-icon">
+              <!-- TikTok Icon dengan fill kuning -->
+              <svg width="48" height="48" viewBox="0 0 24 24">
+                <path
+                  d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+              </svg>
+            </div>
+            <h3>TikTok</h3>
+            <p>Get the latest info about our services on TikTok</p>
+          </a>
+
+          <a href="https://x.com/luxquanttrade" class="social-card twitter" target="_blank" rel="noopener">
+            <div class="social-icon">
+              <!-- X/Twitter Icon dengan fill kuning -->
+              <svg width="48" height="48" viewBox="0 0 24 24">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </div>
+            <h3>X (@luxquanttrade)</h3>
+            <p>Get updates about crypto and LuxQuant</p>
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- Pricing Section -->
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Membership Plans</span>
+          <h2 class="section-title">
+            <span>Choose Access Package</span>
+            <span class="gradient-text">LuxQuant System</span>
+          </h2>
+        </div>
+
+        <div class="pricing-wrapper">
+          <div class="pricing-card featured">
+            <div class="pricing-badge">BEST VALUE</div>
+            <div class="pricing-header">
+              <h3>Lifetime Access</h3>
+              <div class="pricing-price">
+                <span class="currency">Only</span>
+                <span class="amount" id="priceAmount">$79.99</span>
+                <span class="period">/lifetime</span>
+              </div>
+              <div class="price-info">
+                <span class="pricing-save" id="originalPrice">One-time payment only use USDT</span>
+                <div class="discount-info" id="discountInfo" style="display: none">
+                  <div class="original-price">
+                    Regular:
+                    <span style="text-decoration: line-through">$79.99</span>
+                  </div>
+                  <div class="discount-price">
+                    KOL Discount:
+                    <span style="color: #4ade80; font-weight: 700">$69.99 (12.5% OFF)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- REFERRAL SECTION - BAGIAN BARU INI -->
+            <div class="referral-section">
+              <div class="referral-title">
+                🎁 Have KOL Referral Code? (Optional)
+              </div>
+              <div class="referral-subtitle">
+                Enter your KOL code to get 12.5% discount
+              </div>
+              <div class="referral-input-group">
+                <input type="text" id="referralCode" class="referral-input"
+                  placeholder="Enter KOL referral code (optional)..." maxlength="20" />
+                <button class="verify-btn" id="verifyBtn">Apply</button>
+              </div>
+              <div class="referral-status" id="referralStatus"></div>
+              <div class="generated-code" id="generatedCode">
+                <div>🎉 Discount Applied! Your Access Code:</div>
+                <div id="accessCodeDisplay"></div>
+                <div class="discount-activated">
+                  ✅ 12.5% discount activated!
+                </div>
+                <button class="copy-btn" id="copyBtn">Copy Code</button>
+              </div>
+            </div>
+
+            <div class="requirement-note">
+              💡 <strong>Optional:</strong> Enter KOL referral code to get
+              12.5% discount. You can subscribe directly without code at
+              regular price.
+            </div>
+
+            <ul class="pricing-features">
+              <li>
+                <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20">
+                  <path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none" />
+                </svg>
+                <span>Complete trade setup outputs</span>
+              </li>
+              <li>
+                <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20">
+                  <path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none" />
+                </svg>
+                <span>Real-time notifications via Telegram</span>
+              </li>
+              <li>
+                <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20">
+                  <path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none" />
+                </svg>
+                <span>Analysis equipped with volume ranking</span>
+              </li>
+              <li>
+                <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20">
+                  <path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none" />
+                </svg>
+                <span>Equipped with risk info for user risk management</span>
+              </li>
+              <li>
+                <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20">
+                  <path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none" />
+                </svg>
+                <span>24/7 VIP Support</span>
+              </li>
+              <li>
+                <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20">
+                  <path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none" />
+                </svg>
+                <span>Access to AI Consultant from LuxQuant Team</span>
+              </li>
+              <li>
+                <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20">
+                  <path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none" />
+                </svg>
+                <span>Get access to advanced service development</span>
+              </li>
+            </ul>
+
+            <!-- UBAH TOMBOL JADI DINAMIS -->
+            <button class="pricing-btn primary" id="accessBtn">
+              <span id="btnText">Get Lifetime Access</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2 class="cta-title">
+            Ready to Start Your
+            <span class="gradient-text">Profitable Trading Journey?</span>
+          </h2>
+          <p class="cta-subtitle">
+            Join thousands of successful traders who trust LuxQuant for
+            consistent profits
+          </p>
+          <div class="cta-stats">
+            <div class="cta-stat">
+              <span class="cta-stat-number" data-stat="globalUsers"></span>
+              <span class="cta-stat-label">Global Users</span>
+            </div>
+            <div class="cta-stat">
+              <span class="cta-stat-number" data-stat="winRate"></span>
+              <span class="cta-stat-label">Win Rate</span>
+            </div>
+            <div class="cta-stat">
+              <span class="cta-stat-number">24/7</span>
+              <span class="cta-stat-label">Support</span>
+            </div>
+          </div>
+          <div class="cta-buttons">
+            <a href="https://t.me/luxquant11" class="btn btn-primary btn-large">
+              <span>Subscribe Now</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="LuxQuant VIP Logo Design-Photoroom.png" alt="LuxQuant VIP" width="150" height="50" />
+          </div>
+          <p class="footer-desc">
+            Premium AI-powered crypto trading signals with proven results.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#testimonials">Reviews</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="https://t.me/luxquantadmin">Contact Us</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 LuxQuant VIP. All rights reserved.</p>
+        <p class="footer-disclaimer">
+          Trading involves risk. Past performance is not indicative of future
+          results.
+        </p>
+      </div>
     </div>
+  </footer>
 
-    <!-- Notification Container -->
-    <div class="notification-container" id="notificationContainer"></div>
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg width="24" height="24" viewBox="0 0 24 24">
+      <path d="M12 19V5m0 0l-6 6m6-6l6 6" stroke="currentColor" stroke-width="2" fill="none" />
+    </svg>
+  </button>
 
-    <!-- Lazy Load Scripts -->
-    <script>
-      // Critical loader script
-      document.addEventListener("DOMContentLoaded", function () {
-        const loader = document.getElementById("loader");
-        const progressBar = document.getElementById("loaderProgressBar");
-        const percentage = document.getElementById("loaderPercentage");
+  <!-- Cookie Consent -->
+  <div class="cookie-consent" id="cookieConsent">
+    <div class="cookie-content">
+      <p>We use cookies to enhance your experience.</p>
+      <div class="cookie-actions">
+        <button class="cookie-accept" id="acceptCookies">Accept</button>
+        <button class="cookie-decline" id="declineCookies">Decline</button>
+      </div>
+    </div>
+  </div>
 
-        let progress = 0;
-        const increment = 20;
+  <!-- Notification Container -->
+  <div class="notification-container" id="notificationContainer"></div>
 
-        const updateProgress = setInterval(() => {
-          progress += increment + Math.random() * 15;
-          if (progress > 100) progress = 100;
+  <!-- Lazy Load Scripts -->
+  <script>
+    // Critical loader script
+    document.addEventListener("DOMContentLoaded", function () {
+      const loader = document.getElementById("loader");
+      const progressBar = document.getElementById("loaderProgressBar");
+      const percentage = document.getElementById("loaderPercentage");
 
-          if (progressBar) progressBar.style.width = `${progress}%`;
-          if (percentage) percentage.textContent = `${Math.round(progress)}%`;
+      let progress = 0;
+      const increment = 20;
 
-          if (progress === 100) {
-            clearInterval(updateProgress);
-            setTimeout(() => {
-              if (loader) {
-                loader.classList.add("hidden");
-                document.body.classList.remove("loading");
-              }
-            }, 300);
-          }
-        }, 100);
-      });
+      const updateProgress = setInterval(() => {
+        progress += increment + Math.random() * 15;
+        if (progress > 100) progress = 100;
 
-      // Lazy load heavy libraries
-      function loadScript(src, callback) {
-        const script = document.createElement("script");
-        script.src = src;
-        script.onload = callback;
-        document.body.appendChild(script);
-      }
+        if (progressBar) progressBar.style.width = `${progress}%`;
+        if (percentage) percentage.textContent = `${Math.round(progress)}%`;
 
-      // Only load Chart.js on desktop
-      if (window.innerWidth > 768) {
-        loadScript("https://cdn.jsdelivr.net/npm/chart.js", function () {
-          console.log("Chart.js loaded");
-        });
-      }
-
-      // Defer AOS for animations
-      if (window.innerWidth > 768) {
-        const aosCSS = document.createElement("link");
-        aosCSS.rel = "stylesheet";
-        aosCSS.href = "https://unpkg.com/aos@2.3.1/dist/aos.css";
-        document.head.appendChild(aosCSS);
-
-        loadScript("https://unpkg.com/aos@2.3.1/dist/aos.js", function () {
-          AOS.init({
-            duration: 800,
-            once: true,
-            offset: 50,
-            disable: "mobile",
-          });
-        });
-      }
-
-      // Carousel functionality
-      let currentSlide = 0;
-      const totalSlides = 5;
-      const carouselContainer = document.getElementById("carouselContainer");
-      const dots = document.querySelectorAll(".dot");
-      const prevBtn = document.getElementById("prevBtn");
-      const nextBtn = document.getElementById("nextBtn");
-      const loadingOverlay = document.getElementById("loadingOverlay");
-
-      function showLoading() {
-        if (loadingOverlay) {
-          loadingOverlay.classList.add("show");
+        if (progress === 100) {
+          clearInterval(updateProgress);
           setTimeout(() => {
-            loadingOverlay.classList.remove("show");
+            if (loader) {
+              loader.classList.add("hidden");
+              document.body.classList.remove("loading");
+            }
           }, 300);
         }
-      }
+      }, 100);
+    });
 
-      function updateCarousel() {
-        const translateX = -currentSlide * 20; // 20% per slide
-        if (carouselContainer) {
-          carouselContainer.style.transform = `translateX(${translateX}%)`;
-        }
+    // Lazy load heavy libraries
+    function loadScript(src, callback) {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = callback;
+      document.body.appendChild(script);
+    }
 
-        // Update dots
-        dots.forEach((dot, index) => {
-          dot.classList.toggle("active", index === currentSlide);
-        });
-      }
-
-      function nextSlide() {
-        showLoading();
-        currentSlide = (currentSlide + 1) % totalSlides;
-        setTimeout(() => {
-          updateCarousel();
-        }, 150);
-      }
-
-      function prevSlide() {
-        showLoading();
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        setTimeout(() => {
-          updateCarousel();
-        }, 150);
-      }
-
-      function goToSlide(slideIndex) {
-        if (slideIndex !== currentSlide) {
-          showLoading();
-          currentSlide = slideIndex;
-          setTimeout(() => {
-            updateCarousel();
-          }, 150);
-        }
-      }
-
-      // Event listeners
-      if (nextBtn) nextBtn.addEventListener("click", nextSlide);
-      if (prevBtn) prevBtn.addEventListener("click", prevSlide);
-
-      dots.forEach((dot, index) => {
-        dot.addEventListener("click", () => goToSlide(index));
+    // Only load Chart.js on desktop
+    if (window.innerWidth > 768) {
+      loadScript("https://cdn.jsdelivr.net/npm/chart.js", function () {
+        console.log("Chart.js loaded");
       });
+    }
 
-      // Auto-slide (optional - can be disabled)
-      let autoSlideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    // Defer AOS for animations
+    if (window.innerWidth > 768) {
+      const aosCSS = document.createElement("link");
+      aosCSS.rel = "stylesheet";
+      aosCSS.href = "https://unpkg.com/aos@2.3.1/dist/aos.css";
+      document.head.appendChild(aosCSS);
 
-      // Pause auto-slide on hover
-      const phoneElement = document.querySelector(".showcase-phone");
-      if (phoneElement) {
-        phoneElement.addEventListener("mouseenter", () => {
-          clearInterval(autoSlideInterval);
+      loadScript("https://unpkg.com/aos@2.3.1/dist/aos.js", function () {
+        AOS.init({
+          duration: 800,
+          once: true,
+          offset: 50,
+          disable: "mobile",
         });
+      });
+    }
 
-        phoneElement.addEventListener("mouseleave", () => {
-          autoSlideInterval = setInterval(nextSlide, 5000);
-        });
+    // Carousel functionality
+    let currentSlide = 0;
+    const totalSlides = 5;
+    const carouselContainer = document.getElementById("carouselContainer");
+    const dots = document.querySelectorAll(".dot");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const loadingOverlay = document.getElementById("loadingOverlay");
+
+    function showLoading() {
+      if (loadingOverlay) {
+        loadingOverlay.classList.add("show");
+        setTimeout(() => {
+          loadingOverlay.classList.remove("show");
+        }, 300);
       }
+    }
 
-      // Touch/swipe support for mobile
-      let startX = 0;
-      let endX = 0;
-      let startY = 0;
-      let endY = 0;
-
+    function updateCarousel() {
+      const translateX = -currentSlide * 20; // 20% per slide
       if (carouselContainer) {
-        carouselContainer.addEventListener(
-          "touchstart",
-          (e) => {
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-          },
-          { passive: true }
-        );
-
-        carouselContainer.addEventListener(
-          "touchmove",
-          (e) => {
-            e.preventDefault();
-          },
-          { passive: false }
-        );
-
-        carouselContainer.addEventListener(
-          "touchend",
-          (e) => {
-            endX = e.changedTouches[0].clientX;
-            endY = e.changedTouches[0].clientY;
-            handleSwipe();
-          },
-          { passive: true }
-        );
+        carouselContainer.style.transform = `translateX(${translateX}%)`;
       }
 
-      function handleSwipe() {
-        const swipeThreshold = 50;
-        const diffX = startX - endX;
-        const diffY = Math.abs(startY - endY);
+      // Update dots
+      dots.forEach((dot, index) => {
+        dot.classList.toggle("active", index === currentSlide);
+      });
+    }
 
-        // Only trigger swipe if horizontal movement is greater than vertical
-        if (Math.abs(diffX) > swipeThreshold && diffY < 100) {
-          clearInterval(autoSlideInterval); // Stop auto-slide temporarily
+    function nextSlide() {
+      showLoading();
+      currentSlide = (currentSlide + 1) % totalSlides;
+      setTimeout(() => {
+        updateCarousel();
+      }, 150);
+    }
 
-          if (diffX > 0) {
-            nextSlide(); // Swipe left
-          } else {
-            prevSlide(); // Swipe right
-          }
+    function prevSlide() {
+      showLoading();
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      setTimeout(() => {
+        updateCarousel();
+      }, 150);
+    }
 
-          // Restart auto-slide after swipe
-          setTimeout(() => {
-            autoSlideInterval = setInterval(nextSlide, 5000);
-          }, 3000);
-        }
+    function goToSlide(slideIndex) {
+      if (slideIndex !== currentSlide) {
+        showLoading();
+        currentSlide = slideIndex;
+        setTimeout(() => {
+          updateCarousel();
+        }, 150);
       }
+    }
 
-      // Keyboard navigation
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowLeft") {
-          prevSlide();
-        } else if (e.key === "ArrowRight") {
-          nextSlide();
+    // Event listeners
+    if (nextBtn) nextBtn.addEventListener("click", nextSlide);
+    if (prevBtn) prevBtn.addEventListener("click", prevSlide);
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => goToSlide(index));
+    });
+
+    // Auto-slide (optional - can be disabled)
+    let autoSlideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+
+    // Pause auto-slide on hover
+    const phoneElement = document.querySelector(".showcase-phone");
+    if (phoneElement) {
+      phoneElement.addEventListener("mouseenter", () => {
+        clearInterval(autoSlideInterval);
+      });
+
+      phoneElement.addEventListener("mouseleave", () => {
+        autoSlideInterval = setInterval(nextSlide, 5000);
+      });
+    }
+
+    // Touch/swipe support for mobile
+    let startX = 0;
+    let endX = 0;
+    let startY = 0;
+    let endY = 0;
+
+    if (carouselContainer) {
+      carouselContainer.addEventListener(
+        "touchstart",
+        (e) => {
+          startX = e.touches[0].clientX;
+          startY = e.touches[0].clientY;
+        },
+        { passive: true }
+      );
+
+      carouselContainer.addEventListener(
+        "touchmove",
+        (e) => {
+          e.preventDefault();
+        },
+        { passive: false }
+      );
+
+      carouselContainer.addEventListener(
+        "touchend",
+        (e) => {
+          endX = e.changedTouches[0].clientX;
+          endY = e.changedTouches[0].clientY;
+          handleSwipe();
+        },
+        { passive: true }
+      );
+    }
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diffX = startX - endX;
+      const diffY = Math.abs(startY - endY);
+
+      // Only trigger swipe if horizontal movement is greater than vertical
+      if (Math.abs(diffX) > swipeThreshold && diffY < 100) {
+        clearInterval(autoSlideInterval); // Stop auto-slide temporarily
+
+        if (diffX > 0) {
+          nextSlide(); // Swipe left
+        } else {
+          prevSlide(); // Swipe right
+        }
+
+        // Restart auto-slide after swipe
+        setTimeout(() => {
+          autoSlideInterval = setInterval(nextSlide, 5000);
+        }, 3000);
+      }
+    }
+
+    // Keyboard navigation
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") {
+        prevSlide();
+      } else if (e.key === "ArrowRight") {
+        nextSlide();
+      }
+    });
+
+    // Initialize carousel
+    updateCarousel();
+  </script>
+
+  <!-- Main JavaScript -->
+  <script src="main.js" defer></script>
+
+  <script>
+    const stats = {
+      winRate: "87.9%",
+      winRateNumber: "87.9%",
+      globalUsers: "8,562",
+      totalSignals: "12.263",
+      userRating: "4.9/5",
+      satisfiedUsers: "95%",
+      price: "$79.99",
+    };
+    document.addEventListener("DOMContentLoaded", () => {
+      // Update elements with data-stat attributes
+      document.querySelectorAll("[data-stat]").forEach((el) => {
+        const k = el.dataset.stat;
+        if (stats[k] !== undefined) el.textContent = stats[k];
+      });
+
+      // Also search for any hardcoded win rate numbers that might be missed
+      // This is a fallback to catch any 88.6% or 89.6% that don't have data-stat
+      document.querySelectorAll("*").forEach((el) => {
+        if (el.children.length === 0 && el.textContent) {
+          if (
+            el.textContent.trim() === "88.6%" ||
+            el.textContent.trim() === "89.6%"
+          ) {
+            el.textContent = stats.winRate;
+          }
+          if (el.textContent.trim() === "8,561+") {
+            el.textContent = stats.globalUsers;
+          }
+          if (el.textContent.trim() === "1,822") {
+            el.textContent = stats.totalSignals;
+          }
+          if (el.textContent.trim() === "4.9/5") {
+            el.textContent = stats.userRating;
+          }
+          if (el.textContent.trim() === "95%") {
+            el.textContent = stats.satisfiedUsers;
+          }
+          if (el.textContent.trim() === "$79.99") {
+            el.textContent = stats.price;
+          }
         }
       });
+    });
+  </script>
+  <script src="referral.js"></script>
+</body>
 
-      // Initialize carousel
-      updateCarousel();
-    </script>
-
-    <!-- Main JavaScript -->
-    <script src="main.js" defer></script>
-
-    <script>
-      const stats = {
-        winRate: "87.9%",
-        winRateNumber: "87.9%",
-        globalUsers: "8,562",
-        totalSignals: "12.263",
-        userRating: "4.9/5",
-        satisfiedUsers: "95%",
-        price: "$79.99",
-      };
-      document.addEventListener("DOMContentLoaded", () => {
-        // Update elements with data-stat attributes
-        document.querySelectorAll("[data-stat]").forEach((el) => {
-          const k = el.dataset.stat;
-          if (stats[k] !== undefined) el.textContent = stats[k];
-        });
-
-        // Also search for any hardcoded win rate numbers that might be missed
-        // This is a fallback to catch any 88.6% or 89.6% that don't have data-stat
-        document.querySelectorAll("*").forEach((el) => {
-          if (el.children.length === 0 && el.textContent) {
-            if (
-              el.textContent.trim() === "88.6%" ||
-              el.textContent.trim() === "89.6%"
-            ) {
-              el.textContent = stats.winRate;
-            }
-            if (el.textContent.trim() === "8,561+") {
-              el.textContent = stats.globalUsers;
-            }
-            if (el.textContent.trim() === "1,822") {
-              el.textContent = stats.totalSignals;
-            }
-            if (el.textContent.trim() === "4.9/5") {
-              el.textContent = stats.userRating;
-            }
-            if (el.textContent.trim() === "95%") {
-              el.textContent = stats.satisfiedUsers;
-            }
-            if (el.textContent.trim() === "$79.99") {
-              el.textContent = stats.price;
-            }
-          }
-        });
-      });
-    </script>
-    <script src="referral.js"></script>
-  </body>
 </html>
