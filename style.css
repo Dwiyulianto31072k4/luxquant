@@ -1845,3 +1845,43 @@ input:focus {
   font-size: 0.875rem;
   color: var(--text-secondary);
 }
+
+/* ===== PLATFORM LINK STYLES ===== */
+.platform-link {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.click-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.platform-link:hover .click-overlay {
+  opacity: 1;
+}
+
+.click-indicator {
+  color: #FFD700;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.click-indicator span:first-child {
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
