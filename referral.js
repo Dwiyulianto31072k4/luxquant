@@ -7,7 +7,7 @@ class ReferralSystem {
     this.validKolCodes = [
       '03451Lux', '02847Lux', '05632Lux', 
       '01258Lux', '09874Lux', '04569Lux',
-      'SM138', 'MRCOWHALE', 'BHYUKNGLO'
+      'SM138', 'MRCOWHALE', 'BHYUKNGLO', 'FARIDWHALEBTC'
     ];
     this.originalPrice = 79.99;
     this.discountPercent = 12.5;
