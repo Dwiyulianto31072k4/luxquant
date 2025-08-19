@@ -103,7 +103,6 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
-
   <link rel="stylesheet" href="referral.css" />
 
   <!-- Favicon -->
@@ -122,30 +121,21 @@
     .showcase-phone {
       position: relative;
       height: 650px;
-      /* Disesuaikan untuk aspect ratio 1242x2688 */
       width: 300px;
-      /* Tetap 300px untuk tampilan web */
       padding: 0 0.5px;
-      /* Dikurangi dari 8px ke 4px */
       display: flex;
       justify-content: center;
       align-items: center;
       background: #1a1a1a;
-      /* Warna lebih gelap untuk kesan premium */
       border: 0.5px solid #2a2a2a;
-      /* Dikurangi dari 3px ke 1px dan warna lebih subtle */
       border-radius: 45px;
       box-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.3),
-        /* Lebih subtle */
         0 0 0 0.5px #444,
-        /* Border luar tipis */
         0 0 30px 0px rgba(0, 0, 0, 0.7),
         0 0 50px 0px rgba(0, 0, 0, 0.3);
-      /* Shadow tambahan untuk depth */
       transform: scale(0.8);
     }
 
-    /* iPhone Buttons - Lebih tipis dan subtle */
     .iphone-buttons {
       position: absolute;
     }
@@ -155,30 +145,22 @@
     .vol-down,
     .sleep {
       background: #2a2a2a;
-      /* Warna lebih terang dari body phone */
       position: absolute;
       border-radius: 1px 0 0 1px;
-      /* Radius lebih kecil */
     }
 
     .silent {
       height: 28px;
-      /* Sedikit lebih kecil */
       width: 2px;
-      /* Dikurangi dari 3px ke 2px */
       top: 80px;
       left: -3px;
-      /* Dikurangi dari -6px ke -3px */
     }
 
     .vol-up,
     .vol-down {
       left: -3px;
-      /* Dikurangi dari -6px ke -3px */
       height: 42px;
-      /* Sedikit lebih kecil */
       width: 2px;
-      /* Dikurangi dari 3px ke 2px */
     }
 
     .vol-up {
@@ -192,21 +174,15 @@
     .sleep {
       left: auto;
       right: -3px;
-      /* Dikurangi dari -6px ke -3px */
       top: 140px;
       height: 65px;
-      /* Sedikit lebih kecil */
       width: 2px;
-      /* Dikurangi dari 3px ke 2px */
       border-radius: 0 1px 1px 0;
-      /* Radius lebih kecil */
     }
 
-    /* iPhone Top Notch - Lebih refined */
     .iphone-top {
       position: absolute;
       top: 2px;
-      /* Dikurangi dari 3px */
       width: 100%;
       display: flex;
       justify-content: center;
@@ -218,29 +194,24 @@
       height: 1px;
       width: 60%;
       padding-top: 1px;
-      /* Dikurangi */
       background: #1a1a1a;
     }
 
     .notch {
       position: relative;
       height: 28px;
-      /* Sedikit lebih kecil */
       width: 45%;
       display: flex;
       justify-content: center;
       align-items: center;
       border-radius: 0 0 14px 14px;
-      /* Radius lebih kecil */
       background: #1a1a1a;
       z-index: 2;
     }
 
-    /* iPhone Components */
     .iphone-components {
       position: absolute;
       top: 14px;
-      /* Disesuaikan */
       padding-left: 8px;
       display: flex;
       justify-content: center;
@@ -250,11 +221,8 @@
 
     .speaker {
       height: 3px;
-      /* Dikurangi */
       width: 45px;
-      /* Dikurangi */
       margin: 0 18px;
-      /* Disesuaikan */
       border-radius: 3px;
       border-bottom: 1px solid #333;
       background: #222;
@@ -262,13 +230,11 @@
 
     .camera {
       height: 11px;
-      /* Sedikit dikurangi */
       width: 11px;
       border-radius: 50%;
       border-bottom: 1px solid #444;
       background: radial-gradient(black, #333);
       opacity: 0.8;
-      /* Sedikit lebih terlihat */
       position: relative;
     }
 
@@ -278,50 +244,39 @@
       top: 2px;
       left: 2px;
       height: 5px;
-      /* Disesuaikan */
       width: 5px;
       border-left: 1.5px solid dodgerblue;
-      /* Sedikit dikurangi */
       border-radius: 50%;
       filter: blur(0.8px);
-      /* Sedikit dikurangi */
     }
 
-    /* iPhone Screen - Border dalam lebih tipis */
     .phone-screen {
       position: absolute;
       height: calc(100% - 1px);
-      /* Dikurangi dari 8px ke 4px */
       width: calc(100% - 1px);
       margin: 0 auto;
       border: 0.25px solid rgba(0, 0, 0, 0.5);
-      /* Dikurangi dari 1px ke 0.5px */
       border-radius: 42px;
-      /* Disesuaikan dengan border luar */
       overflow: hidden;
       background: transparent;
     }
 
-    /* Content area - DISESUAIKAN UNTUK 1242x2688px, TANPA STATUS BAR & HOME INDICATOR */
     .screen-content {
       position: absolute;
       top: 0;
       bottom: 0;
-      /* Full screen tanpa home indicator */
       left: 0;
       right: 0;
       background: #f5f5f5;
       overflow: hidden;
     }
 
-    /* Image Carousel Styles */
     .image-carousel {
       width: 100%;
       height: 100%;
       position: relative;
       overflow: hidden;
       border-radius: 40px;
-      /* Disesuaikan dengan border phone */
     }
 
     .carousel-container {
@@ -336,12 +291,10 @@
       height: 100%;
       object-fit: contain;
       object-position: center;
-      /* Posisi gambar di tengah */
       flex-shrink: 0;
       background: white;
     }
 
-    /* Carousel Navigation */
     .carousel-nav {
       display: flex;
       align-items: center;
@@ -405,7 +358,6 @@
       box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
     }
 
-    /* Features List */
     .showcase-features {
       display: flex;
       flex-direction: column;
@@ -442,7 +394,6 @@
       line-height: 1.6;
     }
 
-    /* Loading Animation */
     .loading-overlay {
       position: absolute;
       top: 0;
@@ -483,7 +434,6 @@
       }
     }
 
-    /* Responsive - DISESUAIKAN UNTUK UKURAN BARU */
     @media (max-width: 768px) {
       .features-showcase {
         grid-template-columns: 1fr;
@@ -494,14 +444,12 @@
       .showcase-phone {
         transform: scale(0.7);
         height: 550px;
-        /* Disesuaikan untuk mobile */
         width: 250px;
       }
 
       .silent {
         height: 22px;
         top: 70px;
-        /* Disesuaikan dengan tinggi baru */
       }
 
       .vol-up,
@@ -981,6 +929,8 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
     <!-- Embedded Trading Platform Section -->
     <section class="embedded-platform-section">
@@ -1012,11 +962,9 @@
           </a>
         </div>
       </div>
-      </div>
     </section>
 
     <!-- Social Media Section -->
-    <!-- Social Media Section with Yellow Styling -->
     <section class="social-media-section">
       <div class="container">
         <div class="section-header">
@@ -1069,8 +1017,8 @@
         </div>
       </div>
     </section>
-    <!-- Pricing Section -->
-    <!-- Pricing Section -->
+    
+    <!-- Pricing Section - MODIFIED TO SHOW "BY ASK" -->
     <section id="pricing" class="pricing">
       <div class="container">
         <div class="section-header">
@@ -1087,12 +1035,12 @@
             <div class="pricing-header">
               <h3>Lifetime Access</h3>
               <div class="pricing-price">
-                <span class="currency">Only</span>
-                <span class="amount" id="priceAmount">$79.99</span>
+                <span class="currency">Price</span>
+                <span class="amount" id="priceAmount">BY ASK</span>
                 <span class="period">/lifetime</span>
               </div>
               <div class="price-info">
-                <span class="pricing-save" id="originalPrice">One-time payment only use USDT</span>
+                <span class="pricing-save" id="originalPrice">Contact admin for current pricing</span>
                 <div class="discount-info" id="discountInfo" style="display: none">
                   <div class="original-price">
                     Regular:
@@ -1106,8 +1054,8 @@
               </div>
             </div>
 
-            <!-- REFERRAL SECTION - BAGIAN BARU INI -->
-            <div class="referral-section">
+            <!-- REFERRAL SECTION DISABLED/HIDDEN -->
+            <div class="referral-section" style="display: none;">
               <div class="referral-title">
                 🎁 Have KOL Referral Code? (Optional)
               </div>
@@ -1131,9 +1079,7 @@
             </div>
 
             <div class="requirement-note">
-              💡 <strong>Optional:</strong> Enter KOL referral code to get
-              12.5% discount. You can subscribe directly without code at
-              regular price.
+              💡 <strong>Contact Admin:</strong> Get current pricing and special offers by contacting our admin team directly.
             </div>
 
             <ul class="pricing-features">
@@ -1181,9 +1127,9 @@
               </li>
             </ul>
 
-            <!-- UBAH TOMBOL JADI DINAMIS -->
+            <!-- MODIFIED BUTTON -->
             <button class="pricing-btn primary" id="accessBtn">
-              <span id="btnText">Get Lifetime Access</span>
+              <span id="btnText">Contact Admin for Pricing</span>
             </button>
           </div>
         </div>
@@ -1486,6 +1432,21 @@
 
     // Initialize carousel
     updateCarousel();
+
+    // MODIFIED: Access button handler for "BY ASK" pricing
+    document.addEventListener('DOMContentLoaded', function() {
+      const accessBtn = document.getElementById('accessBtn');
+      if (accessBtn) {
+        accessBtn.addEventListener('click', function() {
+          const telegramAdmin = 'luxquantadmin';
+          const telegramUrl = `https://t.me/${telegramAdmin}`;
+          const message = `Hi! I want to inquire about LuxQuant VIP Lifetime Access pricing.\n\nPlease provide me with:\n• Current pricing information\n• Available packages\n• Payment methods\n• Any special offers\n\nThank you!`;
+          
+          const fullUrl = `${telegramUrl}?text=${encodeURIComponent(message)}`;
+          window.open(fullUrl, '_blank');
+        });
+      }
+    });
   </script>
 
   <!-- Main JavaScript -->
@@ -1499,7 +1460,7 @@
       totalSignals: "12.263",
       userRating: "4.9/5",
       satisfiedUsers: "95%",
-      price: "$79.99",
+      price: "BY ASK", // MODIFIED: Changed from $79.99 to BY ASK
     };
     document.addEventListener("DOMContentLoaded", () => {
       // Update elements with data-stat attributes
@@ -1530,14 +1491,14 @@
           if (el.textContent.trim() === "95%") {
             el.textContent = stats.satisfiedUsers;
           }
-          if (el.textContent.trim() === "$79.99") {
-            el.textContent = stats.price;
-          }
+          // REMOVED: Price replacement since we're using "BY ASK"
         }
       });
     });
   </script>
-  <script src="referral.js"></script>
+  
+  <!-- DISABLED: Referral script since pricing is hidden -->
+  <!-- <script src="referral.js"></script> -->
 </body>
 
 </html>
