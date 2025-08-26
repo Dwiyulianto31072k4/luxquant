@@ -790,134 +790,137 @@ window.addEventListener('offline', function() {
     showNotification('Network offline. Using cached prices.', 'warning');
 });
 
-
-// ===== FIXED POSITION TEXT ANIMATION =====
-
-function animateTrustTextFixed() {
+// ===== TYPEWRITER LOOP ANIMATION =====
+function typewriterLoopAnimation() {
     const element = document.getElementById('animatedText');
     if (!element) return;
     
-    // Store original text and structure
-    const originalText = "Trusted by Users ";
-    const gradText = "Worldwide";
+    // Text parts with their styling
+    const textParts = [
+        { text: 'Trusted by Users ', class: '' },
+        { text: 'Worldwide', class: 'grad' }
+    ];
     
-    // Clear element
+    let currentPartIndex = 0;
+    let currentCharIndex = 0;
+    let isTyping = true;
+    let isDeleting = false;
+    
+    // Create structure
     element.innerHTML = '';
+    const textSpan = document.createElement('span');
+    const cursor = document.createElement('span');
+    cursor.className = 'typewriter-cursor';
+    cursor.textContent = '|';
     
-    // Create wrapper to maintain inline layout
-    const wrapper = document.createElement('span');
-    wrapper.style.whiteSpace = 'nowrap'; // Prevent line breaks
-    wrapper.style.display = 'inline-block';
+    element.appendChild(textSpan);
+    element.appendChild(cursor);
     
-    let letterIndex = 0;
-    
-    // Process "Trusted by Users " (regular text)
-    [...originalText].forEach(char => {
-        if (char === ' ') {
-            const space = document.createElement('span');
-            space.innerHTML = '&nbsp;';
-            space.style.display = 'inline-block';
-            wrapper.appendChild(space);
-        } else {
-            const letterSpan = document.createElement('span');
-            letterSpan.className = 'letter';
-            letterSpan.textContent = char;
-            letterSpan.style.display = 'inline-block';
-            letterSpan.style.opacity = '0';
-            letterSpan.style.transform = 'translateY(20px)';
-            letterSpan.style.transition = 'all 0.4s ease';
-            letterSpan.style.transitionDelay = `${letterIndex * 0.08}s`;
-            wrapper.appendChild(letterSpan);
-            letterIndex++;
+    function typeWriter() {
+        const currentPart = textParts[currentPartIndex];
+        const currentText = currentPart.text;
+        
+        if (isTyping && !isDeleting) {
+            // Typing mode
+            if (currentCharIndex <= currentText.length) {
+                let regularText = '';
+                let gradText = '';
+                
+                // Build text up to current position
+                for (let i = 0; i <= currentPartIndex; i++) {
+                    const part = textParts[i];
+                    const partText = i === currentPartIndex ? 
+                        part.text.substring(0, currentCharIndex) : 
+                        part.text;
+                    
+                    if (part.class === 'grad') {
+                        gradText += partText;
+                    } else {
+                        regularText += partText;
+                    }
+                }
+                
+                // Update display
+                if (gradText) {
+                    textSpan.innerHTML = regularText + '<span class="grad">' + gradText + '</span>';
+                } else {
+                    textSpan.innerHTML = regularText;
+                }
+                
+                currentCharIndex++;
+                
+                if (currentCharIndex > currentText.length) {
+                    if (currentPartIndex < textParts.length - 1) {
+                        currentPartIndex++;
+                        currentCharIndex = 0;
+                    } else {
+                        // Finished typing, pause then start deleting
+                        setTimeout(() => {
+                            isDeleting = true;
+                        }, 2000);
+                    }
+                }
+            }
+        } else if (isDeleting) {
+            // Deleting mode
+            if (currentPartIndex >= 0) {
+                if (currentCharIndex >= 0) {
+                    let regularText = '';
+                    let gradText = '';
+                    
+                    for (let i = 0; i <= currentPartIndex; i++) {
+                        const part = textParts[i];
+                        const partText = i === currentPartIndex ? 
+                            part.text.substring(0, currentCharIndex) : 
+                            part.text;
+                        
+                        if (part.class === 'grad') {
+                            gradText += partText;
+                        } else {
+                            regularText += partText;
+                        }
+                    }
+                    
+                    // Update display
+                    if (gradText) {
+                        textSpan.innerHTML = regularText + '<span class="grad">' + gradText + '</span>';
+                    } else {
+                        textSpan.innerHTML = regularText;
+                    }
+                    
+                    currentCharIndex--;
+                } else {
+                    // Finished deleting current part
+                    currentPartIndex--;
+                    if (currentPartIndex >= 0) {
+                        currentCharIndex = textParts[currentPartIndex].text.length;
+                    } else {
+                        // Restart
+                        currentPartIndex = 0;
+                        currentCharIndex = 0;
+                        isDeleting = false;
+                        setTimeout(() => {
+                            typeWriter();
+                        }, 500);
+                        return;
+                    }
+                }
+            }
         }
-    });
+        
+        // Continue animation
+        const speed = isDeleting ? 50 : (Math.random() * 100 + 80);
+        setTimeout(typeWriter, speed);
+    }
     
-    // Create grad span for "Worldwide"
-    const gradSpan = document.createElement('span');
-    gradSpan.className = 'grad';
-    gradSpan.style.display = 'inline-block';
-    
-    [...gradText].forEach(char => {
-        const letterSpan = document.createElement('span');
-        letterSpan.className = 'letter';
-        letterSpan.textContent = char;
-        letterSpan.style.display = 'inline-block';
-        letterSpan.style.opacity = '0';
-        letterSpan.style.transform = 'translateY(20px)';
-        letterSpan.style.transition = 'all 0.4s ease';
-        letterSpan.style.transitionDelay = `${letterIndex * 0.08}s`;
-        gradSpan.appendChild(letterSpan);
-        letterIndex++;
-    });
-    
-    wrapper.appendChild(gradSpan);
-    element.appendChild(wrapper);
-    
-    // Start animation after a delay
-    setTimeout(() => {
-        const letters = element.querySelectorAll('.letter');
-        letters.forEach((letter) => {
-            letter.style.opacity = '1';
-            letter.style.transform = 'translateY(0)';
-        });
-    }, 1000);
+    // Start the animation
+    typeWriter();
 }
 
-// Alternative: Simple CSS-only approach
-function cssOnlyTrustAnimation() {
-    const element = document.getElementById('animatedText');
-    if (!element) return;
-    
-    // Set up the HTML structure properly
-    element.innerHTML = `
-        <span class="trust-line">
-            <span class="trust-word" data-delay="0">Trusted</span>
-            <span class="trust-word" data-delay="0.3">by</span>
-            <span class="trust-word" data-delay="0.6">Users</span>
-            <span class="trust-word grad" data-delay="0.9">Worldwide</span>
-        </span>
-    `;
-    
-    // Add CSS animation classes
-    const words = element.querySelectorAll('.trust-word');
-    
-    setTimeout(() => {
-        words.forEach((word, index) => {
-            setTimeout(() => {
-                word.style.opacity = '1';
-                word.style.transform = 'translateY(0)';
-            }, index * 300);
-        });
-    }, 1000);
-}
-
-// Even simpler: Keep original layout, just animate opacity
-function simpleOpacityAnimation() {
-    const element = document.getElementById('animatedText');
-    if (!element) return;
-    
-    // Reset to original HTML structure but add animation
-    element.innerHTML = 'Trusted by Users <span class="grad">Worldwide</span>';
-    
-    // Add reveal animation
-    element.style.opacity = '0';
-    element.style.transform = 'translateY(20px)';
-    element.style.transition = 'all 0.8s ease';
-    
-    setTimeout(() => {
-        element.style.opacity = '1';
-        element.style.transform = 'translateY(0)';
-    }, 1000);
-}
-
-// Updated init function - choose one of the approaches
+// NEW: Initialize text animations
 function initTextAnimations() {
-    // Use the simple opacity animation to avoid layout issues
-    simpleOpacityAnimation();
-    
-    // OR if you want word-by-word animation:
-    // cssOnlyTrustAnimation();
-    
-    // OR if you want letter-by-letter but with fixed positioning:
-    // animateTrustTextFixed();
+    typewriterLoopAnimation();
 }
+
+
+
