@@ -787,3 +787,64 @@ window.addEventListener('offline', function() {
     console.log('🔴 Network offline - using cached data');
     showNotification('Network offline. Using cached prices.', 'warning');
 });
+
+
+// ===== TEXT ANIMATION FUNCTIONS (TAMBAHKAN INI) =====
+
+// Function to split text into letters
+function splitTextToLetters(element, className = 'letter') {
+    if (!element) return;
+    
+    const text = element.textContent;
+    element.innerHTML = '';
+    
+    const words = text.split(' ');
+    
+    words.forEach((word, wordIndex) => {
+        const wordSpan = document.createElement('span');
+        wordSpan.className = 'word';
+        
+        [...word].forEach((letter, letterIndex) => {
+            const letterSpan = document.createElement('span');
+            letterSpan.className = className;
+            letterSpan.textContent = letter;
+            letterSpan.style.transitionDelay = `${(wordIndex * word.length + letterIndex) * 0.05}s`;
+            wordSpan.appendChild(letterSpan);
+        });
+        
+        element.appendChild(wordSpan);
+        
+        if (wordIndex < words.length - 1) {
+            const space = document.createElement('span');
+            space.className = 'space';
+            space.innerHTML = '&nbsp;';
+            element.appendChild(space);
+        }
+    });
+}
+
+// Function to animate letters
+function animateLetters(element, delay = 80) {
+    if (!element) return;
+    
+    const letters = element.querySelectorAll('.letter');
+    
+    letters.forEach((letter, index) => {
+        setTimeout(() => {
+            letter.classList.add('on');
+        }, index * delay);
+    });
+}
+
+// Initialize text animations
+function initTextAnimations() {
+    // Animate "Trusted by Users Worldwide"
+    const trustText = document.getElementById('animatedText');
+    if (trustText) {
+        splitTextToLetters(trustText, 'letter');
+        
+        setTimeout(() => {
+            animateLetters(trustText, 80);
+        }, 1000);
+    }
+}
