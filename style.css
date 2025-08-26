@@ -80,7 +80,9 @@ body {
 
 .gradient-text {
     background: var(--gradient-gold);
-    -webkit-background-clip: text;
+      -webkit-background-clip: text;
+      background-clip: text;
+      background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: var(--primary-gold); /* Fallback for older browsers */
@@ -1885,3 +1887,190 @@ input:focus {
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
+
+/* === Split layout kiri/kanan === */
+.hero-split{
+  display:grid;
+  grid-template-columns: 1.05fr 1fr; /* kiri sedikit lebih lebar */
+  gap: clamp(24px, 5vw, 64px);
+  align-items:center;
+  max-width: min(1200px, 92vw);
+  margin: 40px auto 0;
+}
+/* pastikan benar-benar rata kiri */
+.hero-split, .hero-left, #animatedText { text-align: left; }
+
+/* cegah patah di tengah kata */
+.trust-text .word { display: inline-block; white-space: nowrap; }
+
+/* animasi huruf */
+.trust-text .letter{
+  opacity:0; transform:translateY(8px);
+  transition:opacity .18s ease, transform .18s ease;
+  display:inline-block;
+}
+.trust-text .letter.on{ opacity:1; transform:translateY(0); }
+
+/* Default: desktop */
+.trust-text {
+  text-align: left;
+}
+
+/* Desktop */
+.trust-text {
+  margin-top: 60px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .trust-text {
+    margin-top: 900px;
+    text-align: center;
+  }
+}
+
+
+/* Kalau di HP <=768px, auto center */
+@media (max-width: 768px) {
+  .trust-text {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+  }
+  .trust-text .word {
+    display: inline-block;   /* tetap rapih per kata */
+  }
+}
+
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:rgba(255,215,0,.85);
+  padding:6px 10px;
+  border:1px solid rgba(255,215,0,.35);
+  border-radius:999px;
+  background:rgba(20,20,20,.45);
+  backdrop-filter: blur(6px);
+  margin-bottom:14px;
+}
+
+.hero-big{
+  font-size: clamp(20px, 3.6vw, 40px);
+  line-height:1.18;
+  font-weight:800;
+  margin: 0 0 14px 0;
+}
+
+.hero-sub{font-size:1.8rem;font-weight:700;line-height:1.25}
+.hero-sub .letter{
+  opacity:0; 
+  transform:translateY(8px);
+  transition:opacity .18s ease, transform .18s ease;
+  display:inline-block;
+}
+.hero-sub .letter.on{
+  opacity:1; 
+  transform:translateY(0);
+}
+/* biar spasi tetap ada lebarnya */
+.hero-sub .space{display:inline-block; width:.4em}
+
+
+.hero-big .grad{
+  background: linear-gradient(90deg,#FFD700,#FFA500);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  text-shadow: 0 0 24px rgba(255,215,0,.18);
+}
+
+.hero-desc{
+  color:#cfcfcf;
+  max-width: 56ch;
+  line-height:1.6;
+  margin-bottom: 22px;
+}
+
+/* metrics */
+.hero-metrics{
+  display:flex;
+  gap: clamp(16px, 4vw, 40px);
+  margin: 20px 0 18px;
+}
+.metric{
+  min-width: 140px;
+}
+.metric-num{
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight:800;
+  color:#FFD700;
+  text-shadow: 0 0 18px rgba(255,215,0,.22);
+}
+.metric-label{
+  margin-top: 6px;
+  font-size: 13px;
+  color:#9da3ae;
+}
+
+/* CTA link */
+.cta-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#0a0a0a;
+  background: linear-gradient(135deg,#FFD700,#FFA500);
+  padding:10px 14px;
+  border-radius:999px;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow: 0 8px 28px rgba(255,215,0,.25);
+}
+.cta-link:hover{ transform: translateY(-1px); }
+
+.tiny-note{
+  margin-top:10px;
+  font-size:11px;
+  color:#8d8d8d;
+}
+
+/* kanan (globe) – pakai ukuran container yang sudah kamu set di globe.css */
+.hero-right .globe-shell{
+  width: min(640px, 92vw);
+}
+
+/* Responsive: stack di mobile */
+@media (max-width: 980px){
+  .hero-split{
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-top: 28px;
+  }
+  .hero-right .globe-shell{
+    width: min(520px, 94vw);
+    margin-inline: auto;
+  }
+  .hero-left{ text-align:left; }
+}
+
+.trust-text {
+  font-size: 2rem;         /* lebih kecil dari hero-big */
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: left;
+  max-width: 420px;
+  margin-bottom: 1.5rem;
+}
+
+.trust-text .grad {
+  background: linear-gradient(45deg, #FFD700, #FFA500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+
