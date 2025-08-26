@@ -42,6 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavigation();
     initScrollEffects();
     initBackToTop();
+
+    initTextAnimations();
     
     // Initialize crypto features with real-time data
     initRealTimeCrypto();
