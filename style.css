@@ -1900,46 +1900,82 @@ input:focus {
 /* pastikan benar-benar rata kiri */
 .hero-split, .hero-left, #animatedText { text-align: left; }
 
-/* cegah patah di tengah kata */
-.trust-text .word { display: inline-block; white-space: nowrap; }
+/* ===== CSS FIXES UNTUK TEXT ANIMATION ===== */
+/* Tambahkan ini ke style.css */
 
-/* animasi huruf */
-.trust-text .letter{
-  opacity:0; transform:translateY(8px);
-  transition:opacity .18s ease, transform .18s ease;
-  display:inline-block;
-}
-.trust-text .letter.on{ opacity:1; transform:translateY(0); }
-
-/* Default: desktop */
+/* Fix untuk trust text positioning */
 .trust-text {
-  text-align: left;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: left;
+    max-width: 420px;
+    margin-bottom: 1.5rem;
+    white-space: nowrap; /* Prevent line breaks */
+    overflow: visible; /* Allow text to show */
 }
 
-/* Desktop */
-.trust-text {
-  margin-top: 60px;
+/* Ensure letters stay inline */
+.trust-text .letter {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    display: inline-block;
+    vertical-align: baseline; /* Keep on same line */
+    white-space: pre; /* Preserve spaces */
 }
 
-/* Mobile */
+.trust-text .letter.on {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Fix for gradient text */
+.trust-text .grad {
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block; /* Keep inline */
+}
+
+.trust-text .grad .letter {
+    background: inherit;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Alternative: Word-by-word animation styles */
+.trust-line {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.trust-word {
+    display: inline-block;
+    margin-right: 0.3em;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.trust-word:last-child {
+    margin-right: 0;
+}
+
+/* Mobile responsive fix */
 @media (max-width: 768px) {
-  .trust-text {
-    margin-top: 900px;
-    text-align: center;
-  }
-}
-
-
-/* Kalau di HP <=768px, auto center */
-@media (max-width: 768px) {
-  .trust-text {
-    text-align: center;
-    display: block;
-    margin: 0 auto;
-  }
-  .trust-text .word {
-    display: inline-block;   /* tetap rapih per kata */
-  }
+    .trust-text {
+        white-space: normal; /* Allow wrapping on mobile */
+        text-align: center;
+        font-size: 1.5rem;
+    }
+    
+    .trust-line {
+        white-space: normal;
+        text-align: center;
+    }
 }
 
 
