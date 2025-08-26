@@ -7,7 +7,22 @@
 :root {
     /* Colors */
     --primary-gold: #FFD700;
-    --secondary-gold: #FFA500;
+    --secondary-gold: #FFA500;.trust-text {
+  font-size: 1.5rem;        /* ← UBAH INI (dari 2rem ke 1.5rem) */
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: left;
+  max-width: 420px;
+  margin-bottom: 1.5rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .trust-text {
+    text-align: center;
+    font-size: 1.2rem;       /* ← DAN INI (dari 1.5rem ke 1.2rem) */
+  }
+}
     --dark-gold: #FF8C00;
     
     --bg-dark: #0A0A0A;
@@ -2094,13 +2109,15 @@ input:focus {
 }
 
 .trust-text {
-  font-size: 2rem;         /* lebih kecil dari hero-big */
+  font-size: 1.5rem;        /* ← UBAH INI (dari 2rem ke 1.5rem) */
   font-weight: 700;
   line-height: 1.4;
   text-align: left;
   max-width: 420px;
   margin-bottom: 1.5rem;
 }
+
+
 
 .trust-text .grad {
   background: linear-gradient(45deg, #FFD700, #FFA500);
