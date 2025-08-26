@@ -791,42 +791,84 @@ window.addEventListener('offline', function() {
 });
 
 
-// ===== TEXT ANIMATION FUNCTIONS (TAMBAHKAN INI) =====
+// ===== FIXED TEXT ANIMATION JAVASCRIPT =====
+// Replace the previous functions with these improved versions
 
-// Function to split text into letters
-function splitTextToLetters(element, className = 'letter') {
+// Function to split text into letters while preserving existing spans
+function splitTextToLettersPreserveSpans(element, className = 'letter') {
     if (!element) return;
     
-    const text = element.textContent;
-    element.innerHTML = '';
+    // Get all text nodes and existing spans
+    const walker = document.createTreeWalker(
+        element,
+        NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT,
+        {
+            acceptNode: function(node) {
+                if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+                    return NodeFilter.FILTER_ACCEPT;
+                }
+                if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'SPAN') {
+                    return NodeFilter.FILTER_ACCEPT;
+                }
+                return NodeFilter.FILTER_SKIP;
+            }
+        }
+    );
     
-    const words = text.split(' ');
+    const nodes = [];
+    let node;
+    while (node = walker.nextNode()) {
+        nodes.push(node);
+    }
     
-    words.forEach((word, wordIndex) => {
-        const wordSpan = document.createElement('span');
-        wordSpan.className = 'word';
-        
-        [...word].forEach((letter, letterIndex) => {
-            const letterSpan = document.createElement('span');
-            letterSpan.className = className;
-            letterSpan.textContent = letter;
-            letterSpan.style.transitionDelay = `${(wordIndex * word.length + letterIndex) * 0.05}s`;
-            wordSpan.appendChild(letterSpan);
-        });
-        
-        element.appendChild(wordSpan);
-        
-        if (wordIndex < words.length - 1) {
-            const space = document.createElement('span');
-            space.className = 'space';
-            space.innerHTML = '&nbsp;';
-            element.appendChild(space);
+    const fragment = document.createDocumentFragment();
+    let letterIndex = 0;
+    
+    nodes.forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+            // Process text node
+            const text = node.textContent;
+            [...text].forEach(char => {
+                if (char === ' ') {
+                    const space = document.createTextNode(' ');
+                    fragment.appendChild(space);
+                } else {
+                    const letterSpan = document.createElement('span');
+                    letterSpan.className = className;
+                    letterSpan.textContent = char;
+                    letterSpan.style.transitionDelay = `${letterIndex * 0.08}s`;
+                    fragment.appendChild(letterSpan);
+                    letterIndex++;
+                }
+            });
+        } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'SPAN') {
+            // Process existing span (like .grad)
+            const spanClone = node.cloneNode(false); // Clone without children
+            const text = node.textContent;
+            
+            [...text].forEach(char => {
+                if (char === ' ') {
+                    spanClone.appendChild(document.createTextNode(' '));
+                } else {
+                    const letterSpan = document.createElement('span');
+                    letterSpan.className = className;
+                    letterSpan.textContent = char;
+                    letterSpan.style.transitionDelay = `${letterIndex * 0.08}s`;
+                    spanClone.appendChild(letterSpan);
+                    letterIndex++;
+                }
+            });
+            
+            fragment.appendChild(spanClone);
         }
     });
+    
+    element.innerHTML = '';
+    element.appendChild(fragment);
 }
 
-// Function to animate letters
-function animateLetters(element, delay = 80) {
+// Improved function to animate letters in correct order
+function animateLettersInOrder(element, delay = 80) {
     if (!element) return;
     
     const letters = element.querySelectorAll('.letter');
@@ -838,15 +880,152 @@ function animateLetters(element, delay = 80) {
     });
 }
 
-// Initialize text animations
-function initTextAnimations() {
-    // Animate "Trusted by Users Worldwide"
+// Alternative simpler approach specifically for your HTML structure
+function animateTrustText() {
     const trustText = document.getElementById('animatedText');
-    if (trustText) {
-        splitTextToLetters(trustText, 'letter');
+    if (!trustText) return;
+    
+    // Get the original HTML to preserve the .grad span
+    const originalHTML = trustText.innerHTML;
+    
+    // Check if it contains the grad span
+    if (originalHTML.includes('<span class="grad">')) {
+        // Split by the grad span
+        const parts = originalHTML.split('<span class="grad">');
+        const beforeGrad = parts[0]; // "Trusted by Users "
+        const afterGradRaw = parts[1].split('</span>')[0]; // "Worldwide"
         
-        setTimeout(() => {
-            animateLetters(trustText, 80);
-        }, 1000);
+        // Clear the element
+        trustText.innerHTML = '';
+        
+        let letterIndex = 0;
+        
+        // Process "Trusted by Users " part
+        [...beforeGrad].forEach(char => {
+            if (char === ' ') {
+                trustText.appendChild(document.createTextNode(' '));
+            } else {
+                const letterSpan = document.createElement('span');
+                letterSpan.className = 'letter';
+                letterSpan.textContent = char;
+                letterSpan.style.transitionDelay = `${letterIndex * 0.08}s`;
+                trustText.appendChild(letterSpan);
+                letterIndex++;
+            }
+        });
+        
+        // Create the grad span for "Worldwide"
+        const gradSpan = document.createElement('span');
+        gradSpan.className = 'grad';
+        
+        [...afterGradRaw].forEach(char => {
+            const letterSpan = document.createElement('span');
+            letterSpan.className = 'letter';
+            letterSpan.textContent = char;
+            letterSpan.style.transitionDelay = `${letterIndex * 0.08}s`;
+            gradSpan.appendChild(letterSpan);
+            letterIndex++;
+        });
+        
+        trustText.appendChild(gradSpan);
+        
+    } else {
+        // Fallback for simple text
+        const text = trustText.textContent;
+        trustText.innerHTML = '';
+        
+        [...text].forEach((char, index) => {
+            if (char === ' ') {
+                trustText.appendChild(document.createTextNode(' '));
+            } else {
+                const letterSpan = document.createElement('span');
+                letterSpan.className = 'letter';
+                letterSpan.textContent = char;
+                letterSpan.style.transitionDelay = `${index * 0.08}s`;
+                trustText.appendChild(letterSpan);
+            }
+        });
     }
+    
+    // Start animation
+    setTimeout(() => {
+        const letters = trustText.querySelectorAll('.letter');
+        letters.forEach((letter, index) => {
+            setTimeout(() => {
+                letter.classList.add('on');
+            }, index * 60); // 60ms delay between letters
+        });
+    }, 800); // Start after 800ms
+}
+
+// Updated initialization function
+function initTextAnimations() {
+    // Use the specific function for trust text
+    animateTrustText();
+    
+    // For other texts, you can use the general function
+    // Example for hero subtitle:
+    /*
+    const heroSub = document.querySelector('.hero-sub');
+    if (heroSub) {
+        splitTextToLettersPreserveSpans(heroSub, 'letter');
+        setTimeout(() => {
+            animateLettersInOrder(heroSub, 60);
+        }, 2000);
+    }
+    */
+}
+
+// ALTERNATIVE: Even simpler version if you prefer
+function simpleTrustTextAnimation() {
+    const element = document.getElementById('animatedText');
+    if (!element) return;
+    
+    // Define the text parts with their styles
+    const textParts = [
+        { text: 'Trusted', class: '' },
+        { text: ' ', class: '' },
+        { text: 'by', class: '' },
+        { text: ' ', class: '' },
+        { text: 'Users', class: '' },
+        { text: ' ', class: '' },
+        { text: 'Worldwide', class: 'grad' }
+    ];
+    
+    element.innerHTML = '';
+    let letterIndex = 0;
+    
+    textParts.forEach(part => {
+        if (part.text === ' ') {
+            element.appendChild(document.createTextNode(' '));
+        } else {
+            const wrapper = part.class ? document.createElement('span') : element;
+            if (part.class) {
+                wrapper.className = part.class;
+            }
+            
+            [...part.text].forEach(char => {
+                const letterSpan = document.createElement('span');
+                letterSpan.className = 'letter';
+                letterSpan.textContent = char;
+                letterSpan.style.transitionDelay = `${letterIndex * 0.06}s`;
+                wrapper.appendChild(letterSpan);
+                letterIndex++;
+            });
+            
+            if (part.class) {
+                element.appendChild(wrapper);
+            }
+        }
+    });
+    
+    // Animate
+    setTimeout(() => {
+        const letters = element.querySelectorAll('.letter');
+        letters.forEach(letter => {
+            setTimeout(() => {
+                letter.classList.add('on');
+            }, parseInt(letter.style.transitionDelay) * 1000 + Math.random() * 200);
+        });
+    }, 500);
 }
