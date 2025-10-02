@@ -10,7 +10,7 @@ class ReferralSystem {
       'SM138', 'MRCOWHALE', 'BHYUKNGLO', 'FARIDWHALEBTC', 'ERIKDI', 'thomatomb', 'tss07', 'brndn', 'febrian', 'crossteam', 'Franeiton'
     ];
     this.originalPrice = 300;
-    this.discountPercent = 12.5;
+    this.discountPercent = 5;
     this.discountPrice = this.originalPrice * (1 - this.discountPercent / 100);
     this.init();
   }
