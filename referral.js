@@ -9,7 +9,7 @@ class ReferralSystem {
       '01258Lux', '09874Lux', '04569Lux',
       'SM138', 'MRCOWHALE', 'BHYUKNGLO', 'FARIDWHALEBTC', 'ERIKDI', 'thomatomb', 'tss07', 'brndn', 'febrian', 'crossteam', 'Neilsen', 'CYBRFI', 'ejeha'
     ];
-    this.originalPrice = 300;
+    this.originalPrice = 350;
     this.discountPercent = 5;
     this.discountPrice = this.originalPrice * (1 - this.discountPercent / 100);
     this.init();
