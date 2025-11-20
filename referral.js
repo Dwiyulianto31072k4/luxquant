@@ -7,7 +7,11 @@ class ReferralSystem {
     this.validKolCodes = [
       '03451Lux', '02847Lux', '05632Lux', 
       '01258Lux', '09874Lux', '04569Lux',
-      'SM138', 'MRCOWHALE', 'BHYUKNGLO', 'FARIDWHALEBTC', 'ERIKDI', 'thomatomb', 'tss07', 'brndn', 'febrian', 'crossteam', 'Neilsen', 'CYBRFI', 'ejeha', 'ndratraderalgo', 'DODO'
+      'SM138', 'MRCOWHALE', 'BHYUKNGLO', 
+      'FARIDWHALEBTC', 'ERIKDI', 'thomatomb', 
+      'tss07', 'brndn', 
+      'febrian', 'crossteam', 'Neilsen', 'CYBRFI', 
+      'ejeha', 'ndratraderalgo', 'DODO', 'CUANLAGI'
     ];
     this.originalPrice = 400;
     this.discountPercent = 5;
