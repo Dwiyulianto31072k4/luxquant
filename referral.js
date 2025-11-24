@@ -11,7 +11,8 @@ class ReferralSystem {
       'FARIDWHALEBTC', 'ERIKDI', 'thomatomb', 
       'tss07', 'brndn', 
       'febrian', 'crossteam', 'Neilsen', 'CYBRFI', 
-      'ejeha', 'ndratraderalgo', 'DODO', 'CUANLAGI', 'يتحدّث'
+      'ejeha', 'ndratraderalgo', 'DODO', 
+      'CUANLAGI', 'يتحدّث', 'scobedo'
     ];
     this.originalPrice = 400;
     this.discountPercent = 5;
