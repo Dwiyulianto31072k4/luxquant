@@ -8,44 +8,42 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-primary: #0a0506;
-            --bg-secondary: #120809;
-            --bg-card: rgba(20, 8, 10, 0.8);
-            --bg-card-solid: #140a0c;
+            /* Dark luxury theme */
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-tertiary: #1a1a1a;
+            --bg-card: rgba(26, 26, 26, 0.8);
             
-            --gold-primary: #d4a853;
-            --gold-light: #f0d890;
-            --gold-dark: #8b6914;
-            --gold-glow: rgba(212, 168, 83, 0.4);
-            --gold-subtle: rgba(212, 168, 83, 0.1);
+            /* Gold accent */
+            --gold: #d4a853;
+            --gold-light: #e8c47a;
+            --gold-dark: #a67c3d;
+            --gold-glow: rgba(212, 168, 83, 0.15);
+            --gold-subtle: rgba(212, 168, 83, 0.08);
             
-            --red-primary: #8b1a1a;
-            --red-light: #c42020;
-            --red-glow: rgba(139, 26, 26, 0.3);
-            
-            --border-gold: rgba(212, 168, 83, 0.3);
-            --border-gold-strong: rgba(212, 168, 83, 0.6);
-            --border-subtle: rgba(255, 255, 255, 0.06);
-            
+            /* Text */
             --text-primary: #ffffff;
-            --text-secondary: #b8a89a;
-            --text-muted: #6b5c52;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.4);
             
-            --positive: #4ade80;
-            --negative: #f87171;
+            /* Borders */
+            --border: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 168, 83, 0.3);
             
-            --glass-bg: rgba(20, 10, 12, 0.6);
-            --glass-border: rgba(212, 168, 83, 0.15);
+            /* Status */
+            --positive: #22c55e;
+            --negative: #ef4444;
             
+            /* Typography */
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-display: 'Playfair Display', Georgia, serif;
-            --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
             
-            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            /* Spacing */
+            --section-padding: clamp(80px, 10vw, 140px);
         }
 
         * {
@@ -56,146 +54,54 @@
 
         html {
             scroll-behavior: smooth;
+            font-size: 16px;
         }
 
         body {
-            font-family: var(--font-body);
+            font-family: var(--font-primary);
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Luxury Background */
-        .luxury-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at 0% 0%, rgba(139, 26, 26, 0.5) 0%, transparent 50%),
-                radial-gradient(ellipse at 100% 0%, rgba(139, 26, 26, 0.3) 0%, transparent 40%),
-                radial-gradient(ellipse at 50% 100%, rgba(139, 26, 26, 0.25) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(212, 168, 83, 0.05) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Noise texture */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            opacity: 0.03;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* Gold Particles */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: var(--gold-primary);
-            border-radius: 50%;
-            opacity: 0;
-            animation: floatParticle 12s infinite;
-            box-shadow: 0 0 6px var(--gold-glow);
-        }
-
-        @keyframes floatParticle {
-            0% { opacity: 0; transform: translateY(100vh) scale(0); }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { opacity: 0; transform: translateY(-100vh) scale(1); }
-        }
-
-        /* Corner Ornaments */
-        .corner-ornament {
-            position: fixed;
-            width: 100px;
-            height: 100px;
-            pointer-events: none;
-            z-index: 2;
-            opacity: 0.3;
-        }
-
-        .corner-ornament.top-left {
-            top: 20px;
-            left: 20px;
-            border-top: 2px solid var(--gold-primary);
-            border-left: 2px solid var(--gold-primary);
-            border-top-left-radius: 16px;
-        }
-
-        .corner-ornament.top-right {
-            top: 20px;
-            right: 20px;
-            border-top: 2px solid var(--gold-primary);
-            border-right: 2px solid var(--gold-primary);
-            border-top-right-radius: 16px;
-        }
-
-        .corner-ornament.bottom-left {
-            bottom: 20px;
-            left: 20px;
-            border-bottom: 2px solid var(--gold-primary);
-            border-left: 2px solid var(--gold-primary);
-            border-bottom-left-radius: 16px;
-        }
-
-        .corner-ornament.bottom-right {
-            bottom: 20px;
-            right: 20px;
-            border-bottom: 2px solid var(--gold-primary);
-            border-right: 2px solid var(--gold-primary);
-            border-bottom-right-radius: 16px;
-        }
-
+        /* Container */
         .container {
-            position: relative;
-            z-index: 10;
-            max-width: 1400px;
+            max-width: 1280px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* Price Ticker */
-        .ticker-bar {
+        .container-wide {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ============================================
+           PRICE TICKER
+        ============================================ */
+        .ticker-wrapper {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            z-index: 100;
-            background: rgba(10, 5, 6, 0.95);
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            height: 44px;
             overflow: hidden;
         }
 
         .ticker-track {
             display: flex;
-            animation: ticker 40s linear infinite;
+            animation: tickerScroll 60s linear infinite;
+            will-change: transform;
         }
 
-        @keyframes ticker {
+        @keyframes tickerScroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
@@ -204,20 +110,18 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 0 24px;
+            padding: 0 28px;
+            height: 44px;
             white-space: nowrap;
             font-size: 13px;
+            font-weight: 500;
         }
 
         .ticker-icon {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            font-weight: 700;
+            object-fit: cover;
         }
 
         .ticker-symbol {
@@ -226,36 +130,45 @@
         }
 
         .ticker-price {
-            font-family: var(--font-mono);
             color: var(--text-secondary);
         }
 
         .ticker-change {
-            font-family: var(--font-mono);
-            font-size: 12px;
             font-weight: 600;
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 4px;
         }
 
-        .ticker-change.positive { color: var(--positive); }
-        .ticker-change.negative { color: var(--negative); }
+        .ticker-change.positive {
+            color: var(--positive);
+            background: rgba(34, 197, 94, 0.1);
+        }
 
-        /* Header */
+        .ticker-change.negative {
+            color: var(--negative);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        /* ============================================
+           HEADER
+        ============================================ */
         header {
             position: fixed;
-            top: 42px;
+            top: 44px;
             left: 0;
             right: 0;
-            z-index: 99;
+            z-index: 999;
             padding: 16px 0;
-            background: rgba(10, 5, 6, 0.8);
+            background: rgba(10, 10, 10, 0.8);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
-            transition: all 0.3s var(--ease-out-expo);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
         }
 
         header.scrolled {
-            background: rgba(10, 5, 6, 0.95);
             padding: 12px 0;
+            background: rgba(10, 10, 10, 0.95);
         }
 
         .header-inner {
@@ -267,121 +180,127 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
             text-decoration: none;
         }
 
         .logo-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 50%, var(--gold-dark) 100%);
-            border-radius: 14px;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: var(--font-display);
             font-weight: 700;
-            font-size: 20px;
+            font-size: 18px;
             color: var(--bg-primary);
-            box-shadow: 0 4px 20px var(--gold-glow);
         }
 
         .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-main {
             font-family: var(--font-display);
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 600;
             color: var(--text-primary);
-        }
-
-        .logo-sub {
-            font-size: 11px;
-            color: var(--gold-primary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
         }
 
         nav {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 32px;
         }
 
         nav a {
-            padding: 10px 18px;
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
-            border-radius: 8px;
-            transition: all 0.2s ease;
+            transition: color 0.2s;
         }
 
         nav a:hover {
             color: var(--text-primary);
-            background: var(--glass-bg);
         }
 
-        .header-cta {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .btn {
-            padding: 12px 24px;
-            border-radius: 10px;
+        .header-cta .btn {
+            padding: 10px 20px;
             font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s var(--ease-out-expo);
-            text-decoration: none;
+        }
+
+        /* ============================================
+           BUTTONS
+        ============================================ */
+        .btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
             border: none;
-        }
-
-        .btn-ghost {
-            background: transparent;
-            border: 1px solid var(--border-gold);
-            color: var(--gold-primary);
-        }
-
-        .btn-ghost:hover {
-            background: var(--gold-subtle);
-            border-color: var(--gold-primary);
+            font-family: inherit;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 50%, var(--gold-dark) 100%);
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
             color: var(--bg-primary);
-            box-shadow: 0 4px 20px var(--gold-glow);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px var(--gold-glow);
+            box-shadow: 0 8px 30px rgba(212, 168, 83, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--text-muted);
         }
 
         .btn-large {
-            padding: 16px 32px;
+            padding: 18px 36px;
             font-size: 16px;
         }
 
-        /* Main */
-        main {
-            padding-top: 120px;
+        /* ============================================
+           HERO SECTION
+        ============================================ */
+        .hero {
+            padding-top: 160px;
+            padding-bottom: var(--section-padding);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Hero Section */
-        .hero {
-            padding: 60px 0 80px;
-            min-height: 100vh;
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 30% 20%, rgba(212, 168, 83, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(212, 168, 83, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .hero-badge {
@@ -389,22 +308,21 @@
             align-items: center;
             gap: 8px;
             padding: 8px 16px;
-            background: var(--glass-bg);
+            background: var(--gold-subtle);
             border: 1px solid var(--border-gold);
             border-radius: 100px;
             font-size: 13px;
-            color: var(--gold-primary);
-            margin-bottom: 24px;
+            font-weight: 500;
+            color: var(--gold);
+            margin-bottom: 32px;
         }
 
-        .hero-badge::before {
-            content: '';
+        .hero-badge .dot {
             width: 8px;
             height: 8px;
             background: var(--positive);
             border-radius: 50%;
             animation: pulse 2s ease-in-out infinite;
-            box-shadow: 0 0 10px var(--positive);
         }
 
         @keyframes pulse {
@@ -414,15 +332,15 @@
 
         .hero-title {
             font-family: var(--font-display);
-            font-size: clamp(36px, 5vw, 56px);
+            font-size: clamp(40px, 6vw, 72px);
             font-weight: 600;
-            line-height: 1.15;
-            margin-bottom: 20px;
-            text-align: center;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
         }
 
         .hero-title .highlight {
-            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -431,45 +349,42 @@
         .hero-description {
             font-size: 18px;
             color: var(--text-secondary);
-            text-align: center;
-            max-width: 700px;
+            max-width: 640px;
             margin: 0 auto 40px;
+            line-height: 1.7;
         }
 
-        .hero-description .highlight-stat {
-            color: var(--gold-primary);
-            font-weight: 700;
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 80px;
         }
 
-        /* Hero Split Layout */
-        .hero-split {
+        /* Hero Globe Section */
+        .hero-globe-section {
             display: grid;
-            grid-template-columns: 1fr 1.1fr;
+            grid-template-columns: 1fr 1.2fr;
             gap: 60px;
             align-items: center;
-            margin-top: 40px;
+            margin-top: 80px;
         }
 
-        .hero-left {
-            text-align: left;
-        }
-
-        .trust-text {
+        .hero-text-content h2 {
             font-family: var(--font-display);
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 20px;
+            font-size: 32px;
+            margin-bottom: 16px;
         }
 
-        .trust-text .grad {
-            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+        .hero-text-content .grad {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .typewriter-cursor {
-            color: var(--gold-primary);
+            color: var(--gold);
             animation: blink 1s infinite;
         }
 
@@ -478,17 +393,11 @@
             51%, 100% { opacity: 0; }
         }
 
-        /* Globe Container */
-        .hero-right {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .globe-shell {
-            position: relative;
-            width: min(550px, 85vw);
-            aspect-ratio: 1 / 1;
+        .globe-container {
+            width: 100%;
+            aspect-ratio: 1;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
         #globe {
@@ -499,52 +408,35 @@
         #globe canvas {
             width: 100% !important;
             height: 100% !important;
-            display: block;
             border-radius: 50%;
         }
 
-        /* Marketing Banner */
-        .hero-marketing {
-            background: var(--glass-bg);
-            border: 1px solid var(--border-gold);
-            border-radius: 16px;
-            padding: 20px 28px;
-            margin-top: 40px;
-            text-align: center;
-        }
-
-        .marketing-text {
-            font-size: 15px;
-            color: var(--text-secondary);
-        }
-
-        .marketing-text strong {
-            color: var(--gold-primary);
-        }
-
-        /* Trust Stats */
+        /* ============================================
+           TRUST/PARTNERS SECTION
+        ============================================ */
         .trust-section {
-            padding: 80px 0;
-            border-top: 1px solid var(--border-subtle);
-            border-bottom: 1px solid var(--border-subtle);
+            padding: var(--section-padding) 0;
+            border-top: 1px solid var(--border);
         }
 
         .trust-header {
             text-align: center;
-            margin-bottom: 48px;
+            margin-bottom: 60px;
         }
 
         .trust-label {
             font-size: 12px;
-            color: var(--text-muted);
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 8px;
+            color: var(--gold);
+            margin-bottom: 16px;
         }
 
         .trust-title {
             font-family: var(--font-display);
-            font-size: 28px;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 600;
         }
 
         .trust-grid {
@@ -554,26 +446,12 @@
         }
 
         .trust-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 32px 24px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px 32px;
             text-align: center;
-            transition: all 0.3s var(--ease-out-expo);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .trust-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .trust-card:hover {
@@ -581,59 +459,57 @@
             transform: translateY(-4px);
         }
 
-        .trust-card:hover::before {
-            opacity: 0.6;
-        }
-
-        .trust-icon {
-            font-size: 32px;
-            margin-bottom: 16px;
-        }
-
-        .trust-value {
-            font-family: var(--font-display);
+        .trust-card-icon {
             font-size: 36px;
-            font-weight: 700;
-            color: var(--gold-primary);
-            margin-bottom: 4px;
+            margin-bottom: 20px;
         }
 
-        .trust-desc {
+        .trust-card-value {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .trust-card-desc {
             font-size: 14px;
             color: var(--text-secondary);
+            line-height: 1.5;
         }
 
-        /* Section Styles */
+        /* ============================================
+           FEATURES SECTION
+        ============================================ */
+        .features-section {
+            padding: var(--section-padding) 0;
+        }
+
         .section-header {
             text-align: center;
-            max-width: 600px;
+            max-width: 640px;
             margin: 0 auto 60px;
         }
 
         .section-label {
             font-size: 12px;
-            color: var(--gold-primary);
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
+            color: var(--gold);
             margin-bottom: 16px;
         }
 
         .section-title {
             font-family: var(--font-display);
-            font-size: 42px;
+            font-size: clamp(32px, 4vw, 48px);
             font-weight: 600;
-            line-height: 1.2;
             margin-bottom: 16px;
         }
 
         .section-desc {
             font-size: 16px;
             color: var(--text-secondary);
-        }
-
-        /* Features Section */
-        .features-section {
-            padding: 100px 0;
         }
 
         .features-grid {
@@ -643,79 +519,229 @@
         }
 
         .feature-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
             padding: 40px 32px;
-            transition: all 0.4s var(--ease-out-expo);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .feature-card:hover {
             border-color: var(--border-gold);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .feature-card:hover::before {
-            opacity: 0.6;
+            transform: translateY(-4px);
         }
 
         .feature-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, var(--gold-subtle), rgba(212, 168, 83, 0.2));
+            width: 56px;
+            height: 56px;
+            background: var(--gold-subtle);
             border: 1px solid var(--border-gold);
-            border-radius: 18px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
+            font-size: 26px;
             margin-bottom: 24px;
         }
 
         .feature-title {
-            font-family: var(--font-display);
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 600;
             margin-bottom: 12px;
         }
 
         .feature-desc {
-            font-size: 15px;
+            font-size: 14px;
             color: var(--text-secondary);
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
-        /* Performance Section */
-        .performance-section {
-            padding: 100px 0;
+        /* ============================================
+           VIP FEATURES WITH PHONE
+        ============================================ */
+        .vip-section {
+            padding: var(--section-padding) 0;
             background: var(--bg-secondary);
+        }
+
+        .vip-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        /* iPhone Mockup */
+        .phone-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .phone-mockup {
+            position: relative;
+            width: 280px;
+            height: 580px;
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            border-radius: 44px;
+            padding: 12px;
+            box-shadow: 
+                0 0 0 1px rgba(255,255,255,0.1),
+                0 20px 60px rgba(0,0,0,0.5),
+                inset 0 0 2px rgba(255,255,255,0.1);
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 28px;
+            background: #1a1a1a;
+            border-radius: 0 0 16px 16px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .phone-speaker {
+            width: 50px;
+            height: 4px;
+            background: #333;
+            border-radius: 2px;
+        }
+
+        .phone-camera {
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, #1a1a1a 40%, #333 60%);
+            border-radius: 50%;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            border-radius: 36px;
+            overflow: hidden;
             position: relative;
         }
 
-        .performance-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
-            opacity: 0.3;
+        .carousel-container {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .carousel-btn {
+            width: 44px;
+            height: 44px;
+            border: none;
+            background: var(--gold);
+            color: var(--bg-primary);
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .carousel-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .carousel-dot.active {
+            background: var(--gold);
+            transform: scale(1.2);
+        }
+
+        /* VIP Features List */
+        .vip-features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .vip-feature-item {
+            display: flex;
+            gap: 16px;
+            padding: 24px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .vip-feature-item:hover {
+            border-color: var(--border-gold);
+        }
+
+        .vip-feature-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gold);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .vip-feature-content h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--gold);
+        }
+
+        .vip-feature-content p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           PERFORMANCE SECTION
+        ============================================ */
+        .performance-section {
+            padding: var(--section-padding) 0;
         }
 
         .performance-grid {
@@ -727,8 +753,7 @@
 
         .performance-content h2 {
             font-family: var(--font-display);
-            font-size: 42px;
-            font-weight: 600;
+            font-size: clamp(32px, 4vw, 44px);
             margin-bottom: 20px;
         }
 
@@ -739,80 +764,54 @@
             margin-bottom: 32px;
         }
 
-        .perf-stats {
+        .stats-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 16px;
         }
 
-        .perf-stat {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
             padding: 24px;
-            position: relative;
-            overflow: hidden;
         }
 
-        .perf-stat::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
-            opacity: 0.4;
-        }
-
-        .perf-stat-value {
+        .stat-value {
             font-family: var(--font-display);
-            font-size: 36px;
+            font-size: 32px;
             font-weight: 700;
             margin-bottom: 4px;
         }
 
-        .perf-stat-value.gold { color: var(--gold-primary); }
-        .perf-stat-value.green { color: var(--positive); }
+        .stat-value.gold { color: var(--gold); }
+        .stat-value.green { color: var(--positive); }
 
-        .perf-stat-label {
-            font-size: 13px;
+        .stat-label {
+            font-size: 12px;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* Dashboard Embed */
-        .dashboard-embed {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
+        /* Dashboard Preview */
+        .dashboard-preview {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
             overflow: hidden;
-            position: relative;
-        }
-
-        .dashboard-embed::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--gold-dark), var(--gold-primary), var(--gold-light), var(--gold-primary), var(--gold-dark));
-            z-index: 2;
         }
 
         .dashboard-header {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
             padding: 16px 24px;
-            border-bottom: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border);
         }
 
         .dashboard-title {
-            font-family: var(--font-display);
-            font-size: 18px;
+            font-weight: 600;
         }
 
         .dashboard-live {
@@ -821,6 +820,7 @@
             gap: 6px;
             font-size: 12px;
             color: var(--positive);
+            font-weight: 600;
         }
 
         .dashboard-live::before {
@@ -832,65 +832,58 @@
             animation: pulse 2s infinite;
         }
 
-        .dashboard-image-wrapper {
+        .dashboard-image-link {
+            display: block;
             position: relative;
-            cursor: pointer;
         }
 
         .dashboard-image {
             width: 100%;
-            height: auto;
+            height: 320px;
+            object-fit: cover;
             display: block;
         }
 
         .dashboard-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            inset: 0;
+            background: rgba(0,0,0,0.7);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s;
         }
 
-        .dashboard-image-wrapper:hover .dashboard-overlay {
+        .dashboard-image-link:hover .dashboard-overlay {
             opacity: 1;
         }
 
-        .overlay-content {
-            text-align: center;
-            color: var(--gold-primary);
-        }
-
-        .overlay-content span:first-child {
-            display: block;
+        .dashboard-overlay-icon {
             font-size: 48px;
             margin-bottom: 12px;
         }
 
-        .overlay-content span:last-child {
-            font-weight: 700;
-            font-size: 16px;
+        .dashboard-overlay-text {
+            font-weight: 600;
+            color: var(--gold);
         }
 
         .dashboard-cta {
             padding: 20px 24px;
-            text-align: center;
-            border-top: 1px solid var(--border-subtle);
         }
 
         .dashboard-cta .btn {
             width: 100%;
-            justify-content: center;
         }
 
-        /* Testimonials */
+        /* ============================================
+           TESTIMONIALS
+        ============================================ */
         .testimonials-section {
-            padding: 100px 0;
+            padding: var(--section-padding) 0;
+            background: var(--bg-secondary);
         }
 
         .testimonials-grid {
@@ -900,45 +893,21 @@
         }
 
         .testimonial-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
             padding: 32px;
-            transition: all 0.3s var(--ease-out-expo);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .testimonial-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .testimonial-card:hover {
             border-color: var(--border-gold);
-            transform: translateY(-4px);
-        }
-
-        .testimonial-card:hover::before {
-            opacity: 0.6;
         }
 
         .testimonial-stars {
-            display: flex;
-            gap: 4px;
-            margin-bottom: 16px;
-        }
-
-        .testimonial-stars span {
-            color: var(--gold-primary);
+            color: var(--gold);
             font-size: 18px;
+            margin-bottom: 16px;
         }
 
         .testimonial-text {
@@ -958,79 +927,53 @@
         .testimonial-avatar {
             width: 44px;
             height: 44px;
+            background: var(--gold);
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 16px;
             color: var(--bg-primary);
-        }
-
-        .testimonial-info {
-            flex: 1;
         }
 
         .testimonial-name {
             font-weight: 600;
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .testimonial-role {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
         }
 
         .testimonial-verified {
+            margin-left: auto;
             padding: 4px 10px;
-            background: rgba(74, 222, 128, 0.15);
-            border: 1px solid rgba(74, 222, 128, 0.3);
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
             border-radius: 20px;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 600;
             color: var(--positive);
             text-transform: uppercase;
         }
 
-        /* Pricing */
+        /* ============================================
+           PRICING SECTION
+        ============================================ */
         .pricing-section {
-            padding: 100px 0;
-            background: var(--bg-secondary);
-            position: relative;
-        }
-
-        .pricing-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
-            opacity: 0.3;
+            padding: var(--section-padding) 0;
         }
 
         .pricing-card {
             max-width: 520px;
             margin: 0 auto;
-            background: var(--glass-bg);
+            background: var(--bg-secondary);
             border: 2px solid var(--border-gold);
-            border-radius: 32px;
+            border-radius: 24px;
             padding: 48px;
             position: relative;
             overflow: hidden;
-            text-align: center;
-        }
-
-        .pricing-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--gold-dark), var(--gold-primary), var(--gold-light), var(--gold-primary), var(--gold-dark));
         }
 
         .pricing-badge {
@@ -1038,7 +981,7 @@
             top: 24px;
             right: 24px;
             padding: 6px 14px;
-            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+            background: var(--gold);
             border-radius: 20px;
             font-size: 11px;
             font-weight: 700;
@@ -1046,11 +989,16 @@
             text-transform: uppercase;
         }
 
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
         .pricing-title {
             font-family: var(--font-display);
             font-size: 28px;
-            color: var(--gold-primary);
-            margin-bottom: 8px;
+            color: var(--gold);
+            margin-bottom: 16px;
         }
 
         .pricing-price {
@@ -1058,7 +1006,7 @@
             align-items: baseline;
             justify-content: center;
             gap: 4px;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .pricing-currency {
@@ -1068,10 +1016,8 @@
 
         .pricing-amount {
             font-family: var(--font-display);
-            font-size: 72px;
+            font-size: 64px;
             font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1;
         }
 
         .pricing-period {
@@ -1086,12 +1032,141 @@
             border: 1px solid var(--border-gold);
             border-radius: 20px;
             font-size: 13px;
-            color: var(--gold-primary);
-            margin-bottom: 32px;
+            color: var(--gold);
         }
 
+        /* Referral System */
+        .referral-box {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 16px;
+            padding: 24px;
+            margin: 32px 0;
+            color: var(--bg-primary);
+        }
+
+        .referral-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .referral-subtitle {
+            font-size: 13px;
+            margin-bottom: 16px;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        .referral-input-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .referral-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid rgba(0,0,0,0.2);
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            background: #fff;
+            color: var(--bg-primary);
+        }
+
+        .referral-input:focus {
+            outline: none;
+            border-color: var(--bg-primary);
+        }
+
+        .referral-btn {
+            padding: 12px 20px;
+            background: var(--bg-primary);
+            color: var(--gold);
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .referral-btn:hover {
+            background: #222;
+        }
+
+        .referral-status {
+            margin-top: 12px;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: center;
+            display: none;
+        }
+
+        .referral-status.success {
+            display: block;
+            background: rgba(34, 197, 94, 0.2);
+            color: #166534;
+        }
+
+        .referral-status.error {
+            display: block;
+            background: rgba(239, 68, 68, 0.2);
+            color: #991b1b;
+        }
+
+        .generated-code {
+            display: none;
+            margin-top: 16px;
+            padding: 16px;
+            background: var(--bg-primary);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .generated-code.show {
+            display: block;
+        }
+
+        .generated-code-value {
+            font-family: monospace;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 8px 0;
+        }
+
+        .copy-btn {
+            padding: 8px 16px;
+            background: var(--gold);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        .discount-info {
+            display: none;
+            margin-top: 16px;
+            padding: 12px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 8px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .discount-info.show {
+            display: block;
+        }
+
+        /* Pricing Features */
         .pricing-features {
-            text-align: left;
             margin-bottom: 32px;
         }
 
@@ -1099,28 +1174,28 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border-subtle);
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
         }
 
         .pricing-feature:last-child {
             border-bottom: none;
         }
 
-        .pricing-feature-icon {
-            width: 24px;
-            height: 24px;
-            background: rgba(74, 222, 128, 0.15);
+        .pricing-check {
+            width: 22px;
+            height: 22px;
+            background: rgba(34, 197, 94, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--positive);
-            font-size: 14px;
+            font-size: 12px;
         }
 
         .pricing-feature-text {
-            font-size: 15px;
+            font-size: 14px;
             color: var(--text-secondary);
         }
 
@@ -1131,21 +1206,25 @@
         }
 
         .pricing-guarantee {
-            margin-top: 20px;
+            text-align: center;
+            margin-top: 16px;
             font-size: 13px;
             color: var(--text-muted);
         }
 
-        /* CTA Section */
+        /* ============================================
+           CTA SECTION
+        ============================================ */
         .cta-section {
-            padding: 100px 0;
+            padding: var(--section-padding) 0;
+            background: var(--bg-secondary);
         }
 
         .cta-card {
-            background: var(--glass-bg);
+            background: var(--bg-tertiary);
             border: 1px solid var(--border-gold);
-            border-radius: 32px;
-            padding: 80px 60px;
+            border-radius: 24px;
+            padding: 80px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -1160,21 +1239,17 @@
             width: 600px;
             height: 600px;
             background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
-            opacity: 0.3;
             pointer-events: none;
         }
 
         .cta-content {
             position: relative;
             z-index: 1;
-            max-width: 600px;
-            margin: 0 auto;
         }
 
         .cta-title {
             font-family: var(--font-display);
-            font-size: 42px;
-            font-weight: 600;
+            font-size: clamp(32px, 4vw, 44px);
             margin-bottom: 16px;
         }
 
@@ -1182,6 +1257,9 @@
             font-size: 18px;
             color: var(--text-secondary);
             margin-bottom: 32px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-buttons {
@@ -1190,10 +1268,11 @@
             justify-content: center;
         }
 
-        /* Social Section */
+        /* ============================================
+           SOCIAL SECTION
+        ============================================ */
         .social-section {
             padding: 80px 0;
-            border-top: 1px solid var(--border-subtle);
         }
 
         .social-grid {
@@ -1203,14 +1282,14 @@
         }
 
         .social-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 32px 24px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
             text-align: center;
-            transition: all 0.3s var(--ease-out-expo);
             text-decoration: none;
             color: inherit;
+            transition: all 0.3s ease;
         }
 
         .social-card:hover {
@@ -1222,7 +1301,7 @@
             width: 56px;
             height: 56px;
             margin: 0 auto 16px;
-            border-radius: 16px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1231,12 +1310,11 @@
 
         .social-icon.telegram { background: linear-gradient(135deg, #0088cc, #00aaff); }
         .social-icon.discord { background: linear-gradient(135deg, #5865F2, #7289da); }
-        .social-icon.twitter { background: linear-gradient(135deg, #1a1a1a, #333); }
-        .social-icon.instagram { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .social-icon.twitter { background: #000; }
+        .social-icon.instagram { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743); }
 
         .social-name {
             font-weight: 600;
-            font-size: 16px;
             margin-bottom: 4px;
         }
 
@@ -1245,43 +1323,34 @@
             color: var(--text-muted);
         }
 
-        /* Footer */
+        /* ============================================
+           FOOTER
+        ============================================ */
         footer {
             padding: 60px 0 30px;
-            border-top: 1px solid var(--border-subtle);
+            border-top: 1px solid var(--border);
         }
 
-        .footer-main {
+        .footer-grid {
             display: grid;
             grid-template-columns: 1.5fr repeat(3, 1fr);
             gap: 60px;
             margin-bottom: 60px;
         }
 
-        .footer-brand {
-            max-width: 300px;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-            text-decoration: none;
-        }
-
-        .footer-desc {
+        .footer-brand-desc {
             font-size: 14px;
             color: var(--text-secondary);
             line-height: 1.7;
+            margin-top: 20px;
         }
 
         .footer-column h4 {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
-            color: var(--gold-primary);
             text-transform: uppercase;
             letter-spacing: 1.5px;
+            color: var(--gold);
             margin-bottom: 20px;
         }
 
@@ -1297,24 +1366,23 @@
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 14px;
-            transition: color 0.2s ease;
+            transition: color 0.2s;
         }
 
         .footer-column a:hover {
-            color: var(--gold-primary);
+            color: var(--gold);
         }
 
         .footer-bottom {
             display: flex;
-            align-items: center;
-            justify-content: center;
             flex-direction: column;
+            align-items: center;
             gap: 16px;
             padding-top: 30px;
-            border-top: 1px solid var(--border-subtle);
+            border-top: 1px solid var(--border);
         }
 
-        .footer-brand-center {
+        .footer-logo-center {
             display: flex;
             align-items: center;
             gap: 16px;
@@ -1323,13 +1391,13 @@
         .footer-line {
             width: 60px;
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
 
         .footer-logo-text {
             font-family: var(--font-display);
             font-size: 20px;
-            color: var(--gold-primary);
+            color: var(--gold);
         }
 
         .footer-copyright {
@@ -1345,373 +1413,29 @@
             font-style: italic;
         }
 
-        /* VIP Features Showcase */
-        .vip-features-section {
-            padding: 100px 0;
-            background: var(--bg-secondary);
-            position: relative;
-        }
-
-        .vip-features-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
-            opacity: 0.3;
-        }
-
-        .features-showcase {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .showcase-main {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* iPhone Mockup */
-        .showcase-phone {
-            position: relative;
-            height: 600px;
-            width: 280px;
-            padding: 0 0.5px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #1a1a1a;
-            border: 0.5px solid #2a2a2a;
-            border-radius: 45px;
-            box-shadow: 
-                inset 0 0 2px 0 rgba(0, 0, 0, 0.3),
-                0 0 0 0.5px #444,
-                0 0 30px 0px rgba(0, 0, 0, 0.7),
-                0 0 50px 0px rgba(0, 0, 0, 0.3);
-        }
-
-        .iphone-buttons {
-            position: absolute;
-        }
-
-        .silent, .vol-up, .vol-down, .sleep {
-            background: #2a2a2a;
-            position: absolute;
-            border-radius: 1px 0 0 1px;
-        }
-
-        .silent {
-            height: 28px;
-            width: 2px;
-            top: 80px;
-            left: -3px;
-        }
-
-        .vol-up, .vol-down {
-            left: -3px;
-            height: 42px;
-            width: 2px;
-        }
-
-        .vol-up { top: 130px; }
-        .vol-down { top: 190px; }
-
-        .sleep {
-            left: auto;
-            right: -3px;
-            top: 140px;
-            height: 65px;
-            width: 2px;
-            border-radius: 0 1px 1px 0;
-        }
-
-        .iphone-top {
-            position: absolute;
-            top: 2px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            z-index: 4;
-        }
-
-        .black-bar {
-            position: absolute;
-            height: 1px;
-            width: 60%;
-            padding-top: 1px;
-            background: #1a1a1a;
-        }
-
-        .notch {
-            position: relative;
-            height: 28px;
-            width: 45%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 0 0 14px 14px;
-            background: #1a1a1a;
-            z-index: 2;
-        }
-
-        .iphone-components {
-            position: absolute;
-            top: 14px;
-            padding-left: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-        }
-
-        .speaker {
-            height: 3px;
-            width: 45px;
-            margin: 0 18px;
-            border-radius: 3px;
-            border-bottom: 1px solid #333;
-            background: #222;
-        }
-
-        .camera {
-            height: 11px;
-            width: 11px;
-            border-radius: 50%;
-            border-bottom: 1px solid #444;
-            background: radial-gradient(black, #333);
-            opacity: 0.8;
-            position: relative;
-        }
-
-        .camera::before {
-            content: "";
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            height: 5px;
-            width: 5px;
-            border-left: 1.5px solid dodgerblue;
-            border-radius: 50%;
-            filter: blur(0.8px);
-        }
-
-        .phone-screen {
-            position: absolute;
-            height: calc(100% - 1px);
-            width: calc(100% - 1px);
-            margin: 0 auto;
-            border: 0.25px solid rgba(0, 0, 0, 0.5);
-            border-radius: 42px;
-            overflow: hidden;
-            background: transparent;
-        }
-
-        /* Carousel */
-        .image-carousel {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-            border-radius: 40px;
-        }
-
-        .carousel-container {
-            display: flex;
-            transition: transform 0.5s ease;
-            width: 500%;
-            height: 100%;
-        }
-
-        .signal-screenshot {
-            width: 20%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            flex-shrink: 0;
-            background: #0a0a0a;
-        }
-
-        .carousel-nav {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 24px;
-        }
-
-        .nav-btn {
-            width: 45px;
-            height: 45px;
-            border: none;
-            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
-            color: var(--bg-primary);
-            border-radius: 50%;
-            font-size: 24px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px var(--gold-glow);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .nav-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px var(--gold-glow);
-        }
-
-        .carousel-dots {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .dot:hover {
-            background: rgba(212, 168, 83, 0.7);
-            transform: scale(1.2);
-        }
-
-        .dot.active {
-            background: var(--gold-primary);
-            border: 2px solid #fff;
-            transform: scale(1.3);
-            box-shadow: 0 0 10px var(--gold-glow);
-        }
-
-        /* Showcase Features List */
-        .showcase-features {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .showcase-feature {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            padding: 20px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            transition: all 0.3s var(--ease-out-expo);
-        }
-
-        .showcase-feature:hover {
-            border-color: var(--border-gold);
-            background: rgba(212, 168, 83, 0.05);
-        }
-
-        .feature-icon-box {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            flex-shrink: 0;
-        }
-
-        .feature-content h4 {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--gold-primary);
-            margin-bottom: 6px;
-        }
-
-        .feature-content p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s var(--ease-out-expo);
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .hero-split {
+        /* ============================================
+           RESPONSIVE
+        ============================================ */
+        @media (max-width: 1024px) {
+            .hero-globe-section,
+            .vip-grid,
+            .performance-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
-            
-            .hero-left {
-                text-align: center;
-            }
-            
-            .trust-text {
-                margin: 0 auto 20px;
-            }
-            
-            .performance-grid {
-                grid-template-columns: 1fr;
-            }
-            
+
             .features-grid,
             .testimonials-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
-            .trust-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
+
+            .trust-grid,
             .social-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
-            .footer-main {
+
+            .footer-grid {
                 grid-template-columns: 1fr 1fr;
-            }
-
-            .features-showcase {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .showcase-main {
-                order: 1;
-            }
-
-            .showcase-features {
-                order: 2;
             }
         }
 
@@ -1719,91 +1443,59 @@
             nav {
                 display: none;
             }
-            
-            .hero-title {
-                font-size: 32px;
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
             }
-            
+
             .features-grid,
             .testimonials-grid,
             .trust-grid,
             .social-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .footer-main {
+
+            .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
-            
-            .section-title {
-                font-size: 32px;
-            }
-            
-            .pricing-card {
-                padding: 32px 24px;
-            }
-            
-            .pricing-amount {
-                font-size: 56px;
-            }
-            
+
             .cta-card {
                 padding: 48px 24px;
             }
-            
+
             .cta-buttons {
                 flex-direction: column;
             }
-            
-            .corner-ornament {
-                display: none;
+
+            .pricing-card {
+                padding: 32px 24px;
             }
-            
-            .perf-stats {
+
+            .phone-mockup {
+                transform: scale(0.9);
+            }
+
+            .stats-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .globe-shell {
-                width: min(350px, 90vw);
-            }
-
-            .showcase-phone {
-                transform: scale(0.85);
-                height: 520px;
-                width: 240px;
-            }
-
-            .nav-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
-            }
-
-            .dot {
-                width: 10px;
-                height: 10px;
             }
         }
 
         /* Loading Screen */
         .loader {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             background: var(--bg-primary);
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.6s ease;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
         }
 
         .loader.hidden {
             opacity: 0;
-            visibility: hidden;
             pointer-events: none;
         }
 
@@ -1814,19 +1506,17 @@
         .loader-logo {
             font-family: var(--font-display);
             font-size: 48px;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
             margin-bottom: 24px;
         }
 
         .loader-spinner {
-            width: 48px;
-            height: 48px;
-            border: 3px solid var(--glass-border);
-            border-top-color: var(--gold-primary);
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border);
+            border-top-color: var(--gold);
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 0 auto;
@@ -1846,20 +1536,8 @@
         </div>
     </div>
 
-    <!-- Luxury Background -->
-    <div class="luxury-bg"></div>
-    
-    <!-- Particles -->
-    <div class="particles" id="particles"></div>
-    
-    <!-- Corner Ornaments -->
-    <div class="corner-ornament top-left"></div>
-    <div class="corner-ornament top-right"></div>
-    <div class="corner-ornament bottom-left"></div>
-    <div class="corner-ornament bottom-right"></div>
-
     <!-- Price Ticker -->
-    <div class="ticker-bar">
+    <div class="ticker-wrapper">
         <div class="ticker-track" id="tickerTrack"></div>
     </div>
 
@@ -1869,242 +1547,205 @@
             <div class="header-inner">
                 <a href="#" class="logo">
                     <div class="logo-icon">LQ</div>
-                    <div class="logo-text">
-                        <span class="logo-main">LuxQuant</span>
-                        <span class="logo-sub">VIP Trading</span>
-                    </div>
+                    <span class="logo-text">LuxQuant</span>
                 </a>
 
                 <nav>
-                    <a href="#home">Home</a>
                     <a href="#features">Features</a>
                     <a href="#performance">Performance</a>
-                    <a href="#reviews">Reviews</a>
+                    <a href="#testimonials">Reviews</a>
                     <a href="#pricing">Pricing</a>
                 </nav>
 
                 <div class="header-cta">
-                    <a href="#pricing" class="btn btn-primary">Subscribe Now</a>
+                    <a href="#pricing" class="btn btn-primary">Get Access</a>
                 </div>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-bg"></div>
             <div class="container">
-                <div style="text-align: center;">
+                <div class="hero-content">
                     <div class="hero-badge">
-                        <span>24/7 Automated Signals</span>
+                        <span class="dot"></span>
+                        <span>24/7 Automated Signals Active</span>
                     </div>
-                    
+
                     <h1 class="hero-title">
-                        Tools for Automated Crypto<br>
-                        <span class="highlight">Trading Setup 24/7</span>
+                        Premium AI-Powered<br>
+                        <span class="highlight">Crypto Trading Signals</span>
                     </h1>
-                    
+
                     <p class="hero-description">
-                        Help traders identify market opportunities real-time without having to monitor charts continuously. With <span class="highlight-stat">Historical Accuracy of 86.5%</span> (As Today) since <span class="highlight-stat">2023</span>
+                        Help traders identify market opportunities in real-time without monitoring charts continuously. Automated, objective, and data-driven.
                     </p>
-                </div>
 
-                <!-- Hero Split: Left Text + Right Globe -->
-                <div class="hero-split">
-                    <div class="hero-left">
-                        <h2 class="trust-text" id="animatedText">
-                            Trusted by Users <span class="grad">Worldwide</span><span class="typewriter-cursor">|</span>
-                        </h2>
-                    </div>
-
-                    <div class="hero-right">
-                        <div class="globe-shell">
-                            <div id="globe"></div>
-                        </div>
+                    <div class="hero-cta">
+                        <a href="#pricing" class="btn btn-primary btn-large">Start Trading Now</a>
+                        <a href="#features" class="btn btn-secondary btn-large">Learn More</a>
                     </div>
                 </div>
 
-                <!-- Marketing Banner -->
-                <div class="hero-marketing">
-                    <p class="marketing-text">
-                        <strong>Optimize Your Trading Today! 🚀</strong> Get direct access to 24-hour automated tools that provide crypto market setup detection, complete with real-time updates from the LuxQuant system.
-                    </p>
+                <!-- Globe Section -->
+                <div class="hero-globe-section">
+                    <div class="hero-text-content">
+                        <h2 id="animatedText">Trusted by Traders <span class="grad">Worldwide</span><span class="typewriter-cursor">|</span></h2>
+                        <p style="color: var(--text-secondary); margin-top: 16px;">Our signals reach traders across the globe, from Asia to Americas, Europe to Africa. Join our growing community of profitable traders.</p>
+                    </div>
+                    <div class="globe-container">
+                        <div id="globe"></div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Trust Stats -->
+        <!-- Trust Section -->
         <section class="trust-section">
             <div class="container">
                 <div class="trust-header">
                     <p class="trust-label">LuxQuant Advantages</p>
                     <h2 class="trust-title">Why Traders Choose Us</h2>
                 </div>
-                
+
                 <div class="trust-grid">
-                    <div class="trust-card animate-on-scroll">
-                        <div class="trust-icon">⏱️</div>
-                        <div class="trust-value">Save Time</div>
-                        <div class="trust-desc">Trade objectively without spending hours analyzing charts manually</div>
+                    <div class="trust-card">
+                        <div class="trust-card-icon">⏱️</div>
+                        <div class="trust-card-value">Save Time</div>
+                        <div class="trust-card-desc">Trade objectively without spending hours analyzing charts manually</div>
                     </div>
-                    <div class="trust-card animate-on-scroll">
-                        <div class="trust-icon">🎯</div>
-                        <div class="trust-value">Adaptive</div>
-                        <div class="trust-desc">Algorithm adjusts targets & risk levels based on market conditions</div>
+                    <div class="trust-card">
+                        <div class="trust-card-icon">🎯</div>
+                        <div class="trust-card-value">Adaptive</div>
+                        <div class="trust-card-desc">Algorithm adjusts targets & risk levels based on market conditions</div>
                     </div>
-                    <div class="trust-card animate-on-scroll">
-                        <div class="trust-icon">🌍</div>
-                        <div class="trust-value">Global</div>
-                        <div class="trust-desc">Serving traders worldwide with reliable signals across all timezones</div>
+                    <div class="trust-card">
+                        <div class="trust-card-icon">🌍</div>
+                        <div class="trust-card-value">Global</div>
+                        <div class="trust-card-desc">Serving traders worldwide with reliable signals across all timezones</div>
                     </div>
-                    <div class="trust-card animate-on-scroll">
-                        <div class="trust-icon">⚡</div>
-                        <div class="trust-value">24/7</div>
-                        <div class="trust-desc">Non-stop market monitoring so you never miss an opportunity</div>
+                    <div class="trust-card">
+                        <div class="trust-card-icon">⚡</div>
+                        <div class="trust-card-value">24/7</div>
+                        <div class="trust-card-desc">Non-stop market monitoring so you never miss an opportunity</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Features Section -->
+        <!-- Features -->
         <section id="features" class="features-section">
             <div class="container">
                 <div class="section-header">
-                    <p class="section-label">Why Choose LuxQuant</p>
-                    <h2 class="section-title">Advanced Crypto Trading Technology</h2>
-                    <p class="section-desc">Everything you need to respond to volatile crypto markets in real-time with precision and confidence.</p>
+                    <p class="section-label">Platform Features</p>
+                    <h2 class="section-title">Advanced Trading Technology</h2>
+                    <p class="section-desc">Everything you need to respond to volatile crypto markets in real-time.</p>
                 </div>
-                
+
                 <div class="features-grid">
-                    <div class="feature-card animate-on-scroll">
+                    <div class="feature-card">
                         <div class="feature-icon">🎯</div>
                         <h3 class="feature-title">Precision Signals</h3>
-                        <p class="feature-desc">Automated system detects optimal entry and exit price zones based on real-time market data and advanced technical analysis.</p>
+                        <p class="feature-desc">Automated system detects optimal entry and exit zones based on real-time market data.</p>
                     </div>
-                    
-                    <div class="feature-card animate-on-scroll">
+                    <div class="feature-card">
                         <div class="feature-icon">⚡</div>
                         <h3 class="feature-title">Real-Time Alerts</h3>
-                        <p class="feature-desc">Instant notifications via Telegram when the system detects important price zones and market movements.</p>
+                        <p class="feature-desc">Instant notifications via Telegram when the system detects important price zones.</p>
                     </div>
-                    
-                    <div class="feature-card animate-on-scroll">
+                    <div class="feature-card">
                         <div class="feature-icon">📊</div>
                         <h3 class="feature-title">Advanced Analytics</h3>
-                        <p class="feature-desc">Output includes volume ranking monitoring and risk level indicators automatically processed by our AI system.</p>
+                        <p class="feature-desc">Volume ranking monitoring and risk level indicators processed automatically.</p>
                     </div>
-                    
-                    <div class="feature-card animate-on-scroll">
+                    <div class="feature-card">
                         <div class="feature-icon">🛡️</div>
                         <h3 class="feature-title">Risk Management</h3>
-                        <p class="feature-desc">Every signal includes risk point estimation with stop-loss levels to protect your capital and manage exposure.</p>
+                        <p class="feature-desc">Every signal includes stop-loss levels to protect your capital.</p>
                     </div>
-                    
-                    <div class="feature-card animate-on-scroll">
+                    <div class="feature-card">
                         <div class="feature-icon">📜</div>
-                        <h3 class="feature-title">Proven Track Record</h3>
-                        <p class="feature-desc">Transparent historical performance tracking. No future results promised—just verifiable data you can audit.</p>
+                        <h3 class="feature-title">Track Record</h3>
+                        <p class="feature-desc">Transparent historical performance tracking—no false promises.</p>
                     </div>
-                    
-                    <div class="feature-card animate-on-scroll">
+                    <div class="feature-card">
                         <div class="feature-icon">🤖</div>
                         <h3 class="feature-title">24/7 Automation</h3>
-                        <p class="feature-desc">Full automatic market monitoring that processes data and provides systematic output continuously around the clock.</p>
+                        <p class="feature-desc">Full automatic monitoring that never sleeps, never misses.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- VIP Features with iPhone Mockup -->
-        <section class="vip-features-section">
+        <!-- VIP Features with Phone -->
+        <section class="vip-section">
             <div class="container">
                 <div class="section-header">
-                    <p class="section-label">VIP Features</p>
+                    <p class="section-label">VIP Access</p>
                     <h2 class="section-title">See LuxQuant in Action</h2>
-                    <p class="section-desc">Real screenshots from our Telegram VIP channels showing actual signals and features</p>
+                    <p class="section-desc">Real screenshots from our Telegram VIP channels</p>
                 </div>
 
-                <div class="features-showcase">
-                    <div class="showcase-main">
-                        <!-- iPhone Mockup -->
-                        <div class="showcase-phone">
-                            <!-- iPhone Buttons -->
-                            <div class="iphone-buttons">
-                                <div class="silent"></div>
-                                <div class="vol-up"></div>
-                                <div class="vol-down"></div>
-                                <div class="sleep"></div>
+                <div class="vip-grid">
+                    <div class="phone-wrapper">
+                        <div class="phone-mockup">
+                            <div class="phone-notch">
+                                <div class="phone-speaker"></div>
+                                <div class="phone-camera"></div>
                             </div>
-
-                            <!-- iPhone Top -->
-                            <div class="iphone-top">
-                                <div class="black-bar"></div>
-                                <div class="notch">
-                                    <div class="iphone-components">
-                                        <div class="speaker"></div>
-                                        <div class="camera"></div>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="phone-screen">
-                                <!-- Image Carousel -->
-                                <div class="image-carousel">
-                                    <div class="carousel-container" id="carouselContainer">
-                                        <img src="fiturlq1.png" alt="LuxQuant Telegram Channels" class="signal-screenshot" />
-                                        <img src="fiturlq2.png" alt="LuxQuant Signal Details" class="signal-screenshot" />
-                                        <img src="fiturlq3.png" alt="LuxQuant Trading Results" class="signal-screenshot" />
-                                        <img src="fiturlq4.png" alt="LuxQuant Market Analysis" class="signal-screenshot" />
-                                        <img src="fiturlq5.png" alt="LuxQuant AI Consultant" class="signal-screenshot" />
-                                    </div>
+                                <div class="carousel-container" id="carouselContainer">
+                                    <div class="carousel-slide"><img src="fiturlq1.png" alt="LuxQuant Feature 1"></div>
+                                    <div class="carousel-slide"><img src="fiturlq2.png" alt="LuxQuant Feature 2"></div>
+                                    <div class="carousel-slide"><img src="fiturlq3.png" alt="LuxQuant Feature 3"></div>
+                                    <div class="carousel-slide"><img src="fiturlq4.png" alt="LuxQuant Feature 4"></div>
+                                    <div class="carousel-slide"><img src="fiturlq5.png" alt="LuxQuant Feature 5"></div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Carousel Navigation -->
                         <div class="carousel-nav">
-                            <button class="nav-btn prev-btn" id="prevBtn">‹</button>
+                            <button class="carousel-btn" id="prevBtn">‹</button>
                             <div class="carousel-dots" id="carouselDots">
-                                <span class="dot active" data-slide="0"></span>
-                                <span class="dot" data-slide="1"></span>
-                                <span class="dot" data-slide="2"></span>
-                                <span class="dot" data-slide="3"></span>
-                                <span class="dot" data-slide="4"></span>
+                                <span class="carousel-dot active" data-slide="0"></span>
+                                <span class="carousel-dot" data-slide="1"></span>
+                                <span class="carousel-dot" data-slide="2"></span>
+                                <span class="carousel-dot" data-slide="3"></span>
+                                <span class="carousel-dot" data-slide="4"></span>
                             </div>
-                            <button class="nav-btn next-btn" id="nextBtn">›</button>
+                            <button class="carousel-btn" id="nextBtn">›</button>
                         </div>
                     </div>
 
-                    <div class="showcase-features">
-                        <div class="showcase-feature">
-                            <div class="feature-icon-box"><span>🎯</span></div>
-                            <div class="feature-content">
+                    <div class="vip-features-list">
+                        <div class="vip-feature-item">
+                            <div class="vip-feature-icon">🎯</div>
+                            <div class="vip-feature-content">
                                 <h4>AI-Powered Analysis</h4>
-                                <p>Automated algorithms analyze market patterns 24/7 to detect potential price movements based on real-time data.</p>
+                                <p>Automated algorithms analyze market patterns 24/7 to detect potential price movements.</p>
                             </div>
                         </div>
-
-                        <div class="showcase-feature">
-                            <div class="feature-icon-box"><span>⚡</span></div>
-                            <div class="feature-content">
+                        <div class="vip-feature-item">
+                            <div class="vip-feature-icon">⚡</div>
+                            <div class="vip-feature-content">
                                 <h4>Instant Notifications</h4>
-                                <p>Real-time notifications directly to your Telegram when the system detects important price zones.</p>
+                                <p>Real-time notifications directly to your Telegram when important zones are detected.</p>
                             </div>
                         </div>
-
-                        <div class="showcase-feature">
-                            <div class="feature-icon-box"><span>📊</span></div>
-                            <div class="feature-content">
+                        <div class="vip-feature-item">
+                            <div class="vip-feature-icon">📊</div>
+                            <div class="vip-feature-content">
                                 <h4>Complete Trade Setup</h4>
-                                <p>Every signal includes entry, targets (TP1-TP4), stop-loss, and risk level assessment.</p>
+                                <p>Every signal includes entry, targets (TP1-TP4), stop-loss, and risk assessment.</p>
                             </div>
                         </div>
-
-                        <div class="showcase-feature">
-                            <div class="feature-icon-box"><span>💎</span></div>
-                            <div class="feature-content">
+                        <div class="vip-feature-item">
+                            <div class="vip-feature-icon">💎</div>
+                            <div class="vip-feature-content">
                                 <h4>VIP Support & AI Consultant</h4>
-                                <p>24/7 VIP support team plus AI consultant for market insights and trading questions.</p>
+                                <p>24/7 VIP support team plus AI consultant for market insights and questions.</p>
                             </div>
                         </div>
                     </div>
@@ -2112,55 +1753,51 @@
             </div>
         </section>
 
-        <!-- Performance Section -->
+        <!-- Performance -->
         <section id="performance" class="performance-section">
             <div class="container">
                 <div class="performance-grid">
-                    <div class="performance-content animate-on-scroll">
-                        <p class="section-label">Daily Updated Performance</p>
-                        <h2>Trade Smarter with <span style="color: var(--gold-primary)">LuxQuant</span></h2>
+                    <div class="performance-content">
+                        <p class="section-label">Daily Updated</p>
+                        <h2>Trade Smarter with <span style="color: var(--gold)">LuxQuant</span></h2>
                         <p>Our AI-powered system analyzes market patterns 24/7 to detect potential price movements. See real performance data updated daily with complete transparency.</p>
-                        
-                        <div class="perf-stats">
-                            <div class="perf-stat">
-                                <div class="perf-stat-value gold">86.54%</div>
-                                <div class="perf-stat-label">Overall Win Rate</div>
+
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-value gold">86.54%</div>
+                                <div class="stat-label">Overall Win Rate</div>
                             </div>
-                            <div class="perf-stat">
-                                <div class="perf-stat-value green">97.02%</div>
-                                <div class="perf-stat-label">Completion Rate</div>
+                            <div class="stat-card">
+                                <div class="stat-value green">97.02%</div>
+                                <div class="stat-label">Completion Rate</div>
                             </div>
-                            <div class="perf-stat">
-                                <div class="perf-stat-value gold">4.48</div>
-                                <div class="perf-stat-label">Avg Risk:Reward</div>
+                            <div class="stat-card">
+                                <div class="stat-value gold">4.48</div>
+                                <div class="stat-label">Avg Risk:Reward</div>
                             </div>
-                            <div class="perf-stat">
-                                <div class="perf-stat-value green">+18.35%</div>
-                                <div class="perf-stat-label">Avg TP4 Gain</div>
+                            <div class="stat-card">
+                                <div class="stat-value green">+18.35%</div>
+                                <div class="stat-label">Avg TP4 Gain</div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="dashboard-embed animate-on-scroll">
+
+                    <div class="dashboard-preview">
                         <div class="dashboard-header">
-                            <span class="dashboard-title">LuxQuant Dashboard Performance</span>
+                            <span class="dashboard-title">LuxQuant Dashboard</span>
                             <span class="dashboard-live">LIVE</span>
                         </div>
-                        
-                        <a href="https://luxquantlivedata.streamlit.app/" target="_blank" rel="noopener" class="dashboard-image-wrapper">
-                            <img src="https://raw.githubusercontent.com/luxquant/assets/main/dashboard-preview.png" alt="LuxQuant Performance Dashboard" class="dashboard-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22450%22 viewBox=%220 0 800 450%22%3E%3Crect fill=%22%23140a0c%22 width=%22800%22 height=%22450%22/%3E%3Ctext x=%22400%22 y=%22200%22 fill=%22%23d4a853%22 font-family=%22sans-serif%22 font-size=%2224%22 text-anchor=%22middle%22%3ELuxQuant Dashboard%3C/text%3E%3Ctext x=%22400%22 y=%22240%22 fill=%22%23b8a89a%22 font-family=%22sans-serif%22 font-size=%2216%22 text-anchor=%22middle%22%3EClick to Open Live Platform%3C/text%3E%3C/svg%3E'">
+                        <a href="https://luxquantlivedata.streamlit.app/" target="_blank" rel="noopener" class="dashboard-image-link">
+                            <img src="LuxQuant Performance Dashboard.png" alt="LuxQuant Dashboard" class="dashboard-image">
                             <div class="dashboard-overlay">
-                                <div class="overlay-content">
-                                    <span>🔗</span>
-                                    <span>Click to Open Live Platform</span>
-                                </div>
+                                <span class="dashboard-overlay-icon">🔗</span>
+                                <span class="dashboard-overlay-text">Click to Open Live Platform</span>
                             </div>
                         </a>
-                        
                         <div class="dashboard-cta">
                             <a href="https://luxquantlivedata.streamlit.app/" target="_blank" rel="noopener" class="btn btn-primary">
-                                <span>Open Live Dashboard</span>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                Open Live Dashboard
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                             </a>
                         </div>
                     </div>
@@ -2169,55 +1806,47 @@
         </section>
 
         <!-- Testimonials -->
-        <section id="reviews" class="testimonials-section">
+        <section id="testimonials" class="testimonials-section">
             <div class="container">
                 <div class="section-header">
                     <p class="section-label">Success Stories</p>
-                    <h2 class="section-title">What Users Say About LuxQuant</h2>
-                    <p class="section-desc">Real stories from traders who trust our signals for consistent results.</p>
+                    <h2 class="section-title">What Users Say</h2>
+                    <p class="section-desc">Real feedback from traders using LuxQuant</p>
                 </div>
-                
+
                 <div class="testimonials-grid">
-                    <div class="testimonial-card animate-on-scroll">
-                        <div class="testimonial-stars">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                        </div>
-                        <p class="testimonial-text">"LuxQuant is excellent. First trial already proven. Besides updated predictions, we are also equipped with AI consultant for live consultation and knowledge about macro and economic data."</p>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"LuxQuant is excellent. First trial already proven. Besides updated predictions, we are also equipped with AI consultant for live consultation."</p>
                         <div class="testimonial-author">
                             <div class="testimonial-avatar">AG</div>
-                            <div class="testimonial-info">
-                                <span class="testimonial-name">Il**m A G</span>
-                                <span class="testimonial-role">Head of Car Repair Shop</span>
+                            <div>
+                                <div class="testimonial-name">Il**m A G</div>
+                                <div class="testimonial-role">Business Owner</div>
                             </div>
                             <span class="testimonial-verified">Verified</span>
                         </div>
                     </div>
-                    
-                    <div class="testimonial-card animate-on-scroll">
-                        <div class="testimonial-stars">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                        </div>
-                        <p class="testimonial-text">"Great, I can work while trading. Just check Telegram every 5 minutes then follow the signals, so I don't need to spend time looking for market potential myself with this LuxQuant."</p>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"Great, I can work while trading. Just check Telegram every 5 minutes then follow the signals. No more hours spent analyzing charts."</p>
                         <div class="testimonial-author">
-                            <div class="testimonial-avatar">SJ</div>
-                            <div class="testimonial-info">
-                                <span class="testimonial-name">Fab**a FMZ</span>
-                                <span class="testimonial-role">University Student</span>
+                            <div class="testimonial-avatar">FM</div>
+                            <div>
+                                <div class="testimonial-name">Fab**a FMZ</div>
+                                <div class="testimonial-role">University Student</div>
                             </div>
                             <span class="testimonial-verified">Verified</span>
                         </div>
                     </div>
-                    
-                    <div class="testimonial-card animate-on-scroll">
-                        <div class="testimonial-stars">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                        </div>
-                        <p class="testimonial-text">"Initially I was hesitant, but after trying it, I feel the LuxQuant system is quite consistent in presenting relevant data and equipped with clear risk settings."</p>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"Initially I was hesitant, but after trying it, the LuxQuant system is quite consistent in presenting relevant data with clear risk settings."</p>
                         <div class="testimonial-author">
-                            <div class="testimonial-avatar">MR</div>
-                            <div class="testimonial-info">
-                                <span class="testimonial-name">R**n*ld G</span>
-                                <span class="testimonial-role">Crypto Investor</span>
+                            <div class="testimonial-avatar">RG</div>
+                            <div>
+                                <div class="testimonial-name">R**n*ld G</div>
+                                <div class="testimonial-role">Crypto Investor</div>
                             </div>
                             <span class="testimonial-verified">Verified</span>
                         </div>
@@ -2230,94 +1859,115 @@
         <section id="pricing" class="pricing-section">
             <div class="container">
                 <div class="section-header">
-                    <p class="section-label">Membership Plans</p>
+                    <p class="section-label">Membership</p>
                     <h2 class="section-title">Choose Your Access Package</h2>
-                    <p class="section-desc">One-time payment for lifetime access to all LuxQuant features.</p>
+                    <p class="section-desc">One-time payment for lifetime access to all features</p>
                 </div>
-                
-                <div class="pricing-card animate-on-scroll">
+
+                <div class="pricing-card">
                     <span class="pricing-badge">Best Value</span>
-                    
-                    <h3 class="pricing-title">Lifetime Access</h3>
-                    
-                    <div class="pricing-price">
-                        <span class="pricing-currency">$</span>
-                        <span class="pricing-amount">400</span>
-                        <span class="pricing-period">/lifetime</span>
+
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Lifetime Access</h3>
+                        <div class="pricing-price">
+                            <span class="pricing-currency">$</span>
+                            <span class="pricing-amount" id="priceAmount">400</span>
+                            <span class="pricing-period">/lifetime</span>
+                        </div>
+                        <span class="pricing-note">One-time payment • USDT only</span>
                     </div>
-                    
-                    <span class="pricing-note">One-time payment • USDT only</span>
-                    
+
+                    <!-- Referral System -->
+                    <div class="referral-box">
+                        <div class="referral-title">🎁 Have KOL Referral Code?</div>
+                        <div class="referral-subtitle">Enter code to get 5% discount</div>
+                        <div class="referral-input-group">
+                            <input type="text" id="referralCode" class="referral-input" placeholder="Enter code..." maxlength="20">
+                            <button class="referral-btn" id="verifyBtn">Apply</button>
+                        </div>
+                        <div class="referral-status" id="referralStatus"></div>
+                        <div class="generated-code" id="generatedCode">
+                            <div style="font-size: 12px; color: var(--text-secondary);">🎉 Your Access Code:</div>
+                            <div class="generated-code-value" id="accessCodeDisplay"></div>
+                            <div style="font-size: 11px; color: var(--positive);">✅ 5% discount activated!</div>
+                            <button class="copy-btn" id="copyBtn">Copy Code</button>
+                        </div>
+                    </div>
+
+                    <div class="discount-info" id="discountInfo">
+                        <div>Regular: <span style="text-decoration: line-through;">$400</span></div>
+                        <div style="color: var(--positive); font-weight: 700;">Discounted: $380 (5% OFF)</div>
+                    </div>
+
                     <div class="pricing-features">
                         <div class="pricing-feature">
-                            <span class="pricing-feature-icon">✓</span>
+                            <span class="pricing-check">✓</span>
                             <span class="pricing-feature-text">Complete trade setup outputs</span>
                         </div>
                         <div class="pricing-feature">
-                            <span class="pricing-feature-icon">✓</span>
+                            <span class="pricing-check">✓</span>
                             <span class="pricing-feature-text">Real-time notifications via Telegram</span>
                         </div>
                         <div class="pricing-feature">
-                            <span class="pricing-feature-icon">✓</span>
-                            <span class="pricing-feature-text">Analysis equipped with volume ranking</span>
+                            <span class="pricing-check">✓</span>
+                            <span class="pricing-feature-text">Analysis with volume ranking</span>
                         </div>
                         <div class="pricing-feature">
-                            <span class="pricing-feature-icon">✓</span>
-                            <span class="pricing-feature-text">Risk info for user risk management</span>
+                            <span class="pricing-check">✓</span>
+                            <span class="pricing-feature-text">Risk info for risk management</span>
                         </div>
                         <div class="pricing-feature">
-                            <span class="pricing-feature-icon">✓</span>
+                            <span class="pricing-check">✓</span>
                             <span class="pricing-feature-text">24/7 VIP Support</span>
                         </div>
                         <div class="pricing-feature">
-                            <span class="pricing-feature-icon">✓</span>
-                            <span class="pricing-feature-text">Access to AI Consultant from LuxQuant Team</span>
+                            <span class="pricing-check">✓</span>
+                            <span class="pricing-feature-text">Access to AI Consultant</span>
                         </div>
                         <div class="pricing-feature">
-                            <span class="pricing-feature-icon">✓</span>
-                            <span class="pricing-feature-text">Access to advanced service development</span>
+                            <span class="pricing-check">✓</span>
+                            <span class="pricing-feature-text">Advanced service development access</span>
                         </div>
                     </div>
-                    
-                    <a href="https://t.me/luxquantadmin" target="_blank" class="btn btn-primary pricing-cta">Get Lifetime Access</a>
-                    
-                    <p class="pricing-guarantee">🎁 Have KOL referral code? Get 5% discount</p>
+
+                    <button class="btn btn-primary pricing-cta" id="accessBtn">
+                        <span id="btnText">Get Lifetime Access</span>
+                    </button>
+
+                    <p class="pricing-guarantee">💡 No referral code? Subscribe directly at regular price</p>
                 </div>
             </div>
         </section>
 
-        <!-- CTA Section -->
+        <!-- CTA -->
         <section class="cta-section">
             <div class="container">
                 <div class="cta-card">
                     <div class="cta-content">
-                        <h2 class="cta-title">Ready to Start Your <span class="highlight">Profitable</span> Trading Journey?</h2>
-                        <p class="cta-desc">Join thousands of successful traders who trust LuxQuant for consistent profits.</p>
+                        <h2 class="cta-title">Ready to Start Trading <span style="color: var(--gold)">Profitably</span>?</h2>
+                        <p class="cta-desc">Join traders worldwide who trust LuxQuant for consistent, data-driven results.</p>
                         <div class="cta-buttons">
-                            <a href="#pricing" class="btn btn-primary btn-large">
-                                Get Started Now
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </a>
-                            <a href="https://t.me/luxquantadmin" target="_blank" class="btn btn-ghost btn-large">Contact Support</a>
+                            <a href="#pricing" class="btn btn-primary btn-large">Get Started Now</a>
+                            <a href="https://t.me/luxquantadmin" target="_blank" class="btn btn-secondary btn-large">Contact Support</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Social Section -->
+        <!-- Social -->
         <section class="social-section">
             <div class="container">
                 <div class="section-header">
-                    <p class="section-label">Connect With Us</p>
-                    <h2 class="section-title" style="font-size: 32px;">Follow Us on Social Media</h2>
+                    <p class="section-label">Connect</p>
+                    <h2 class="section-title">Follow Us</h2>
                 </div>
-                
+
                 <div class="social-grid">
                     <a href="https://t.me/luxquantadmin" target="_blank" class="social-card">
                         <div class="social-icon telegram">✈️</div>
                         <div class="social-name">Telegram</div>
-                        <div class="social-handle">Join our community</div>
+                        <div class="social-handle">Join community</div>
                     </a>
                     <a href="#" class="social-card">
                         <div class="social-icon discord">💬</div>
@@ -2342,28 +1992,25 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-main">
+            <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="#" class="footer-logo">
+                    <a href="#" class="logo">
                         <div class="logo-icon" style="width: 40px; height: 40px; font-size: 16px;">LQ</div>
-                        <div class="logo-text">
-                            <span class="logo-main" style="font-size: 18px;">LuxQuant</span>
-                            <span class="logo-sub" style="font-size: 10px;">VIP Trading</span>
-                        </div>
+                        <span class="logo-text" style="font-size: 20px;">LuxQuant</span>
                     </a>
-                    <p class="footer-desc">Premium AI-powered crypto trading signals with proven results. Helping traders worldwide make smarter decisions since 2023.</p>
+                    <p class="footer-brand-desc">Premium AI-powered crypto trading signals with proven results. Helping traders worldwide since 2023.</p>
                 </div>
-                
+
                 <div class="footer-column">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="#features">Features</a></li>
                         <li><a href="#performance">Performance</a></li>
-                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
                         <li><a href="#pricing">Pricing</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-column">
                     <h4>Support</h4>
                     <ul>
@@ -2373,7 +2020,7 @@
                         <li><a href="#">Privacy Policy</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-column">
                     <h4>Community</h4>
                     <ul>
@@ -2384,9 +2031,9 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
-                <div class="footer-brand-center">
+                <div class="footer-logo-center">
                     <div class="footer-line"></div>
                     <span class="footer-logo-text">LuxQuant</span>
                     <div class="footer-line"></div>
@@ -2397,304 +2044,257 @@
         </div>
     </footer>
 
-    <!-- Three.js Libraries -->
+    <!-- Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://unpkg.com/three-globe@2.24.4/dist/three-globe.min.js"></script>
 
     <script>
-        // Hide loader
-        window.addEventListener('load', function() {
+        // ============================================
+        // LOADER
+        // ============================================
+        window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('loader').classList.add('hidden');
-            }, 1500);
+            }, 1200);
         });
 
-        // Generate particles
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 25; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 12 + 's';
-            particle.style.animationDuration = (8 + Math.random() * 8) + 's';
-            particlesContainer.appendChild(particle);
-        }
-
-        // Ticker
-        const tickerTrack = document.getElementById('tickerTrack');
+        // ============================================
+        // TICKER WITH CMC ICONS
+        // ============================================
         const cryptoData = [
-            { symbol: 'BTC', price: '104,892', change: '+2.34%', positive: true, color: '#f7931a' },
-            { symbol: 'ETH', price: '3,342', change: '+4.12%', positive: true, color: '#627eea' },
-            { symbol: 'BNB', price: '698', change: '-0.87%', positive: false, color: '#f3ba2f' },
-            { symbol: 'SOL', price: '258', change: '+6.45%', positive: true, color: '#9945ff' },
-            { symbol: 'XRP', price: '3.12', change: '+1.23%', positive: true, color: '#23292f' },
-            { symbol: 'ADA', price: '0.98', change: '-1.45%', positive: false, color: '#0033ad' },
-            { symbol: 'DOGE', price: '0.42', change: '+3.21%', positive: true, color: '#c2a633' },
-            { symbol: 'LINK', price: '28.45', change: '+2.87%', positive: true, color: '#2a5ada' },
+            { symbol: 'BTC', name: 'Bitcoin', cmcId: 1, price: 104892, change: 2.34 },
+            { symbol: 'ETH', name: 'Ethereum', cmcId: 1027, price: 3342, change: 4.12 },
+            { symbol: 'BNB', name: 'BNB', cmcId: 1839, price: 698, change: -0.87 },
+            { symbol: 'SOL', name: 'Solana', cmcId: 5426, price: 258, change: 6.45 },
+            { symbol: 'XRP', name: 'XRP', cmcId: 52, price: 3.12, change: 1.23 },
+            { symbol: 'ADA', name: 'Cardano', cmcId: 2010, price: 0.98, change: -1.45 },
+            { symbol: 'DOGE', name: 'Dogecoin', cmcId: 74, price: 0.42, change: 3.21 },
+            { symbol: 'LINK', name: 'Chainlink', cmcId: 1975, price: 28.45, change: 2.87 },
         ];
 
-        function createTickerItems() {
-            return cryptoData.map(crypto => `
+        function createTicker() {
+            const track = document.getElementById('tickerTrack');
+            const items = cryptoData.map(c => `
                 <div class="ticker-item">
-                    <div class="ticker-icon" style="background: ${crypto.color};">${crypto.symbol.charAt(0)}</div>
-                    <span class="ticker-symbol">${crypto.symbol}</span>
-                    <span class="ticker-price">$${crypto.price}</span>
-                    <span class="ticker-change ${crypto.positive ? 'positive' : 'negative'}">${crypto.change}</span>
+                    <img class="ticker-icon" src="https://s2.coinmarketcap.com/static/img/coins/64x64/${c.cmcId}.png" alt="${c.symbol}">
+                    <span class="ticker-symbol">${c.symbol}</span>
+                    <span class="ticker-price">$${c.price.toLocaleString()}</span>
+                    <span class="ticker-change ${c.change >= 0 ? 'positive' : 'negative'}">${c.change >= 0 ? '+' : ''}${c.change.toFixed(2)}%</span>
                 </div>
             `).join('');
+            track.innerHTML = items + items;
         }
+        createTicker();
 
-        tickerTrack.innerHTML = createTickerItems() + createTickerItems();
-
-        // Header scroll
+        // ============================================
+        // HEADER SCROLL
+        // ============================================
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
             header.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
+        // ============================================
+        // CAROUSEL
+        // ============================================
+        let currentSlide = 0;
+        const totalSlides = 5;
+        const container = document.getElementById('carouselContainer');
+        const dots = document.querySelectorAll('.carousel-dot');
 
-        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+        function updateCarousel() {
+            container.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+        }
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        });
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                currentSlide = i;
+                updateCarousel();
             });
         });
 
-        // Typewriter animation
-        function typewriterAnimation() {
-            const element = document.getElementById('animatedText');
-            if (!element) return;
-            
-            const fullText = 'Trusted by Users ';
-            const gradText = 'Worldwide';
-            let i = 0;
-            let isDeleting = false;
-            let currentText = '';
-            
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }, 5000);
+
+        // ============================================
+        // REFERRAL SYSTEM
+        // ============================================
+        const validCodes = ['03451Lux', '02847Lux', 'SM138', 'MRCOWHALE', 'BHYUKNGLO', 'FARIDWHALEBTC', 'ERIKDI', 'thomatomb', 'tss07', 'brndn', 'febrian', 'crossteam', 'Neilsen', 'CYBRFI', 'ejeha', 'ndratraderalgo', 'DODO', 'CUANLAGI', 'scobedo'];
+        let isValidReferral = false;
+        let generatedAccessCode = '';
+        const originalPrice = 400;
+        const discountPrice = 380;
+
+        document.getElementById('verifyBtn').addEventListener('click', () => {
+            const code = document.getElementById('referralCode').value.trim();
+            const status = document.getElementById('referralStatus');
+            const genCode = document.getElementById('generatedCode');
+            const discountInfo = document.getElementById('discountInfo');
+
+            if (!code) {
+                status.textContent = 'Please enter a referral code';
+                status.className = 'referral-status error';
+                return;
+            }
+
+            if (validCodes.includes(code)) {
+                const suffix = Math.random().toString(36).substring(2, 10).toUpperCase();
+                generatedAccessCode = `${code}-${suffix}`;
+                isValidReferral = true;
+
+                status.textContent = '🎉 Valid code! 5% discount applied.';
+                status.className = 'referral-status success';
+
+                document.getElementById('accessCodeDisplay').textContent = generatedAccessCode;
+                genCode.classList.add('show');
+                discountInfo.classList.add('show');
+
+                document.getElementById('priceAmount').textContent = '380';
+                document.getElementById('btnText').textContent = 'Get Discounted Access ($380)';
+
+                document.getElementById('referralCode').disabled = true;
+                document.getElementById('verifyBtn').disabled = true;
+                document.getElementById('verifyBtn').textContent = 'Applied ✅';
+            } else {
+                status.textContent = '❌ Invalid code. You can still subscribe at regular price.';
+                status.className = 'referral-status error';
+                isValidReferral = false;
+            }
+        });
+
+        document.getElementById('copyBtn').addEventListener('click', async () => {
+            await navigator.clipboard.writeText(generatedAccessCode);
+            document.getElementById('copyBtn').textContent = 'Copied! ✅';
+            setTimeout(() => {
+                document.getElementById('copyBtn').textContent = 'Copy Code';
+            }, 2000);
+        });
+
+        // ============================================
+        // TELEGRAM INTEGRATION
+        // ============================================
+        document.getElementById('accessBtn').addEventListener('click', () => {
+            let message;
+            if (isValidReferral && generatedAccessCode) {
+                message = `Hi! I want to subscribe to LuxQuant VIP Lifetime Access with KOL discount.\n\n💰 Price: $${discountPrice} (5% KOL Discount)\n🎯 Access Code: ${generatedAccessCode}\n\nPlease process my subscription.`;
+            } else {
+                message = `Hi! I want to subscribe to LuxQuant VIP Lifetime Access.\n\n💰 Price: $${originalPrice} (Regular Price)\n\nPlease process my subscription.`;
+            }
+            window.open(`https://t.me/luxquantadmin?text=${encodeURIComponent(message)}`, '_blank');
+        });
+
+        // ============================================
+        // TYPEWRITER
+        // ============================================
+        function typewriter() {
+            const el = document.getElementById('animatedText');
+            const text1 = 'Trusted by Traders ';
+            const text2 = 'Worldwide';
+            let i = 0, deleting = false;
+
             function type() {
-                if (!isDeleting) {
-                    if (i <= fullText.length + gradText.length) {
-                        if (i <= fullText.length) {
-                            currentText = fullText.substring(0, i);
-                            element.innerHTML = currentText + '<span class="typewriter-cursor">|</span>';
+                const total = text1.length + text2.length;
+                if (!deleting) {
+                    if (i <= total) {
+                        if (i <= text1.length) {
+                            el.innerHTML = text1.substring(0, i) + '<span class="typewriter-cursor">|</span>';
                         } else {
-                            const gradPart = gradText.substring(0, i - fullText.length);
-                            element.innerHTML = fullText + '<span class="grad">' + gradPart + '</span><span class="typewriter-cursor">|</span>';
+                            el.innerHTML = text1 + '<span class="grad">' + text2.substring(0, i - text1.length) + '</span><span class="typewriter-cursor">|</span>';
                         }
                         i++;
-                        setTimeout(type, 80 + Math.random() * 50);
+                        setTimeout(type, 80);
                     } else {
-                        setTimeout(() => {
-                            isDeleting = true;
-                            type();
-                        }, 3000);
+                        setTimeout(() => { deleting = true; type(); }, 3000);
                     }
                 } else {
                     if (i > 0) {
                         i--;
-                        if (i <= fullText.length) {
-                            currentText = fullText.substring(0, i);
-                            element.innerHTML = currentText + '<span class="typewriter-cursor">|</span>';
+                        if (i <= text1.length) {
+                            el.innerHTML = text1.substring(0, i) + '<span class="typewriter-cursor">|</span>';
                         } else {
-                            const gradPart = gradText.substring(0, i - fullText.length);
-                            element.innerHTML = fullText + '<span class="grad">' + gradPart + '</span><span class="typewriter-cursor">|</span>';
+                            el.innerHTML = text1 + '<span class="grad">' + text2.substring(0, i - text1.length) + '</span><span class="typewriter-cursor">|</span>';
                         }
                         setTimeout(type, 40);
                     } else {
-                        isDeleting = false;
+                        deleting = false;
                         setTimeout(type, 500);
                     }
                 }
             }
-            
             type();
         }
-        
-        typewriterAnimation();
+        typewriter();
 
-        // === CAROUSEL FUNCTIONALITY ===
-        let currentSlide = 0;
-        const totalSlides = 5;
-        const carouselContainer = document.getElementById('carouselContainer');
-        const dots = document.querySelectorAll('.dot');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-
-        function updateCarousel() {
-            const translateX = -currentSlide * 20;
-            if (carouselContainer) {
-                carouselContainer.style.transform = `translateX(${translateX}%)`;
-            }
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateCarousel();
-        }
-
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateCarousel();
-        }
-
-        function goToSlide(slideIndex) {
-            currentSlide = slideIndex;
-            updateCarousel();
-        }
-
-        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => goToSlide(index));
-        });
-
-        // Auto-slide
-        let autoSlideInterval = setInterval(nextSlide, 5000);
-
-        const phoneElement = document.querySelector('.showcase-phone');
-        if (phoneElement) {
-            phoneElement.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
-            phoneElement.addEventListener('mouseleave', () => {
-                autoSlideInterval = setInterval(nextSlide, 5000);
-            });
-        }
-
-        // Touch/swipe support
-        let startX = 0, endX = 0;
-        if (carouselContainer) {
-            carouselContainer.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-            }, { passive: true });
-
-            carouselContainer.addEventListener('touchend', (e) => {
-                endX = e.changedTouches[0].clientX;
-                const diff = startX - endX;
-                if (Math.abs(diff) > 50) {
-                    if (diff > 0) nextSlide();
-                    else prevSlide();
-                }
-            }, { passive: true });
-        }
-
-        updateCarousel();
-
-        // === THREE.JS GLOBE ===
-        const container = document.getElementById('globe');
-        if (container) {
+        // ============================================
+        // GLOBE
+        // ============================================
+        const globeContainer = document.getElementById('globe');
+        if (globeContainer) {
             const scene = new THREE.Scene();
-            scene.fog = new THREE.Fog(0x0a0506, 400, 2000);
-
             const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
             renderer.setClearColor(0x000000, 0);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setSize(globeContainer.clientWidth, globeContainer.clientHeight);
+            globeContainer.appendChild(renderer.domElement);
 
-            function setRendererSize() {
-                const w = container.clientWidth;
-                const h = container.clientHeight;
-                renderer.setSize(w, h, false);
-            }
-            setRendererSize();
-            container.appendChild(renderer.domElement);
-
-            const camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 2000);
-            camera.position.set(0, 0, 300);
+            const camera = new THREE.PerspectiveCamera(50, globeContainer.clientWidth / globeContainer.clientHeight, 0.1, 2000);
+            camera.position.set(0, 0, 280);
 
             const controls = new THREE.OrbitControls(camera, renderer.domElement);
             controls.enableDamping = true;
-            controls.dampingFactor = 0.06;
-            controls.enablePan = false;
             controls.enableZoom = false;
+            controls.enablePan = false;
             controls.autoRotate = true;
             controls.autoRotateSpeed = 0.8;
 
-            // Lighting
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
-            scene.add(ambientLight);
+            const ambient = new THREE.AmbientLight(0xffffff, 0.8);
+            scene.add(ambient);
+            const dir = new THREE.DirectionalLight(0xffffff, 1);
+            dir.position.set(1, 1, 1);
+            scene.add(dir);
 
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
-            directionalLight.position.set(1, 1, 1);
-            scene.add(directionalLight);
-
-            // Globe
             const globe = new ThreeGlobe()
                 .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
                 .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
                 .showAtmosphere(true)
                 .atmosphereColor('#d4a853')
-                .atmosphereAltitude(0.25);
+                .atmosphereAltitude(0.2);
 
             scene.add(globe);
 
-            // Locations
             const locations = [
-                { name: 'Jakarta', lat: -6.2088, lng: 106.8456, color: '#FFD700' },
-                { name: 'Singapore', lat: 1.3521, lng: 103.8198, color: '#FFA500' },
-                { name: 'Taipei', lat: 25.0330, lng: 121.5654, color: '#FFD700' },
-                { name: 'Tokyo', lat: 35.6762, lng: 139.6503, color: '#FFA500' },
-                { name: 'Mumbai', lat: 19.0760, lng: 72.8777, color: '#FFA500' },
-                { name: 'New York', lat: 40.7128, lng: -74.0060, color: '#FFD700' },
-                { name: 'London', lat: 51.5074, lng: -0.1278, color: '#FFA500' },
-                { name: 'Dubai', lat: 25.2048, lng: 55.2708, color: '#FFD700' },
-                { name: 'Sydney', lat: -33.8688, lng: 151.2093, color: '#FFA500' },
-                { name: 'São Paulo', lat: -23.5505, lng: -46.6333, color: '#FFB347' }
+                { name: 'Jakarta', lat: -6.2, lng: 106.8, color: '#d4a853' },
+                { name: 'Singapore', lat: 1.3, lng: 103.8, color: '#d4a853' },
+                { name: 'Taipei', lat: 25.0, lng: 121.5, color: '#d4a853' },
+                { name: 'Tokyo', lat: 35.6, lng: 139.6, color: '#d4a853' },
+                { name: 'New York', lat: 40.7, lng: -74.0, color: '#d4a853' },
+                { name: 'London', lat: 51.5, lng: -0.1, color: '#d4a853' },
+                { name: 'Dubai', lat: 25.2, lng: 55.2, color: '#d4a853' },
+                { name: 'Sydney', lat: -33.8, lng: 151.2, color: '#d4a853' },
             ];
 
-            // Routes from Taipei
-            const routes = [
-                { startLat: 25.0330, startLng: 121.5654, endLat: -6.2088, endLng: 106.8456, color: '#ffffff' },
-                { startLat: 25.0330, startLng: 121.5654, endLat: 1.3521, endLng: 103.8198, color: '#ffffff' },
-                { startLat: 25.0330, startLng: 121.5654, endLat: 35.6762, endLng: 139.6503, color: '#ffffff' },
-                { startLat: 25.0330, startLng: 121.5654, endLat: 19.0760, endLng: 72.8777, color: '#ffffff' },
-                { startLat: 25.0330, startLng: 121.5654, endLat: 40.7128, endLng: -74.0060, color: '#ffffff' },
-                { startLat: 25.0330, startLng: 121.5654, endLat: 51.5074, endLng: -0.1278, color: '#ffffff' },
-                { startLat: 25.0330, startLng: 121.5654, endLat: 25.2048, endLng: 55.2708, color: '#ffffff' },
-                { startLat: 25.0330, startLng: 121.5654, endLat: -33.8688, endLng: 151.2093, color: '#ffffff' },
-                { startLat: 25.0330, startLng: 121.5654, endLat: -23.5505, endLng: -46.6333, color: '#ffffff' }
-            ];
+            const routes = locations.slice(1).map(loc => ({
+                startLat: 25.0, startLng: 121.5,
+                endLat: loc.lat, endLng: loc.lng,
+                color: '#ffffff'
+            }));
 
-            globe
-                .pointsData(locations)
-                .pointAltitude(0.01)
-                .pointColor('color')
-                .pointRadius(0.8)
-                .pointResolution(20);
-
-            globe
-                .arcsData(routes)
-                .arcColor('color')
-                .arcAltitudeAutoScale(0.3)
-                .arcStroke(0.6)
-                .arcDashLength(0.4)
-                .arcDashGap(0.2)
-                .arcDashInitialGap(() => Math.random())
-                .arcDashAnimateTime(3000);
-
-            globe
-                .labelsData(locations)
-                .labelText('name')
-                .labelSize(1.2)
-                .labelColor(() => 'rgba(255, 215, 0, 0.9)')
-                .labelDotRadius(0.4)
-                .labelAltitude(0.01);
+            globe.pointsData(locations).pointColor('color').pointRadius(0.6).pointAltitude(0.01);
+            globe.arcsData(routes).arcColor('color').arcStroke(0.4).arcDashLength(0.4).arcDashGap(0.2).arcDashAnimateTime(3000);
 
             function animate() {
                 requestAnimationFrame(animate);
@@ -2703,15 +2303,21 @@
             }
             animate();
 
-            function handleResize() {
-                const w = container.clientWidth;
-                const h = container.clientHeight;
-                camera.aspect = w / h;
+            window.addEventListener('resize', () => {
+                camera.aspect = globeContainer.clientWidth / globeContainer.clientHeight;
                 camera.updateProjectionMatrix();
-                renderer.setSize(w, h, false);
-            }
-            window.addEventListener('resize', handleResize);
+                renderer.setSize(globeContainer.clientWidth, globeContainer.clientHeight);
+            });
         }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
     </script>
 </body>
 </html>
