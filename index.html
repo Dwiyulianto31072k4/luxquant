@@ -1,1540 +1,2717 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <meta name="description"
-    content="LuxQuant VIP - Premium AI-Powered Crypto Trading Signals with high Win Rate. Join elite traders using advanced automation." />
-  <meta name="keywords" content="crypto trading, trading signals, bitcoin, ethereum, AI trading, automated trading" />
-  <meta name="author" content="LuxQuant VIP" />
-  <meta name="theme-color" content="#FFD700" />
-
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="LuxQuant VIP - Premium Crypto Trading Signals" />
-  <meta property="og:description" content="AI-Powered Trading Excellence with High Win Rate" />
-  <meta property="og:image" content="/og-image.jpg" />
-  <meta property="og:url" content="https://luxquant.online" />
-  <meta property="og:type" content="website" />
-
-  <title>LuxQuant VIP - Premium AI Crypto Trading Signals</title>
-
-  <!-- DNS Prefetch -->
-  <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
-  <link rel="dns-prefetch" href="//unpkg.com" />
-
-
-
-  <!-- Critical CSS -->
-  <style>
-    :root {
-      --primary-gold: #ffd700;
-      --bg-dark: #0a0a0a;
-      --text-primary: #ffffff;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background: var(--bg-dark);
-      color: var(--text-primary);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        sans-serif;
-      overflow-x: hidden;
-    }
-
-    body.loading {
-      overflow: hidden;
-    }
-
-    .loader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #050505;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.6s;
-    }
-
-    .loader.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .loader-content {
-      text-align: center;
-    }
-
-    .loader-logo {
-      font-size: 3rem;
-      font-weight: 900;
-      margin-bottom: 1rem;
-    }
-
-    .loader-logo img {
-      max-width: 200px;
-      height: auto;
-    }
-
-    .loader-progress {
-      width: 200px;
-      height: 4px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 2px;
-      overflow: hidden;
-      margin: 0 auto 1rem;
-    }
-
-    .loader-progress-bar {
-      height: 100%;
-      background: linear-gradient(90deg, #ffd700, #ffa500);
-      width: 0;
-      transition: width 0.3s ease;
-    }
-  </style>
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="globe.css" />
-
-  <link rel="stylesheet" href="referral.css" />
-
-  <!-- Favicon -->
-  <link rel="icon" href="LuxQuant VIP Logo Design-Photoroom.png" type="image/png" sizes="64x64" />
-
-  <style>
-    /* Additional styles for the updated features section */
-    .features-showcase {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    /* Enhanced iPhone Mockup Styles - MODERN DENGAN BORDER TIPIS */
-    .showcase-phone {
-      position: relative;
-      height: 650px;
-      /* Disesuaikan untuk aspect ratio 1242x2688 */
-      width: 300px;
-      /* Tetap 300px untuk tampilan web */
-      padding: 0 0.5px;
-      /* Dikurangi dari 8px ke 4px */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #1a1a1a;
-      /* Warna lebih gelap untuk kesan premium */
-      border: 0.5px solid #2a2a2a;
-      /* Dikurangi dari 3px ke 1px dan warna lebih subtle */
-      border-radius: 45px;
-      box-shadow: inset 0 0 2px 0 rgba(0, 0, 0, 0.3),
-        /* Lebih subtle */
-        0 0 0 0.5px #444,
-        /* Border luar tipis */
-        0 0 30px 0px rgba(0, 0, 0, 0.7),
-        0 0 50px 0px rgba(0, 0, 0, 0.3);
-      /* Shadow tambahan untuk depth */
-      transform: scale(0.8);
-    }
-
-    /* iPhone Buttons - Lebih tipis dan subtle */
-    .iphone-buttons {
-      position: absolute;
-    }
-
-    .silent,
-    .vol-up,
-    .vol-down,
-    .sleep {
-      background: #2a2a2a;
-      /* Warna lebih terang dari body phone */
-      position: absolute;
-      border-radius: 1px 0 0 1px;
-      /* Radius lebih kecil */
-    }
-
-    .silent {
-      height: 28px;
-      /* Sedikit lebih kecil */
-      width: 2px;
-      /* Dikurangi dari 3px ke 2px */
-      top: 80px;
-      left: -3px;
-      /* Dikurangi dari -6px ke -3px */
-    }
-
-    .vol-up,
-    .vol-down {
-      left: -3px;
-      /* Dikurangi dari -6px ke -3px */
-      height: 42px;
-      /* Sedikit lebih kecil */
-      width: 2px;
-      /* Dikurangi dari 3px ke 2px */
-    }
-
-    .vol-up {
-      top: 130px;
-    }
-
-    .vol-down {
-      top: 190px;
-    }
-
-    .sleep {
-      left: auto;
-      right: -3px;
-      /* Dikurangi dari -6px ke -3px */
-      top: 140px;
-      height: 65px;
-      /* Sedikit lebih kecil */
-      width: 2px;
-      /* Dikurangi dari 3px ke 2px */
-      border-radius: 0 1px 1px 0;
-      /* Radius lebih kecil */
-    }
-
-    /* iPhone Top Notch - Lebih refined */
-    .iphone-top {
-      position: absolute;
-      top: 2px;
-      /* Dikurangi dari 3px */
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      z-index: 4;
-    }
-
-    .black-bar {
-      position: absolute;
-      height: 1px;
-      width: 60%;
-      padding-top: 1px;
-      /* Dikurangi */
-      background: #1a1a1a;
-    }
-
-    .notch {
-      position: relative;
-      height: 28px;
-      /* Sedikit lebih kecil */
-      width: 45%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 0 0 14px 14px;
-      /* Radius lebih kecil */
-      background: #1a1a1a;
-      z-index: 2;
-    }
-
-    /* iPhone Components */
-    .iphone-components {
-      position: absolute;
-      top: 14px;
-      /* Disesuaikan */
-      padding-left: 8px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 10;
-    }
-
-    .speaker {
-      height: 3px;
-      /* Dikurangi */
-      width: 45px;
-      /* Dikurangi */
-      margin: 0 18px;
-      /* Disesuaikan */
-      border-radius: 3px;
-      border-bottom: 1px solid #333;
-      background: #222;
-    }
-
-    .camera {
-      height: 11px;
-      /* Sedikit dikurangi */
-      width: 11px;
-      border-radius: 50%;
-      border-bottom: 1px solid #444;
-      background: radial-gradient(black, #333);
-      opacity: 0.8;
-      /* Sedikit lebih terlihat */
-      position: relative;
-    }
-
-    .camera::before {
-      content: "";
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      height: 5px;
-      /* Disesuaikan */
-      width: 5px;
-      border-left: 1.5px solid dodgerblue;
-      /* Sedikit dikurangi */
-      border-radius: 50%;
-      filter: blur(0.8px);
-      /* Sedikit dikurangi */
-    }
-
-    /* iPhone Screen - Border dalam lebih tipis */
-    .phone-screen {
-      position: absolute;
-      height: calc(100% - 1px);
-      /* Dikurangi dari 8px ke 4px */
-      width: calc(100% - 1px);
-      margin: 0 auto;
-      border: 0.25px solid rgba(0, 0, 0, 0.5);
-      /* Dikurangi dari 1px ke 0.5px */
-      border-radius: 42px;
-      /* Disesuaikan dengan border luar */
-      overflow: hidden;
-      background: transparent;
-    }
-
-    /* Content area - DISESUAIKAN UNTUK 1242x2688px, TANPA STATUS BAR & HOME INDICATOR */
-    .screen-content {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      /* Full screen tanpa home indicator */
-      left: 0;
-      right: 0;
-      background: #f5f5f5;
-      overflow: hidden;
-    }
-
-    /* Image Carousel Styles */
-    .image-carousel {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      overflow: hidden;
-      border-radius: 40px;
-      /* Disesuaikan dengan border phone */
-    }
-
-    .carousel-container {
-      display: flex;
-      transition: transform 0.5s ease;
-      width: 500%;
-      height: 100%;
-    }
-
-    .signal-screenshot {
-      width: 20%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
-      /* Posisi gambar di tengah */
-      flex-shrink: 0;
-      background: white;
-    }
-
-    /* Carousel Navigation */
-    .carousel-nav {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .nav-btn {
-      width: 45px;
-      height: 45px;
-      border: none;
-      background: linear-gradient(135deg, #ffd700, #ffa500);
-      color: #000;
-      border-radius: 50%;
-      font-size: 24px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .nav-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
-      background: linear-gradient(135deg, #fff700, #ffb500);
-    }
-
-    .nav-btn:active {
-      transform: translateY(-1px);
-    }
-
-    .carousel-dots {
-      display: flex;
-      gap: 0.7rem;
-      align-items: center;
-    }
-
-    .dot {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.3);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
-    }
-
-    .dot:hover {
-      background: rgba(255, 215, 0, 0.7);
-      transform: scale(1.2);
-    }
-
-    .dot.active {
-      background: #ffd700;
-      border: 2px solid #fff;
-      transform: scale(1.3);
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
-    }
-
-    /* Features List */
-    .showcase-features {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .showcase-feature {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-    }
-
-    .feature-icon-box {
-      width: 48px;
-      height: 48px;
-      background: linear-gradient(135deg, #ffd700, #ffa500);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      flex-shrink: 0;
-    }
-
-    .feature-content h4 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      color: white;
-    }
-
-    .feature-content p {
-      color: #aaa;
-      line-height: 1.6;
-    }
-
-    /* Loading Animation */
-    .loading-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 40px;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-    }
-
-    .loading-overlay.show {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .loading-spinner {
-      width: 40px;
-      height: 40px;
-      border: 3px solid rgba(255, 215, 0, 0.3);
-      border-top: 3px solid #ffd700;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    /* Responsive - DISESUAIKAN UNTUK UKURAN BARU */
-    @media (max-width: 768px) {
-      .features-showcase {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        text-align: center;
-      }
-
-      .showcase-phone {
-        transform: scale(0.7);
-        height: 550px;
-        /* Disesuaikan untuk mobile */
-        width: 250px;
-      }
-
-      .silent {
-        height: 22px;
-        top: 70px;
-        /* Disesuaikan dengan tinggi baru */
-      }
-
-      .vol-up,
-      .vol-down {
-        height: 32px;
-      }
-
-      .vol-up {
-        top: 110px;
-      }
-
-      .vol-down {
-        top: 155px;
-      }
-
-      .sleep {
-        height: 50px;
-        top: 120px;
-      }
-
-      .speaker {
-        width: 35px;
-        height: 2.5px;
-        margin: 0 15px;
-      }
-
-      .camera {
-        height: 9px;
-        width: 9px;
-      }
-
-      .nav-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-      }
-
-      .carousel-dots {
-        gap: 0.5rem;
-      }
-
-      .dot {
-        width: 12px;
-        height: 12px;
-      }
-    }
-  </style>
-</head>
-
-<body class="loading">
-  <!-- Loading Screen -->
-  <div class="loader" id="loader">
-    <div class="loader-content">
-      <div class="loader-logo">
-        <img src="LuxQuant VIP Logo Design-Photoroom.png" alt="LuxQuant VIP" width="200" height="67" />
-      </div>
-      <div class="loader-tagline">Premium Trading Excellence</div>
-      <div class="loader-progress">
-        <div class="loader-progress-bar" id="loaderProgressBar"></div>
-      </div>
-      <div class="loader-percentage" id="loaderPercentage">0%</div>
-    </div>
-  </div>
-
-  <!-- Mouse Effects (Desktop Only) -->
-  <div class="mouse-follower desktop-only"></div>
-  <div class="mouse-dot desktop-only"></div>
-
-  <!-- Background Effects -->
-  <div class="bg-container">
-    <div class="bg-gradient"></div>
-    <canvas id="particles-canvas" class="desktop-only"></canvas>
-  </div>
-
-  <!-- Live Price Ticker -->
-  <div class="price-ticker-wrapper">
-    <div class="price-ticker" id="priceTicker">
-      <div class="ticker-content">
-        <!-- Ticker items will be dynamically added -->
-      </div>
-    </div>
-  </div>
-
-  <!-- Header -->
-  <header id="header" class="header">
-    <nav class="nav">
-      <div class="nav-container">
-        <div class="logo-wrapper">
-          <a href="#home" class="logo">
-            <img src="LuxQuant VIP Logo Design-Photoroom.png" alt="LuxQuant VIP" width="150" height="50" />
-          </a>
-        </div>
-
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#home" data-nav="home">Home</a></li>
-          <li><a href="#why-choose" data-nav="why-choose">Why Choose</a></li>
-          <li><a href="#features" data-nav="features">Features</a></li>
-          <li><a href="#testimonials" data-nav="testimonials">Reviews</a></li>
-          <li><a href="#pricing" data-nav="pricing">Pricing</a></li>
-          <li class="nav-cta">
-            <a href="https://t.me/luxquantadmin" class="nav-btn-primary">
-              <span>SUBSCRIBE NOW</span>
-            </a>
-          </li>
-        </ul>
-
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </nav>
-  </header>
-
-  <!-- Main Content -->
-  <main id="main">
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-      <div class="hero-bg-effects desktop-only">
-        <div class="hero-glow"></div>
-        <div class="hero-grid"></div>
-      </div>
-
-      <div class="hero-content">
-        <div class="hero-badge">
-          <span class="badge-icon">₿</span>
-          <span>24/7 Automated Signals</span>
-          <span class="badge-icon">₿</span>
-        </div>
-
-        <h1 class="hero-title">
-          <span class="title-line">Tools for Automated Crypto</span>
-          <span class="title-line gradient-text">Trading Setup 24/7</span>
-        </h1>
-
-        <p class="hero-subtitle">
-          Help traders identify market opportunities real-time without having to monitor
-          charts continuously.
-          with
-          <span class="highlight-number">Historical Accuracy of <span data-stat="winRate"></span></span>
-          (As Today) since <span class="highlight-number">2023</span>
-        </p>
-
-        <br>
-
-        <!-- Hero split: left copy + right globe -->
-        <div class="hero-split">
-          <!-- LEFT COPY -->
-          <div class="hero-left">
-            <h6 id="animatedText" class="trust-text">
-              Trusted by Users <span class="grad">Worldwide</span>
-            </h6>
-          </div>
-
-
-
-          <!-- RIGHT GLOBE (pakai yang sudah ada) -->
-          <div class="hero-right">
-            <div class="globe-shell">
-              <div id="globe"></div>
-              <div class="globe-hint"></div>
-            </div>
-          </div>
-        </div>
-        <!-- Marketing Text -->
-        <div class="hero-marketing">
-          <p class="marketing-text">
-            <strong>Optimize Your Trading Today! 🚀</strong> Get direct access
-            to 24-hour automated tools that provide crypto market setup
-            detection, complete with real-time updates from the LuxQuant
-            system.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Why Choose Section -->
-    <section id="why-choose" class="why-choose">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">LuxQuant Advantages</span>
-          <h2 class="section-title">
-            <span>Why Choose</span>
-            <span class="gradient-text">LuxQuant VIP?</span>
-          </h2>
-          <p class="section-subtitle">
-            Automated crypto market monitoring system that provides proven
-            efficient and responsive trade setups
-          </p>
-        </div>
-
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon-wrapper">
-              <span class="feature-icon">🎯</span>
-            </div>
-            <h3>Precision Signals</h3>
-            <p>
-              Automated system provides detection of entry and exit price
-              zones based on real-time market data.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon-wrapper">
-              <span class="feature-icon">⚡</span>
-            </div>
-            <h3>Real-Time Alerts</h3>
-            <p>
-              Real-time notifications via Telegram so users stay connected
-              with market movements quickly and responsively.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon-wrapper">
-              <span class="feature-icon">📊</span>
-            </div>
-            <h3>Advanced Analytics</h3>
-            <p>
-              Output provided includes volume ranking monitoring and risk
-              level indicators that are automatically read by the system.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon-wrapper">
-              <span class="feature-icon">🔒</span>
-            </div>
-            <h3>Risk Management</h3>
-            <p>
-              Every system output includes risk point estimation (stop-loss).
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon-wrapper">
-              <span class="feature-icon">📈</span>
-            </div>
-            <h3>Proven Track Record</h3>
-            <p>
-              Transparent historical performance tracking based on the system
-              — no future results promised.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon-wrapper">
-              <span class="feature-icon">🤖</span>
-            </div>
-            <h3>24/7 Automation</h3>
-            <p>
-              Full 24-hour automatic market monitoring that processes data and
-              provides systematic output continuously.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Features Section with Updated Carousel -->
-    <section id="features" class="features">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">VIP Features</span>
-          <h2 class="section-title">
-            <span>Advanced Crypto Trading</span>
-            <span class="gradient-text">Technology</span>
-          </h2>
-          <p class="section-subtitle">
-            Everything you need to respond to volatile crypto markets in
-            real-time
-          </p>
-        </div>
-
-        <div class="features-showcase">
-          <div class="showcase-main">
-            <div class="showcase-phone">
-              <!-- iPhone Buttons -->
-              <div class="iphone-buttons">
-                <div class="silent"></div>
-                <div class="vol-up"></div>
-                <div class="vol-down"></div>
-                <div class="sleep"></div>
-              </div>
-
-              <!-- iPhone Top -->
-              <div class="iphone-top">
-                <div class="black-bar"></div>
-                <div class="notch">
-                  <div class="iphone-components">
-                    <div class="speaker"></div>
-                    <div class="camera"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="phone-screen">
-                <!-- Image Carousel -->
-                <div class="image-carousel">
-                  <div class="carousel-container" id="carouselContainer">
-                    <img src="fiturlq1.png" alt="LuxQuant Telegram Channels" class="signal-screenshot" />
-                    <img src="fiturlq2.png" alt="LuxQuant Signal Details" class="signal-screenshot" />
-                    <img src="fiturlq3.png" alt="LuxQuant Trading Results" class="signal-screenshot" />
-                    <img src="fiturlq4.png" alt="LuxQuant Market Analysis" class="signal-screenshot" />
-                    <img src="fiturlq5.png" alt="LuxQuant AI Consultant" class="signal-screenshot" />
-                  </div>
-                  <!-- Loading Overlay -->
-                  <div class="loading-overlay" id="loadingOverlay">
-                    <div class="loading-spinner"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Carousel Navigation -->
-            <div class="carousel-nav">
-              <button class="nav-btn prev-btn" id="prevBtn">‹</button>
-              <div class="carousel-dots" id="carouselDots">
-                <span class="dot active" data-slide="0"></span>
-                <span class="dot" data-slide="1"></span>
-                <span class="dot" data-slide="2"></span>
-                <span class="dot" data-slide="3"></span>
-                <span class="dot" data-slide="4"></span>
-              </div>
-              <button class="nav-btn next-btn" id="nextBtn">›</button>
-            </div>
-          </div>
-
-          <div class="showcase-features">
-            <div class="showcase-feature">
-              <div class="feature-icon-box">
-                <span>🎯</span>
-              </div>
-              <div class="feature-content">
-                <h4>AI-Powered Analysis</h4>
-                <p>
-                  Automated algorithms analyze market patterns 24/7 to detect
-                  potential price movements based on real-time data.
-                </p>
-              </div>
-            </div>
-
-            <div class="showcase-feature">
-              <div class="feature-icon-box">
-                <span>⚡</span>
-              </div>
-              <div class="feature-content">
-                <h4>Instant Notifications</h4>
-                <p>
-                  Real-time notifications directly to your Telegram when the
-                  system detects important price zones in market movements.
-                </p>
-              </div>
-            </div>
-
-            <div class="showcase-feature">
-              <div class="feature-icon-box">
-                <span>📊</span>
-              </div>
-              <div class="feature-content">
-                <h4>Market Analytics</h4>
-                <p>
-                  Automatic market analysis based on technical indicators,
-                  volume, and risk to market conditions.
-                </p>
-              </div>
-            </div>
-
-            <div class="showcase-feature">
-              <div class="feature-icon-box">
-                <span>💎</span>
-              </div>
-              <div class="feature-content">
-                <h4>VIP Support</h4>
-                <p>
-                  VIP support team ready to help 24/7 to answer questions and
-                  issues related to system usage.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">Success Stories</span>
-          <h2 class="section-title">
-            <span>What Users Say About LuxQuant</span>
-            <span class="gradient-text">Real Stories from Their Experience</span>
-          </h2>
-        </div>
-
-        <div class="testimonials-grid">
-          <div class="testimonial-item">
-            <div class="testimonial-card">
-              <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-              <p class="testimonial-text">
-                "LuxQuant is excellent. First trial already proven. Besides
-                updated predictions, we are also equipped with AI consultant
-                for live consultation and knowledge about macro and economic
-                data. 👌🏻🙏🏻"
-              </p>
-              <div class="testimonial-author">
-                <div class="author-avatar">
-                  <span>AC</span>
-                </div>
-                <div class="author-info">
-                  <h4>Il**m A G</h4>
-                  <span>Head of Car Repair Shop</span>
-                </div>
-                <div class="testimonial-badge">Verified</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-item">
-            <div class="testimonial-card">
-              <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-              <p class="testimonial-text">
-                "Great, I can work while trading. Just check Telegram every 5
-                minutes then follow the signals, so I don't need to spend time
-                looking for market potential myself with this LuxQuant"
-              </p>
-              <div class="testimonial-author">
-                <div class="author-avatar">
-                  <span>SJ</span>
-                </div>
-                <div class="author-info">
-                  <h4>Fab**a FMZ</h4>
-                  <span>University Student</span>
-                </div>
-                <div class="testimonial-badge">Verified</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-item">
-            <div class="testimonial-card">
-              <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-              <p class="testimonial-text">
-                "Initially I was hesitant, but after trying it, I feel the
-                LuxQuant system is quite consistent in presenting relevant
-                data and equipped with clear risk settings."
-              </p>
-              <div class="testimonial-author">
-                <div class="author-avatar">
-                  <span>MR</span>
-                </div>
-                <div class="author-info">
-                  <h4>R**n*ld G</h4>
-                  <span>Crypto Investor</span>
-                </div>
-                <div class="testimonial-badge">Verified</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Embedded Trading Platform Section -->
-        <section class="embedded-platform-section">
-          <div class="container">
-            <div class="section-header">
-              <span class="section-label">Daily-Updated Trading Performance</span>
-              <h2 class="section-title">
-                <span>Trade Smarter with</span>
-                <span class="gradient-text">LuxQuant</span>
-              </h2>
-              <p class="section-subtitle">
-                See How LuxQuant Performs — Fresh Daily Data
-              </p>
-            </div>
-
-            <div class="embedded-wrapper">
-              <!-- YANG BARU (gambar) -->
-              <a href="https://luxquantlivedata.streamlit.app/" target="_blank" rel="noopener" class="platform-link">
-                <img id="embeddedSite" class="embedded-iframe" src="LuxQuant Performance Dashboard.png"
-                  alt="LuxQuant Trading Platform Dashboard" loading="lazy" onload="hideLoading()" onerror="showError()">
-
-                <!-- Optional: Overlay untuk menunjukkan bisa di-click -->
-                <div class="click-overlay">
-                  <div class="click-indicator">
-                    <span>🔗</span>
-                    <span>Click to Open Platform</span>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-      </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">Membership Plans</span>
-          <h2 class="section-title">
-            <span>Choose Access Package</span>
-            <span class="gradient-text">LuxQuant System</span>
-          </h2>
-        </div>
-
-        <div class="pricing-wrapper">
-          <div class="pricing-card featured">
-            <div class="pricing-badge">BEST VALUE</div>
-            <div class="pricing-header">
-              <h3>Lifetime Access</h3>
-              <div class="pricing-price">
-                <span class="currency">Only</span>
-                <span class="amount" id="priceAmount">$400</span>
-                <span class="period">/lifetime</span>
-              </div>
-              <div class="price-info">
-                <span class="pricing-save" id="originalPrice">One-time payment only use USDT</span>
-                <div class="discount-info" id="discountInfo" style="display: none">
-                  <div class="original-price">
-                    Regular:
-                    <span style="text-decoration: line-through">$400</span>
-                  </div>
-                  <div class="discount-price">
-                    KOL Discount:
-                    <span style="color: #4ade80; font-weight: 700">$380 5% OFF)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- REFERRAL SECTION - BAGIAN BARU INI -->
-            <div class="referral-section">
-              <div class="referral-title">
-                🎁 Have KOL Referral Code? (Optional)
-              </div>
-              <div class="referral-subtitle">
-                Enter your KOL code to get 5% discount
-              </div>
-              <div class="referral-input-group">
-                <input type="text" id="referralCode" class="referral-input"
-                  placeholder="Enter KOL referral code (optional)..." maxlength="20" />
-                <button class="verify-btn" id="verifyBtn">Apply</button>
-              </div>
-              <div class="referral-status" id="referralStatus"></div>
-              <div class="generated-code" id="generatedCode">
-                <div>🎉 Discount Applied! Your Access Code:</div>
-                <div id="accessCodeDisplay"></div>
-                <div class="discount-activated">
-                  ✅ 5% discount activated!
-                </div>
-                <button class="copy-btn" id="copyBtn">Copy Code</button>
-              </div>
-            </div>
-
-            <div class="requirement-note">
-              💡 <strong>Optional:</strong> Enter KOL referral code to get
-              5% discount. You can subscribe directly without code at
-              regular price.
-            </div>
-
-            <ul class="pricing-features">
-              <li>
-                <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20">
-                  <path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none" />
-                </svg>
-                <span>Complete trade setup outputs</span>
-              </li>
-              <li>
-                <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20">
-                  <path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none" />
-                </svg>
-                <span>Real-time notifications via Telegram</span>
-              </li>
-              <li>
-                <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20">
-                  <path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none" />
-                </svg>
-                <span>Analysis equipped with volume ranking</span>
-              </li>
-              <li>
-                <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20">
-                  <path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none" />
-                </svg>
-                <span>Equipped with risk info for user risk management</span>
-              </li>
-              <li>
-                <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20">
-                  <path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none" />
-                </svg>
-                <span>24/7 VIP Support</span>
-              </li>
-              <li>
-                <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20">
-                  <path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none" />
-                </svg>
-                <span>Access to AI Consultant from LuxQuant Team</span>
-              </li>
-              <li>
-                <svg class="check-icon" width="20" height="20" viewBox="0 0 20 20">
-                  <path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="2" fill="none" />
-                </svg>
-                <span>Get access to advanced service development</span>
-              </li>
-            </ul>
-
-            <!-- UBAH TOMBOL JADI DINAMIS -->
-            <button class="pricing-btn primary" id="accessBtn">
-              <span id="btnText">Get Lifetime Access</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-      <div class="container">
-        <div class="cta-content">
-          <h2 class="cta-title">
-            Ready to Start Your
-            <span class="gradient-text">Profitable Trading Journey?</span>
-          </h2>
-          <p class="cta-subtitle">
-            Join thousands of successful traders who trust LuxQuant for
-            consistent profits
-          </p>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- Social Media Section -->
-    <!-- Social Media Section with Yellow Styling -->
-    <section class="social-media-section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-label">Connect With Us</span>
-          <h2 class="section-title">
-            <span>Follow Us on</span>
-            <span class="gradient-text">Social Media</span>
-          </h2>
-          <p class="section-subtitle">
-            Get the latest updates about LuxQuant system services
-          </p>
-        </div>
-
-        <div class="social-media-grid">
-          <a href="https://instagram.com/luxquanttrade" class="social-card instagram" target="_blank" rel="noopener">
-            <div class="social-icon">
-              <!-- Instagram Icon dengan fill kuning -->
-              <svg width="48" height="48" viewBox="0 0 24 24">
-                <path
-                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z" />
-              </svg>
-            </div>
-            <h3>Instagram</h3>
-            <p>Get the latest info about our services on Instagram</p>
-          </a>
-
-          <a href="https://tiktok.com/@luxquant.trade" class="social-card tiktok" target="_blank" rel="noopener">
-            <div class="social-icon">
-              <!-- TikTok Icon dengan fill kuning -->
-              <svg width="48" height="48" viewBox="0 0 24 24">
-                <path
-                  d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-              </svg>
-            </div>
-            <h3>TikTok</h3>
-            <p>Get the latest info about our services on TikTok</p>
-          </a>
-
-          <a href="https://x.com/luxquanttrade" class="social-card twitter" target="_blank" rel="noopener">
-            <div class="social-icon">
-              <!-- X/Twitter Icon dengan fill kuning -->
-              <svg width="48" height="48" viewBox="0 0 24 24">
-                <path
-                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-              </svg>
-            </div>
-            <h3>X (@luxquanttrade)</h3>
-            <p>Get updates about crypto and LuxQuant</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-brand">
-          <div class="footer-logo">
-            <img src="LuxQuant VIP Logo Design-Photoroom.png" alt="LuxQuant VIP" width="150" height="50" />
-          </div>
-          <p class="footer-desc">
-            Premium AI-powered crypto trading signals with proven results.
-          </p>
-        </div>
-
-        <div class="footer-links">
-          <div class="footer-column">
-            <h4>Quick Links</h4>
-            <ul>
-              <li><a href="#features">Features</a></li>
-              <li><a href="#testimonials">Reviews</a></li>
-              <li><a href="#pricing">Pricing</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h4>Support</h4>
-            <ul>
-              <li><a href="https://t.me/luxquantadmin">Contact Us</a></li>
-              <li><a href="#">FAQ</a></li>
-              <li><a href="#">Terms of Service</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2024 LuxQuant VIP. All rights reserved.</p>
-        <p class="footer-disclaimer">
-          Trading involves risk. Past performance is not indicative of future
-          results.
-        </p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Back to Top -->
-  <button class="back-to-top" id="backToTop" aria-label="Back to top">
-    <svg width="24" height="24" viewBox="0 0 24 24">
-      <path d="M12 19V5m0 0l-6 6m6-6l6 6" stroke="currentColor" stroke-width="2" fill="none" />
-    </svg>
-  </button>
-
-  <!-- Cookie Consent -->
-  <div class="cookie-consent" id="cookieConsent">
-    <div class="cookie-content">
-      <p>We use cookies to enhance your experience.</p>
-      <div class="cookie-actions">
-        <button class="cookie-accept" id="acceptCookies">Accept</button>
-        <button class="cookie-decline" id="declineCookies">Decline</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Notification Container -->
-  <div class="notification-container" id="notificationContainer"></div>
-
-  <!-- Lazy Load Scripts -->
-  <script>
-    // Critical loader script
-    document.addEventListener("DOMContentLoaded", function () {
-      const loader = document.getElementById("loader");
-      const progressBar = document.getElementById("loaderProgressBar");
-      const percentage = document.getElementById("loaderPercentage");
-
-      let progress = 0;
-      const increment = 20;
-
-      const updateProgress = setInterval(() => {
-        progress += increment + Math.random() * 15;
-        if (progress > 100) progress = 100;
-
-        if (progressBar) progressBar.style.width = `${progress}%`;
-        if (percentage) percentage.textContent = `${Math.round(progress)}%`;
-
-        if (progress === 100) {
-          clearInterval(updateProgress);
-          setTimeout(() => {
-            if (loader) {
-              loader.classList.add("hidden");
-              document.body.classList.remove("loading");
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LuxQuant VIP - Premium AI-Powered Crypto Trading Signals with high Win Rate. Join elite traders using advanced automation.">
+    <title>LuxQuant VIP - Premium AI Crypto Trading Signals</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #0a0506;
+            --bg-secondary: #120809;
+            --bg-card: rgba(20, 8, 10, 0.8);
+            --bg-card-solid: #140a0c;
+            
+            --gold-primary: #d4a853;
+            --gold-light: #f0d890;
+            --gold-dark: #8b6914;
+            --gold-glow: rgba(212, 168, 83, 0.4);
+            --gold-subtle: rgba(212, 168, 83, 0.1);
+            
+            --red-primary: #8b1a1a;
+            --red-light: #c42020;
+            --red-glow: rgba(139, 26, 26, 0.3);
+            
+            --border-gold: rgba(212, 168, 83, 0.3);
+            --border-gold-strong: rgba(212, 168, 83, 0.6);
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            
+            --text-primary: #ffffff;
+            --text-secondary: #b8a89a;
+            --text-muted: #6b5c52;
+            
+            --positive: #4ade80;
+            --negative: #f87171;
+            
+            --glass-bg: rgba(20, 10, 12, 0.6);
+            --glass-border: rgba(212, 168, 83, 0.15);
+            
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Luxury Background */
+        .luxury-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 0% 0%, rgba(139, 26, 26, 0.5) 0%, transparent 50%),
+                radial-gradient(ellipse at 100% 0%, rgba(139, 26, 26, 0.3) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 100%, rgba(139, 26, 26, 0.25) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(212, 168, 83, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Noise texture */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Gold Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--gold-primary);
+            border-radius: 50%;
+            opacity: 0;
+            animation: floatParticle 12s infinite;
+            box-shadow: 0 0 6px var(--gold-glow);
+        }
+
+        @keyframes floatParticle {
+            0% { opacity: 0; transform: translateY(100vh) scale(0); }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { opacity: 0; transform: translateY(-100vh) scale(1); }
+        }
+
+        /* Corner Ornaments */
+        .corner-ornament {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0.3;
+        }
+
+        .corner-ornament.top-left {
+            top: 20px;
+            left: 20px;
+            border-top: 2px solid var(--gold-primary);
+            border-left: 2px solid var(--gold-primary);
+            border-top-left-radius: 16px;
+        }
+
+        .corner-ornament.top-right {
+            top: 20px;
+            right: 20px;
+            border-top: 2px solid var(--gold-primary);
+            border-right: 2px solid var(--gold-primary);
+            border-top-right-radius: 16px;
+        }
+
+        .corner-ornament.bottom-left {
+            bottom: 20px;
+            left: 20px;
+            border-bottom: 2px solid var(--gold-primary);
+            border-left: 2px solid var(--gold-primary);
+            border-bottom-left-radius: 16px;
+        }
+
+        .corner-ornament.bottom-right {
+            bottom: 20px;
+            right: 20px;
+            border-bottom: 2px solid var(--gold-primary);
+            border-right: 2px solid var(--gold-primary);
+            border-bottom-right-radius: 16px;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Price Ticker */
+        .ticker-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10, 5, 6, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 10px 0;
+            overflow: hidden;
+        }
+
+        .ticker-track {
+            display: flex;
+            animation: ticker 40s linear infinite;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0 24px;
+            white-space: nowrap;
+            font-size: 13px;
+        }
+
+        .ticker-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .ticker-symbol {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .ticker-price {
+            font-family: var(--font-mono);
+            color: var(--text-secondary);
+        }
+
+        .ticker-change {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .ticker-change.positive { color: var(--positive); }
+        .ticker-change.negative { color: var(--negative); }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 42px;
+            left: 0;
+            right: 0;
+            z-index: 99;
+            padding: 16px 0;
+            background: rgba(10, 5, 6, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            transition: all 0.3s var(--ease-out-expo);
+        }
+
+        header.scrolled {
+            background: rgba(10, 5, 6, 0.95);
+            padding: 12px 0;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 50%, var(--gold-dark) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--bg-primary);
+            box-shadow: 0 4px 20px var(--gold-glow);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .logo-sub {
+            font-size: 11px;
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav a {
+            padding: 10px 18px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--text-primary);
+            background: var(--glass-bg);
+        }
+
+        .header-cta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-out-expo);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid var(--border-gold);
+            color: var(--gold-primary);
+        }
+
+        .btn-ghost:hover {
+            background: var(--gold-subtle);
+            border-color: var(--gold-primary);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 50%, var(--gold-dark) 100%);
+            color: var(--bg-primary);
+            box-shadow: 0 4px 20px var(--gold-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px var(--gold-glow);
+        }
+
+        .btn-large {
+            padding: 16px 32px;
+            font-size: 16px;
+        }
+
+        /* Main */
+        main {
+            padding-top: 120px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0 80px;
+            min-height: 100vh;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--glass-bg);
+            border: 1px solid var(--border-gold);
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--gold-primary);
+            margin-bottom: 24px;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--positive);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+            box-shadow: 0 0 10px var(--positive);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 600;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-description .highlight-stat {
+            color: var(--gold-primary);
+            font-weight: 700;
+        }
+
+        /* Hero Split Layout */
+        .hero-split {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 60px;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .hero-left {
+            text-align: left;
+        }
+
+        .trust-text {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .trust-text .grad {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .typewriter-cursor {
+            color: var(--gold-primary);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Globe Container */
+        .hero-right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .globe-shell {
+            position: relative;
+            width: min(550px, 85vw);
+            aspect-ratio: 1 / 1;
+        }
+
+        #globe {
+            width: 100%;
+            height: 100%;
+        }
+
+        #globe canvas {
+            width: 100% !important;
+            height: 100% !important;
+            display: block;
+            border-radius: 50%;
+        }
+
+        /* Marketing Banner */
+        .hero-marketing {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-gold);
+            border-radius: 16px;
+            padding: 20px 28px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .marketing-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .marketing-text strong {
+            color: var(--gold-primary);
+        }
+
+        /* Trust Stats */
+        .trust-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .trust-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .trust-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .trust-title {
+            font-family: var(--font-display);
+            font-size: 28px;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .trust-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s var(--ease-out-expo);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trust-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .trust-card:hover {
+            border-color: var(--border-gold);
+            transform: translateY(-4px);
+        }
+
+        .trust-card:hover::before {
+            opacity: 0.6;
+        }
+
+        .trust-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .trust-value {
+            font-family: var(--font-display);
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--gold-primary);
+            margin-bottom: 4px;
+        }
+
+        .trust-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Section Styles */
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+
+        .section-label {
+            font-size: 12px;
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 42px;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 100px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px 32px;
+            transition: all 0.4s var(--ease-out-expo);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--border-gold);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.6;
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--gold-subtle), rgba(212, 168, 83, 0.2));
+            border: 1px solid var(--border-gold);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 24px;
+        }
+
+        .feature-title {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .feature-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Performance Section */
+        .performance-section {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+            position: relative;
+        }
+
+        .performance-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            opacity: 0.3;
+        }
+
+        .performance-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .performance-content h2 {
+            font-family: var(--font-display);
+            font-size: 42px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .performance-content p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .perf-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .perf-stat {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .perf-stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            opacity: 0.4;
+        }
+
+        .perf-stat-value {
+            font-family: var(--font-display);
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .perf-stat-value.gold { color: var(--gold-primary); }
+        .perf-stat-value.green { color: var(--positive); }
+
+        .perf-stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Dashboard Embed */
+        .dashboard-embed {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .dashboard-embed::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold-primary), var(--gold-light), var(--gold-primary), var(--gold-dark));
+            z-index: 2;
+        }
+
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .dashboard-title {
+            font-family: var(--font-display);
+            font-size: 18px;
+        }
+
+        .dashboard-live {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: var(--positive);
+        }
+
+        .dashboard-live::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--positive);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .dashboard-image-wrapper {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .dashboard-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .dashboard-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .dashboard-image-wrapper:hover .dashboard-overlay {
+            opacity: 1;
+        }
+
+        .overlay-content {
+            text-align: center;
+            color: var(--gold-primary);
+        }
+
+        .overlay-content span:first-child {
+            display: block;
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        .overlay-content span:last-child {
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .dashboard-cta {
+            padding: 20px 24px;
+            text-align: center;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .dashboard-cta .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            padding: 100px 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 32px;
+            transition: all 0.3s var(--ease-out-expo);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--border-gold);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-card:hover::before {
+            opacity: 0.6;
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-stars span {
+            color: var(--gold-primary);
+            font-size: 18px;
+        }
+
+        .testimonial-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--bg-primary);
+        }
+
+        .testimonial-info {
+            flex: 1;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .testimonial-role {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .testimonial-verified {
+            padding: 4px 10px;
+            background: rgba(74, 222, 128, 0.15);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--positive);
+            text-transform: uppercase;
+        }
+
+        /* Pricing */
+        .pricing-section {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+            position: relative;
+        }
+
+        .pricing-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            opacity: 0.3;
+        }
+
+        .pricing-card {
+            max-width: 520px;
+            margin: 0 auto;
+            background: var(--glass-bg);
+            border: 2px solid var(--border-gold);
+            border-radius: 32px;
+            padding: 48px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold-primary), var(--gold-light), var(--gold-primary), var(--gold-dark));
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            padding: 6px 14px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--bg-primary);
+            text-transform: uppercase;
+        }
+
+        .pricing-title {
+            font-family: var(--font-display);
+            font-size: 28px;
+            color: var(--gold-primary);
+            margin-bottom: 8px;
+        }
+
+        .pricing-price {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+
+        .pricing-currency {
+            font-size: 24px;
+            color: var(--text-secondary);
+        }
+
+        .pricing-amount {
+            font-family: var(--font-display);
+            font-size: 72px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1;
+        }
+
+        .pricing-period {
+            font-size: 18px;
+            color: var(--text-muted);
+        }
+
+        .pricing-note {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--gold-subtle);
+            border: 1px solid var(--border-gold);
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--gold-primary);
+            margin-bottom: 32px;
+        }
+
+        .pricing-features {
+            text-align: left;
+            margin-bottom: 32px;
+        }
+
+        .pricing-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .pricing-feature:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-feature-icon {
+            width: 24px;
+            height: 24px;
+            background: rgba(74, 222, 128, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--positive);
+            font-size: 14px;
+        }
+
+        .pricing-feature-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .pricing-cta {
+            width: 100%;
+            padding: 18px;
+            font-size: 16px;
+        }
+
+        .pricing-guarantee {
+            margin-top: 20px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+        }
+
+        .cta-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-gold);
+            border-radius: 32px;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-family: var(--font-display);
+            font-size: 42px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .cta-desc {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        /* Social Section */
+        .social-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .social-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s var(--ease-out-expo);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .social-card:hover {
+            border-color: var(--border-gold);
+            transform: translateY(-4px);
+        }
+
+        .social-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 16px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .social-icon.telegram { background: linear-gradient(135deg, #0088cc, #00aaff); }
+        .social-icon.discord { background: linear-gradient(135deg, #5865F2, #7289da); }
+        .social-icon.twitter { background: linear-gradient(135deg, #1a1a1a, #333); }
+        .social-icon.instagram { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+
+        .social-name {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .social-handle {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.5fr repeat(3, 1fr);
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+
+        .footer-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .footer-column h4 {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--gold-primary);
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 16px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer-brand-center {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer-line {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+        }
+
+        .footer-logo-text {
+            font-family: var(--font-display);
+            font-size: 20px;
+            color: var(--gold-primary);
+        }
+
+        .footer-copyright {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .footer-disclaimer {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: center;
+            max-width: 600px;
+            font-style: italic;
+        }
+
+        /* VIP Features Showcase */
+        .vip-features-section {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+            position: relative;
+        }
+
+        .vip-features-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            opacity: 0.3;
+        }
+
+        .features-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .showcase-main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* iPhone Mockup */
+        .showcase-phone {
+            position: relative;
+            height: 600px;
+            width: 280px;
+            padding: 0 0.5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #1a1a1a;
+            border: 0.5px solid #2a2a2a;
+            border-radius: 45px;
+            box-shadow: 
+                inset 0 0 2px 0 rgba(0, 0, 0, 0.3),
+                0 0 0 0.5px #444,
+                0 0 30px 0px rgba(0, 0, 0, 0.7),
+                0 0 50px 0px rgba(0, 0, 0, 0.3);
+        }
+
+        .iphone-buttons {
+            position: absolute;
+        }
+
+        .silent, .vol-up, .vol-down, .sleep {
+            background: #2a2a2a;
+            position: absolute;
+            border-radius: 1px 0 0 1px;
+        }
+
+        .silent {
+            height: 28px;
+            width: 2px;
+            top: 80px;
+            left: -3px;
+        }
+
+        .vol-up, .vol-down {
+            left: -3px;
+            height: 42px;
+            width: 2px;
+        }
+
+        .vol-up { top: 130px; }
+        .vol-down { top: 190px; }
+
+        .sleep {
+            left: auto;
+            right: -3px;
+            top: 140px;
+            height: 65px;
+            width: 2px;
+            border-radius: 0 1px 1px 0;
+        }
+
+        .iphone-top {
+            position: absolute;
+            top: 2px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 4;
+        }
+
+        .black-bar {
+            position: absolute;
+            height: 1px;
+            width: 60%;
+            padding-top: 1px;
+            background: #1a1a1a;
+        }
+
+        .notch {
+            position: relative;
+            height: 28px;
+            width: 45%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0 0 14px 14px;
+            background: #1a1a1a;
+            z-index: 2;
+        }
+
+        .iphone-components {
+            position: absolute;
+            top: 14px;
+            padding-left: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .speaker {
+            height: 3px;
+            width: 45px;
+            margin: 0 18px;
+            border-radius: 3px;
+            border-bottom: 1px solid #333;
+            background: #222;
+        }
+
+        .camera {
+            height: 11px;
+            width: 11px;
+            border-radius: 50%;
+            border-bottom: 1px solid #444;
+            background: radial-gradient(black, #333);
+            opacity: 0.8;
+            position: relative;
+        }
+
+        .camera::before {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            height: 5px;
+            width: 5px;
+            border-left: 1.5px solid dodgerblue;
+            border-radius: 50%;
+            filter: blur(0.8px);
+        }
+
+        .phone-screen {
+            position: absolute;
+            height: calc(100% - 1px);
+            width: calc(100% - 1px);
+            margin: 0 auto;
+            border: 0.25px solid rgba(0, 0, 0, 0.5);
+            border-radius: 42px;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        /* Carousel */
+        .image-carousel {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 40px;
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 500%;
+            height: 100%;
+        }
+
+        .signal-screenshot {
+            width: 20%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            flex-shrink: 0;
+            background: #0a0a0a;
+        }
+
+        .carousel-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 24px;
+        }
+
+        .nav-btn {
+            width: 45px;
+            height: 45px;
+            border: none;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+            color: var(--bg-primary);
+            border-radius: 50%;
+            font-size: 24px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--gold-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--gold-glow);
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .dot:hover {
+            background: rgba(212, 168, 83, 0.7);
+            transform: scale(1.2);
+        }
+
+        .dot.active {
+            background: var(--gold-primary);
+            border: 2px solid #fff;
+            transform: scale(1.3);
+            box-shadow: 0 0 10px var(--gold-glow);
+        }
+
+        /* Showcase Features List */
+        .showcase-features {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .showcase-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            transition: all 0.3s var(--ease-out-expo);
+        }
+
+        .showcase-feature:hover {
+            border-color: var(--border-gold);
+            background: rgba(212, 168, 83, 0.05);
+        }
+
+        .feature-icon-box {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .feature-content h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--gold-primary);
+            margin-bottom: 6px;
+        }
+
+        .feature-content p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
             }
-          }, 300);
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-      }, 100);
-    });
 
-    // Lazy load heavy libraries
-    function loadScript(src, callback) {
-      const script = document.createElement("script");
-      script.src = src;
-      script.onload = callback;
-      document.body.appendChild(script);
-    }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s var(--ease-out-expo);
+        }
 
-    // Only load Chart.js on desktop
-    if (window.innerWidth > 768) {
-      loadScript("https://cdn.jsdelivr.net/npm/chart.js", function () {
-        console.log("Chart.js loaded");
-      });
-    }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    // Defer AOS for animations
-    if (window.innerWidth > 768) {
-      const aosCSS = document.createElement("link");
-      aosCSS.rel = "stylesheet";
-      aosCSS.href = "https://unpkg.com/aos@2.3.1/dist/aos.css";
-      document.head.appendChild(aosCSS);
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-split {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .hero-left {
+                text-align: center;
+            }
+            
+            .trust-text {
+                margin: 0 auto 20px;
+            }
+            
+            .performance-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid,
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .trust-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .social-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-main {
+                grid-template-columns: 1fr 1fr;
+            }
 
-      loadScript("https://unpkg.com/aos@2.3.1/dist/aos.js", function () {
-        AOS.init({
-          duration: 800,
-          once: true,
-          offset: 50,
-          disable: "mobile",
+            .features-showcase {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .showcase-main {
+                order: 1;
+            }
+
+            .showcase-features {
+                order: 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 32px;
+            }
+            
+            .features-grid,
+            .testimonials-grid,
+            .trust-grid,
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .pricing-card {
+                padding: 32px 24px;
+            }
+            
+            .pricing-amount {
+                font-size: 56px;
+            }
+            
+            .cta-card {
+                padding: 48px 24px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .corner-ornament {
+                display: none;
+            }
+            
+            .perf-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .globe-shell {
+                width: min(350px, 90vw);
+            }
+
+            .showcase-phone {
+                transform: scale(0.85);
+                height: 520px;
+                width: 240px;
+            }
+
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .dot {
+                width: 10px;
+                height: 10px;
+            }
+        }
+
+        /* Loading Screen */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-logo {
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 24px;
+        }
+
+        .loader-spinner {
+            width: 48px;
+            height: 48px;
+            border: 3px solid var(--glass-border);
+            border-top-color: var(--gold-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">LuxQuant</div>
+            <div class="loader-spinner"></div>
+        </div>
+    </div>
+
+    <!-- Luxury Background -->
+    <div class="luxury-bg"></div>
+    
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Corner Ornaments -->
+    <div class="corner-ornament top-left"></div>
+    <div class="corner-ornament top-right"></div>
+    <div class="corner-ornament bottom-left"></div>
+    <div class="corner-ornament bottom-right"></div>
+
+    <!-- Price Ticker -->
+    <div class="ticker-bar">
+        <div class="ticker-track" id="tickerTrack"></div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="logo">
+                    <div class="logo-icon">LQ</div>
+                    <div class="logo-text">
+                        <span class="logo-main">LuxQuant</span>
+                        <span class="logo-sub">VIP Trading</span>
+                    </div>
+                </a>
+
+                <nav>
+                    <a href="#home">Home</a>
+                    <a href="#features">Features</a>
+                    <a href="#performance">Performance</a>
+                    <a href="#reviews">Reviews</a>
+                    <a href="#pricing">Pricing</a>
+                </nav>
+
+                <div class="header-cta">
+                    <a href="#pricing" class="btn btn-primary">Subscribe Now</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div style="text-align: center;">
+                    <div class="hero-badge">
+                        <span>24/7 Automated Signals</span>
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Tools for Automated Crypto<br>
+                        <span class="highlight">Trading Setup 24/7</span>
+                    </h1>
+                    
+                    <p class="hero-description">
+                        Help traders identify market opportunities real-time without having to monitor charts continuously. With <span class="highlight-stat">Historical Accuracy of 86.5%</span> (As Today) since <span class="highlight-stat">2023</span>
+                    </p>
+                </div>
+
+                <!-- Hero Split: Left Text + Right Globe -->
+                <div class="hero-split">
+                    <div class="hero-left">
+                        <h2 class="trust-text" id="animatedText">
+                            Trusted by Users <span class="grad">Worldwide</span><span class="typewriter-cursor">|</span>
+                        </h2>
+                    </div>
+
+                    <div class="hero-right">
+                        <div class="globe-shell">
+                            <div id="globe"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marketing Banner -->
+                <div class="hero-marketing">
+                    <p class="marketing-text">
+                        <strong>Optimize Your Trading Today! 🚀</strong> Get direct access to 24-hour automated tools that provide crypto market setup detection, complete with real-time updates from the LuxQuant system.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Stats -->
+        <section class="trust-section">
+            <div class="container">
+                <div class="trust-header">
+                    <p class="trust-label">LuxQuant Advantages</p>
+                    <h2 class="trust-title">Why Traders Choose Us</h2>
+                </div>
+                
+                <div class="trust-grid">
+                    <div class="trust-card animate-on-scroll">
+                        <div class="trust-icon">⏱️</div>
+                        <div class="trust-value">Save Time</div>
+                        <div class="trust-desc">Trade objectively without spending hours analyzing charts manually</div>
+                    </div>
+                    <div class="trust-card animate-on-scroll">
+                        <div class="trust-icon">🎯</div>
+                        <div class="trust-value">Adaptive</div>
+                        <div class="trust-desc">Algorithm adjusts targets & risk levels based on market conditions</div>
+                    </div>
+                    <div class="trust-card animate-on-scroll">
+                        <div class="trust-icon">🌍</div>
+                        <div class="trust-value">Global</div>
+                        <div class="trust-desc">Serving traders worldwide with reliable signals across all timezones</div>
+                    </div>
+                    <div class="trust-card animate-on-scroll">
+                        <div class="trust-icon">⚡</div>
+                        <div class="trust-value">24/7</div>
+                        <div class="trust-desc">Non-stop market monitoring so you never miss an opportunity</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features-section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-label">Why Choose LuxQuant</p>
+                    <h2 class="section-title">Advanced Crypto Trading Technology</h2>
+                    <p class="section-desc">Everything you need to respond to volatile crypto markets in real-time with precision and confidence.</p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card animate-on-scroll">
+                        <div class="feature-icon">🎯</div>
+                        <h3 class="feature-title">Precision Signals</h3>
+                        <p class="feature-desc">Automated system detects optimal entry and exit price zones based on real-time market data and advanced technical analysis.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-on-scroll">
+                        <div class="feature-icon">⚡</div>
+                        <h3 class="feature-title">Real-Time Alerts</h3>
+                        <p class="feature-desc">Instant notifications via Telegram when the system detects important price zones and market movements.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-on-scroll">
+                        <div class="feature-icon">📊</div>
+                        <h3 class="feature-title">Advanced Analytics</h3>
+                        <p class="feature-desc">Output includes volume ranking monitoring and risk level indicators automatically processed by our AI system.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-on-scroll">
+                        <div class="feature-icon">🛡️</div>
+                        <h3 class="feature-title">Risk Management</h3>
+                        <p class="feature-desc">Every signal includes risk point estimation with stop-loss levels to protect your capital and manage exposure.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-on-scroll">
+                        <div class="feature-icon">📜</div>
+                        <h3 class="feature-title">Proven Track Record</h3>
+                        <p class="feature-desc">Transparent historical performance tracking. No future results promised—just verifiable data you can audit.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-on-scroll">
+                        <div class="feature-icon">🤖</div>
+                        <h3 class="feature-title">24/7 Automation</h3>
+                        <p class="feature-desc">Full automatic market monitoring that processes data and provides systematic output continuously around the clock.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIP Features with iPhone Mockup -->
+        <section class="vip-features-section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-label">VIP Features</p>
+                    <h2 class="section-title">See LuxQuant in Action</h2>
+                    <p class="section-desc">Real screenshots from our Telegram VIP channels showing actual signals and features</p>
+                </div>
+
+                <div class="features-showcase">
+                    <div class="showcase-main">
+                        <!-- iPhone Mockup -->
+                        <div class="showcase-phone">
+                            <!-- iPhone Buttons -->
+                            <div class="iphone-buttons">
+                                <div class="silent"></div>
+                                <div class="vol-up"></div>
+                                <div class="vol-down"></div>
+                                <div class="sleep"></div>
+                            </div>
+
+                            <!-- iPhone Top -->
+                            <div class="iphone-top">
+                                <div class="black-bar"></div>
+                                <div class="notch">
+                                    <div class="iphone-components">
+                                        <div class="speaker"></div>
+                                        <div class="camera"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="phone-screen">
+                                <!-- Image Carousel -->
+                                <div class="image-carousel">
+                                    <div class="carousel-container" id="carouselContainer">
+                                        <img src="fiturlq1.png" alt="LuxQuant Telegram Channels" class="signal-screenshot" />
+                                        <img src="fiturlq2.png" alt="LuxQuant Signal Details" class="signal-screenshot" />
+                                        <img src="fiturlq3.png" alt="LuxQuant Trading Results" class="signal-screenshot" />
+                                        <img src="fiturlq4.png" alt="LuxQuant Market Analysis" class="signal-screenshot" />
+                                        <img src="fiturlq5.png" alt="LuxQuant AI Consultant" class="signal-screenshot" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Carousel Navigation -->
+                        <div class="carousel-nav">
+                            <button class="nav-btn prev-btn" id="prevBtn">‹</button>
+                            <div class="carousel-dots" id="carouselDots">
+                                <span class="dot active" data-slide="0"></span>
+                                <span class="dot" data-slide="1"></span>
+                                <span class="dot" data-slide="2"></span>
+                                <span class="dot" data-slide="3"></span>
+                                <span class="dot" data-slide="4"></span>
+                            </div>
+                            <button class="nav-btn next-btn" id="nextBtn">›</button>
+                        </div>
+                    </div>
+
+                    <div class="showcase-features">
+                        <div class="showcase-feature">
+                            <div class="feature-icon-box"><span>🎯</span></div>
+                            <div class="feature-content">
+                                <h4>AI-Powered Analysis</h4>
+                                <p>Automated algorithms analyze market patterns 24/7 to detect potential price movements based on real-time data.</p>
+                            </div>
+                        </div>
+
+                        <div class="showcase-feature">
+                            <div class="feature-icon-box"><span>⚡</span></div>
+                            <div class="feature-content">
+                                <h4>Instant Notifications</h4>
+                                <p>Real-time notifications directly to your Telegram when the system detects important price zones.</p>
+                            </div>
+                        </div>
+
+                        <div class="showcase-feature">
+                            <div class="feature-icon-box"><span>📊</span></div>
+                            <div class="feature-content">
+                                <h4>Complete Trade Setup</h4>
+                                <p>Every signal includes entry, targets (TP1-TP4), stop-loss, and risk level assessment.</p>
+                            </div>
+                        </div>
+
+                        <div class="showcase-feature">
+                            <div class="feature-icon-box"><span>💎</span></div>
+                            <div class="feature-content">
+                                <h4>VIP Support & AI Consultant</h4>
+                                <p>24/7 VIP support team plus AI consultant for market insights and trading questions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Section -->
+        <section id="performance" class="performance-section">
+            <div class="container">
+                <div class="performance-grid">
+                    <div class="performance-content animate-on-scroll">
+                        <p class="section-label">Daily Updated Performance</p>
+                        <h2>Trade Smarter with <span style="color: var(--gold-primary)">LuxQuant</span></h2>
+                        <p>Our AI-powered system analyzes market patterns 24/7 to detect potential price movements. See real performance data updated daily with complete transparency.</p>
+                        
+                        <div class="perf-stats">
+                            <div class="perf-stat">
+                                <div class="perf-stat-value gold">86.54%</div>
+                                <div class="perf-stat-label">Overall Win Rate</div>
+                            </div>
+                            <div class="perf-stat">
+                                <div class="perf-stat-value green">97.02%</div>
+                                <div class="perf-stat-label">Completion Rate</div>
+                            </div>
+                            <div class="perf-stat">
+                                <div class="perf-stat-value gold">4.48</div>
+                                <div class="perf-stat-label">Avg Risk:Reward</div>
+                            </div>
+                            <div class="perf-stat">
+                                <div class="perf-stat-value green">+18.35%</div>
+                                <div class="perf-stat-label">Avg TP4 Gain</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-embed animate-on-scroll">
+                        <div class="dashboard-header">
+                            <span class="dashboard-title">LuxQuant Dashboard Performance</span>
+                            <span class="dashboard-live">LIVE</span>
+                        </div>
+                        
+                        <a href="https://luxquantlivedata.streamlit.app/" target="_blank" rel="noopener" class="dashboard-image-wrapper">
+                            <img src="https://raw.githubusercontent.com/luxquant/assets/main/dashboard-preview.png" alt="LuxQuant Performance Dashboard" class="dashboard-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22450%22 viewBox=%220 0 800 450%22%3E%3Crect fill=%22%23140a0c%22 width=%22800%22 height=%22450%22/%3E%3Ctext x=%22400%22 y=%22200%22 fill=%22%23d4a853%22 font-family=%22sans-serif%22 font-size=%2224%22 text-anchor=%22middle%22%3ELuxQuant Dashboard%3C/text%3E%3Ctext x=%22400%22 y=%22240%22 fill=%22%23b8a89a%22 font-family=%22sans-serif%22 font-size=%2216%22 text-anchor=%22middle%22%3EClick to Open Live Platform%3C/text%3E%3C/svg%3E'">
+                            <div class="dashboard-overlay">
+                                <div class="overlay-content">
+                                    <span>🔗</span>
+                                    <span>Click to Open Live Platform</span>
+                                </div>
+                            </div>
+                        </a>
+                        
+                        <div class="dashboard-cta">
+                            <a href="https://luxquantlivedata.streamlit.app/" target="_blank" rel="noopener" class="btn btn-primary">
+                                <span>Open Live Dashboard</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="reviews" class="testimonials-section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-label">Success Stories</p>
+                    <h2 class="section-title">What Users Say About LuxQuant</h2>
+                    <p class="section-desc">Real stories from traders who trust our signals for consistent results.</p>
+                </div>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card animate-on-scroll">
+                        <div class="testimonial-stars">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="testimonial-text">"LuxQuant is excellent. First trial already proven. Besides updated predictions, we are also equipped with AI consultant for live consultation and knowledge about macro and economic data."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">AG</div>
+                            <div class="testimonial-info">
+                                <span class="testimonial-name">Il**m A G</span>
+                                <span class="testimonial-role">Head of Car Repair Shop</span>
+                            </div>
+                            <span class="testimonial-verified">Verified</span>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card animate-on-scroll">
+                        <div class="testimonial-stars">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="testimonial-text">"Great, I can work while trading. Just check Telegram every 5 minutes then follow the signals, so I don't need to spend time looking for market potential myself with this LuxQuant."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">SJ</div>
+                            <div class="testimonial-info">
+                                <span class="testimonial-name">Fab**a FMZ</span>
+                                <span class="testimonial-role">University Student</span>
+                            </div>
+                            <span class="testimonial-verified">Verified</span>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card animate-on-scroll">
+                        <div class="testimonial-stars">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="testimonial-text">"Initially I was hesitant, but after trying it, I feel the LuxQuant system is quite consistent in presenting relevant data and equipped with clear risk settings."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">MR</div>
+                            <div class="testimonial-info">
+                                <span class="testimonial-name">R**n*ld G</span>
+                                <span class="testimonial-role">Crypto Investor</span>
+                            </div>
+                            <span class="testimonial-verified">Verified</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section id="pricing" class="pricing-section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-label">Membership Plans</p>
+                    <h2 class="section-title">Choose Your Access Package</h2>
+                    <p class="section-desc">One-time payment for lifetime access to all LuxQuant features.</p>
+                </div>
+                
+                <div class="pricing-card animate-on-scroll">
+                    <span class="pricing-badge">Best Value</span>
+                    
+                    <h3 class="pricing-title">Lifetime Access</h3>
+                    
+                    <div class="pricing-price">
+                        <span class="pricing-currency">$</span>
+                        <span class="pricing-amount">400</span>
+                        <span class="pricing-period">/lifetime</span>
+                    </div>
+                    
+                    <span class="pricing-note">One-time payment • USDT only</span>
+                    
+                    <div class="pricing-features">
+                        <div class="pricing-feature">
+                            <span class="pricing-feature-icon">✓</span>
+                            <span class="pricing-feature-text">Complete trade setup outputs</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <span class="pricing-feature-icon">✓</span>
+                            <span class="pricing-feature-text">Real-time notifications via Telegram</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <span class="pricing-feature-icon">✓</span>
+                            <span class="pricing-feature-text">Analysis equipped with volume ranking</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <span class="pricing-feature-icon">✓</span>
+                            <span class="pricing-feature-text">Risk info for user risk management</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <span class="pricing-feature-icon">✓</span>
+                            <span class="pricing-feature-text">24/7 VIP Support</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <span class="pricing-feature-icon">✓</span>
+                            <span class="pricing-feature-text">Access to AI Consultant from LuxQuant Team</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <span class="pricing-feature-icon">✓</span>
+                            <span class="pricing-feature-text">Access to advanced service development</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://t.me/luxquantadmin" target="_blank" class="btn btn-primary pricing-cta">Get Lifetime Access</a>
+                    
+                    <p class="pricing-guarantee">🎁 Have KOL referral code? Get 5% discount</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-card">
+                    <div class="cta-content">
+                        <h2 class="cta-title">Ready to Start Your <span class="highlight">Profitable</span> Trading Journey?</h2>
+                        <p class="cta-desc">Join thousands of successful traders who trust LuxQuant for consistent profits.</p>
+                        <div class="cta-buttons">
+                            <a href="#pricing" class="btn btn-primary btn-large">
+                                Get Started Now
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                            <a href="https://t.me/luxquantadmin" target="_blank" class="btn btn-ghost btn-large">Contact Support</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Section -->
+        <section class="social-section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-label">Connect With Us</p>
+                    <h2 class="section-title" style="font-size: 32px;">Follow Us on Social Media</h2>
+                </div>
+                
+                <div class="social-grid">
+                    <a href="https://t.me/luxquantadmin" target="_blank" class="social-card">
+                        <div class="social-icon telegram">✈️</div>
+                        <div class="social-name">Telegram</div>
+                        <div class="social-handle">Join our community</div>
+                    </a>
+                    <a href="#" class="social-card">
+                        <div class="social-icon discord">💬</div>
+                        <div class="social-name">Discord</div>
+                        <div class="social-handle">Chat with traders</div>
+                    </a>
+                    <a href="https://x.com/luxquanttrade" target="_blank" class="social-card">
+                        <div class="social-icon twitter">𝕏</div>
+                        <div class="social-name">X (Twitter)</div>
+                        <div class="social-handle">@luxquanttrade</div>
+                    </a>
+                    <a href="https://instagram.com/luxquanttrade" target="_blank" class="social-card">
+                        <div class="social-icon instagram">📷</div>
+                        <div class="social-name">Instagram</div>
+                        <div class="social-handle">@luxquanttrade</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo">
+                        <div class="logo-icon" style="width: 40px; height: 40px; font-size: 16px;">LQ</div>
+                        <div class="logo-text">
+                            <span class="logo-main" style="font-size: 18px;">LuxQuant</span>
+                            <span class="logo-sub" style="font-size: 10px;">VIP Trading</span>
+                        </div>
+                    </a>
+                    <p class="footer-desc">Premium AI-powered crypto trading signals with proven results. Helping traders worldwide make smarter decisions since 2023.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#performance">Performance</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="https://t.me/luxquantadmin" target="_blank">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="https://t.me/luxquantadmin" target="_blank">Telegram</a></li>
+                        <li><a href="#">Discord</a></li>
+                        <li><a href="https://x.com/luxquanttrade" target="_blank">Twitter / X</a></li>
+                        <li><a href="https://instagram.com/luxquanttrade" target="_blank">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-brand-center">
+                    <div class="footer-line"></div>
+                    <span class="footer-logo-text">LuxQuant</span>
+                    <div class="footer-line"></div>
+                </div>
+                <p class="footer-copyright">© 2025 LuxQuant VIP. All rights reserved.</p>
+                <p class="footer-disclaimer">Trading involves risk. Past performance is not indicative of future results.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Three.js Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://unpkg.com/three-globe@2.24.4/dist/three-globe.min.js"></script>
+
+    <script>
+        // Hide loader
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1500);
         });
-      });
-    }
 
-    // Carousel functionality
-    let currentSlide = 0;
-    const totalSlides = 5;
-    const carouselContainer = document.getElementById("carouselContainer");
-    const dots = document.querySelectorAll(".dot");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const loadingOverlay = document.getElementById("loadingOverlay");
-
-    function showLoading() {
-      if (loadingOverlay) {
-        loadingOverlay.classList.add("show");
-        setTimeout(() => {
-          loadingOverlay.classList.remove("show");
-        }, 300);
-      }
-    }
-
-    function updateCarousel() {
-      const translateX = -currentSlide * 20; // 20% per slide
-      if (carouselContainer) {
-        carouselContainer.style.transform = `translateX(${translateX}%)`;
-      }
-
-      // Update dots
-      dots.forEach((dot, index) => {
-        dot.classList.toggle("active", index === currentSlide);
-      });
-    }
-
-    function nextSlide() {
-      showLoading();
-      currentSlide = (currentSlide + 1) % totalSlides;
-      setTimeout(() => {
-        updateCarousel();
-      }, 150);
-    }
-
-    function prevSlide() {
-      showLoading();
-      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-      setTimeout(() => {
-        updateCarousel();
-      }, 150);
-    }
-
-    function goToSlide(slideIndex) {
-      if (slideIndex !== currentSlide) {
-        showLoading();
-        currentSlide = slideIndex;
-        setTimeout(() => {
-          updateCarousel();
-        }, 150);
-      }
-    }
-
-    // Event listeners
-    if (nextBtn) nextBtn.addEventListener("click", nextSlide);
-    if (prevBtn) prevBtn.addEventListener("click", prevSlide);
-
-    dots.forEach((dot, index) => {
-      dot.addEventListener("click", () => goToSlide(index));
-    });
-
-    // Auto-slide (optional - can be disabled)
-    let autoSlideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
-
-    // Pause auto-slide on hover
-    const phoneElement = document.querySelector(".showcase-phone");
-    if (phoneElement) {
-      phoneElement.addEventListener("mouseenter", () => {
-        clearInterval(autoSlideInterval);
-      });
-
-      phoneElement.addEventListener("mouseleave", () => {
-        autoSlideInterval = setInterval(nextSlide, 5000);
-      });
-    }
-
-    // Touch/swipe support for mobile
-    let startX = 0;
-    let endX = 0;
-    let startY = 0;
-    let endY = 0;
-
-    if (carouselContainer) {
-      carouselContainer.addEventListener(
-        "touchstart",
-        (e) => {
-          startX = e.touches[0].clientX;
-          startY = e.touches[0].clientY;
-        },
-        { passive: true }
-      );
-
-      carouselContainer.addEventListener(
-        "touchmove",
-        (e) => {
-          e.preventDefault();
-        },
-        { passive: false }
-      );
-
-      carouselContainer.addEventListener(
-        "touchend",
-        (e) => {
-          endX = e.changedTouches[0].clientX;
-          endY = e.changedTouches[0].clientY;
-          handleSwipe();
-        },
-        { passive: true }
-      );
-    }
-
-    function handleSwipe() {
-      const swipeThreshold = 50;
-      const diffX = startX - endX;
-      const diffY = Math.abs(startY - endY);
-
-      // Only trigger swipe if horizontal movement is greater than vertical
-      if (Math.abs(diffX) > swipeThreshold && diffY < 100) {
-        clearInterval(autoSlideInterval); // Stop auto-slide temporarily
-
-        if (diffX > 0) {
-          nextSlide(); // Swipe left
-        } else {
-          prevSlide(); // Swipe right
+        // Generate particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 25; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 12 + 's';
+            particle.style.animationDuration = (8 + Math.random() * 8) + 's';
+            particlesContainer.appendChild(particle);
         }
 
-        // Restart auto-slide after swipe
-        setTimeout(() => {
-          autoSlideInterval = setInterval(nextSlide, 5000);
-        }, 3000);
-      }
-    }
+        // Ticker
+        const tickerTrack = document.getElementById('tickerTrack');
+        const cryptoData = [
+            { symbol: 'BTC', price: '104,892', change: '+2.34%', positive: true, color: '#f7931a' },
+            { symbol: 'ETH', price: '3,342', change: '+4.12%', positive: true, color: '#627eea' },
+            { symbol: 'BNB', price: '698', change: '-0.87%', positive: false, color: '#f3ba2f' },
+            { symbol: 'SOL', price: '258', change: '+6.45%', positive: true, color: '#9945ff' },
+            { symbol: 'XRP', price: '3.12', change: '+1.23%', positive: true, color: '#23292f' },
+            { symbol: 'ADA', price: '0.98', change: '-1.45%', positive: false, color: '#0033ad' },
+            { symbol: 'DOGE', price: '0.42', change: '+3.21%', positive: true, color: '#c2a633' },
+            { symbol: 'LINK', price: '28.45', change: '+2.87%', positive: true, color: '#2a5ada' },
+        ];
 
-    // Keyboard navigation
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowLeft") {
-        prevSlide();
-      } else if (e.key === "ArrowRight") {
-        nextSlide();
-      }
-    });
-
-    // Initialize carousel
-    updateCarousel();
-  </script>
-
-  <!-- Main JavaScript -->
-  <script src="main.js" defer></script>
-  <!-- Three.js core -->
-  <script src=https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js></script>
-
-  <!-- Orbit Controls (untuk rotasi & interaksi) -->
-  <script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-
-  <!-- Three-Globe -->
-  <script src="https://unpkg.com/three-globe@2.24.4/dist/three-globe.min.js"></script>
-  <script src="globe.js"></script>
-
-
-
-  <script>
-    const stats = {
-      winRate: "86.5%",
-      winRateNumber: "87.9%",
-      globalUsers: "8,562",
-      totalSignals: "12.263",
-      userRating: "4.9/5",
-      satisfiedUsers: "95%",
-      price: "$79.99",
-    };
-    document.addEventListener("DOMContentLoaded", () => {
-      // Update elements with data-stat attributes
-      document.querySelectorAll("[data-stat]").forEach((el) => {
-        const k = el.dataset.stat;
-        if (stats[k] !== undefined) el.textContent = stats[k];
-      });
-
-      // Also search for any hardcoded win rate numbers that might be missed
-      // This is a fallback to catch any 88.6% or 89.6% that don't have data-stat
-      document.querySelectorAll("*").forEach((el) => {
-        if (el.children.length === 0 && el.textContent) {
-          if (
-            el.textContent.trim() === "88.6%" ||
-            el.textContent.trim() === "89.6%"
-          ) {
-            el.textContent = stats.winRate;
-          }
-          if (el.textContent.trim() === "8,561+") {
-            el.textContent = stats.globalUsers;
-          }
-          if (el.textContent.trim() === "1,822") {
-            el.textContent = stats.totalSignals;
-          }
-          if (el.textContent.trim() === "4.9/5") {
-            el.textContent = stats.userRating;
-          }
-          if (el.textContent.trim() === "95%") {
-            el.textContent = stats.satisfiedUsers;
-          }
-          if (el.textContent.trim() === "$79.99") {
-            el.textContent = stats.price;
-          }
+        function createTickerItems() {
+            return cryptoData.map(crypto => `
+                <div class="ticker-item">
+                    <div class="ticker-icon" style="background: ${crypto.color};">${crypto.symbol.charAt(0)}</div>
+                    <span class="ticker-symbol">${crypto.symbol}</span>
+                    <span class="ticker-price">$${crypto.price}</span>
+                    <span class="ticker-change ${crypto.positive ? 'positive' : 'negative'}">${crypto.change}</span>
+                </div>
+            `).join('');
         }
-      });
-    });
-  </script>
-  <script src="referral.js"></script>
+
+        tickerTrack.innerHTML = createTickerItems() + createTickerItems();
+
+        // Header scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Typewriter animation
+        function typewriterAnimation() {
+            const element = document.getElementById('animatedText');
+            if (!element) return;
+            
+            const fullText = 'Trusted by Users ';
+            const gradText = 'Worldwide';
+            let i = 0;
+            let isDeleting = false;
+            let currentText = '';
+            
+            function type() {
+                if (!isDeleting) {
+                    if (i <= fullText.length + gradText.length) {
+                        if (i <= fullText.length) {
+                            currentText = fullText.substring(0, i);
+                            element.innerHTML = currentText + '<span class="typewriter-cursor">|</span>';
+                        } else {
+                            const gradPart = gradText.substring(0, i - fullText.length);
+                            element.innerHTML = fullText + '<span class="grad">' + gradPart + '</span><span class="typewriter-cursor">|</span>';
+                        }
+                        i++;
+                        setTimeout(type, 80 + Math.random() * 50);
+                    } else {
+                        setTimeout(() => {
+                            isDeleting = true;
+                            type();
+                        }, 3000);
+                    }
+                } else {
+                    if (i > 0) {
+                        i--;
+                        if (i <= fullText.length) {
+                            currentText = fullText.substring(0, i);
+                            element.innerHTML = currentText + '<span class="typewriter-cursor">|</span>';
+                        } else {
+                            const gradPart = gradText.substring(0, i - fullText.length);
+                            element.innerHTML = fullText + '<span class="grad">' + gradPart + '</span><span class="typewriter-cursor">|</span>';
+                        }
+                        setTimeout(type, 40);
+                    } else {
+                        isDeleting = false;
+                        setTimeout(type, 500);
+                    }
+                }
+            }
+            
+            type();
+        }
+        
+        typewriterAnimation();
+
+        // === CAROUSEL FUNCTIONALITY ===
+        let currentSlide = 0;
+        const totalSlides = 5;
+        const carouselContainer = document.getElementById('carouselContainer');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function updateCarousel() {
+            const translateX = -currentSlide * 20;
+            if (carouselContainer) {
+                carouselContainer.style.transform = `translateX(${translateX}%)`;
+            }
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateCarousel();
+        }
+
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => goToSlide(index));
+        });
+
+        // Auto-slide
+        let autoSlideInterval = setInterval(nextSlide, 5000);
+
+        const phoneElement = document.querySelector('.showcase-phone');
+        if (phoneElement) {
+            phoneElement.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+            phoneElement.addEventListener('mouseleave', () => {
+                autoSlideInterval = setInterval(nextSlide, 5000);
+            });
+        }
+
+        // Touch/swipe support
+        let startX = 0, endX = 0;
+        if (carouselContainer) {
+            carouselContainer.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            }, { passive: true });
+
+            carouselContainer.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) nextSlide();
+                    else prevSlide();
+                }
+            }, { passive: true });
+        }
+
+        updateCarousel();
+
+        // === THREE.JS GLOBE ===
+        const container = document.getElementById('globe');
+        if (container) {
+            const scene = new THREE.Scene();
+            scene.fog = new THREE.Fog(0x0a0506, 400, 2000);
+
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setClearColor(0x000000, 0);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            function setRendererSize() {
+                const w = container.clientWidth;
+                const h = container.clientHeight;
+                renderer.setSize(w, h, false);
+            }
+            setRendererSize();
+            container.appendChild(renderer.domElement);
+
+            const camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 2000);
+            camera.position.set(0, 0, 300);
+
+            const controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.06;
+            controls.enablePan = false;
+            controls.enableZoom = false;
+            controls.autoRotate = true;
+            controls.autoRotateSpeed = 0.8;
+
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1.2);
+            directionalLight.position.set(1, 1, 1);
+            scene.add(directionalLight);
+
+            // Globe
+            const globe = new ThreeGlobe()
+                .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
+                .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+                .showAtmosphere(true)
+                .atmosphereColor('#d4a853')
+                .atmosphereAltitude(0.25);
+
+            scene.add(globe);
+
+            // Locations
+            const locations = [
+                { name: 'Jakarta', lat: -6.2088, lng: 106.8456, color: '#FFD700' },
+                { name: 'Singapore', lat: 1.3521, lng: 103.8198, color: '#FFA500' },
+                { name: 'Taipei', lat: 25.0330, lng: 121.5654, color: '#FFD700' },
+                { name: 'Tokyo', lat: 35.6762, lng: 139.6503, color: '#FFA500' },
+                { name: 'Mumbai', lat: 19.0760, lng: 72.8777, color: '#FFA500' },
+                { name: 'New York', lat: 40.7128, lng: -74.0060, color: '#FFD700' },
+                { name: 'London', lat: 51.5074, lng: -0.1278, color: '#FFA500' },
+                { name: 'Dubai', lat: 25.2048, lng: 55.2708, color: '#FFD700' },
+                { name: 'Sydney', lat: -33.8688, lng: 151.2093, color: '#FFA500' },
+                { name: 'São Paulo', lat: -23.5505, lng: -46.6333, color: '#FFB347' }
+            ];
+
+            // Routes from Taipei
+            const routes = [
+                { startLat: 25.0330, startLng: 121.5654, endLat: -6.2088, endLng: 106.8456, color: '#ffffff' },
+                { startLat: 25.0330, startLng: 121.5654, endLat: 1.3521, endLng: 103.8198, color: '#ffffff' },
+                { startLat: 25.0330, startLng: 121.5654, endLat: 35.6762, endLng: 139.6503, color: '#ffffff' },
+                { startLat: 25.0330, startLng: 121.5654, endLat: 19.0760, endLng: 72.8777, color: '#ffffff' },
+                { startLat: 25.0330, startLng: 121.5654, endLat: 40.7128, endLng: -74.0060, color: '#ffffff' },
+                { startLat: 25.0330, startLng: 121.5654, endLat: 51.5074, endLng: -0.1278, color: '#ffffff' },
+                { startLat: 25.0330, startLng: 121.5654, endLat: 25.2048, endLng: 55.2708, color: '#ffffff' },
+                { startLat: 25.0330, startLng: 121.5654, endLat: -33.8688, endLng: 151.2093, color: '#ffffff' },
+                { startLat: 25.0330, startLng: 121.5654, endLat: -23.5505, endLng: -46.6333, color: '#ffffff' }
+            ];
+
+            globe
+                .pointsData(locations)
+                .pointAltitude(0.01)
+                .pointColor('color')
+                .pointRadius(0.8)
+                .pointResolution(20);
+
+            globe
+                .arcsData(routes)
+                .arcColor('color')
+                .arcAltitudeAutoScale(0.3)
+                .arcStroke(0.6)
+                .arcDashLength(0.4)
+                .arcDashGap(0.2)
+                .arcDashInitialGap(() => Math.random())
+                .arcDashAnimateTime(3000);
+
+            globe
+                .labelsData(locations)
+                .labelText('name')
+                .labelSize(1.2)
+                .labelColor(() => 'rgba(255, 215, 0, 0.9)')
+                .labelDotRadius(0.4)
+                .labelAltitude(0.01);
+
+            function animate() {
+                requestAnimationFrame(animate);
+                controls.update();
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            function handleResize() {
+                const w = container.clientWidth;
+                const h = container.clientHeight;
+                camera.aspect = w / h;
+                camera.updateProjectionMatrix();
+                renderer.setSize(w, h, false);
+            }
+            window.addEventListener('resize', handleResize);
+        }
+    </script>
 </body>
-
 </html>
