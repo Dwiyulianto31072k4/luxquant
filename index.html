@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="LuxQuant VIP - Premium AI-Powered Crypto Trading Signals with high Win Rate. Join elite traders using advanced automation.">
-    <title>LuxQuant VIP - Premium AI Crypto Trading Signals</title>
+    <meta name="description" content="LuxQuant Algorithm - Premium AI-Powered Crypto Trading Signals backed by advanced algorithms.">
+    <title>LuxQuant Algorithm - AI Crypto Trading Signals</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,51 +12,30 @@
     
     <style>
         :root {
-            /* Dark luxury theme */
             --bg-primary: #0a0a0a;
-            --bg-secondary: #111111;
-            --bg-tertiary: #1a1a1a;
-            --bg-card: rgba(26, 26, 26, 0.8);
-            
-            /* Gold accent */
+            --bg-secondary: #0f0f0f;
+            --bg-tertiary: #141414;
+            --bg-card: rgba(20, 20, 20, 0.9);
+            --red-primary: #8b1a1a;
+            --red-glow: rgba(139, 26, 26, 0.3);
             --gold: #d4a853;
             --gold-light: #e8c47a;
             --gold-dark: #a67c3d;
             --gold-glow: rgba(212, 168, 83, 0.15);
             --gold-subtle: rgba(212, 168, 83, 0.08);
-            
-            /* Text */
             --text-primary: #ffffff;
             --text-secondary: rgba(255, 255, 255, 0.7);
             --text-muted: rgba(255, 255, 255, 0.4);
-            
-            /* Borders */
             --border: rgba(255, 255, 255, 0.08);
             --border-gold: rgba(212, 168, 83, 0.3);
-            
-            /* Status */
             --positive: #22c55e;
             --negative: #ef4444;
-            
-            /* Typography */
             --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-display: 'Playfair Display', Georgia, serif;
-            
-            /* Spacing */
             --section-padding: clamp(80px, 10vw, 140px);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: var(--font-primary);
             background: var(--bg-primary);
@@ -65,1570 +44,391 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
-
-        /* Container */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .container-wide {
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ============================================
-           PRICE TICKER
-        ============================================ */
-        .ticker-wrapper {
+        body::before {
+            content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.9);
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, var(--red-glow) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, var(--red-glow) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(212, 168, 83, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+        /* Ticker */
+        .ticker-wrapper {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
-            height: 44px;
-            overflow: hidden;
+            height: 44px; overflow: hidden;
         }
+        .ticker-track { display: flex; animation: tickerScroll 60s linear infinite; }
+        @keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .ticker-item { display: flex; align-items: center; gap: 8px; padding: 0 28px; height: 44px; white-space: nowrap; font-size: 13px; font-weight: 500; }
+        .ticker-icon { width: 22px; height: 22px; border-radius: 50%; }
+        .ticker-symbol { font-weight: 600; color: var(--text-primary); }
+        .ticker-price { color: var(--text-secondary); }
+        .ticker-change { font-weight: 600; font-size: 12px; padding: 2px 6px; border-radius: 4px; }
+        .ticker-change.positive { color: var(--positive); background: rgba(34, 197, 94, 0.1); }
+        .ticker-change.negative { color: var(--negative); background: rgba(239, 68, 68, 0.1); }
 
-        .ticker-track {
-            display: flex;
-            animation: tickerScroll 60s linear infinite;
-            will-change: transform;
-        }
-
-        @keyframes tickerScroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .ticker-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 0 28px;
-            height: 44px;
-            white-space: nowrap;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .ticker-icon {
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .ticker-symbol {
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .ticker-price {
-            color: var(--text-secondary);
-        }
-
-        .ticker-change {
-            font-weight: 600;
-            font-size: 12px;
-            padding: 2px 6px;
-            border-radius: 4px;
-        }
-
-        .ticker-change.positive {
-            color: var(--positive);
-            background: rgba(34, 197, 94, 0.1);
-        }
-
-        .ticker-change.negative {
-            color: var(--negative);
-            background: rgba(239, 68, 68, 0.1);
-        }
-
-        /* ============================================
-           HEADER
-        ============================================ */
+        /* Header */
         header {
-            position: fixed;
-            top: 44px;
-            left: 0;
-            right: 0;
-            z-index: 999;
+            position: fixed; top: 44px; left: 0; right: 0; z-index: 999;
             padding: 16px 0;
             background: rgba(10, 10, 10, 0.8);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
             transition: all 0.3s ease;
         }
+        header.scrolled { padding: 12px 0; background: rgba(10, 10, 10, 0.95); }
+        .header-inner { display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-img { width: 44px; height: 44px; border-radius: 12px; object-fit: contain; }
+        .logo-text { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--text-primary); }
+        nav { display: flex; align-items: center; gap: 32px; }
+        nav a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        nav a:hover { color: var(--text-primary); }
+        .header-cta .btn { padding: 10px 20px; font-size: 14px; }
 
-        header.scrolled {
-            padding: 12px 0;
-            background: rgba(10, 10, 10, 0.95);
-        }
-
-        .header-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 44px;
-            height: 44px;
-            background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 18px;
-            color: var(--bg-primary);
-        }
-
-        .logo-text {
-            font-family: var(--font-display);
-            font-size: 24px;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
-
-        nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        nav a:hover {
-            color: var(--text-primary);
-        }
-
-        .header-cta .btn {
-            padding: 10px 20px;
-            font-size: 14px;
-        }
-
-        /* ============================================
-           BUTTONS
-        ============================================ */
+        /* Buttons */
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 14px 28px;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: none;
-            font-family: inherit;
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 14px 28px; border-radius: 8px; font-size: 15px; font-weight: 600;
+            text-decoration: none; cursor: pointer; transition: all 0.2s ease; border: none; font-family: inherit;
         }
+        .btn-primary { background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: var(--bg-primary); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212, 168, 83, 0.3); }
+        .btn-secondary { background: transparent; border: 1px solid var(--border); color: var(--text-primary); }
+        .btn-secondary:hover { background: var(--bg-tertiary); border-color: var(--text-muted); }
+        .btn-large { padding: 18px 36px; font-size: 16px; }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--gold-light), var(--gold));
-            color: var(--bg-primary);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(212, 168, 83, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text-primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--bg-tertiary);
-            border-color: var(--text-muted);
-        }
-
-        .btn-large {
-            padding: 18px 36px;
-            font-size: 16px;
-        }
-
-        /* ============================================
-           HERO SECTION
-        ============================================ */
-        .hero {
-            padding-top: 160px;
-            padding-bottom: var(--section-padding);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-bg {
+        /* Hero */
+        .hero { padding-top: 160px; padding-bottom: var(--section-padding); position: relative; }
+        .hero-content { text-align: center; max-width: 900px; margin: 0 auto; }
+        .hero-title { font-family: var(--font-display); font-size: clamp(40px, 6vw, 72px); font-weight: 600; line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.02em; }
+        .hero-title .highlight { background: linear-gradient(135deg, var(--gold-light), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-description { font-size: 18px; color: var(--text-secondary); max-width: 640px; margin: 0 auto 40px; line-height: 1.7; }
+        .hero-cta { display: flex; gap: 16px; justify-content: center; margin-bottom: 80px; }
+        .hero-globe-section { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; margin-top: 80px; }
+        .hero-text-content h2 { font-family: var(--font-display); font-size: 32px; margin-bottom: 16px; }
+        .hero-text-content .grad { background: linear-gradient(135deg, var(--gold-light), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        /* Floating Flags */
+        .floating-flags-container {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(ellipse at 30% 20%, rgba(212, 168, 83, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 80%, rgba(212, 168, 83, 0.05) 0%, transparent 50%);
+            top: 0; left: 0; right: 0; bottom: 0;
             pointer-events: none;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: var(--gold-subtle);
-            border: 1px solid var(--border-gold);
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--gold);
-            margin-bottom: 32px;
-        }
-
-        .hero-badge .dot {
-            width: 8px;
-            height: 8px;
-            background: var(--positive);
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(0.8); }
-        }
-
-        .hero-title {
-            font-family: var(--font-display);
-            font-size: clamp(40px, 6vw, 72px);
-            font-weight: 600;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            letter-spacing: -0.02em;
-        }
-
-        .hero-title .highlight {
-            background: linear-gradient(135deg, var(--gold-light), var(--gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-description {
-            font-size: 18px;
-            color: var(--text-secondary);
-            max-width: 640px;
-            margin: 0 auto 40px;
-            line-height: 1.7;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            margin-bottom: 80px;
-        }
-
-        /* Hero Globe Section */
-        .hero-globe-section {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 60px;
-            align-items: center;
-            margin-top: 80px;
-        }
-
-        .hero-text-content h2 {
-            font-family: var(--font-display);
-            font-size: 32px;
-            margin-bottom: 16px;
-        }
-
-        .hero-text-content .grad {
-            background: linear-gradient(135deg, var(--gold-light), var(--gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .typewriter-cursor {
-            color: var(--gold);
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        .globe-container {
-            width: 100%;
-            aspect-ratio: 1;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        #globe {
-            width: 100%;
-            height: 100%;
-        }
-
-        #globe canvas {
-            width: 100% !important;
-            height: 100% !important;
-            border-radius: 50%;
-        }
-
-        /* ============================================
-           TRUST/PARTNERS SECTION
-        ============================================ */
-        .trust-section {
-            padding: var(--section-padding) 0;
-            border-top: 1px solid var(--border);
-        }
-
-        .trust-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .trust-label {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gold);
-            margin-bottom: 16px;
-        }
-
-        .trust-title {
-            font-family: var(--font-display);
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 600;
-        }
-
-        .trust-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-
-        .trust-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 40px 32px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .trust-card:hover {
-            border-color: var(--border-gold);
-            transform: translateY(-4px);
-        }
-
-        .trust-card-icon {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-
-        .trust-card-value {
-            font-family: var(--font-display);
-            font-size: 28px;
-            font-weight: 600;
-            color: var(--gold);
-            margin-bottom: 8px;
-        }
-
-        .trust-card-desc {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        /* ============================================
-           FEATURES SECTION
-        ============================================ */
-        .features-section {
-            padding: var(--section-padding) 0;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 640px;
-            margin: 0 auto 60px;
-        }
-
-        .section-label {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gold);
-            margin-bottom: 16px;
-        }
-
-        .section-title {
-            font-family: var(--font-display);
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-
-        .section-desc {
-            font-size: 16px;
-            color: var(--text-secondary);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .feature-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 40px 32px;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            border-color: var(--border-gold);
-            transform: translateY(-4px);
-        }
-
-        .feature-icon {
-            width: 56px;
-            height: 56px;
-            background: var(--gold-subtle);
-            border: 1px solid var(--border-gold);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 26px;
-            margin-bottom: 24px;
-        }
-
-        .feature-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .feature-desc {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* ============================================
-           VIP FEATURES WITH PHONE
-        ============================================ */
-        .vip-section {
-            padding: var(--section-padding) 0;
-            background: var(--bg-secondary);
-        }
-
-        .vip-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        /* iPhone Mockup */
-        .phone-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .phone-mockup {
-            position: relative;
-            width: 280px;
-            height: 580px;
-            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
-            border-radius: 44px;
-            padding: 12px;
-            box-shadow: 
-                0 0 0 1px rgba(255,255,255,0.1),
-                0 20px 60px rgba(0,0,0,0.5),
-                inset 0 0 2px rgba(255,255,255,0.1);
-        }
-
-        .phone-notch {
-            position: absolute;
-            top: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 28px;
-            background: #1a1a1a;
-            border-radius: 0 0 16px 16px;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .phone-speaker {
-            width: 50px;
-            height: 4px;
-            background: #333;
-            border-radius: 2px;
-        }
-
-        .phone-camera {
-            width: 10px;
-            height: 10px;
-            background: radial-gradient(circle, #1a1a1a 40%, #333 60%);
-            border-radius: 50%;
-        }
-
-        .phone-screen {
-            width: 100%;
-            height: 100%;
-            background: #0a0a0a;
-            border-radius: 36px;
             overflow: hidden;
-            position: relative;
         }
-
-        .carousel-container {
-            display: flex;
-            height: 100%;
-            transition: transform 0.5s ease;
+        .floating-flag {
+            position: absolute;
+            font-size: 28px;
+            opacity: 0;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+            animation: floatFlag 8s ease-in-out infinite;
         }
-
-        .carousel-slide {
-            min-width: 100%;
-            height: 100%;
+        @keyframes floatFlag {
+            0% { opacity: 0; transform: translateY(20px) scale(0.5) rotate(-10deg); }
+            15% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+            85% { opacity: 1; transform: translateY(-10px) scale(1) rotate(5deg); }
+            100% { opacity: 0; transform: translateY(-30px) scale(0.5) rotate(10deg); }
         }
+        .floating-flag:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+        .floating-flag:nth-child(2) { top: 20%; right: 8%; animation-delay: 0.8s; }
+        .floating-flag:nth-child(3) { top: 60%; left: 3%; animation-delay: 1.6s; }
+        .floating-flag:nth-child(4) { top: 75%; right: 5%; animation-delay: 2.4s; }
+        .floating-flag:nth-child(5) { top: 40%; left: 8%; animation-delay: 3.2s; }
+        .floating-flag:nth-child(6) { top: 30%; right: 3%; animation-delay: 4s; }
+        .floating-flag:nth-child(7) { top: 85%; left: 10%; animation-delay: 4.8s; }
+        .floating-flag:nth-child(8) { top: 5%; right: 12%; animation-delay: 5.6s; }
+        .floating-flag:nth-child(9) { top: 50%; right: 10%; animation-delay: 6.4s; }
+        .floating-flag:nth-child(10) { top: 65%; left: 6%; animation-delay: 7.2s; }
+        .floating-flag:nth-child(11) { top: 15%; left: 12%; animation-delay: 2s; }
+        .floating-flag:nth-child(12) { top: 90%; right: 8%; animation-delay: 3.5s; }
+        .globe-container { width: 100%; aspect-ratio: 1; max-width: 500px; margin: 0 auto; position: relative; }
+        #globe { width: 100%; height: 100%; }
 
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        /* Trust Section */
+        .trust-section { padding: var(--section-padding) 0; border-top: 1px solid var(--border); }
+        .trust-header { text-align: center; margin-bottom: 60px; }
+        .section-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 16px; }
+        .section-title { font-family: var(--font-display); font-size: clamp(32px, 4vw, 48px); font-weight: 600; }
+        .section-desc { font-size: 16px; color: var(--text-secondary); margin-top: 16px; }
+        .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .trust-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px; padding: 40px 32px; text-align: center; transition: all 0.3s ease; }
+        .trust-card:hover { border-color: var(--border-gold); transform: translateY(-4px); }
+        .trust-card-icon { width: 64px; height: 64px; margin: 0 auto 20px; background: var(--gold-subtle); border: 1px solid var(--border-gold); border-radius: 16px; display: flex; align-items: center; justify-content: center; }
+        .trust-card-icon svg { width: 32px; height: 32px; stroke: var(--gold); }
+        .trust-card-value { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--gold); margin-bottom: 8px; }
+        .trust-card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
 
-        .carousel-nav {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            margin-top: 24px;
-        }
+        /* Features */
+        .features-section { padding: var(--section-padding) 0; }
+        .section-header { text-align: center; max-width: 640px; margin: 0 auto 60px; }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .feature-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 20px; padding: 40px 32px; transition: all 0.3s ease; }
+        .feature-card:hover { border-color: var(--border-gold); transform: translateY(-4px); }
+        .feature-icon { width: 56px; height: 56px; background: var(--gold-subtle); border: 1px solid var(--border-gold); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
+        .feature-icon svg { width: 28px; height: 28px; stroke: var(--gold); }
+        .feature-title { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+        .feature-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-        .carousel-btn {
-            width: 44px;
-            height: 44px;
-            border: none;
-            background: var(--gold);
-            color: var(--bg-primary);
-            border-radius: 50%;
-            font-size: 20px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
+        /* VIP Section */
+        .vip-section { padding: var(--section-padding) 0; background: var(--bg-secondary); }
+        .vip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .phone-wrapper { display: flex; flex-direction: column; align-items: center; }
+        .phone-mockup { position: relative; width: 280px; height: 580px; background: linear-gradient(145deg, #2a2a2a, #1a1a1a); border-radius: 44px; padding: 12px; box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 20px 60px rgba(0,0,0,0.5); }
+        .phone-notch { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 120px; height: 28px; background: #1a1a1a; border-radius: 0 0 16px 16px; z-index: 10; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .phone-speaker { width: 50px; height: 4px; background: #333; border-radius: 2px; }
+        .phone-camera { width: 10px; height: 10px; background: radial-gradient(circle, #1a1a1a 40%, #333 60%); border-radius: 50%; }
+        .phone-screen { width: 100%; height: 100%; background: #0a0a0a; border-radius: 36px; overflow: hidden; }
+        .carousel-container { display: flex; height: 100%; transition: transform 0.5s ease; }
+        .carousel-slide { min-width: 100%; height: 100%; }
+        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+        .carousel-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 24px; }
+        .carousel-btn { width: 44px; height: 44px; border: none; background: var(--gold); color: var(--bg-primary); border-radius: 50%; font-size: 20px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+        .carousel-btn:hover { transform: scale(1.1); }
+        .carousel-dots { display: flex; gap: 8px; }
+        .carousel-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--text-muted); cursor: pointer; transition: all 0.2s; }
+        .carousel-dot.active { background: var(--gold); transform: scale(1.2); }
+        .vip-features-list { display: flex; flex-direction: column; gap: 20px; }
+        .vip-feature-item { display: flex; gap: 16px; padding: 24px; background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 16px; transition: all 0.3s ease; }
+        .vip-feature-item:hover { border-color: var(--border-gold); }
+        .vip-feature-icon { width: 48px; height: 48px; background: var(--gold); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .vip-feature-icon svg { width: 24px; height: 24px; stroke: var(--bg-primary); }
+        .vip-feature-content h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; color: var(--gold); }
+        .vip-feature-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
 
-        .carousel-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .carousel-dots {
-            display: flex;
-            gap: 8px;
-        }
-
-        .carousel-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .carousel-dot.active {
-            background: var(--gold);
-            transform: scale(1.2);
-        }
-
-        /* VIP Features List */
-        .vip-features-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .vip-feature-item {
-            display: flex;
-            gap: 16px;
-            padding: 24px;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .vip-feature-item:hover {
-            border-color: var(--border-gold);
-        }
-
-        .vip-feature-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--gold);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            flex-shrink: 0;
-        }
-
-        .vip-feature-content h4 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: var(--gold);
-        }
-
-        .vip-feature-content p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        /* ============================================
-           PERFORMANCE SECTION
-        ============================================ */
-        .performance-section {
-            padding: var(--section-padding) 0;
-        }
-
-        .performance-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .performance-content h2 {
-            font-family: var(--font-display);
-            font-size: clamp(32px, 4vw, 44px);
-            margin-bottom: 20px;
-        }
-
-        .performance-content p {
-            font-size: 16px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 32px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-        }
-
-        .stat-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px;
-        }
-
-        .stat-value {
-            font-family: var(--font-display);
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
+        /* Performance */
+        .performance-section { padding: var(--section-padding) 0; }
+        .performance-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
+        .performance-content h2 { font-family: var(--font-display); font-size: clamp(32px, 4vw, 44px); margin-bottom: 20px; }
+        .performance-content p { font-size: 16px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 32px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        .stat-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+        .stat-value { font-family: var(--font-display); font-size: 32px; font-weight: 700; margin-bottom: 4px; }
         .stat-value.gold { color: var(--gold); }
         .stat-value.green { color: var(--positive); }
-
-        .stat-label {
-            font-size: 12px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Dashboard Preview */
-        .dashboard-preview {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .dashboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 24px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .dashboard-title {
-            font-weight: 600;
-        }
-
-        .dashboard-live {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 12px;
-            color: var(--positive);
-            font-weight: 600;
-        }
-
-        .dashboard-live::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: var(--positive);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        .dashboard-image-link {
-            display: block;
-            position: relative;
-        }
-
-        .dashboard-image {
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .dashboard-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.7);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .dashboard-image-link:hover .dashboard-overlay {
-            opacity: 1;
-        }
-
-        .dashboard-overlay-icon {
-            font-size: 48px;
-            margin-bottom: 12px;
-        }
-
-        .dashboard-overlay-text {
-            font-weight: 600;
-            color: var(--gold);
-        }
-
-        .dashboard-cta {
-            padding: 20px 24px;
-        }
-
-        .dashboard-cta .btn {
-            width: 100%;
-        }
-
-        /* ============================================
-           TESTIMONIALS
-        ============================================ */
-        .testimonials-section {
-            padding: var(--section-padding) 0;
-            background: var(--bg-secondary);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .testimonial-card {
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 32px;
-            transition: all 0.3s ease;
-        }
-
-        .testimonial-card:hover {
-            border-color: var(--border-gold);
-        }
-
-        .testimonial-stars {
-            color: var(--gold);
-            font-size: 18px;
-            margin-bottom: 16px;
-        }
-
-        .testimonial-text {
-            font-size: 15px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 24px;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .testimonial-avatar {
-            width: 44px;
-            height: 44px;
-            background: var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            color: var(--bg-primary);
-        }
-
-        .testimonial-name {
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .testimonial-role {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        .testimonial-verified {
-            margin-left: auto;
-            padding: 4px 10px;
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 20px;
-            font-size: 10px;
-            font-weight: 600;
-            color: var(--positive);
-            text-transform: uppercase;
-        }
-
-        /* ============================================
-           PRICING SECTION
-        ============================================ */
-        .pricing-section {
-            padding: var(--section-padding) 0;
-        }
-
-        .pricing-card {
-            max-width: 520px;
-            margin: 0 auto;
-            background: var(--bg-secondary);
-            border: 2px solid var(--border-gold);
-            border-radius: 24px;
-            padding: 48px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pricing-badge {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            padding: 6px 14px;
-            background: var(--gold);
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--bg-primary);
-            text-transform: uppercase;
-        }
-
-        .pricing-header {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .pricing-title {
-            font-family: var(--font-display);
-            font-size: 28px;
-            color: var(--gold);
-            margin-bottom: 16px;
-        }
-
-        .pricing-price {
-            display: flex;
-            align-items: baseline;
-            justify-content: center;
-            gap: 4px;
-            margin-bottom: 12px;
-        }
-
-        .pricing-currency {
-            font-size: 24px;
-            color: var(--text-secondary);
-        }
-
-        .pricing-amount {
-            font-family: var(--font-display);
-            font-size: 64px;
-            font-weight: 700;
-        }
-
-        .pricing-period {
-            font-size: 18px;
-            color: var(--text-muted);
-        }
-
-        .pricing-note {
-            display: inline-block;
-            padding: 8px 20px;
-            background: var(--gold-subtle);
-            border: 1px solid var(--border-gold);
-            border-radius: 20px;
-            font-size: 13px;
-            color: var(--gold);
-        }
-
-        /* Referral System */
-        .referral-box {
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            border-radius: 16px;
-            padding: 24px;
-            margin: 32px 0;
-            color: var(--bg-primary);
-        }
-
-        .referral-title {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            text-align: center;
-        }
-
-        .referral-subtitle {
-            font-size: 13px;
-            margin-bottom: 16px;
-            text-align: center;
-            opacity: 0.8;
-        }
-
-        .referral-input-group {
-            display: flex;
-            gap: 8px;
-        }
-
-        .referral-input {
-            flex: 1;
-            padding: 12px 16px;
-            border: 2px solid rgba(0,0,0,0.2);
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            text-align: center;
-            background: #fff;
-            color: var(--bg-primary);
-        }
-
-        .referral-input:focus {
-            outline: none;
-            border-color: var(--bg-primary);
-        }
-
-        .referral-btn {
-            padding: 12px 20px;
-            background: var(--bg-primary);
-            color: var(--gold);
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .referral-btn:hover {
-            background: #222;
-        }
-
-        .referral-status {
-            margin-top: 12px;
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            text-align: center;
-            display: none;
-        }
-
-        .referral-status.success {
-            display: block;
-            background: rgba(34, 197, 94, 0.2);
-            color: #166534;
-        }
-
-        .referral-status.error {
-            display: block;
-            background: rgba(239, 68, 68, 0.2);
-            color: #991b1b;
-        }
-
-        .generated-code {
-            display: none;
-            margin-top: 16px;
-            padding: 16px;
-            background: var(--bg-primary);
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .generated-code.show {
-            display: block;
-        }
-
-        .generated-code-value {
-            font-family: monospace;
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--gold);
-            margin: 8px 0;
-        }
-
-        .copy-btn {
-            padding: 8px 16px;
-            background: var(--gold);
-            color: var(--bg-primary);
-            border: none;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 8px;
-        }
-
-        .discount-info {
-            display: none;
-            margin-top: 16px;
-            padding: 12px;
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 8px;
-            text-align: center;
-            font-size: 13px;
-        }
-
-        .discount-info.show {
-            display: block;
-        }
-
-        /* Pricing Features */
-        .pricing-features {
-            margin-bottom: 32px;
-        }
-
-        .pricing-feature {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .pricing-feature:last-child {
-            border-bottom: none;
-        }
-
-        .pricing-check {
-            width: 22px;
-            height: 22px;
-            background: rgba(34, 197, 94, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--positive);
-            font-size: 12px;
-        }
-
-        .pricing-feature-text {
-            font-size: 14px;
-            color: var(--text-secondary);
-        }
-
-        .pricing-cta {
-            width: 100%;
-            padding: 18px;
-            font-size: 16px;
-        }
-
-        .pricing-guarantee {
-            text-align: center;
-            margin-top: 16px;
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        /* ============================================
-           CTA SECTION
-        ============================================ */
-        .cta-section {
-            padding: var(--section-padding) 0;
-            background: var(--bg-secondary);
-        }
-
-        .cta-card {
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-gold);
-            border-radius: 24px;
-            padding: 80px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-card::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-title {
-            font-family: var(--font-display);
-            font-size: clamp(32px, 4vw, 44px);
-            margin-bottom: 16px;
-        }
-
-        .cta-desc {
-            font-size: 18px;
-            color: var(--text-secondary);
-            margin-bottom: 32px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-        }
-
-        /* ============================================
-           SOCIAL SECTION
-        ============================================ */
-        .social-section {
-            padding: 80px 0;
-        }
-
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .social-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-            text-align: center;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
-        }
-
-        .social-card:hover {
-            border-color: var(--border-gold);
-            transform: translateY(-4px);
-        }
-
-        .social-icon {
-            width: 56px;
-            height: 56px;
-            margin: 0 auto 16px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-        }
-
-        .social-icon.telegram { background: linear-gradient(135deg, #0088cc, #00aaff); }
-        .social-icon.discord { background: linear-gradient(135deg, #5865F2, #7289da); }
-        .social-icon.twitter { background: #000; }
-        .social-icon.instagram { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743); }
-
-        .social-name {
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .social-handle {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        /* ============================================
-           FOOTER
-        ============================================ */
-        footer {
-            padding: 60px 0 30px;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr repeat(3, 1fr);
-            gap: 60px;
-            margin-bottom: 60px;
-        }
-
-        .footer-brand-desc {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-top: 20px;
-        }
-
-        .footer-column h4 {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-
-        .footer-column ul {
-            list-style: none;
-        }
-
-        .footer-column li {
-            margin-bottom: 12px;
-        }
-
-        .footer-column a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.2s;
-        }
-
-        .footer-column a:hover {
-            color: var(--gold);
-        }
-
-        .footer-bottom {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-            padding-top: 30px;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-logo-center {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .footer-line {
-            width: 60px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-        }
-
-        .footer-logo-text {
-            font-family: var(--font-display);
-            font-size: 20px;
-            color: var(--gold);
-        }
-
-        .footer-copyright {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        .footer-disclaimer {
-            font-size: 12px;
-            color: var(--text-muted);
-            text-align: center;
-            max-width: 600px;
-            font-style: italic;
-        }
-
-        /* ============================================
-           RESPONSIVE
-        ============================================ */
+        .stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .dashboard-preview { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; }
+        .dashboard-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; border-bottom: 1px solid var(--border); }
+        .dashboard-title { font-weight: 600; }
+        .dashboard-live { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--positive); font-weight: 600; }
+        .dashboard-live::before { content: ''; width: 8px; height: 8px; background: var(--positive); border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+        .dashboard-image-link { display: block; position: relative; }
+        .dashboard-image { width: 100%; height: 320px; object-fit: cover; display: block; }
+        .dashboard-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.7); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+        .dashboard-image-link:hover .dashboard-overlay { opacity: 1; }
+        .dashboard-overlay-icon { font-size: 48px; margin-bottom: 12px; }
+        .dashboard-overlay-text { font-weight: 600; color: var(--gold); }
+        .dashboard-cta { padding: 20px 24px; }
+        .dashboard-cta .btn { width: 100%; }
+
+        /* Testimonials */
+        .testimonials-section { padding: var(--section-padding) 0; background: var(--bg-secondary); }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .testimonial-card { background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: all 0.3s ease; }
+        .testimonial-card:hover { border-color: var(--border-gold); }
+        .testimonial-stars { color: var(--gold); font-size: 18px; margin-bottom: 16px; }
+        .testimonial-text { font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 24px; font-style: italic; }
+        .testimonial-author { display: flex; align-items: center; gap: 12px; }
+        .testimonial-avatar { width: 44px; height: 44px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--bg-primary); }
+        .testimonial-name { font-weight: 600; font-size: 14px; }
+        .testimonial-role { font-size: 12px; color: var(--text-muted); }
+        .testimonial-verified { margin-left: auto; padding: 4px 10px; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 20px; font-size: 10px; font-weight: 600; color: var(--positive); text-transform: uppercase; }
+
+        /* Pricing */
+        .pricing-section { padding: var(--section-padding) 0; }
+        .pricing-card { max-width: 520px; margin: 0 auto; background: var(--bg-secondary); border: 2px solid var(--border-gold); border-radius: 24px; padding: 48px; position: relative; }
+        .pricing-badge { position: absolute; top: 24px; right: 24px; padding: 6px 14px; background: var(--gold); border-radius: 20px; font-size: 11px; font-weight: 700; color: var(--bg-primary); text-transform: uppercase; }
+        .pricing-header { text-align: center; margin-bottom: 32px; }
+        .pricing-title { font-family: var(--font-display); font-size: 28px; color: var(--gold); margin-bottom: 16px; }
+        .pricing-price { display: flex; align-items: baseline; justify-content: center; gap: 4px; margin-bottom: 12px; }
+        .pricing-currency { font-size: 24px; color: var(--text-secondary); }
+        .pricing-amount { font-family: var(--font-display); font-size: 64px; font-weight: 700; }
+        .pricing-period { font-size: 18px; color: var(--text-muted); }
+        .pricing-note { display: inline-block; padding: 8px 20px; background: var(--gold-subtle); border: 1px solid var(--border-gold); border-radius: 20px; font-size: 13px; color: var(--gold); }
+        .referral-box { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border-radius: 16px; padding: 24px; margin: 32px 0; color: var(--bg-primary); }
+        .referral-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; text-align: center; }
+        .referral-subtitle { font-size: 13px; margin-bottom: 16px; text-align: center; opacity: 0.8; }
+        .referral-input-group { display: flex; gap: 8px; }
+        .referral-input { flex: 1; padding: 12px 16px; border: 2px solid rgba(0,0,0,0.2); border-radius: 8px; font-size: 14px; font-weight: 600; text-align: center; background: #fff; color: var(--bg-primary); }
+        .referral-input:focus { outline: none; border-color: var(--bg-primary); }
+        .referral-btn { padding: 12px 20px; background: var(--bg-primary); color: var(--gold); border: none; border-radius: 8px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+        .referral-btn:hover { background: #222; }
+        .referral-status { margin-top: 12px; padding: 10px; border-radius: 8px; font-size: 13px; font-weight: 600; text-align: center; display: none; }
+        .referral-status.success { display: block; background: rgba(34, 197, 94, 0.2); color: #166534; }
+        .referral-status.error { display: block; background: rgba(239, 68, 68, 0.2); color: #991b1b; }
+        .generated-code { display: none; margin-top: 16px; padding: 16px; background: var(--bg-primary); border-radius: 8px; text-align: center; }
+        .generated-code.show { display: block; }
+        .generated-code-value { font-family: monospace; font-size: 18px; font-weight: 700; color: var(--gold); margin: 8px 0; }
+        .copy-btn { padding: 8px 16px; background: var(--gold); color: var(--bg-primary); border: none; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; margin-top: 8px; }
+        .discount-info { display: none; margin-top: 16px; padding: 12px; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 8px; text-align: center; font-size: 13px; }
+        .discount-info.show { display: block; }
+        .pricing-features { margin-bottom: 32px; }
+        .pricing-feature { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+        .pricing-feature:last-child { border-bottom: none; }
+        .pricing-check { width: 22px; height: 22px; background: rgba(34, 197, 94, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--positive); font-size: 12px; }
+        .pricing-feature-text { font-size: 14px; color: var(--text-secondary); }
+        .pricing-cta { width: 100%; padding: 18px; font-size: 16px; }
+        .pricing-guarantee { text-align: center; margin-top: 16px; font-size: 13px; color: var(--text-muted); }
+
+        /* CTA */
+        .cta-section { padding: var(--section-padding) 0; background: var(--bg-secondary); }
+        .cta-card { background: var(--bg-tertiary); border: 1px solid var(--border-gold); border-radius: 24px; padding: 80px; text-align: center; position: relative; overflow: hidden; }
+        .cta-card::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: radial-gradient(circle, var(--red-glow) 0%, transparent 70%); pointer-events: none; }
+        .cta-content { position: relative; z-index: 1; }
+        .cta-title { font-family: var(--font-display); font-size: clamp(32px, 4vw, 44px); margin-bottom: 16px; }
+        .cta-desc { font-size: 18px; color: var(--text-secondary); margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; }
+
+        /* Social */
+        .social-section { padding: 80px 0; }
+        .social-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .social-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px; padding: 32px; text-align: center; text-decoration: none; color: inherit; transition: all 0.3s ease; }
+        .social-card:hover { border-color: var(--border-gold); transform: translateY(-4px); }
+        .social-icon { width: 64px; height: 64px; margin: 0 auto 16px; border-radius: 16px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .social-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .social-name { font-weight: 600; margin-bottom: 4px; }
+        .social-handle { font-size: 13px; color: var(--text-muted); }
+
+        /* Footer */
+        footer { padding: 60px 0 30px; border-top: 1px solid var(--border); }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 60px; margin-bottom: 60px; }
+        .footer-brand-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-top: 20px; }
+        .footer-column h4 { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); margin-bottom: 20px; }
+        .footer-column ul { list-style: none; }
+        .footer-column li { margin-bottom: 12px; }
+        .footer-column a { color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+        .footer-column a:hover { color: var(--gold); }
+        .footer-bottom { display: flex; flex-direction: column; align-items: center; gap: 16px; padding-top: 30px; border-top: 1px solid var(--border); }
+        .footer-logo-center { display: flex; align-items: center; gap: 16px; }
+        .footer-line { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+        .footer-logo-text { font-family: var(--font-display); font-size: 20px; color: var(--gold); }
+        .footer-copyright { font-size: 13px; color: var(--text-muted); }
+        .footer-disclaimer { font-size: 12px; color: var(--text-muted); text-align: center; max-width: 600px; font-style: italic; }
+
+        /* Responsive */
         @media (max-width: 1024px) {
-            .hero-globe-section,
-            .vip-grid,
-            .performance-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .features-grid,
-            .testimonials-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .trust-grid,
-            .social-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+            .hero-globe-section, .vip-grid, .performance-grid { grid-template-columns: 1fr; gap: 40px; }
+            .features-grid, .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .trust-grid, .social-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
-
         @media (max-width: 768px) {
-            nav {
-                display: none;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .features-grid,
-            .testimonials-grid,
-            .trust-grid,
-            .social-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .cta-card {
-                padding: 48px 24px;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .pricing-card {
-                padding: 32px 24px;
-            }
-
-            .phone-mockup {
-                transform: scale(0.9);
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
+            nav { display: none; }
+            .hero-cta { flex-direction: column; align-items: center; }
+            .features-grid, .testimonials-grid, .trust-grid, .social-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .cta-card { padding: 48px 24px; }
+            .cta-buttons { flex-direction: column; }
+            .pricing-card { padding: 32px 24px; }
+            .phone-mockup { transform: scale(0.9); }
+            .stats-grid { grid-template-columns: 1fr; }
         }
 
-        /* Loading Screen */
-        .loader {
-            position: fixed;
-            inset: 0;
-            background: var(--bg-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            transition: opacity 0.5s ease;
-        }
-
-        .loader.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loader-content {
-            text-align: center;
-        }
-
-        .loader-logo {
-            font-family: var(--font-display);
-            font-size: 48px;
-            background: linear-gradient(135deg, var(--gold-light), var(--gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 24px;
-        }
-
-        .loader-spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid var(--border);
-            border-top-color: var(--gold);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        /* Loader */
+        .loader { position: fixed; inset: 0; background: var(--bg-primary); display: flex; align-items: center; justify-content: center; z-index: 10000; transition: opacity 0.5s ease; }
+        .loader.hidden { opacity: 0; pointer-events: none; }
+        .loader-content { text-align: center; }
+        .loader-logo { width: 80px; height: 80px; margin: 0 auto 24px; border-radius: 20px; }
+        .loader-spinner { width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto; }
+        @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
-    <!-- Loader -->
     <div class="loader" id="loader">
         <div class="loader-content">
-            <div class="loader-logo">LuxQuant</div>
+            <img src="https://raw.githubusercontent.com/Dwiyulianto31072k4/luxquant/main/luxquant%20logo.png" alt="LuxQuant" class="loader-logo">
             <div class="loader-spinner"></div>
         </div>
     </div>
 
-    <!-- Price Ticker -->
-    <div class="ticker-wrapper">
-        <div class="ticker-track" id="tickerTrack"></div>
-    </div>
+    <div class="ticker-wrapper"><div class="ticker-track" id="tickerTrack"></div></div>
 
-    <!-- Header -->
     <header id="header">
         <div class="container">
             <div class="header-inner">
                 <a href="#" class="logo">
-                    <div class="logo-icon">LQ</div>
+                    <img src="https://raw.githubusercontent.com/Dwiyulianto31072k4/luxquant/main/luxquant%20logo.png" alt="LuxQuant" class="logo-img">
                     <span class="logo-text">LuxQuant</span>
                 </a>
-
                 <nav>
                     <a href="#features">Features</a>
                     <a href="#performance">Performance</a>
                     <a href="#testimonials">Reviews</a>
                     <a href="#pricing">Pricing</a>
                 </nav>
-
-                <div class="header-cta">
-                    <a href="#pricing" class="btn btn-primary">Get Access</a>
-                </div>
+                <div class="header-cta"><a href="#pricing" class="btn btn-primary">Get Access</a></div>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- Hero -->
         <section class="hero">
-            <div class="hero-bg"></div>
             <div class="container">
                 <div class="hero-content">
-                    <div class="hero-badge">
-                        <span class="dot"></span>
-                        <span>24/7 Automated Signals Active</span>
-                    </div>
-
-                    <h1 class="hero-title">
-                        Premium AI-Powered<br>
-                        <span class="highlight">Crypto Trading Signals</span>
-                    </h1>
-
-                    <p class="hero-description">
-                        Help traders identify market opportunities in real-time without monitoring charts continuously. Automated, objective, and data-driven.
-                    </p>
-
+                    <h1 class="hero-title">Premium Algorithm-Powered<br><span class="highlight">Crypto Trading Signals</span></h1>
+                    <p class="hero-description">LuxQuant Algorithm helps traders identify market opportunities through advanced quantitative analysis. Systematic, objective, and data-driven signals powered by sophisticated algorithms.</p>
                     <div class="hero-cta">
                         <a href="#pricing" class="btn btn-primary btn-large">Start Trading Now</a>
                         <a href="#features" class="btn btn-secondary btn-large">Learn More</a>
                     </div>
                 </div>
-
-                <!-- Globe Section -->
                 <div class="hero-globe-section">
                     <div class="hero-text-content">
-                        <h2 id="animatedText">Trusted by Traders <span class="grad">Worldwide</span><span class="typewriter-cursor">|</span></h2>
-                        <p style="color: var(--text-secondary); margin-top: 16px;">Our signals reach traders across the globe, from Asia to Americas, Europe to Africa. Join our growing community of profitable traders.</p>
+                        <h2>Trusted by Traders <span class="grad">Worldwide</span></h2>
+                        <p style="color: var(--text-secondary); margin-top: 16px;">Our algorithm-powered signals reach traders across the globe. Join our growing community.</p>
                     </div>
                     <div class="globe-container">
                         <div id="globe"></div>
+                        <div class="floating-flags-container">
+                            <span class="floating-flag">🇮🇩</span>
+                            <span class="floating-flag">🇸🇬</span>
+                            <span class="floating-flag">🇹🇼</span>
+                            <span class="floating-flag">🇯🇵</span>
+                            <span class="floating-flag">🇺🇸</span>
+                            <span class="floating-flag">🇬🇧</span>
+                            <span class="floating-flag">🇦🇪</span>
+                            <span class="floating-flag">🇦🇺</span>
+                            <span class="floating-flag">🇮🇳</span>
+                            <span class="floating-flag">🇧🇷</span>
+                            <span class="floating-flag">🇰🇷</span>
+                            <span class="floating-flag">🇩🇪</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Trust Section -->
         <section class="trust-section">
             <div class="container">
                 <div class="trust-header">
-                    <p class="trust-label">LuxQuant Advantages</p>
-                    <h2 class="trust-title">Why Traders Choose Us</h2>
+                    <p class="section-label">Algorithm Advantages</p>
+                    <h2 class="section-title">Why Choose LuxQuant Algorithm</h2>
                 </div>
-
                 <div class="trust-grid">
                     <div class="trust-card">
-                        <div class="trust-card-icon">⏱️</div>
+                        <div class="trust-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div>
                         <div class="trust-card-value">Save Time</div>
                         <div class="trust-card-desc">Trade objectively without spending hours analyzing charts manually</div>
                     </div>
                     <div class="trust-card">
-                        <div class="trust-card-icon">🎯</div>
+                        <div class="trust-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
                         <div class="trust-card-value">Adaptive</div>
                         <div class="trust-card-desc">Algorithm adjusts targets & risk levels based on market conditions</div>
                     </div>
                     <div class="trust-card">
-                        <div class="trust-card-icon">🌍</div>
+                        <div class="trust-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
                         <div class="trust-card-value">Global</div>
                         <div class="trust-card-desc">Serving traders worldwide with reliable signals across all timezones</div>
                     </div>
                     <div class="trust-card">
-                        <div class="trust-card-icon">⚡</div>
+                        <div class="trust-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></svg></div>
                         <div class="trust-card-value">24/7</div>
                         <div class="trust-card-desc">Non-stop market monitoring so you never miss an opportunity</div>
                     </div>
@@ -1636,468 +436,159 @@
             </div>
         </section>
 
-        <!-- Features -->
         <section id="features" class="features-section">
             <div class="container">
                 <div class="section-header">
-                    <p class="section-label">Platform Features</p>
-                    <h2 class="section-title">Advanced Trading Technology</h2>
-                    <p class="section-desc">Everything you need to respond to volatile crypto markets in real-time.</p>
+                    <p class="section-label">Algorithm Features</p>
+                    <h2 class="section-title">Advanced Quantitative Technology</h2>
+                    <p class="section-desc">Sophisticated algorithms analyzing market patterns to generate systematic trading signals.</p>
                 </div>
-
                 <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
-                        <h3 class="feature-title">Precision Signals</h3>
-                        <p class="feature-desc">Automated system detects optimal entry and exit zones based on real-time market data.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">⚡</div>
-                        <h3 class="feature-title">Real-Time Alerts</h3>
-                        <p class="feature-desc">Instant notifications via Telegram when the system detects important price zones.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h3 class="feature-title">Advanced Analytics</h3>
-                        <p class="feature-desc">Volume ranking monitoring and risk level indicators processed automatically.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🛡️</div>
-                        <h3 class="feature-title">Risk Management</h3>
-                        <p class="feature-desc">Every signal includes stop-loss levels to protect your capital.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📜</div>
-                        <h3 class="feature-title">Track Record</h3>
-                        <p class="feature-desc">Transparent historical performance tracking—no false promises.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🤖</div>
-                        <h3 class="feature-title">24/7 Automation</h3>
-                        <p class="feature-desc">Full automatic monitoring that never sleeps, never misses.</p>
-                    </div>
+                    <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><h3 class="feature-title">Precision Signals</h3><p class="feature-desc">Algorithm detects optimal entry and exit zones based on real-time market data analysis.</p></div>
+                    <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></svg></div><h3 class="feature-title">Real-Time Alerts</h3><p class="feature-desc">Instant notifications via Telegram when algorithm detects important price zones.</p></div>
+                    <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><h3 class="feature-title">Advanced Analytics</h3><p class="feature-desc">Volume ranking monitoring and risk level indicators processed automatically.</p></div>
+                    <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 class="feature-title">Risk Management</h3><p class="feature-desc">Every signal includes stop-loss levels to protect your capital systematically.</p></div>
+                    <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><h3 class="feature-title">Track Record</h3><p class="feature-desc">Transparent historical performance tracking—no false promises, just data.</p></div>
+                    <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><h3 class="feature-title">24/7 Algorithm</h3><p class="feature-desc">Automated quantitative analysis that never sleeps, never misses signals.</p></div>
                 </div>
             </div>
         </section>
 
-        <!-- VIP Features with Phone -->
         <section class="vip-section">
             <div class="container">
-                <div class="section-header">
-                    <p class="section-label">VIP Access</p>
-                    <h2 class="section-title">See LuxQuant in Action</h2>
-                    <p class="section-desc">Real screenshots from our Telegram VIP channels</p>
-                </div>
-
+                <div class="section-header"><p class="section-label">Algorithm Access</p><h2 class="section-title">See LuxQuant Algorithm in Action</h2><p class="section-desc">Real screenshots from our Telegram channels</p></div>
                 <div class="vip-grid">
                     <div class="phone-wrapper">
-                        <div class="phone-mockup">
-                            <div class="phone-notch">
-                                <div class="phone-speaker"></div>
-                                <div class="phone-camera"></div>
-                            </div>
-                            <div class="phone-screen">
-                                <div class="carousel-container" id="carouselContainer">
-                                    <div class="carousel-slide"><img src="fiturlq1.png" alt="LuxQuant Feature 1"></div>
-                                    <div class="carousel-slide"><img src="fiturlq2.png" alt="LuxQuant Feature 2"></div>
-                                    <div class="carousel-slide"><img src="fiturlq3.png" alt="LuxQuant Feature 3"></div>
-                                    <div class="carousel-slide"><img src="fiturlq4.png" alt="LuxQuant Feature 4"></div>
-                                    <div class="carousel-slide"><img src="fiturlq5.png" alt="LuxQuant Feature 5"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-nav">
-                            <button class="carousel-btn" id="prevBtn">‹</button>
-                            <div class="carousel-dots" id="carouselDots">
-                                <span class="carousel-dot active" data-slide="0"></span>
-                                <span class="carousel-dot" data-slide="1"></span>
-                                <span class="carousel-dot" data-slide="2"></span>
-                                <span class="carousel-dot" data-slide="3"></span>
-                                <span class="carousel-dot" data-slide="4"></span>
-                            </div>
-                            <button class="carousel-btn" id="nextBtn">›</button>
-                        </div>
+                        <div class="phone-mockup"><div class="phone-notch"><div class="phone-speaker"></div><div class="phone-camera"></div></div><div class="phone-screen"><div class="carousel-container" id="carouselContainer"><div class="carousel-slide"><img src="fiturlq1.png" alt="Feature 1"></div><div class="carousel-slide"><img src="fiturlq2.png" alt="Feature 2"></div><div class="carousel-slide"><img src="fiturlq3.png" alt="Feature 3"></div><div class="carousel-slide"><img src="fiturlq4.png" alt="Feature 4"></div><div class="carousel-slide"><img src="fiturlq5.png" alt="Feature 5"></div></div></div></div>
+                        <div class="carousel-nav"><button class="carousel-btn" id="prevBtn">‹</button><div class="carousel-dots" id="carouselDots"><span class="carousel-dot active" data-slide="0"></span><span class="carousel-dot" data-slide="1"></span><span class="carousel-dot" data-slide="2"></span><span class="carousel-dot" data-slide="3"></span><span class="carousel-dot" data-slide="4"></span></div><button class="carousel-btn" id="nextBtn">›</button></div>
                     </div>
-
                     <div class="vip-features-list">
-                        <div class="vip-feature-item">
-                            <div class="vip-feature-icon">🎯</div>
-                            <div class="vip-feature-content">
-                                <h4>AI-Powered Analysis</h4>
-                                <p>Automated algorithms analyze market patterns 24/7 to detect potential price movements.</p>
-                            </div>
-                        </div>
-                        <div class="vip-feature-item">
-                            <div class="vip-feature-icon">⚡</div>
-                            <div class="vip-feature-content">
-                                <h4>Instant Notifications</h4>
-                                <p>Real-time notifications directly to your Telegram when important zones are detected.</p>
-                            </div>
-                        </div>
-                        <div class="vip-feature-item">
-                            <div class="vip-feature-icon">📊</div>
-                            <div class="vip-feature-content">
-                                <h4>Complete Trade Setup</h4>
-                                <p>Every signal includes entry, targets (TP1-TP4), stop-loss, and risk assessment.</p>
-                            </div>
-                        </div>
-                        <div class="vip-feature-item">
-                            <div class="vip-feature-icon">💎</div>
-                            <div class="vip-feature-content">
-                                <h4>VIP Support & AI Consultant</h4>
-                                <p>24/7 VIP support team plus AI consultant for market insights and questions.</p>
-                            </div>
-                        </div>
+                        <div class="vip-feature-item"><div class="vip-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27,6.96 12,12.01 20.73,6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div><div class="vip-feature-content"><h4>Algorithm-Powered Analysis</h4><p>Advanced quantitative algorithms analyze market patterns 24/7.</p></div></div>
+                        <div class="vip-feature-item"><div class="vip-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></svg></div><div class="vip-feature-content"><h4>Instant Notifications</h4><p>Real-time alerts directly to your Telegram when important zones detected.</p></div></div>
+                        <div class="vip-feature-item"><div class="vip-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><div class="vip-feature-content"><h4>Complete Trade Setup</h4><p>Every signal includes entry, targets (TP1-TP4), stop-loss, and risk assessment.</p></div></div>
+                        <div class="vip-feature-item"><div class="vip-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div><div class="vip-feature-content"><h4>Support & AI Consultant</h4><p>24/7 support team plus AI consultant for market insights.</p></div></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Performance -->
         <section id="performance" class="performance-section">
             <div class="container">
                 <div class="performance-grid">
                     <div class="performance-content">
                         <p class="section-label">Daily Updated</p>
-                        <h2>Trade Smarter with <span style="color: var(--gold)">LuxQuant</span></h2>
-                        <p>Our AI-powered system analyzes market patterns 24/7 to detect potential price movements. See real performance data updated daily with complete transparency.</p>
-
+                        <h2>Trade Systematically with <span style="color: var(--gold)">LuxQuant Algorithm</span></h2>
+                        <p>Our quantitative algorithms analyze market patterns around the clock. See real performance data updated daily.</p>
                         <div class="stats-grid">
-                            <div class="stat-card">
-                                <div class="stat-value gold">86.54%</div>
-                                <div class="stat-label">Overall Win Rate</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-value green">97.02%</div>
-                                <div class="stat-label">Completion Rate</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-value gold">4.48</div>
-                                <div class="stat-label">Avg Risk:Reward</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-value green">+18.35%</div>
-                                <div class="stat-label">Avg TP4 Gain</div>
-                            </div>
+                            <div class="stat-card"><div class="stat-value gold">86.54%</div><div class="stat-label">Overall Win Rate</div></div>
+                            <div class="stat-card"><div class="stat-value green">97.02%</div><div class="stat-label">Completion Rate</div></div>
+                            <div class="stat-card"><div class="stat-value gold">4.48</div><div class="stat-label">Avg Risk:Reward</div></div>
+                            <div class="stat-card"><div class="stat-value green">+18.35%</div><div class="stat-label">Avg TP4 Gain</div></div>
                         </div>
                     </div>
-
                     <div class="dashboard-preview">
-                        <div class="dashboard-header">
-                            <span class="dashboard-title">LuxQuant Dashboard</span>
-                            <span class="dashboard-live">LIVE</span>
-                        </div>
+                        <div class="dashboard-header"><span class="dashboard-title">LuxQuant Dashboard</span><span class="dashboard-live">LIVE</span></div>
                         <a href="https://luxquantlivedata.streamlit.app/" target="_blank" rel="noopener" class="dashboard-image-link">
-                            <img src="LuxQuant Performance Dashboard.png" alt="LuxQuant Dashboard" class="dashboard-image">
-                            <div class="dashboard-overlay">
-                                <span class="dashboard-overlay-icon">🔗</span>
-                                <span class="dashboard-overlay-text">Click to Open Live Platform</span>
-                            </div>
+                            <img src="LuxQuant Performance Dashboard.png" alt="Dashboard" class="dashboard-image">
+                            <div class="dashboard-overlay"><span class="dashboard-overlay-icon">🔗</span><span class="dashboard-overlay-text">Click to Open Live Platform</span></div>
                         </a>
-                        <div class="dashboard-cta">
-                            <a href="https://luxquantlivedata.streamlit.app/" target="_blank" rel="noopener" class="btn btn-primary">
-                                Open Live Dashboard
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                            </a>
-                        </div>
+                        <div class="dashboard-cta"><a href="https://luxquantlivedata.streamlit.app/" target="_blank" rel="noopener" class="btn btn-primary">Open Live Dashboard ↗</a></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Testimonials -->
         <section id="testimonials" class="testimonials-section">
             <div class="container">
-                <div class="section-header">
-                    <p class="section-label">Success Stories</p>
-                    <h2 class="section-title">What Users Say</h2>
-                    <p class="section-desc">Real feedback from traders using LuxQuant</p>
-                </div>
-
+                <div class="section-header"><p class="section-label">Success Stories</p><h2 class="section-title">What Traders Say</h2></div>
                 <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"LuxQuant is excellent. First trial already proven. Besides updated predictions, we are also equipped with AI consultant for live consultation."</p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar">AG</div>
-                            <div>
-                                <div class="testimonial-name">Il**m A G</div>
-                                <div class="testimonial-role">Business Owner</div>
-                            </div>
-                            <span class="testimonial-verified">Verified</span>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"Great, I can work while trading. Just check Telegram every 5 minutes then follow the signals. No more hours spent analyzing charts."</p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar">FM</div>
-                            <div>
-                                <div class="testimonial-name">Fab**a FMZ</div>
-                                <div class="testimonial-role">University Student</div>
-                            </div>
-                            <span class="testimonial-verified">Verified</span>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"Initially I was hesitant, but after trying it, the LuxQuant system is quite consistent in presenting relevant data with clear risk settings."</p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar">RG</div>
-                            <div>
-                                <div class="testimonial-name">R**n*ld G</div>
-                                <div class="testimonial-role">Crypto Investor</div>
-                            </div>
-                            <span class="testimonial-verified">Verified</span>
-                        </div>
-                    </div>
+                    <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"LuxQuant Algorithm is excellent. The systematic approach helps with discipline. First trial already proven."</p><div class="testimonial-author"><div class="testimonial-avatar">AG</div><div><div class="testimonial-name">Il**m A G</div><div class="testimonial-role">Business Owner</div></div><span class="testimonial-verified">Verified</span></div></div>
+                    <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"Great algorithm! I can work while trading. Just follow the signals. No more hours analyzing charts."</p><div class="testimonial-author"><div class="testimonial-avatar">FM</div><div><div class="testimonial-name">Fab**a FMZ</div><div class="testimonial-role">University Student</div></div><span class="testimonial-verified">Verified</span></div></div>
+                    <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"The algorithm is quite consistent presenting relevant data with clear risk settings. Very systematic."</p><div class="testimonial-author"><div class="testimonial-avatar">RG</div><div><div class="testimonial-name">R**n*ld G</div><div class="testimonial-role">Crypto Investor</div></div><span class="testimonial-verified">Verified</span></div></div>
                 </div>
             </div>
         </section>
 
-        <!-- Pricing -->
         <section id="pricing" class="pricing-section">
             <div class="container">
-                <div class="section-header">
-                    <p class="section-label">Membership</p>
-                    <h2 class="section-title">Choose Your Access Package</h2>
-                    <p class="section-desc">One-time payment for lifetime access to all features</p>
-                </div>
-
+                <div class="section-header"><p class="section-label">Membership</p><h2 class="section-title">Access LuxQuant Algorithm</h2><p class="section-desc">One-time payment for lifetime algorithm access</p></div>
                 <div class="pricing-card">
                     <span class="pricing-badge">Best Value</span>
-
-                    <div class="pricing-header">
-                        <h3 class="pricing-title">Lifetime Access</h3>
-                        <div class="pricing-price">
-                            <span class="pricing-currency">$</span>
-                            <span class="pricing-amount" id="priceAmount">400</span>
-                            <span class="pricing-period">/lifetime</span>
-                        </div>
-                        <span class="pricing-note">One-time payment • USDT only</span>
-                    </div>
-
-                    <!-- Referral System -->
-                    <div class="referral-box">
-                        <div class="referral-title">🎁 Have KOL Referral Code?</div>
-                        <div class="referral-subtitle">Enter code to get 5% discount</div>
-                        <div class="referral-input-group">
-                            <input type="text" id="referralCode" class="referral-input" placeholder="Enter code..." maxlength="20">
-                            <button class="referral-btn" id="verifyBtn">Apply</button>
-                        </div>
-                        <div class="referral-status" id="referralStatus"></div>
-                        <div class="generated-code" id="generatedCode">
-                            <div style="font-size: 12px; color: var(--text-secondary);">🎉 Your Access Code:</div>
-                            <div class="generated-code-value" id="accessCodeDisplay"></div>
-                            <div style="font-size: 11px; color: var(--positive);">✅ 5% discount activated!</div>
-                            <button class="copy-btn" id="copyBtn">Copy Code</button>
-                        </div>
-                    </div>
-
-                    <div class="discount-info" id="discountInfo">
-                        <div>Regular: <span style="text-decoration: line-through;">$400</span></div>
-                        <div style="color: var(--positive); font-weight: 700;">Discounted: $380 (5% OFF)</div>
-                    </div>
-
-                    <div class="pricing-features">
-                        <div class="pricing-feature">
-                            <span class="pricing-check">✓</span>
-                            <span class="pricing-feature-text">Complete trade setup outputs</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <span class="pricing-check">✓</span>
-                            <span class="pricing-feature-text">Real-time notifications via Telegram</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <span class="pricing-check">✓</span>
-                            <span class="pricing-feature-text">Analysis with volume ranking</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <span class="pricing-check">✓</span>
-                            <span class="pricing-feature-text">Risk info for risk management</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <span class="pricing-check">✓</span>
-                            <span class="pricing-feature-text">24/7 VIP Support</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <span class="pricing-check">✓</span>
-                            <span class="pricing-feature-text">Access to AI Consultant</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <span class="pricing-check">✓</span>
-                            <span class="pricing-feature-text">Advanced service development access</span>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-primary pricing-cta" id="accessBtn">
-                        <span id="btnText">Get Lifetime Access</span>
-                    </button>
-
+                    <div class="pricing-header"><h3 class="pricing-title">Lifetime Access</h3><div class="pricing-price"><span class="pricing-currency">$</span><span class="pricing-amount" id="priceAmount">400</span><span class="pricing-period">/lifetime</span></div><span class="pricing-note">One-time payment • USDT only</span></div>
+                    <div class="referral-box"><div class="referral-title">🎁 Have KOL Referral Code?</div><div class="referral-subtitle">Enter code to get 5% discount</div><div class="referral-input-group"><input type="text" id="referralCode" class="referral-input" placeholder="Enter code..." maxlength="20"><button class="referral-btn" id="verifyBtn">Apply</button></div><div class="referral-status" id="referralStatus"></div><div class="generated-code" id="generatedCode"><div style="font-size: 12px; color: var(--text-secondary);">🎉 Your Access Code:</div><div class="generated-code-value" id="accessCodeDisplay"></div><div style="font-size: 11px; color: var(--positive);">✅ 5% discount activated!</div><button class="copy-btn" id="copyBtn">Copy Code</button></div></div>
+                    <div class="discount-info" id="discountInfo"><div>Regular: <span style="text-decoration: line-through;">$400</span></div><div style="color: var(--positive); font-weight: 700;">Discounted: $380 (5% OFF)</div></div>
+                    <div class="pricing-features"><div class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Complete algorithm-generated trade setups</span></div><div class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Real-time notifications via Telegram</span></div><div class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Analysis with volume ranking</span></div><div class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Risk info for systematic management</span></div><div class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">24/7 Support</span></div><div class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Access to AI Consultant</span></div><div class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Algorithm development updates</span></div></div>
+                    <button class="btn btn-primary pricing-cta" id="accessBtn"><span id="btnText">Get Lifetime Access</span></button>
                     <p class="pricing-guarantee">💡 No referral code? Subscribe directly at regular price</p>
                 </div>
             </div>
         </section>
 
-        <!-- CTA -->
         <section class="cta-section">
             <div class="container">
                 <div class="cta-card">
                     <div class="cta-content">
-                        <h2 class="cta-title">Ready to Start Trading <span style="color: var(--gold)">Profitably</span>?</h2>
-                        <p class="cta-desc">Join traders worldwide who trust LuxQuant for consistent, data-driven results.</p>
-                        <div class="cta-buttons">
-                            <a href="#pricing" class="btn btn-primary btn-large">Get Started Now</a>
-                            <a href="https://t.me/luxquantadmin" target="_blank" class="btn btn-secondary btn-large">Contact Support</a>
-                        </div>
+                        <h2 class="cta-title">Ready to Trade <span style="color: var(--gold)">Systematically</span>?</h2>
+                        <p class="cta-desc">Join traders worldwide who trust LuxQuant Algorithm for consistent results.</p>
+                        <div class="cta-buttons"><a href="#pricing" class="btn btn-primary btn-large">Get Started Now</a><a href="https://t.me/luxquantadmin" target="_blank" class="btn btn-secondary btn-large">Contact Support</a></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Social -->
         <section class="social-section">
             <div class="container">
-                <div class="section-header">
-                    <p class="section-label">Connect</p>
-                    <h2 class="section-title">Follow Us</h2>
-                </div>
-
+                <div class="section-header"><p class="section-label">Connect</p><h2 class="section-title">Follow Us</h2></div>
                 <div class="social-grid">
-                    <a href="https://t.me/luxquantadmin" target="_blank" class="social-card">
-                        <div class="social-icon telegram">✈️</div>
-                        <div class="social-name">Telegram</div>
-                        <div class="social-handle">Join community</div>
-                    </a>
-                    <a href="#" class="social-card">
-                        <div class="social-icon discord">💬</div>
-                        <div class="social-name">Discord</div>
-                        <div class="social-handle">Chat with traders</div>
-                    </a>
-                    <a href="https://x.com/luxquanttrade" target="_blank" class="social-card">
-                        <div class="social-icon twitter">𝕏</div>
-                        <div class="social-name">X (Twitter)</div>
-                        <div class="social-handle">@luxquanttrade</div>
-                    </a>
-                    <a href="https://instagram.com/luxquanttrade" target="_blank" class="social-card">
-                        <div class="social-icon instagram">📷</div>
-                        <div class="social-name">Instagram</div>
-                        <div class="social-handle">@luxquanttrade</div>
-                    </a>
+                    <a href="https://t.me/luxquantadmin" target="_blank" class="social-card"><div class="social-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram"></div><div class="social-name">Telegram</div><div class="social-handle">Join community</div></a>
+                    <a href="https://x.com/luxquanttrade" target="_blank" class="social-card"><div class="social-icon" style="background: #000;"><svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div><div class="social-name">X (Twitter)</div><div class="social-handle">@luxquanttrade</div></a>
+                    <a href="https://instagram.com/luxquanttrade" target="_blank" class="social-card"><div class="social-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram"></div><div class="social-name">Instagram</div><div class="social-handle">@luxquanttrade</div></a>
+                    <a href="https://tiktok.com/@luxquanttrade" target="_blank" class="social-card"><div class="social-icon"><img src="https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg" alt="TikTok"></div><div class="social-name">TikTok</div><div class="social-handle">@luxquanttrade</div></a>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="#" class="logo">
-                        <div class="logo-icon" style="width: 40px; height: 40px; font-size: 16px;">LQ</div>
-                        <span class="logo-text" style="font-size: 20px;">LuxQuant</span>
-                    </a>
-                    <p class="footer-brand-desc">Premium AI-powered crypto trading signals with proven results. Helping traders worldwide since 2023.</p>
-                </div>
-
-                <div class="footer-column">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#performance">Performance</a></li>
-                        <li><a href="#testimonials">Reviews</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="https://t.me/luxquantadmin" target="_blank">Contact Us</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h4>Community</h4>
-                    <ul>
-                        <li><a href="https://t.me/luxquantadmin" target="_blank">Telegram</a></li>
-                        <li><a href="#">Discord</a></li>
-                        <li><a href="https://x.com/luxquanttrade" target="_blank">Twitter / X</a></li>
-                        <li><a href="https://instagram.com/luxquanttrade" target="_blank">Instagram</a></li>
-                    </ul>
-                </div>
+                <div class="footer-brand"><a href="#" class="logo"><img src="https://raw.githubusercontent.com/Dwiyulianto31072k4/luxquant/main/luxquant%20logo.png" alt="LuxQuant" class="logo-img" style="width: 40px; height: 40px;"><span class="logo-text" style="font-size: 20px;">LuxQuant</span></a><p class="footer-brand-desc">Premium algorithm-powered crypto trading signals. Systematic, objective, and data-driven.</p></div>
+                <div class="footer-column"><h4>Quick Links</h4><ul><li><a href="#features">Features</a></li><li><a href="#performance">Performance</a></li><li><a href="#testimonials">Reviews</a></li><li><a href="#pricing">Pricing</a></li></ul></div>
+                <div class="footer-column"><h4>Support</h4><ul><li><a href="https://t.me/luxquantadmin" target="_blank">Contact Us</a></li><li><a href="#">FAQ</a></li><li><a href="#">Terms</a></li><li><a href="#">Privacy</a></li></ul></div>
+                <div class="footer-column"><h4>Community</h4><ul><li><a href="https://t.me/luxquantadmin" target="_blank">Telegram</a></li><li><a href="https://x.com/luxquanttrade" target="_blank">Twitter / X</a></li><li><a href="https://instagram.com/luxquanttrade" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@luxquanttrade" target="_blank">TikTok</a></li></ul></div>
             </div>
-
-            <div class="footer-bottom">
-                <div class="footer-logo-center">
-                    <div class="footer-line"></div>
-                    <span class="footer-logo-text">LuxQuant</span>
-                    <div class="footer-line"></div>
-                </div>
-                <p class="footer-copyright">© 2025 LuxQuant VIP. All rights reserved.</p>
-                <p class="footer-disclaimer">Trading involves risk. Past performance is not indicative of future results.</p>
-            </div>
+            <div class="footer-bottom"><div class="footer-logo-center"><div class="footer-line"></div><span class="footer-logo-text">LuxQuant Algorithm</span><div class="footer-line"></div></div><p class="footer-copyright">© 2025 LuxQuant. All rights reserved.</p><p class="footer-disclaimer">Trading involves risk. Past performance is not indicative of future results.</p></div>
         </div>
     </footer>
 
-    <!-- Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://unpkg.com/three-globe@2.24.4/dist/three-globe.min.js"></script>
 
     <script>
-        // ============================================
-        // LOADER
-        // ============================================
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loader').classList.add('hidden');
-            }, 1200);
-        });
+        window.addEventListener('load', () => { setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 1200); });
 
-        // ============================================
-        // TICKER WITH CMC ICONS
-        // ============================================
         const cryptoData = [
-            { symbol: 'BTC', name: 'Bitcoin', cmcId: 1, price: 104892, change: 2.34 },
-            { symbol: 'ETH', name: 'Ethereum', cmcId: 1027, price: 3342, change: 4.12 },
-            { symbol: 'BNB', name: 'BNB', cmcId: 1839, price: 698, change: -0.87 },
-            { symbol: 'SOL', name: 'Solana', cmcId: 5426, price: 258, change: 6.45 },
-            { symbol: 'XRP', name: 'XRP', cmcId: 52, price: 3.12, change: 1.23 },
-            { symbol: 'ADA', name: 'Cardano', cmcId: 2010, price: 0.98, change: -1.45 },
-            { symbol: 'DOGE', name: 'Dogecoin', cmcId: 74, price: 0.42, change: 3.21 },
-            { symbol: 'LINK', name: 'Chainlink', cmcId: 1975, price: 28.45, change: 2.87 },
+            { symbol: 'BTC', cmcId: 1, price: 104892, change: 2.34 },
+            { symbol: 'ETH', cmcId: 1027, price: 3342, change: 4.12 },
+            { symbol: 'BNB', cmcId: 1839, price: 698, change: -0.87 },
+            { symbol: 'SOL', cmcId: 5426, price: 258, change: 6.45 },
+            { symbol: 'XRP', cmcId: 52, price: 3.12, change: 1.23 },
+            { symbol: 'ADA', cmcId: 2010, price: 0.98, change: -1.45 },
+            { symbol: 'DOGE', cmcId: 74, price: 0.42, change: 3.21 },
+            { symbol: 'LINK', cmcId: 1975, price: 28.45, change: 2.87 },
         ];
 
         function createTicker() {
             const track = document.getElementById('tickerTrack');
-            const items = cryptoData.map(c => `
-                <div class="ticker-item">
-                    <img class="ticker-icon" src="https://s2.coinmarketcap.com/static/img/coins/64x64/${c.cmcId}.png" alt="${c.symbol}">
-                    <span class="ticker-symbol">${c.symbol}</span>
-                    <span class="ticker-price">$${c.price.toLocaleString()}</span>
-                    <span class="ticker-change ${c.change >= 0 ? 'positive' : 'negative'}">${c.change >= 0 ? '+' : ''}${c.change.toFixed(2)}%</span>
-                </div>
-            `).join('');
+            const items = cryptoData.map(c => `<div class="ticker-item"><img class="ticker-icon" src="https://s2.coinmarketcap.com/static/img/coins/64x64/${c.cmcId}.png" alt="${c.symbol}"><span class="ticker-symbol">${c.symbol}</span><span class="ticker-price">$${c.price.toLocaleString()}</span><span class="ticker-change ${c.change >= 0 ? 'positive' : 'negative'}">${c.change >= 0 ? '+' : ''}${c.change.toFixed(2)}%</span></div>`).join('');
             track.innerHTML = items + items;
         }
         createTicker();
 
-        // ============================================
-        // HEADER SCROLL
-        // ============================================
         const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            header.classList.toggle('scrolled', window.scrollY > 50);
-        });
+        window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 50); });
 
-        // ============================================
-        // CAROUSEL
-        // ============================================
         let currentSlide = 0;
         const totalSlides = 5;
         const container = document.getElementById('carouselContainer');
@@ -2108,36 +599,29 @@
             dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
         }
 
-        document.getElementById('nextBtn').addEventListener('click', () => {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateCarousel();
-        });
+        document.getElementById('nextBtn').addEventListener('click', () => { currentSlide = (currentSlide + 1) % totalSlides; updateCarousel(); });
+        document.getElementById('prevBtn').addEventListener('click', () => { currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; updateCarousel(); });
+        dots.forEach((dot, i) => { dot.addEventListener('click', () => { currentSlide = i; updateCarousel(); }); });
+        setInterval(() => { currentSlide = (currentSlide + 1) % totalSlides; updateCarousel(); }, 5000);
 
-        document.getElementById('prevBtn').addEventListener('click', () => {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateCarousel();
-        });
+        const locations = [
+            { lat: -6.2, lng: 106.8 },
+            { lat: 1.3, lng: 103.8 },
+            { lat: 25.0, lng: 121.5 },
+            { lat: 35.6, lng: 139.6 },
+            { lat: 40.7, lng: -74.0 },
+            { lat: 51.5, lng: -0.1 },
+            { lat: 25.2, lng: 55.2 },
+            { lat: -33.8, lng: 151.2 },
+            { lat: 19.0, lng: 72.8 },
+            { lat: -23.5, lng: -46.6 },
+            { lat: 37.5, lng: 126.9 },
+            { lat: 52.5, lng: 13.4 },
+        ];
 
-        dots.forEach((dot, i) => {
-            dot.addEventListener('click', () => {
-                currentSlide = i;
-                updateCarousel();
-            });
-        });
-
-        setInterval(() => {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateCarousel();
-        }, 5000);
-
-        // ============================================
-        // REFERRAL SYSTEM
-        // ============================================
         const validCodes = ['03451Lux', '02847Lux', 'SM138', 'MRCOWHALE', 'BHYUKNGLO', 'FARIDWHALEBTC', 'ERIKDI', 'thomatomb', 'tss07', 'brndn', 'febrian', 'crossteam', 'Neilsen', 'CYBRFI', 'ejeha', 'ndratraderalgo', 'DODO', 'CUANLAGI', 'scobedo'];
         let isValidReferral = false;
         let generatedAccessCode = '';
-        const originalPrice = 400;
-        const discountPrice = 380;
 
         document.getElementById('verifyBtn').addEventListener('click', () => {
             const code = document.getElementById('referralCode').value.trim();
@@ -2145,32 +629,24 @@
             const genCode = document.getElementById('generatedCode');
             const discountInfo = document.getElementById('discountInfo');
 
-            if (!code) {
-                status.textContent = 'Please enter a referral code';
-                status.className = 'referral-status error';
-                return;
-            }
+            if (!code) { status.textContent = 'Please enter a referral code'; status.className = 'referral-status error'; return; }
 
             if (validCodes.includes(code)) {
                 const suffix = Math.random().toString(36).substring(2, 10).toUpperCase();
                 generatedAccessCode = `${code}-${suffix}`;
                 isValidReferral = true;
-
                 status.textContent = '🎉 Valid code! 5% discount applied.';
                 status.className = 'referral-status success';
-
                 document.getElementById('accessCodeDisplay').textContent = generatedAccessCode;
                 genCode.classList.add('show');
                 discountInfo.classList.add('show');
-
                 document.getElementById('priceAmount').textContent = '380';
                 document.getElementById('btnText').textContent = 'Get Discounted Access ($380)';
-
                 document.getElementById('referralCode').disabled = true;
                 document.getElementById('verifyBtn').disabled = true;
                 document.getElementById('verifyBtn').textContent = 'Applied ✅';
             } else {
-                status.textContent = '❌ Invalid code. You can still subscribe at regular price.';
+                status.textContent = '❌ Invalid code. Subscribe at regular price.';
                 status.className = 'referral-status error';
                 isValidReferral = false;
             }
@@ -2179,69 +655,19 @@
         document.getElementById('copyBtn').addEventListener('click', async () => {
             await navigator.clipboard.writeText(generatedAccessCode);
             document.getElementById('copyBtn').textContent = 'Copied! ✅';
-            setTimeout(() => {
-                document.getElementById('copyBtn').textContent = 'Copy Code';
-            }, 2000);
+            setTimeout(() => { document.getElementById('copyBtn').textContent = 'Copy Code'; }, 2000);
         });
 
-        // ============================================
-        // TELEGRAM INTEGRATION
-        // ============================================
         document.getElementById('accessBtn').addEventListener('click', () => {
             let message;
             if (isValidReferral && generatedAccessCode) {
-                message = `Hi! I want to subscribe to LuxQuant VIP Lifetime Access with KOL discount.\n\n💰 Price: $${discountPrice} (5% KOL Discount)\n🎯 Access Code: ${generatedAccessCode}\n\nPlease process my subscription.`;
+                message = `Hi! I want to subscribe to LuxQuant Algorithm Lifetime Access with KOL discount.\n\n💰 Price: $380 (5% KOL Discount)\n🎯 Access Code: ${generatedAccessCode}\n\nPlease process my subscription.`;
             } else {
-                message = `Hi! I want to subscribe to LuxQuant VIP Lifetime Access.\n\n💰 Price: $${originalPrice} (Regular Price)\n\nPlease process my subscription.`;
+                message = `Hi! I want to subscribe to LuxQuant Algorithm Lifetime Access.\n\n💰 Price: $400 (Regular Price)\n\nPlease process my subscription.`;
             }
             window.open(`https://t.me/luxquantadmin?text=${encodeURIComponent(message)}`, '_blank');
         });
 
-        // ============================================
-        // TYPEWRITER
-        // ============================================
-        function typewriter() {
-            const el = document.getElementById('animatedText');
-            const text1 = 'Trusted by Traders ';
-            const text2 = 'Worldwide';
-            let i = 0, deleting = false;
-
-            function type() {
-                const total = text1.length + text2.length;
-                if (!deleting) {
-                    if (i <= total) {
-                        if (i <= text1.length) {
-                            el.innerHTML = text1.substring(0, i) + '<span class="typewriter-cursor">|</span>';
-                        } else {
-                            el.innerHTML = text1 + '<span class="grad">' + text2.substring(0, i - text1.length) + '</span><span class="typewriter-cursor">|</span>';
-                        }
-                        i++;
-                        setTimeout(type, 80);
-                    } else {
-                        setTimeout(() => { deleting = true; type(); }, 3000);
-                    }
-                } else {
-                    if (i > 0) {
-                        i--;
-                        if (i <= text1.length) {
-                            el.innerHTML = text1.substring(0, i) + '<span class="typewriter-cursor">|</span>';
-                        } else {
-                            el.innerHTML = text1 + '<span class="grad">' + text2.substring(0, i - text1.length) + '</span><span class="typewriter-cursor">|</span>';
-                        }
-                        setTimeout(type, 40);
-                    } else {
-                        deleting = false;
-                        setTimeout(type, 500);
-                    }
-                }
-            }
-            type();
-        }
-        typewriter();
-
-        // ============================================
-        // GLOBE
-        // ============================================
         const globeContainer = document.getElementById('globe');
         if (globeContainer) {
             const scene = new THREE.Scene();
@@ -2261,8 +687,7 @@
             controls.autoRotate = true;
             controls.autoRotateSpeed = 0.8;
 
-            const ambient = new THREE.AmbientLight(0xffffff, 0.8);
-            scene.add(ambient);
+            scene.add(new THREE.AmbientLight(0xffffff, 0.8));
             const dir = new THREE.DirectionalLight(0xffffff, 1);
             dir.position.set(1, 1, 1);
             scene.add(dir);
@@ -2276,48 +701,19 @@
 
             scene.add(globe);
 
-            const locations = [
-                { name: 'Jakarta', lat: -6.2, lng: 106.8, color: '#d4a853' },
-                { name: 'Singapore', lat: 1.3, lng: 103.8, color: '#d4a853' },
-                { name: 'Taipei', lat: 25.0, lng: 121.5, color: '#d4a853' },
-                { name: 'Tokyo', lat: 35.6, lng: 139.6, color: '#d4a853' },
-                { name: 'New York', lat: 40.7, lng: -74.0, color: '#d4a853' },
-                { name: 'London', lat: 51.5, lng: -0.1, color: '#d4a853' },
-                { name: 'Dubai', lat: 25.2, lng: 55.2, color: '#d4a853' },
-                { name: 'Sydney', lat: -33.8, lng: 151.2, color: '#d4a853' },
-            ];
+            const pointsData = locations.map(loc => ({ lat: loc.lat, lng: loc.lng, color: '#d4a853' }));
+            const arcsData = locations.slice(1).map(loc => ({ startLat: 25.0, startLng: 121.5, endLat: loc.lat, endLng: loc.lng, color: '#ffffff' }));
 
-            const routes = locations.slice(1).map(loc => ({
-                startLat: 25.0, startLng: 121.5,
-                endLat: loc.lat, endLng: loc.lng,
-                color: '#ffffff'
-            }));
+            globe.pointsData(pointsData).pointColor('color').pointRadius(0.6).pointAltitude(0.01);
+            globe.arcsData(arcsData).arcColor('color').arcStroke(0.4).arcDashLength(0.4).arcDashGap(0.2).arcDashAnimateTime(3000);
 
-            globe.pointsData(locations).pointColor('color').pointRadius(0.6).pointAltitude(0.01);
-            globe.arcsData(routes).arcColor('color').arcStroke(0.4).arcDashLength(0.4).arcDashGap(0.2).arcDashAnimateTime(3000);
-
-            function animate() {
-                requestAnimationFrame(animate);
-                controls.update();
-                renderer.render(scene, camera);
-            }
+            function animate() { requestAnimationFrame(animate); controls.update(); renderer.render(scene, camera); }
             animate();
 
-            window.addEventListener('resize', () => {
-                camera.aspect = globeContainer.clientWidth / globeContainer.clientHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(globeContainer.clientWidth, globeContainer.clientHeight);
-            });
+            window.addEventListener('resize', () => { camera.aspect = globeContainer.clientWidth / globeContainer.clientHeight; camera.updateProjectionMatrix(); renderer.setSize(globeContainer.clientWidth, globeContainer.clientHeight); });
         }
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', e => {
-                e.preventDefault();
-                const target = document.querySelector(a.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
+        document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', e => { e.preventDefault(); const target = document.querySelector(a.getAttribute('href')); if (target) target.scrollIntoView({ behavior: 'smooth' }); }); });
     </script>
 </body>
 </html>
