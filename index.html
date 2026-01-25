@@ -7,377 +7,16 @@
     <title>LuxQuant Algorithm - AI Crypto Trading Signals</title>
     <link rel="icon" href="logolqemas.png" type="image/png">
 
-
-    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <style>
-        :root {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #0f0f0f;
-            --bg-tertiary: #141414;
-            --bg-card: rgba(20, 20, 20, 0.9);
-            --red-primary: #8b1a1a;
-            --red-glow: rgba(139, 26, 26, 0.3);
-            --gold: #d4a853;
-            --gold-light: #e8c47a;
-            --gold-dark: #a67c3d;
-            --gold-glow: rgba(212, 168, 83, 0.15);
-            --gold-subtle: rgba(212, 168, 83, 0.08);
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.7);
-            --text-muted: rgba(255, 255, 255, 0.4);
-            --border: rgba(255, 255, 255, 0.08);
-            --border-gold: rgba(212, 168, 83, 0.3);
-            --positive: #22c55e;
-            --negative: #ef4444;
-            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-display: 'Playfair Display', Georgia, serif;
-            --section-padding: clamp(80px, 10vw, 140px);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: var(--font-primary);
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: 
-                radial-gradient(ellipse at 20% 20%, var(--red-glow) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, var(--red-glow) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(212, 168, 83, 0.05) 0%, transparent 60%);
-            pointer-events: none;
-            z-index: -1;
-        }
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-
-        /* Ticker */
-        .ticker-wrapper {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            height: 44px; overflow: hidden;
-        }
-        .ticker-track { display: flex; animation: tickerScroll 60s linear infinite; }
-        @keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .ticker-item { display: flex; align-items: center; gap: 8px; padding: 0 28px; height: 44px; white-space: nowrap; font-size: 13px; font-weight: 500; }
-        .ticker-icon { width: 22px; height: 22px; border-radius: 50%; }
-        .ticker-symbol { font-weight: 600; color: var(--text-primary); }
-        .ticker-price { color: var(--text-secondary); }
-        .ticker-change { font-weight: 600; font-size: 12px; padding: 2px 6px; border-radius: 4px; }
-        .ticker-change.positive { color: var(--positive); background: rgba(34, 197, 94, 0.1); }
-        .ticker-change.negative { color: var(--negative); background: rgba(239, 68, 68, 0.1); }
-
-        /* Header */
-        header {
-            position: fixed; top: 44px; left: 0; right: 0; z-index: 999;
-            padding: 16px 0;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-        header.scrolled { padding: 12px 0; background: rgba(10, 10, 10, 0.95); }
-        .header-inner { display: flex; align-items: center; justify-content: space-between; }
-        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .logo-img { width: 44px; height: 44px; border-radius: 12px; object-fit: contain; }
-        .logo-text { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--text-primary); }
-        nav { display: flex; align-items: center; gap: 32px; }
-        nav a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
-        nav a:hover { color: var(--text-primary); }
-        .header-cta .btn { padding: 10px 20px; font-size: 14px; }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-            padding: 14px 28px; border-radius: 8px; font-size: 15px; font-weight: 600;
-            text-decoration: none; cursor: pointer; transition: all 0.2s ease; border: none; font-family: inherit;
-        }
-        .btn-primary { background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: var(--bg-primary); }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212, 168, 83, 0.3); }
-        .btn-secondary { background: transparent; border: 1px solid var(--border); color: var(--text-primary); }
-        .btn-secondary:hover { background: var(--bg-tertiary); border-color: var(--text-muted); }
-        .btn-large { padding: 18px 36px; font-size: 16px; }
-
-        /* Hero */
-        .hero { padding-top: 160px; padding-bottom: var(--section-padding); position: relative; }
-        .hero-content { text-align: center; max-width: 900px; margin: 0 auto; }
-        .hero-title { font-family: var(--font-display); font-size: clamp(40px, 6vw, 72px); font-weight: 600; line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.02em; }
-        .hero-title .highlight { background: linear-gradient(135deg, var(--gold-light), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .hero-description { font-size: 18px; color: var(--text-secondary); max-width: 640px; margin: 0 auto 40px; line-height: 1.7; }
-        .hero-cta { display: flex; gap: 16px; justify-content: center; margin-bottom: 80px; }
-        .hero-globe-section { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; margin-top: 80px; }
-        .hero-text-content h2 { font-family: var(--font-display); font-size: 32px; margin-bottom: 16px; }
-        .hero-text-content .grad { background: linear-gradient(135deg, var(--gold-light), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        /* Floating Flags */
-        .floating-flags-container {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        .floating-flag {
-            position: absolute;
-            font-size: 28px;
-            opacity: 0;
-            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
-            animation: floatFlag 8s ease-in-out infinite;
-        }
-        @keyframes floatFlag {
-            0% { opacity: 0; transform: translateY(20px) scale(0.5) rotate(-10deg); }
-            15% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
-            85% { opacity: 1; transform: translateY(-10px) scale(1) rotate(5deg); }
-            100% { opacity: 0; transform: translateY(-30px) scale(0.5) rotate(10deg); }
-        }
-        .floating-flag:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
-        .floating-flag:nth-child(2) { top: 20%; right: 8%; animation-delay: 0.8s; }
-        .floating-flag:nth-child(3) { top: 60%; left: 3%; animation-delay: 1.6s; }
-        .floating-flag:nth-child(4) { top: 75%; right: 5%; animation-delay: 2.4s; }
-        .floating-flag:nth-child(5) { top: 40%; left: 8%; animation-delay: 3.2s; }
-        .floating-flag:nth-child(6) { top: 30%; right: 3%; animation-delay: 4s; }
-        .floating-flag:nth-child(7) { top: 85%; left: 10%; animation-delay: 4.8s; }
-        .floating-flag:nth-child(8) { top: 5%; right: 12%; animation-delay: 5.6s; }
-        .floating-flag:nth-child(9) { top: 50%; right: 10%; animation-delay: 6.4s; }
-        .floating-flag:nth-child(10) { top: 65%; left: 6%; animation-delay: 7.2s; }
-        .floating-flag:nth-child(11) { top: 15%; left: 12%; animation-delay: 2s; }
-        .floating-flag:nth-child(12) { top: 90%; right: 8%; animation-delay: 3.5s; }
-        .globe-container { width: 100%; aspect-ratio: 1; max-width: 500px; margin: 0 auto; position: relative; }
-        #globe { width: 100%; height: 100%; }
-
-        /* Trust Section */
-        .trust-section { padding: var(--section-padding) 0; border-top: 1px solid var(--border); }
-        .trust-header { text-align: center; margin-bottom: 60px; }
-        .section-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 16px; }
-        .section-title { font-family: var(--font-display); font-size: clamp(32px, 4vw, 48px); font-weight: 600; }
-        .section-desc { font-size: 16px; color: var(--text-secondary); margin-top: 16px; }
-        .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-        .trust-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px; padding: 40px 32px; text-align: center; transition: all 0.3s ease; }
-        .trust-card:hover { border-color: var(--border-gold); transform: translateY(-4px); }
-        .trust-card-icon { width: 64px; height: 64px; margin: 0 auto 20px; background: var(--gold-subtle); border: 1px solid var(--border-gold); border-radius: 16px; display: flex; align-items: center; justify-content: center; }
-        .trust-card-icon svg { width: 32px; height: 32px; stroke: var(--gold); }
-        .trust-card-value { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--gold); margin-bottom: 8px; }
-        .trust-card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
-
-        /* Features */
-        .features-section { padding: var(--section-padding) 0; }
-        .section-header { text-align: center; max-width: 640px; margin: 0 auto 60px; }
-        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .feature-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 20px; padding: 40px 32px; transition: all 0.3s ease; }
-        .feature-card:hover { border-color: var(--border-gold); transform: translateY(-4px); }
-        .feature-icon { width: 56px; height: 56px; background: var(--gold-subtle); border: 1px solid var(--border-gold); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
-        .feature-icon svg { width: 28px; height: 28px; stroke: var(--gold); }
-        .feature-title { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
-        .feature-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-
-        /* VIP Section */
-        .vip-section { padding: var(--section-padding) 0; background: var(--bg-secondary); }
-        .vip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-        .phone-wrapper { display: flex; flex-direction: column; align-items: center; }
-        .phone-mockup { position: relative; width: 280px; height: 580px; background: linear-gradient(145deg, #2a2a2a, #1a1a1a); border-radius: 44px; padding: 12px; box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 20px 60px rgba(0,0,0,0.5); }
-        .phone-notch { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 120px; height: 28px; background: #1a1a1a; border-radius: 0 0 16px 16px; z-index: 10; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .phone-speaker { width: 50px; height: 4px; background: #333; border-radius: 2px; }
-        .phone-camera { width: 10px; height: 10px; background: radial-gradient(circle, #1a1a1a 40%, #333 60%); border-radius: 50%; }
-        .phone-screen { width: 100%; height: 100%; background: #0a0a0a; border-radius: 36px; overflow: hidden; }
-        .carousel-container { display: flex; height: 100%; transition: transform 0.5s ease; }
-        .carousel-slide { min-width: 100%; height: 100%; }
-        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
-        .carousel-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 24px; }
-        .carousel-btn { width: 44px; height: 44px; border: none; background: var(--gold); color: var(--bg-primary); border-radius: 50%; font-size: 20px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
-        .carousel-btn:hover { transform: scale(1.1); }
-        .carousel-dots { display: flex; gap: 8px; }
-        .carousel-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--text-muted); cursor: pointer; transition: all 0.2s; }
-        .carousel-dot.active { background: var(--gold); transform: scale(1.2); }
-        .vip-features-list { display: flex; flex-direction: column; gap: 20px; }
-        .vip-feature-item { display: flex; gap: 16px; padding: 24px; background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 16px; transition: all 0.3s ease; }
-        .vip-feature-item:hover { border-color: var(--border-gold); }
-        .vip-feature-icon { width: 48px; height: 48px; background: var(--gold); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .vip-feature-icon svg { width: 24px; height: 24px; stroke: var(--bg-primary); }
-        .vip-feature-content h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; color: var(--gold); }
-        .vip-feature-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
-
-        /* Performance */
-        .performance-section { padding: var(--section-padding) 0; }
-        .performance-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
-        .performance-content h2 { font-family: var(--font-display); font-size: clamp(32px, 4vw, 44px); margin-bottom: 20px; }
-        .performance-content p { font-size: 16px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 32px; }
-        .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-        .stat-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
-        .stat-value { font-family: var(--font-display); font-size: 32px; font-weight: 700; margin-bottom: 4px; }
-        .stat-value.gold { color: var(--gold); }
-        .stat-value.green { color: var(--positive); }
-        .stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-        .dashboard-preview { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; }
-        .dashboard-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; border-bottom: 1px solid var(--border); }
-        .dashboard-title { font-weight: 600; }
-        .dashboard-live { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--positive); font-weight: 600; }
-        .dashboard-live::before { content: ''; width: 8px; height: 8px; background: var(--positive); border-radius: 50%; animation: pulse 2s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
-        .dashboard-image-link { display: block; position: relative; }
-        .dashboard-image { width: 100%; height: 320px; object-fit: cover; display: block; }
-        .dashboard-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.7); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
-        .dashboard-image-link:hover .dashboard-overlay { opacity: 1; }
-        .dashboard-overlay-icon { font-size: 48px; margin-bottom: 12px; }
-        .dashboard-overlay-text { font-weight: 600; color: var(--gold); }
-        .dashboard-cta { padding: 20px 24px; }
-        .dashboard-cta .btn { width: 100%; }
-
-        /* Testimonials */
-        .testimonials-section { padding: var(--section-padding) 0; background: var(--bg-secondary); }
-        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .testimonial-card { background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: all 0.3s ease; }
-        .testimonial-card:hover { border-color: var(--border-gold); }
-        .testimonial-stars { color: var(--gold); font-size: 18px; margin-bottom: 16px; }
-        .testimonial-text { font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 24px; font-style: italic; }
-        .testimonial-author { display: flex; align-items: center; gap: 12px; }
-        .testimonial-avatar { width: 44px; height: 44px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--bg-primary); }
-        .testimonial-name { font-weight: 600; font-size: 14px; }
-        .testimonial-role { font-size: 12px; color: var(--text-muted); }
-        .testimonial-verified { margin-left: auto; padding: 4px 10px; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 20px; font-size: 10px; font-weight: 600; color: var(--positive); text-transform: uppercase; }
-
-        /* Pricing */
-        .pricing-section { padding: var(--section-padding) 0; }
-        .pricing-card { max-width: 520px; margin: 0 auto; background: var(--bg-secondary); border: 2px solid var(--border-gold); border-radius: 24px; padding: 48px; position: relative; }
-        .pricing-badge { position: absolute; top: 24px; right: 24px; padding: 6px 14px; background: var(--gold); border-radius: 20px; font-size: 11px; font-weight: 700; color: var(--bg-primary); text-transform: uppercase; }
-        .pricing-header { text-align: center; margin-bottom: 32px; }
-        .pricing-title { font-family: var(--font-display); font-size: 28px; color: var(--gold); margin-bottom: 16px; }
-        .pricing-price { display: flex; align-items: baseline; justify-content: center; gap: 4px; margin-bottom: 12px; }
-        .pricing-currency { font-size: 24px; color: var(--text-secondary); }
-        .pricing-amount { font-family: var(--font-display); font-size: 64px; font-weight: 700; }
-        .pricing-period { font-size: 18px; color: var(--text-muted); }
-        .pricing-note { display: inline-block; padding: 8px 20px; background: var(--gold-subtle); border: 1px solid var(--border-gold); border-radius: 20px; font-size: 13px; color: var(--gold); }
-        .referral-box { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border-radius: 16px; padding: 24px; margin: 32px 0; color: var(--bg-primary); }
-        .referral-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; text-align: center; }
-        .referral-subtitle { font-size: 13px; margin-bottom: 16px; text-align: center; opacity: 0.8; }
-        .referral-input-group { display: flex; gap: 8px; }
-        .referral-input { flex: 1; padding: 12px 16px; border: 2px solid rgba(0,0,0,0.2); border-radius: 8px; font-size: 14px; font-weight: 600; text-align: center; background: #fff; color: var(--bg-primary); }
-        .referral-input:focus { outline: none; border-color: var(--bg-primary); }
-        .referral-btn { padding: 12px 20px; background: var(--bg-primary); color: var(--gold); border: none; border-radius: 8px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
-        .referral-btn:hover { background: #222; }
-        .referral-status { margin-top: 12px; padding: 10px; border-radius: 8px; font-size: 13px; font-weight: 600; text-align: center; display: none; }
-        .referral-status.success { display: block; background: rgba(34, 197, 94, 0.2); color: #166534; }
-        .referral-status.error { display: block; background: rgba(239, 68, 68, 0.2); color: #991b1b; }
-        .generated-code { display: none; margin-top: 16px; padding: 16px; background: var(--bg-primary); border-radius: 8px; text-align: center; }
-        .generated-code.show { display: block; }
-        .generated-code-value { font-family: monospace; font-size: 18px; font-weight: 700; color: var(--gold); margin: 8px 0; }
-        .copy-btn { padding: 8px 16px; background: var(--gold); color: var(--bg-primary); border: none; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; margin-top: 8px; }
-        .discount-info { display: none; margin-top: 16px; padding: 12px; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 8px; text-align: center; font-size: 13px; }
-        .discount-info.show { display: block; }
-        .pricing-features { margin-bottom: 32px; }
-        .pricing-feature { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border); }
-        .pricing-feature:last-child { border-bottom: none; }
-        .pricing-check { width: 22px; height: 22px; background: rgba(34, 197, 94, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--positive); font-size: 12px; }
-        .pricing-feature-text { font-size: 14px; color: var(--text-secondary); }
-        .pricing-cta { width: 100%; padding: 18px; font-size: 16px; }
-        .pricing-guarantee { text-align: center; margin-top: 16px; font-size: 13px; color: var(--text-muted); }
-
-        /* CTA */
-        .cta-section { padding: var(--section-padding) 0; background: var(--bg-secondary); }
-        .cta-card { background: var(--bg-tertiary); border: 1px solid var(--border-gold); border-radius: 24px; padding: 80px; text-align: center; position: relative; overflow: hidden; }
-        .cta-card::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: radial-gradient(circle, var(--red-glow) 0%, transparent 70%); pointer-events: none; }
-        .cta-content { position: relative; z-index: 1; }
-        .cta-title { font-family: var(--font-display); font-size: clamp(32px, 4vw, 44px); margin-bottom: 16px; }
-        .cta-desc { font-size: 18px; color: var(--text-secondary); margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
-        .cta-buttons { display: flex; gap: 16px; justify-content: center; }
-
-        /* Social */
-        .social-section { padding: 80px 0; }
-        .social-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        .social-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px; padding: 32px; text-align: center; text-decoration: none; color: inherit; transition: all 0.3s ease; }
-        .social-card:hover { border-color: var(--border-gold); transform: translateY(-4px); }
-        .social-icon { width: 64px; height: 64px; margin: 0 auto 16px; border-radius: 16px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-        .social-icon img { width: 100%; height: 100%; object-fit: cover; }
-        .social-name { font-weight: 600; margin-bottom: 4px; }
-        .social-handle { font-size: 13px; color: var(--text-muted); }
-
-        /* Footer */
-        footer { padding: 60px 0 30px; border-top: 1px solid var(--border); }
-        .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 60px; margin-bottom: 60px; }
-        .footer-brand-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-top: 20px; }
-        .footer-column h4 { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); margin-bottom: 20px; }
-        .footer-column ul { list-style: none; }
-        .footer-column li { margin-bottom: 12px; }
-        .footer-column a { color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s; }
-        .footer-column a:hover { color: var(--gold); }
-        .footer-bottom { display: flex; flex-direction: column; align-items: center; gap: 16px; padding-top: 30px; border-top: 1px solid var(--border); }
-        .footer-logo-center { display: flex; align-items: center; gap: 16px; }
-        .footer-line { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
-        .footer-logo-text { font-family: var(--font-display); font-size: 20px; color: var(--gold); }
-        .footer-copyright { font-size: 13px; color: var(--text-muted); }
-        .footer-disclaimer { font-size: 12px; color: var(--text-muted); text-align: center; max-width: 600px; font-style: italic; }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .hero-globe-section, .vip-grid, .performance-grid { grid-template-columns: 1fr; gap: 40px; }
-            .features-grid, .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
-            .trust-grid, .social-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-        }
-        @media (max-width: 768px) {
-            nav { display: none; }
-            .hero-cta { flex-direction: column; align-items: center; }
-            .features-grid, .testimonials-grid, .trust-grid, .social-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-            .cta-card { padding: 48px 24px; }
-            .cta-buttons { flex-direction: column; }
-            .pricing-card { padding: 32px 24px; }
-            .phone-mockup { transform: scale(0.9); }
-            .stats-grid { grid-template-columns: 1fr; }
-        }
-
-        /* Globe Loading Animation - NEW */
-.globe-loader {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    z-index: 10;
-    transition: opacity 0.5s ease;
-}
-.globe-loader.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-.globe-spinner {
-    width: 60px;
-    height: 60px;
-    border: 3px solid rgba(212, 168, 83, 0.2);
-    border-top-color: var(--gold);
-    border-radius: 50%;
-    animation: globeSpin 1s linear infinite;
-}
-@keyframes globeSpin {
-    to { transform: rotate(360deg); }
-}
-.globe-loader-text {
-    color: var(--gold);
-    font-size: 14px;
-    font-weight: 500;
-}
-
-        /* Loader */
-        .loader { position: fixed; inset: 0; background: var(--bg-primary); display: flex; align-items: center; justify-content: center; z-index: 10000; transition: opacity 0.5s ease; }
-        .loader.hidden { opacity: 0; pointer-events: none; }
-        .loader-content { text-align: center; }
-        .loader-logo { width: 80px; height: 80px; margin: 0 auto 24px; border-radius: 20px; }
-        .loader-spinner { width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-    </style>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Loader -->
     <div class="loader" id="loader">
         <div class="loader-content">
             <img src="https://raw.githubusercontent.com/Dwiyulianto31072k4/luxquant/main/luxquant%20logo.png" alt="LuxQuant" class="loader-logo">
@@ -385,8 +24,18 @@
         </div>
     </div>
 
-    <div class="ticker-wrapper"><div class="ticker-track" id="tickerTrack"></div></div>
+    <!-- Price Ticker -->
+    <div class="ticker-wrapper">
+        <div class="ticker-track" id="tickerTrack">
+            <!-- Ticker items will be injected by main.js -->
+            <div class="ticker-item loading">
+                <span class="ticker-symbol">Loading...</span>
+                <span class="ticker-price">Fetching live prices</span>
+            </div>
+        </div>
+    </div>
 
+    <!-- Header -->
     <header id="header">
         <div class="container">
             <div class="header-inner">
@@ -406,6 +55,7 @@
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section class="hero">
             <div class="container">
                 <div class="hero-content">
@@ -422,6 +72,11 @@
                         <p style="color: var(--text-secondary); margin-top: 16px;">Our algorithm-powered signals reach traders across the globe. Join our growing community.</p>
                     </div>
                     <div class="globe-container">
+                        <!-- Globe Loading Animation -->
+                        <div class="globe-loader" id="globeLoader">
+                            <div class="globe-spinner"></div>
+                            <span class="globe-loader-text">Loading Globe...</span>
+                        </div>
                         <div id="globe"></div>
                         <div class="floating-flags-container">
                             <span class="floating-flag">🇮🇩</span>
@@ -442,6 +97,7 @@
             </div>
         </section>
 
+        <!-- Trust Section -->
         <section class="trust-section">
             <div class="container">
                 <div class="trust-header">
@@ -473,6 +129,7 @@
             </div>
         </section>
 
+        <!-- Features Section -->
         <section id="features" class="features-section">
             <div class="container">
                 <div class="section-header">
@@ -491,6 +148,7 @@
             </div>
         </section>
 
+        <!-- VIP Section -->
         <section class="vip-section">
             <div class="container">
                 <div class="section-header"><p class="section-label">Algorithm Access</p><h2 class="section-title">See LuxQuant Algorithm in Action</h2><p class="section-desc">Real screenshots from our Telegram channels</p></div>
@@ -509,6 +167,7 @@
             </div>
         </section>
 
+        <!-- Performance Section -->
         <section id="performance" class="performance-section">
             <div class="container">
                 <div class="performance-grid">
@@ -535,6 +194,7 @@
             </div>
         </section>
 
+        <!-- Testimonials Section -->
         <section id="testimonials" class="testimonials-section">
             <div class="container">
                 <div class="section-header"><p class="section-label">Success Stories</p><h2 class="section-title">What Traders Say</h2></div>
@@ -546,6 +206,7 @@
             </div>
         </section>
 
+        <!-- Pricing Section -->
         <section id="pricing" class="pricing-section">
             <div class="container">
                 <div class="section-header"><p class="section-label">Membership</p><h2 class="section-title">Access LuxQuant Algorithm</h2><p class="section-desc">One-time payment for lifetime algorithm access</p></div>
@@ -561,6 +222,7 @@
             </div>
         </section>
 
+        <!-- CTA Section -->
         <section class="cta-section">
             <div class="container">
                 <div class="cta-card">
@@ -573,6 +235,7 @@
             </div>
         </section>
 
+        <!-- Social Section -->
         <section class="social-section">
             <div class="container">
                 <div class="section-header"><p class="section-label">Connect</p><h2 class="section-title">Follow Us</h2></div>
@@ -580,12 +243,13 @@
                     <a href="https://t.me/luxquantadmin" target="_blank" class="social-card"><div class="social-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram"></div><div class="social-name">Telegram</div><div class="social-handle">Join community</div></a>
                     <a href="https://x.com/luxquanttrade" target="_blank" class="social-card"><div class="social-icon" style="background: #000;"><svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div><div class="social-name">X (Twitter)</div><div class="social-handle">@luxquanttrade</div></a>
                     <a href="https://instagram.com/luxquanttrade" target="_blank" class="social-card"><div class="social-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram"></div><div class="social-name">Instagram</div><div class="social-handle">@luxquanttrade</div></a>
-                    <a href="https://tiktok.com/@luxquanttrade" target="_blank" class="social-card"><div class="social-icon"><svg viewBox="0 0 24 24" fill="white" width="40" height="40"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg></div><div class="social-name">TikTok</div><div class="social-handle">@luxquanttrade</div></a>
+                    <a href="https://tiktok.com/@luxquanttrade" target="_blank" class="social-card"><div class="social-icon" style="background: #000; border-radius: 12px; padding: 8px;"><svg viewBox="0 0 24 24" fill="white" width="32" height="32"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg></div><div class="social-name">TikTok</div><div class="social-handle">@luxquanttrade</div></a>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -598,159 +262,14 @@
         </div>
     </footer>
 
+    <!-- External Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://unpkg.com/three-globe@2.24.4/dist/three-globe.min.js"></script>
 
-    <script>
-        window.addEventListener('load', () => { setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 1200); });
-
-        const cryptoData = [
-            { symbol: 'BTC', cmcId: 1, price: 104892, change: 2.34 },
-            { symbol: 'ETH', cmcId: 1027, price: 3342, change: 4.12 },
-            { symbol: 'BNB', cmcId: 1839, price: 698, change: -0.87 },
-            { symbol: 'SOL', cmcId: 5426, price: 258, change: 6.45 },
-            { symbol: 'XRP', cmcId: 52, price: 3.12, change: 1.23 },
-            { symbol: 'ADA', cmcId: 2010, price: 0.98, change: -1.45 },
-            { symbol: 'DOGE', cmcId: 74, price: 0.42, change: 3.21 },
-            { symbol: 'LINK', cmcId: 1975, price: 28.45, change: 2.87 },
-        ];
-
-        function createTicker() {
-            const track = document.getElementById('tickerTrack');
-            const items = cryptoData.map(c => `<div class="ticker-item"><img class="ticker-icon" src="https://s2.coinmarketcap.com/static/img/coins/64x64/${c.cmcId}.png" alt="${c.symbol}"><span class="ticker-symbol">${c.symbol}</span><span class="ticker-price">$${c.price.toLocaleString()}</span><span class="ticker-change ${c.change >= 0 ? 'positive' : 'negative'}">${c.change >= 0 ? '+' : ''}${c.change.toFixed(2)}%</span></div>`).join('');
-            track.innerHTML = items + items;
-        }
-        createTicker();
-
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 50); });
-
-        let currentSlide = 0;
-        const totalSlides = 5;
-        const container = document.getElementById('carouselContainer');
-        const dots = document.querySelectorAll('.carousel-dot');
-
-        function updateCarousel() {
-            container.style.transform = `translateX(-${currentSlide * 100}%)`;
-            dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
-        }
-
-        document.getElementById('nextBtn').addEventListener('click', () => { currentSlide = (currentSlide + 1) % totalSlides; updateCarousel(); });
-        document.getElementById('prevBtn').addEventListener('click', () => { currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; updateCarousel(); });
-        dots.forEach((dot, i) => { dot.addEventListener('click', () => { currentSlide = i; updateCarousel(); }); });
-        setInterval(() => { currentSlide = (currentSlide + 1) % totalSlides; updateCarousel(); }, 5000);
-
-        const locations = [
-            { lat: -6.2, lng: 106.8 },
-            { lat: 1.3, lng: 103.8 },
-            { lat: 25.0, lng: 121.5 },
-            { lat: 35.6, lng: 139.6 },
-            { lat: 40.7, lng: -74.0 },
-            { lat: 51.5, lng: -0.1 },
-            { lat: 25.2, lng: 55.2 },
-            { lat: -33.8, lng: 151.2 },
-            { lat: 19.0, lng: 72.8 },
-            { lat: -23.5, lng: -46.6 },
-            { lat: 37.5, lng: 126.9 },
-            { lat: 52.5, lng: 13.4 },
-        ];
-
-        const validCodes = ['03451Lux', '02847Lux', 'SM138', 'MRCOWHALE', 'BHYUKNGLO', 'FARIDWHALEBTC', 'ERIKDI', 'thomatomb', 'tss07', 'brndn', 'febrian', 'crossteam', 'Neilsen', 'CYBRFI', 'ejeha', 'ndratraderalgo', 'DODO', 'CUANLAGI', 'scobedo'];
-        let isValidReferral = false;
-        let generatedAccessCode = '';
-
-        document.getElementById('verifyBtn').addEventListener('click', () => {
-            const code = document.getElementById('referralCode').value.trim();
-            const status = document.getElementById('referralStatus');
-            const genCode = document.getElementById('generatedCode');
-            const discountInfo = document.getElementById('discountInfo');
-
-            if (!code) { status.textContent = 'Please enter a referral code'; status.className = 'referral-status error'; return; }
-
-            if (validCodes.includes(code)) {
-                const suffix = Math.random().toString(36).substring(2, 10).toUpperCase();
-                generatedAccessCode = `${code}-${suffix}`;
-                isValidReferral = true;
-                status.textContent = '🎉 Valid code! 5% discount applied.';
-                status.className = 'referral-status success';
-                document.getElementById('accessCodeDisplay').textContent = generatedAccessCode;
-                genCode.classList.add('show');
-                discountInfo.classList.add('show');
-                document.getElementById('priceAmount').textContent = '380';
-                document.getElementById('btnText').textContent = 'Get Discounted Access ($380)';
-                document.getElementById('referralCode').disabled = true;
-                document.getElementById('verifyBtn').disabled = true;
-                document.getElementById('verifyBtn').textContent = 'Applied ✅';
-            } else {
-                status.textContent = '❌ Invalid code. Subscribe at regular price.';
-                status.className = 'referral-status error';
-                isValidReferral = false;
-            }
-        });
-
-        document.getElementById('copyBtn').addEventListener('click', async () => {
-            await navigator.clipboard.writeText(generatedAccessCode);
-            document.getElementById('copyBtn').textContent = 'Copied! ✅';
-            setTimeout(() => { document.getElementById('copyBtn').textContent = 'Copy Code'; }, 2000);
-        });
-
-        document.getElementById('accessBtn').addEventListener('click', () => {
-            let message;
-            if (isValidReferral && generatedAccessCode) {
-                message = `Hi! I want to subscribe to LuxQuant Algorithm Lifetime Access with KOL discount.\n\n💰 Price: $380 (5% KOL Discount)\n🎯 Access Code: ${generatedAccessCode}\n\nPlease process my subscription.`;
-            } else {
-                message = `Hi! I want to subscribe to LuxQuant Algorithm Lifetime Access.\n\n💰 Price: $400 (Regular Price)\n\nPlease process my subscription.`;
-            }
-            window.open(`https://t.me/luxquantadmin?text=${encodeURIComponent(message)}`, '_blank');
-        });
-
-        const globeContainer = document.getElementById('globe');
-        if (globeContainer) {
-            const scene = new THREE.Scene();
-            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-            renderer.setClearColor(0x000000, 0);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            renderer.setSize(globeContainer.clientWidth, globeContainer.clientHeight);
-            globeContainer.appendChild(renderer.domElement);
-
-            const camera = new THREE.PerspectiveCamera(50, globeContainer.clientWidth / globeContainer.clientHeight, 0.1, 2000);
-            camera.position.set(0, 0, 280);
-
-            const controls = new THREE.OrbitControls(camera, renderer.domElement);
-            controls.enableDamping = true;
-            controls.enableZoom = false;
-            controls.enablePan = false;
-            controls.autoRotate = true;
-            controls.autoRotateSpeed = 0.8;
-
-            scene.add(new THREE.AmbientLight(0xffffff, 0.8));
-            const dir = new THREE.DirectionalLight(0xffffff, 1);
-            dir.position.set(1, 1, 1);
-            scene.add(dir);
-
-            const globe = new ThreeGlobe()
-                .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
-                .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
-                .showAtmosphere(true)
-                .atmosphereColor('#d4a853')
-                .atmosphereAltitude(0.2);
-
-            scene.add(globe);
-
-            const pointsData = locations.map(loc => ({ lat: loc.lat, lng: loc.lng, color: '#d4a853' }));
-            const arcsData = locations.slice(1).map(loc => ({ startLat: 25.0, startLng: 121.5, endLat: loc.lat, endLng: loc.lng, color: '#ffffff' }));
-
-            globe.pointsData(pointsData).pointColor('color').pointRadius(0.6).pointAltitude(0.01);
-            globe.arcsData(arcsData).arcColor('color').arcStroke(0.4).arcDashLength(0.4).arcDashGap(0.2).arcDashAnimateTime(3000);
-
-            function animate() { requestAnimationFrame(animate); controls.update(); renderer.render(scene, camera); }
-            animate();
-
-            window.addEventListener('resize', () => { camera.aspect = globeContainer.clientWidth / globeContainer.clientHeight; camera.updateProjectionMatrix(); renderer.setSize(globeContainer.clientWidth, globeContainer.clientHeight); });
-        }
-
-        document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', e => { e.preventDefault(); const target = document.querySelector(a.getAttribute('href')); if (target) target.scrollIntoView({ behavior: 'smooth' }); }); });
-    </script>
+    <!-- Modular JS Files -->
+    <script src="main.js"></script>
+    <script src="globe.js"></script>
+    <script src="referral.js"></script>
 </body>
 </html>
