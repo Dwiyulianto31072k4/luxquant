@@ -1,19 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="LuxQuant Algorithm - Premium AI-Powered Crypto Trading Signals backed by advanced algorithms." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LuxQuant Algorithm - Premium AI-Powered Crypto Trading Signals backed by advanced algorithms.">
     <title>LuxQuant Algorithm - AI Crypto Trading Signals</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap"
-        rel="stylesheet" />
-
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --bg-primary: #0a0a0a;
@@ -34,21 +30,12 @@
             --border-gold: rgba(212, 168, 83, 0.3);
             --positive: #22c55e;
             --negative: #ef4444;
-            --font-primary: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-display: "Playfair Display", Georgia, serif;
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-display: 'Playfair Display', Georgia, serif;
             --section-padding: clamp(80px, 10vw, 140px);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: var(--font-primary);
             background: var(--bg-primary);
@@ -57,2137 +44,360 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
-
         body::before {
-            content: "";
+            content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                radial-gradient(ellipse at 20% 20%,
-                    var(--red-glow) 0%,
-                    transparent 50%),
-                radial-gradient(ellipse at 80% 80%,
-                    var(--red-glow) 0%,
-                    transparent 50%),
-                radial-gradient(ellipse at 50% 50%,
-                    rgba(212, 168, 83, 0.05) 0%,
-                    transparent 60%);
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, var(--red-glow) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, var(--red-glow) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(212, 168, 83, 0.05) 0%, transparent 60%);
             pointer-events: none;
             z-index: -1;
         }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
 
         /* Ticker */
         .ticker-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
             background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
-            height: 44px;
-            overflow: hidden;
+            height: 44px; overflow: hidden;
         }
-
-        .ticker-track {
-            display: flex;
-            animation: tickerScroll 60s linear infinite;
-        }
-
-        @keyframes tickerScroll {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        .ticker-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 0 28px;
-            height: 44px;
-            white-space: nowrap;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .ticker-icon {
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-        }
-
-        .ticker-symbol {
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .ticker-price {
-            color: var(--text-secondary);
-        }
-
-        .ticker-change {
-            font-weight: 600;
-            font-size: 12px;
-            padding: 2px 6px;
-            border-radius: 4px;
-        }
-
-        .ticker-change.positive {
-            color: var(--positive);
-            background: rgba(34, 197, 94, 0.1);
-        }
-
-        .ticker-change.negative {
-            color: var(--negative);
-            background: rgba(239, 68, 68, 0.1);
-        }
+        .ticker-track { display: flex; animation: tickerScroll 60s linear infinite; }
+        @keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .ticker-item { display: flex; align-items: center; gap: 8px; padding: 0 28px; height: 44px; white-space: nowrap; font-size: 13px; font-weight: 500; }
+        .ticker-icon { width: 22px; height: 22px; border-radius: 50%; }
+        .ticker-symbol { font-weight: 600; color: var(--text-primary); }
+        .ticker-price { color: var(--text-secondary); }
+        .ticker-change { font-weight: 600; font-size: 12px; padding: 2px 6px; border-radius: 4px; }
+        .ticker-change.positive { color: var(--positive); background: rgba(34, 197, 94, 0.1); }
+        .ticker-change.negative { color: var(--negative); background: rgba(239, 68, 68, 0.1); }
 
         /* Header */
         header {
-            position: fixed;
-            top: 44px;
-            left: 0;
-            right: 0;
-            z-index: 999;
+            position: fixed; top: 44px; left: 0; right: 0; z-index: 999;
             padding: 16px 0;
             background: rgba(10, 10, 10, 0.8);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
             transition: all 0.3s ease;
         }
-
-        header.scrolled {
-            padding: 12px 0;
-            background: rgba(10, 10, 10, 0.95);
-        }
-
-        .header-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .logo-img {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            object-fit: contain;
-        }
-
-        .logo-text {
-            font-family: var(--font-display);
-            font-size: 22px;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
-
-        nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        nav a:hover {
-            color: var(--text-primary);
-        }
-
-        .header-cta .btn {
-            padding: 10px 20px;
-            font-size: 14px;
-        }
+        header.scrolled { padding: 12px 0; background: rgba(10, 10, 10, 0.95); }
+        .header-inner { display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-img { width: 44px; height: 44px; border-radius: 12px; object-fit: contain; }
+        .logo-text { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--text-primary); }
+        nav { display: flex; align-items: center; gap: 32px; }
+        nav a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        nav a:hover { color: var(--text-primary); }
+        .header-cta .btn { padding: 10px 20px; font-size: 14px; }
 
         /* Buttons */
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 14px 28px;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: none;
-            font-family: inherit;
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 14px 28px; border-radius: 8px; font-size: 15px; font-weight: 600;
+            text-decoration: none; cursor: pointer; transition: all 0.2s ease; border: none; font-family: inherit;
         }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--gold-light), var(--gold));
-            color: var(--bg-primary);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(212, 168, 83, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text-primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--bg-tertiary);
-            border-color: var(--text-muted);
-        }
-
-        .btn-large {
-            padding: 18px 36px;
-            font-size: 16px;
-        }
+        .btn-primary { background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: var(--bg-primary); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212, 168, 83, 0.3); }
+        .btn-secondary { background: transparent; border: 1px solid var(--border); color: var(--text-primary); }
+        .btn-secondary:hover { background: var(--bg-tertiary); border-color: var(--text-muted); }
+        .btn-large { padding: 18px 36px; font-size: 16px; }
 
         /* Hero */
-        .hero {
-            padding-top: 160px;
-            padding-bottom: var(--section-padding);
-            position: relative;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero-title {
-            font-family: var(--font-display);
-            font-size: clamp(40px, 6vw, 72px);
-            font-weight: 600;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            letter-spacing: -0.02em;
-        }
-
-        .hero-title .highlight {
-            background: linear-gradient(135deg, var(--gold-light), var(--gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-description {
-            font-size: 18px;
-            color: var(--text-secondary);
-            max-width: 640px;
-            margin: 0 auto 40px;
-            line-height: 1.7;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            margin-bottom: 80px;
-        }
-
-        .hero-globe-section {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 60px;
-            align-items: center;
-            margin-top: 80px;
-        }
-
-        .hero-text-content h2 {
-            font-family: var(--font-display);
-            font-size: 32px;
-            margin-bottom: 16px;
-        }
-
-        .hero-text-content .grad {
-            background: linear-gradient(135deg, var(--gold-light), var(--gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
+        .hero { padding-top: 160px; padding-bottom: var(--section-padding); position: relative; }
+        .hero-content { text-align: center; max-width: 900px; margin: 0 auto; }
+        .hero-title { font-family: var(--font-display); font-size: clamp(40px, 6vw, 72px); font-weight: 600; line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.02em; }
+        .hero-title .highlight { background: linear-gradient(135deg, var(--gold-light), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-description { font-size: 18px; color: var(--text-secondary); max-width: 640px; margin: 0 auto 40px; line-height: 1.7; }
+        .hero-cta { display: flex; gap: 16px; justify-content: center; margin-bottom: 80px; }
+        .hero-globe-section { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; margin-top: 80px; }
+        .hero-text-content h2 { font-family: var(--font-display); font-size: 32px; margin-bottom: 16px; }
+        .hero-text-content .grad { background: linear-gradient(135deg, var(--gold-light), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         /* Floating Flags */
         .floating-flags-container {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             pointer-events: none;
             overflow: hidden;
         }
-
         .floating-flag {
             position: absolute;
             font-size: 28px;
             opacity: 0;
-            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
             animation: floatFlag 8s ease-in-out infinite;
         }
-
         @keyframes floatFlag {
-            0% {
-                opacity: 0;
-                transform: translateY(20px) scale(0.5) rotate(-10deg);
-            }
-
-            15% {
-                opacity: 1;
-                transform: translateY(0) scale(1) rotate(0deg);
-            }
-
-            85% {
-                opacity: 1;
-                transform: translateY(-10px) scale(1) rotate(5deg);
-            }
-
-            100% {
-                opacity: 0;
-                transform: translateY(-30px) scale(0.5) rotate(10deg);
-            }
+            0% { opacity: 0; transform: translateY(20px) scale(0.5) rotate(-10deg); }
+            15% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+            85% { opacity: 1; transform: translateY(-10px) scale(1) rotate(5deg); }
+            100% { opacity: 0; transform: translateY(-30px) scale(0.5) rotate(10deg); }
         }
-
-        .floating-flag:nth-child(1) {
-            top: 10%;
-            left: 5%;
-            animation-delay: 0s;
-        }
-
-        .floating-flag:nth-child(2) {
-            top: 20%;
-            right: 8%;
-            animation-delay: 0.8s;
-        }
-
-        .floating-flag:nth-child(3) {
-            top: 60%;
-            left: 3%;
-            animation-delay: 1.6s;
-        }
-
-        .floating-flag:nth-child(4) {
-            top: 75%;
-            right: 5%;
-            animation-delay: 2.4s;
-        }
-
-        .floating-flag:nth-child(5) {
-            top: 40%;
-            left: 8%;
-            animation-delay: 3.2s;
-        }
-
-        .floating-flag:nth-child(6) {
-            top: 30%;
-            right: 3%;
-            animation-delay: 4s;
-        }
-
-        .floating-flag:nth-child(7) {
-            top: 85%;
-            left: 10%;
-            animation-delay: 4.8s;
-        }
-
-        .floating-flag:nth-child(8) {
-            top: 5%;
-            right: 12%;
-            animation-delay: 5.6s;
-        }
-
-        .floating-flag:nth-child(9) {
-            top: 50%;
-            right: 10%;
-            animation-delay: 6.4s;
-        }
-
-        .floating-flag:nth-child(10) {
-            top: 65%;
-            left: 6%;
-            animation-delay: 7.2s;
-        }
-
-        .floating-flag:nth-child(11) {
-            top: 15%;
-            left: 12%;
-            animation-delay: 2s;
-        }
-
-        .floating-flag:nth-child(12) {
-            top: 90%;
-            right: 8%;
-            animation-delay: 3.5s;
-        }
-
-        .globe-container {
-            width: 100%;
-            aspect-ratio: 1;
-            max-width: 500px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        #globe {
-            width: 100%;
-            height: 100%;
-        }
+        .floating-flag:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+        .floating-flag:nth-child(2) { top: 20%; right: 8%; animation-delay: 0.8s; }
+        .floating-flag:nth-child(3) { top: 60%; left: 3%; animation-delay: 1.6s; }
+        .floating-flag:nth-child(4) { top: 75%; right: 5%; animation-delay: 2.4s; }
+        .floating-flag:nth-child(5) { top: 40%; left: 8%; animation-delay: 3.2s; }
+        .floating-flag:nth-child(6) { top: 30%; right: 3%; animation-delay: 4s; }
+        .floating-flag:nth-child(7) { top: 85%; left: 10%; animation-delay: 4.8s; }
+        .floating-flag:nth-child(8) { top: 5%; right: 12%; animation-delay: 5.6s; }
+        .floating-flag:nth-child(9) { top: 50%; right: 10%; animation-delay: 6.4s; }
+        .floating-flag:nth-child(10) { top: 65%; left: 6%; animation-delay: 7.2s; }
+        .floating-flag:nth-child(11) { top: 15%; left: 12%; animation-delay: 2s; }
+        .floating-flag:nth-child(12) { top: 90%; right: 8%; animation-delay: 3.5s; }
+        .globe-container { width: 100%; aspect-ratio: 1; max-width: 500px; margin: 0 auto; position: relative; }
+        #globe { width: 100%; height: 100%; }
 
         /* Trust Section */
-        .trust-section {
-            padding: var(--section-padding) 0;
-            border-top: 1px solid var(--border);
-        }
-
-        .trust-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-label {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--gold);
-            margin-bottom: 16px;
-        }
-
-        .section-title {
-            font-family: var(--font-display);
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 600;
-        }
-
-        .section-desc {
-            font-size: 16px;
-            color: var(--text-secondary);
-            margin-top: 16px;
-        }
-
-        .trust-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-
-        .trust-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 40px 32px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .trust-card:hover {
-            border-color: var(--border-gold);
-            transform: translateY(-4px);
-        }
-
-        .trust-card-icon {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 20px;
-            background: var(--gold-subtle);
-            border: 1px solid var(--border-gold);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .trust-card-icon svg {
-            width: 32px;
-            height: 32px;
-            stroke: var(--gold);
-        }
-
-        .trust-card-value {
-            font-family: var(--font-display);
-            font-size: 24px;
-            font-weight: 600;
-            color: var(--gold);
-            margin-bottom: 8px;
-        }
-
-        .trust-card-desc {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
+        .trust-section { padding: var(--section-padding) 0; border-top: 1px solid var(--border); }
+        .trust-header { text-align: center; margin-bottom: 60px; }
+        .section-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 16px; }
+        .section-title { font-family: var(--font-display); font-size: clamp(32px, 4vw, 48px); font-weight: 600; }
+        .section-desc { font-size: 16px; color: var(--text-secondary); margin-top: 16px; }
+        .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .trust-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px; padding: 40px 32px; text-align: center; transition: all 0.3s ease; }
+        .trust-card:hover { border-color: var(--border-gold); transform: translateY(-4px); }
+        .trust-card-icon { width: 64px; height: 64px; margin: 0 auto 20px; background: var(--gold-subtle); border: 1px solid var(--border-gold); border-radius: 16px; display: flex; align-items: center; justify-content: center; }
+        .trust-card-icon svg { width: 32px; height: 32px; stroke: var(--gold); }
+        .trust-card-value { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--gold); margin-bottom: 8px; }
+        .trust-card-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
 
         /* Features */
-        .features-section {
-            padding: var(--section-padding) 0;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 640px;
-            margin: 0 auto 60px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .feature-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 40px 32px;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            border-color: var(--border-gold);
-            transform: translateY(-4px);
-        }
-
-        .feature-icon {
-            width: 56px;
-            height: 56px;
-            background: var(--gold-subtle);
-            border: 1px solid var(--border-gold);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-        }
-
-        .feature-icon svg {
-            width: 28px;
-            height: 28px;
-            stroke: var(--gold);
-        }
-
-        .feature-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .feature-desc {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
+        .features-section { padding: var(--section-padding) 0; }
+        .section-header { text-align: center; max-width: 640px; margin: 0 auto 60px; }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .feature-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 20px; padding: 40px 32px; transition: all 0.3s ease; }
+        .feature-card:hover { border-color: var(--border-gold); transform: translateY(-4px); }
+        .feature-icon { width: 56px; height: 56px; background: var(--gold-subtle); border: 1px solid var(--border-gold); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
+        .feature-icon svg { width: 28px; height: 28px; stroke: var(--gold); }
+        .feature-title { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+        .feature-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
         /* VIP Section */
-        .vip-section {
-            padding: var(--section-padding) 0;
-            background: var(--bg-secondary);
-        }
-
-        .vip-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .phone-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .phone-mockup {
-            position: relative;
-            width: 280px;
-            height: 580px;
-            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
-            border-radius: 44px;
-            padding: 12px;
-            box-shadow:
-                0 0 0 1px rgba(255, 255, 255, 0.1),
-                0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        .phone-notch {
-            position: absolute;
-            top: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 28px;
-            background: #1a1a1a;
-            border-radius: 0 0 16px 16px;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .phone-speaker {
-            width: 50px;
-            height: 4px;
-            background: #333;
-            border-radius: 2px;
-        }
-
-        .phone-camera {
-            width: 10px;
-            height: 10px;
-            background: radial-gradient(circle, #1a1a1a 40%, #333 60%);
-            border-radius: 50%;
-        }
-
-        .phone-screen {
-            width: 100%;
-            height: 100%;
-            background: #0a0a0a;
-            border-radius: 36px;
-            overflow: hidden;
-        }
-
-        .carousel-container {
-            display: flex;
-            height: 100%;
-            transition: transform 0.5s ease;
-        }
-
-        .carousel-slide {
-            min-width: 100%;
-            height: 100%;
-        }
-
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .carousel-nav {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            margin-top: 24px;
-        }
-
-        .carousel-btn {
-            width: 44px;
-            height: 44px;
-            border: none;
-            background: var(--gold);
-            color: var(--bg-primary);
-            border-radius: 50%;
-            font-size: 20px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .carousel-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .carousel-dots {
-            display: flex;
-            gap: 8px;
-        }
-
-        .carousel-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .carousel-dot.active {
-            background: var(--gold);
-            transform: scale(1.2);
-        }
-
-        .vip-features-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .vip-feature-item {
-            display: flex;
-            gap: 16px;
-            padding: 24px;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .vip-feature-item:hover {
-            border-color: var(--border-gold);
-        }
-
-        .vip-feature-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--gold);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .vip-feature-icon svg {
-            width: 24px;
-            height: 24px;
-            stroke: var(--bg-primary);
-        }
-
-        .vip-feature-content h4 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: var(--gold);
-        }
-
-        .vip-feature-content p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
+        .vip-section { padding: var(--section-padding) 0; background: var(--bg-secondary); }
+        .vip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .phone-wrapper { display: flex; flex-direction: column; align-items: center; }
+        .phone-mockup { position: relative; width: 280px; height: 580px; background: linear-gradient(145deg, #2a2a2a, #1a1a1a); border-radius: 44px; padding: 12px; box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 20px 60px rgba(0,0,0,0.5); }
+        .phone-notch { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 120px; height: 28px; background: #1a1a1a; border-radius: 0 0 16px 16px; z-index: 10; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .phone-speaker { width: 50px; height: 4px; background: #333; border-radius: 2px; }
+        .phone-camera { width: 10px; height: 10px; background: radial-gradient(circle, #1a1a1a 40%, #333 60%); border-radius: 50%; }
+        .phone-screen { width: 100%; height: 100%; background: #0a0a0a; border-radius: 36px; overflow: hidden; }
+        .carousel-container { display: flex; height: 100%; transition: transform 0.5s ease; }
+        .carousel-slide { min-width: 100%; height: 100%; }
+        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+        .carousel-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 24px; }
+        .carousel-btn { width: 44px; height: 44px; border: none; background: var(--gold); color: var(--bg-primary); border-radius: 50%; font-size: 20px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+        .carousel-btn:hover { transform: scale(1.1); }
+        .carousel-dots { display: flex; gap: 8px; }
+        .carousel-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--text-muted); cursor: pointer; transition: all 0.2s; }
+        .carousel-dot.active { background: var(--gold); transform: scale(1.2); }
+        .vip-features-list { display: flex; flex-direction: column; gap: 20px; }
+        .vip-feature-item { display: flex; gap: 16px; padding: 24px; background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 16px; transition: all 0.3s ease; }
+        .vip-feature-item:hover { border-color: var(--border-gold); }
+        .vip-feature-icon { width: 48px; height: 48px; background: var(--gold); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .vip-feature-icon svg { width: 24px; height: 24px; stroke: var(--bg-primary); }
+        .vip-feature-content h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; color: var(--gold); }
+        .vip-feature-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
 
         /* Performance */
-        .performance-section {
-            padding: var(--section-padding) 0;
-        }
-
-        .performance-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .performance-content h2 {
-            font-family: var(--font-display);
-            font-size: clamp(32px, 4vw, 44px);
-            margin-bottom: 20px;
-        }
-
-        .performance-content p {
-            font-size: 16px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 32px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-        }
-
-        .stat-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px;
-        }
-
-        .stat-value {
-            font-family: var(--font-display);
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .stat-value.gold {
-            color: var(--gold);
-        }
-
-        .stat-value.green {
-            color: var(--positive);
-        }
-
-        .stat-label {
-            font-size: 12px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .dashboard-preview {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        /* WHAT USERS SAY - REDESIGNED */
-        .reviews-section {
-            padding: var(--section-padding) 0;
-            background: linear-gradient(180deg,
-                    var(--bg-secondary) 0%,
-                    var(--bg-primary) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .reviews-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg,
-                    transparent,
-                    var(--border-gold),
-                    transparent);
-        }
-
-        .reviews-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .reviews-header .section-title {
-            font-size: clamp(36px, 5vw, 52px);
-        }
-
-        .reviews-subtitle {
-            color: var(--text-secondary);
-            font-size: 18px;
-            margin-top: 16px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Reviews Grid */
-        .reviews-masonry {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-bottom: 48px;
-        }
-
-        /* Review Card */
-        .review-card {
-            background: linear-gradient(145deg,
-                    rgba(30, 30, 30, 0.9),
-                    rgba(20, 20, 20, 0.95));
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 24px;
-            padding: 32px;
-            position: relative;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
-        }
-
-        .review-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg,
-                    var(--gold),
-                    var(--gold-light),
-                    var(--gold));
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .review-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(212, 168, 83, 0.2);
-            box-shadow:
-                0 20px 50px rgba(0, 0, 0, 0.4),
-                0 0 40px rgba(212, 168, 83, 0.1);
-        }
-
-        .review-card:hover::before {
-            opacity: 1;
-        }
-
-        /* Featured Review */
-        .review-card.featured {
-            grid-row: span 2;
-            background: linear-gradient(145deg,
-                    rgba(212, 168, 83, 0.08),
-                    rgba(20, 20, 20, 0.95));
-            border-color: rgba(212, 168, 83, 0.2);
-        }
-
-        .review-card.featured::before {
-            opacity: 1;
-        }
-
-        .review-quote-icon {
-            font-size: 48px;
-            color: rgba(212, 168, 83, 0.3);
-            font-family: Georgia, serif;
-            line-height: 1;
-            margin-bottom: 16px;
-        }
-
-        .review-card.featured .review-quote-icon {
-            color: var(--gold);
-        }
-
-        .review-rating {
-            display: flex;
-            gap: 4px;
-            margin-bottom: 20px;
-        }
-
-        .review-rating .star {
-            width: 20px;
-            height: 20px;
-            fill: var(--gold);
-        }
-
-        .review-text {
-            font-size: 16px;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            margin-bottom: 28px;
-            font-style: italic;
-        }
-
-        .review-card.featured .review-text {
-            font-size: 18px;
-        }
-
-        .review-author {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .review-avatar {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 18px;
-            color: var(--bg-primary);
-        }
-
-        .review-author-info {
-            flex: 1;
-        }
-
-        .review-author-name {
-            font-weight: 600;
-            font-size: 16px;
-            margin-bottom: 4px;
-            color: var(--text-primary);
-        }
-
-        .review-author-role {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        .review-verified {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            padding: 6px 12px;
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.2);
-            border-radius: 50px;
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--positive);
-            text-transform: uppercase;
-        }
-
-        .review-verified svg {
-            width: 12px;
-            height: 12px;
-            fill: var(--positive);
-        }
-
-        .review-date {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        /* Stats Bar */
-        .reviews-stats-bar {
-            display: flex;
-            justify-content: center;
-            gap: 48px;
-            padding: 32px;
-            background: rgba(212, 168, 83, 0.05);
-            border: 1px solid rgba(212, 168, 83, 0.1);
-            border-radius: 16px;
-        }
-
-        .reviews-stat {
-            text-align: center;
-        }
-
-        .reviews-stat-value {
-            font-family: var(--font-display);
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--gold);
-            margin-bottom: 4px;
-        }
-
-        .reviews-stat-label {
-            font-size: 13px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .reviews-masonry {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .review-card.featured {
-                grid-row: span 1;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .reviews-masonry {
-                grid-template-columns: 1fr;
-            }
-
-            .reviews-stats-bar {
-                flex-direction: column;
-                gap: 24px;
-            }
-        }
-
-        .dashboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 24px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .dashboard-title {
-            font-weight: 600;
-        }
-
-        .dashboard-live {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 12px;
-            color: var(--positive);
-            font-weight: 600;
-        }
-
-        .dashboard-live::before {
-            content: "";
-            width: 8px;
-            height: 8px;
-            background: var(--positive);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: 0.5;
-                transform: scale(0.8);
-            }
-        }
-
-        .dashboard-image-link {
-            display: block;
-            position: relative;
-        }
-
-        .dashboard-image {
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .dashboard-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .dashboard-image-link:hover .dashboard-overlay {
-            opacity: 1;
-        }
-
-        .dashboard-overlay-icon {
-            font-size: 48px;
-            margin-bottom: 12px;
-        }
-
-        .dashboard-overlay-text {
-            font-weight: 600;
-            color: var(--gold);
-        }
-
-        .dashboard-cta {
-            padding: 20px 24px;
-        }
-
-        .dashboard-cta .btn {
-            width: 100%;
-        }
+        .performance-section { padding: var(--section-padding) 0; }
+        .performance-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
+        .performance-content h2 { font-family: var(--font-display); font-size: clamp(32px, 4vw, 44px); margin-bottom: 20px; }
+        .performance-content p { font-size: 16px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 32px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        .stat-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+        .stat-value { font-family: var(--font-display); font-size: 32px; font-weight: 700; margin-bottom: 4px; }
+        .stat-value.gold { color: var(--gold); }
+        .stat-value.green { color: var(--positive); }
+        .stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .dashboard-preview { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; }
+        .dashboard-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; border-bottom: 1px solid var(--border); }
+        .dashboard-title { font-weight: 600; }
+        .dashboard-live { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--positive); font-weight: 600; }
+        .dashboard-live::before { content: ''; width: 8px; height: 8px; background: var(--positive); border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+        .dashboard-image-link { display: block; position: relative; }
+        .dashboard-image { width: 100%; height: 320px; object-fit: cover; display: block; }
+        .dashboard-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.7); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+        .dashboard-image-link:hover .dashboard-overlay { opacity: 1; }
+        .dashboard-overlay-icon { font-size: 48px; margin-bottom: 12px; }
+        .dashboard-overlay-text { font-weight: 600; color: var(--gold); }
+        .dashboard-cta { padding: 20px 24px; }
+        .dashboard-cta .btn { width: 100%; }
 
         /* Testimonials */
-        .testimonials-section {
-            padding: var(--section-padding) 0;
-            background: var(--bg-secondary);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .testimonial-card {
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 32px;
-            transition: all 0.3s ease;
-        }
-
-        .testimonial-card:hover {
-            border-color: var(--border-gold);
-        }
-
-        .testimonial-stars {
-            color: var(--gold);
-            font-size: 18px;
-            margin-bottom: 16px;
-        }
-
-        .testimonial-text {
-            font-size: 15px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 24px;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .testimonial-avatar {
-            width: 44px;
-            height: 44px;
-            background: var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            color: var(--bg-primary);
-        }
-
-        .testimonial-name {
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .testimonial-role {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        .testimonial-verified {
-            margin-left: auto;
-            padding: 4px 10px;
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 20px;
-            font-size: 10px;
-            font-weight: 600;
-            color: var(--positive);
-            text-transform: uppercase;
-        }
+        .testimonials-section { padding: var(--section-padding) 0; background: var(--bg-secondary); }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .testimonial-card { background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: all 0.3s ease; }
+        .testimonial-card:hover { border-color: var(--border-gold); }
+        .testimonial-stars { color: var(--gold); font-size: 18px; margin-bottom: 16px; }
+        .testimonial-text { font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 24px; font-style: italic; }
+        .testimonial-author { display: flex; align-items: center; gap: 12px; }
+        .testimonial-avatar { width: 44px; height: 44px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--bg-primary); }
+        .testimonial-name { font-weight: 600; font-size: 14px; }
+        .testimonial-role { font-size: 12px; color: var(--text-muted); }
+        .testimonial-verified { margin-left: auto; padding: 4px 10px; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 20px; font-size: 10px; font-weight: 600; color: var(--positive); text-transform: uppercase; }
 
         /* Pricing */
-        .pricing-section {
-            padding: var(--section-padding) 0;
-        }
-
-        .pricing-card {
-            max-width: 520px;
-            margin: 0 auto;
-            background: var(--bg-secondary);
-            border: 2px solid var(--border-gold);
-            border-radius: 24px;
-            padding: 48px;
-            position: relative;
-        }
-
-        .pricing-badge {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            padding: 6px 14px;
-            background: var(--gold);
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--bg-primary);
-            text-transform: uppercase;
-        }
-
-        .pricing-header {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .pricing-title {
-            font-family: var(--font-display);
-            font-size: 28px;
-            color: var(--gold);
-            margin-bottom: 16px;
-        }
-
-        .pricing-price {
-            display: flex;
-            align-items: baseline;
-            justify-content: center;
-            gap: 4px;
-            margin-bottom: 12px;
-        }
-
-        .pricing-currency {
-            font-size: 24px;
-            color: var(--text-secondary);
-        }
-
-        .pricing-amount {
-            font-family: var(--font-display);
-            font-size: 64px;
-            font-weight: 700;
-        }
-
-        .pricing-period {
-            font-size: 18px;
-            color: var(--text-muted);
-        }
-
-        .pricing-note {
-            display: inline-block;
-            padding: 8px 20px;
-            background: var(--gold-subtle);
-            border: 1px solid var(--border-gold);
-            border-radius: 20px;
-            font-size: 13px;
-            color: var(--gold);
-        }
-
-        .referral-box {
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            border-radius: 16px;
-            padding: 24px;
-            margin: 32px 0;
-            color: var(--bg-primary);
-        }
-
-        .referral-title {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            text-align: center;
-        }
-
-        .referral-subtitle {
-            font-size: 13px;
-            margin-bottom: 16px;
-            text-align: center;
-            opacity: 0.8;
-        }
-
-        .referral-input-group {
-            display: flex;
-            gap: 8px;
-        }
-
-        .referral-input {
-            flex: 1;
-            padding: 12px 16px;
-            border: 2px solid rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            text-align: center;
-            background: #fff;
-            color: var(--bg-primary);
-        }
-
-        .referral-input:focus {
-            outline: none;
-            border-color: var(--bg-primary);
-        }
-
-        .referral-btn {
-            padding: 12px 20px;
-            background: var(--bg-primary);
-            color: var(--gold);
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .referral-btn:hover {
-            background: #222;
-        }
-
-        .referral-status {
-            margin-top: 12px;
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            text-align: center;
-            display: none;
-        }
-
-        .referral-status.success {
-            display: block;
-            background: rgba(34, 197, 94, 0.2);
-            color: #166534;
-        }
-
-        .referral-status.error {
-            display: block;
-            background: rgba(239, 68, 68, 0.2);
-            color: #991b1b;
-        }
-
-        .generated-code {
-            display: none;
-            margin-top: 16px;
-            padding: 16px;
-            background: var(--bg-primary);
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .generated-code.show {
-            display: block;
-        }
-
-        .generated-code-value {
-            font-family: monospace;
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--gold);
-            margin: 8px 0;
-        }
-
-        .copy-btn {
-            padding: 8px 16px;
-            background: var(--gold);
-            color: var(--bg-primary);
-            border: none;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 8px;
-        }
-
-        .discount-info {
-            display: none;
-            margin-top: 16px;
-            padding: 12px;
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 8px;
-            text-align: center;
-            font-size: 13px;
-        }
-
-        .discount-info.show {
-            display: block;
-        }
-
-        .pricing-features {
-            margin-bottom: 32px;
-        }
-
-        .pricing-feature {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .pricing-feature:last-child {
-            border-bottom: none;
-        }
-
-        .pricing-check {
-            width: 22px;
-            height: 22px;
-            background: rgba(34, 197, 94, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--positive);
-            font-size: 12px;
-        }
-
-        .pricing-feature-text {
-            font-size: 14px;
-            color: var(--text-secondary);
-        }
-
-        .pricing-cta {
-            width: 100%;
-            padding: 18px;
-            font-size: 16px;
-        }
-
-        .pricing-guarantee {
-            text-align: center;
-            margin-top: 16px;
-            font-size: 13px;
-            color: var(--text-muted);
-        }
+        .pricing-section { padding: var(--section-padding) 0; }
+        .pricing-card { max-width: 520px; margin: 0 auto; background: var(--bg-secondary); border: 2px solid var(--border-gold); border-radius: 24px; padding: 48px; position: relative; }
+        .pricing-badge { position: absolute; top: 24px; right: 24px; padding: 6px 14px; background: var(--gold); border-radius: 20px; font-size: 11px; font-weight: 700; color: var(--bg-primary); text-transform: uppercase; }
+        .pricing-header { text-align: center; margin-bottom: 32px; }
+        .pricing-title { font-family: var(--font-display); font-size: 28px; color: var(--gold); margin-bottom: 16px; }
+        .pricing-price { display: flex; align-items: baseline; justify-content: center; gap: 4px; margin-bottom: 12px; }
+        .pricing-currency { font-size: 24px; color: var(--text-secondary); }
+        .pricing-amount { font-family: var(--font-display); font-size: 64px; font-weight: 700; }
+        .pricing-period { font-size: 18px; color: var(--text-muted); }
+        .pricing-note { display: inline-block; padding: 8px 20px; background: var(--gold-subtle); border: 1px solid var(--border-gold); border-radius: 20px; font-size: 13px; color: var(--gold); }
+        .referral-box { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border-radius: 16px; padding: 24px; margin: 32px 0; color: var(--bg-primary); }
+        .referral-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; text-align: center; }
+        .referral-subtitle { font-size: 13px; margin-bottom: 16px; text-align: center; opacity: 0.8; }
+        .referral-input-group { display: flex; gap: 8px; }
+        .referral-input { flex: 1; padding: 12px 16px; border: 2px solid rgba(0,0,0,0.2); border-radius: 8px; font-size: 14px; font-weight: 600; text-align: center; background: #fff; color: var(--bg-primary); }
+        .referral-input:focus { outline: none; border-color: var(--bg-primary); }
+        .referral-btn { padding: 12px 20px; background: var(--bg-primary); color: var(--gold); border: none; border-radius: 8px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+        .referral-btn:hover { background: #222; }
+        .referral-status { margin-top: 12px; padding: 10px; border-radius: 8px; font-size: 13px; font-weight: 600; text-align: center; display: none; }
+        .referral-status.success { display: block; background: rgba(34, 197, 94, 0.2); color: #166534; }
+        .referral-status.error { display: block; background: rgba(239, 68, 68, 0.2); color: #991b1b; }
+        .generated-code { display: none; margin-top: 16px; padding: 16px; background: var(--bg-primary); border-radius: 8px; text-align: center; }
+        .generated-code.show { display: block; }
+        .generated-code-value { font-family: monospace; font-size: 18px; font-weight: 700; color: var(--gold); margin: 8px 0; }
+        .copy-btn { padding: 8px 16px; background: var(--gold); color: var(--bg-primary); border: none; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; margin-top: 8px; }
+        .discount-info { display: none; margin-top: 16px; padding: 12px; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 8px; text-align: center; font-size: 13px; }
+        .discount-info.show { display: block; }
+        .pricing-features { margin-bottom: 32px; }
+        .pricing-feature { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+        .pricing-feature:last-child { border-bottom: none; }
+        .pricing-check { width: 22px; height: 22px; background: rgba(34, 197, 94, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--positive); font-size: 12px; }
+        .pricing-feature-text { font-size: 14px; color: var(--text-secondary); }
+        .pricing-cta { width: 100%; padding: 18px; font-size: 16px; }
+        .pricing-guarantee { text-align: center; margin-top: 16px; font-size: 13px; color: var(--text-muted); }
 
         /* CTA */
-        .cta-section {
-            padding: var(--section-padding) 0;
-            background: var(--bg-secondary);
-        }
-
-        .cta-card {
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-gold);
-            border-radius: 24px;
-            padding: 80px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-card::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle,
-                    var(--red-glow) 0%,
-                    transparent 70%);
-            pointer-events: none;
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-title {
-            font-family: var(--font-display);
-            font-size: clamp(32px, 4vw, 44px);
-            margin-bottom: 16px;
-        }
-
-        .cta-desc {
-            font-size: 18px;
-            color: var(--text-secondary);
-            margin-bottom: 32px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-        }
+        .cta-section { padding: var(--section-padding) 0; background: var(--bg-secondary); }
+        .cta-card { background: var(--bg-tertiary); border: 1px solid var(--border-gold); border-radius: 24px; padding: 80px; text-align: center; position: relative; overflow: hidden; }
+        .cta-card::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: radial-gradient(circle, var(--red-glow) 0%, transparent 70%); pointer-events: none; }
+        .cta-content { position: relative; z-index: 1; }
+        .cta-title { font-family: var(--font-display); font-size: clamp(32px, 4vw, 44px); margin-bottom: 16px; }
+        .cta-desc { font-size: 18px; color: var(--text-secondary); margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; }
 
         /* Social */
-        .social-section {
-            padding: 80px 0;
-        }
-
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .social-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-            text-align: center;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
-        }
-
-        .social-card:hover {
-            border-color: var(--border-gold);
-            transform: translateY(-4px);
-        }
-
-        .social-icon {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 16px;
-            border-radius: 16px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .social-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .social-name {
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .social-handle {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
+        .social-section { padding: 80px 0; }
+        .social-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .social-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px; padding: 32px; text-align: center; text-decoration: none; color: inherit; transition: all 0.3s ease; }
+        .social-card:hover { border-color: var(--border-gold); transform: translateY(-4px); }
+        .social-icon { width: 64px; height: 64px; margin: 0 auto 16px; border-radius: 16px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .social-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .social-name { font-weight: 600; margin-bottom: 4px; }
+        .social-handle { font-size: 13px; color: var(--text-muted); }
 
         /* Footer */
-        footer {
-            padding: 60px 0 30px;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr repeat(3, 1fr);
-            gap: 60px;
-            margin-bottom: 60px;
-        }
-
-        .footer-brand-desc {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-top: 20px;
-        }
-
-        /* FREE INTELLIGENCE SECTION */
-        .free-intel-section {
-            padding: var(--section-padding) 0;
-            background: linear-gradient(180deg,
-                    var(--bg-primary) 0%,
-                    rgba(212, 168, 83, 0.03) 50%,
-                    var(--bg-primary) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .free-intel-section::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle,
-                    rgba(212, 168, 83, 0.08) 0%,
-                    transparent 70%);
-            pointer-events: none;
-        }
-
-        .free-intel-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .free-intel-content {
-            max-width: 520px;
-        }
-
-        .free-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 50px;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--positive);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-        }
-
-        .free-badge::before {
-            content: "";
-            width: 8px;
-            height: 8px;
-            background: var(--positive);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        .free-intel-content h2 {
-            font-family: var(--font-display);
-            font-size: clamp(28px, 4vw, 40px);
-            font-weight: 600;
-            margin-bottom: 16px;
-            line-height: 1.2;
-        }
-
-        .free-intel-content h2 .highlight {
-            background: linear-gradient(135deg, var(--positive), #10b981);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .free-intel-content>p {
-            color: var(--text-secondary);
-            font-size: 16px;
-            line-height: 1.7;
-            margin-bottom: 24px;
-        }
-
-        .free-features-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 32px;
-        }
-
-        .free-feature-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 15px;
-            color: var(--text-secondary);
-        }
-
-        .free-feature-item svg {
-            width: 20px;
-            height: 20px;
-            stroke: var(--positive);
-            flex-shrink: 0;
-        }
-
-        .telegram-cta-box {
-            background: linear-gradient(135deg,
-                    rgba(0, 136, 204, 0.1),
-                    rgba(0, 136, 204, 0.05));
-            border: 1px solid rgba(0, 136, 204, 0.3);
-            border-radius: 16px;
-            padding: 24px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .telegram-icon-box {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, #0088cc, #0077b5);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .telegram-icon-box svg {
-            width: 28px;
-            height: 28px;
-            fill: white;
-        }
-
-        .telegram-cta-content {
-            flex: 1;
-        }
-
-        .telegram-cta-content h4 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .telegram-cta-content p {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin: 0;
-        }
-
-        .btn-telegram {
-            background: linear-gradient(135deg, #0088cc, #0077b5);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 14px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .btn-telegram:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 136, 204, 0.4);
-        }
-
-        /* Free Intel Phone Preview */
-        .free-intel-preview {
-            position: relative;
-        }
-
-        .intel-phone-mockup {
-            width: 300px;
-            height: 620px;
-            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
-            border-radius: 44px;
-            padding: 12px;
-            margin: 0 auto;
-            box-shadow:
-                0 0 0 1px rgba(255, 255, 255, 0.1),
-                0 30px 80px rgba(0, 0, 0, 0.5);
-            position: relative;
-        }
-
-        .intel-phone-notch {
-            position: absolute;
-            top: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 28px;
-            background: #1a1a1a;
-            border-radius: 0 0 16px 16px;
-            z-index: 10;
-        }
-
-        .intel-phone-screen {
-            width: 100%;
-            height: 100%;
-            background: #0a0a0a;
-            border-radius: 36px;
-            overflow: hidden;
-        }
-
-        .intel-phone-screen img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top;
-        }
-
-        .intel-stats-floating {
-            position: absolute;
-            right: -30px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .intel-stat-badge {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-gold);
-            border-radius: 12px;
-            padding: 12px 16px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .intel-stat-badge .value {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--gold);
-            display: block;
-        }
-
-        .intel-stat-badge .label {
-            font-size: 11px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+        footer { padding: 60px 0 30px; border-top: 1px solid var(--border); }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 60px; margin-bottom: 60px; }
+        .footer-brand-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-top: 20px; }
+        .footer-column h4 { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); margin-bottom: 20px; }
+        .footer-column ul { list-style: none; }
+        .footer-column li { margin-bottom: 12px; }
+        .footer-column a { color: var(--text-secondary); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+        .footer-column a:hover { color: var(--gold); }
+        .footer-bottom { display: flex; flex-direction: column; align-items: center; gap: 16px; padding-top: 30px; border-top: 1px solid var(--border); }
+        .footer-logo-center { display: flex; align-items: center; gap: 16px; }
+        .footer-line { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+        .footer-logo-text { font-family: var(--font-display); font-size: 20px; color: var(--gold); }
+        .footer-copyright { font-size: 13px; color: var(--text-muted); }
+        .footer-disclaimer { font-size: 12px; color: var(--text-muted); text-align: center; max-width: 600px; font-style: italic; }
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .free-intel-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .intel-stats-floating {
-                right: 10px;
-            }
+            .hero-globe-section, .vip-grid, .performance-grid { grid-template-columns: 1fr; gap: 40px; }
+            .features-grid, .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+            .trust-grid, .social-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
-
         @media (max-width: 768px) {
-            .telegram-cta-box {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .intel-stats-floating {
-                display: none;
-            }
-
-            .free-intel-preview {
-                order: -1;
-            }
-        }
-
-        .footer-column h4 {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-
-        .footer-column ul {
-            list-style: none;
-        }
-
-        .footer-column li {
-            margin-bottom: 12px;
-        }
-
-        .footer-column a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.2s;
-        }
-
-        .footer-column a:hover {
-            color: var(--gold);
-        }
-
-        .footer-bottom {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-            padding-top: 30px;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-logo-center {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .footer-line {
-            width: 60px;
-            height: 1px;
-            background: linear-gradient(90deg,
-                    transparent,
-                    var(--gold),
-                    transparent);
-        }
-
-        .footer-logo-text {
-            font-family: var(--font-display);
-            font-size: 20px;
-            color: var(--gold);
-        }
-
-        .footer-copyright {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        .footer-disclaimer {
-            font-size: 12px;
-            color: var(--text-muted);
-            text-align: center;
-            max-width: 600px;
-            font-style: italic;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-
-            .hero-globe-section,
-            .vip-grid,
-            .performance-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .features-grid,
-            .testimonials-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .trust-grid,
-            .social-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                display: none;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .features-grid,
-            .testimonials-grid,
-            .trust-grid,
-            .social-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .cta-card {
-                padding: 48px 24px;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .pricing-card {
-                padding: 32px 24px;
-            }
-
-            .phone-mockup {
-                transform: scale(0.9);
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
+            nav { display: none; }
+            .hero-cta { flex-direction: column; align-items: center; }
+            .features-grid, .testimonials-grid, .trust-grid, .social-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .cta-card { padding: 48px 24px; }
+            .cta-buttons { flex-direction: column; }
+            .pricing-card { padding: 32px 24px; }
+            .phone-mockup { transform: scale(0.9); }
+            .stats-grid { grid-template-columns: 1fr; }
         }
 
         /* Globe Loading Animation - NEW */
-        .globe-loader {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-            z-index: 10;
-            transition: opacity 0.5s ease;
-        }
-
-        .globe-loader.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .globe-spinner {
-            width: 60px;
-            height: 60px;
-            border: 3px solid rgba(212, 168, 83, 0.2);
-            border-top-color: var(--gold);
-            border-radius: 50%;
-            animation: globeSpin 1s linear infinite;
-        }
-
-        @keyframes globeSpin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .globe-loader-text {
-            color: var(--gold);
-            font-size: 14px;
-            font-weight: 500;
-        }
+.globe-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    z-index: 10;
+    transition: opacity 0.5s ease;
+}
+.globe-loader.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+.globe-spinner {
+    width: 60px;
+    height: 60px;
+    border: 3px solid rgba(212, 168, 83, 0.2);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: globeSpin 1s linear infinite;
+}
+@keyframes globeSpin {
+    to { transform: rotate(360deg); }
+}
+.globe-loader-text {
+    color: var(--gold);
+    font-size: 14px;
+    font-weight: 500;
+}
 
         /* Loader */
-        .loader {
-            position: fixed;
-            inset: 0;
-            background: var(--bg-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            transition: opacity 0.5s ease;
-        }
-
-        .loader.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loader-content {
-            text-align: center;
-        }
-
-        .loader-logo {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 24px;
-            border-radius: 20px;
-        }
-
-        .loader-spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid var(--border);
-            border-top-color: var(--gold);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
+        .loader { position: fixed; inset: 0; background: var(--bg-primary); display: flex; align-items: center; justify-content: center; z-index: 10000; transition: opacity 0.5s ease; }
+        .loader.hidden { opacity: 0; pointer-events: none; }
+        .loader-content { text-align: center; }
+        .loader-logo { width: 80px; height: 80px; margin: 0 auto 24px; border-radius: 20px; }
+        .loader-spinner { width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto; }
+        @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
-
 <body>
     <div class="loader" id="loader">
         <div class="loader-content">
-            <img src="https://raw.githubusercontent.com/Dwiyulianto31072k4/luxquant/main/luxquant%20logo.png"
-                alt="LuxQuant" class="loader-logo" />
+            <img src="https://raw.githubusercontent.com/Dwiyulianto31072k4/luxquant/main/luxquant%20logo.png" alt="LuxQuant" class="loader-logo">
             <div class="loader-spinner"></div>
         </div>
     </div>
 
-    <div class="globe-loader" id="globeLoader">
-        <div class="globe-spinner"></div>
-        <span class="globe-loader-text">Loading Globe...</span>
-    </div>
-
-    <div class="ticker-wrapper">
-        <div class="ticker-track" id="tickerTrack"></div>
-    </div>
+    <div class="ticker-wrapper"><div class="ticker-track" id="tickerTrack"></div></div>
 
     <header id="header">
         <div class="container">
             <div class="header-inner">
                 <a href="#" class="logo">
-                    <img src="https://raw.githubusercontent.com/Dwiyulianto31072k4/luxquant/main/luxquant%20logo.png"
-                        alt="LuxQuant" class="logo-img" />
+                    <img src="https://raw.githubusercontent.com/Dwiyulianto31072k4/luxquant/main/luxquant%20logo.png" alt="LuxQuant" class="logo-img">
                     <span class="logo-text">LuxQuant</span>
                 </a>
                 <nav>
                     <a href="#features">Features</a>
-                    <a href="#free-intel">Free Signals</a>
-                    <!-- ADD THIS -->
                     <a href="#performance">Performance</a>
-                    <a href="#reviews">Reviews</a>
+                    <a href="#testimonials">Reviews</a>
                     <a href="#pricing">Pricing</a>
                 </nav>
-                <div class="header-cta">
-                    <a href="#pricing" class="btn btn-primary">Get Access</a>
-                </div>
+                <div class="header-cta"><a href="#pricing" class="btn btn-primary">Get Access</a></div>
             </div>
         </div>
     </header>
@@ -2196,14 +406,8 @@
         <section class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <h1 class="hero-title">
-                        Premium Algorithm-Powered<br /><span class="highlight">Crypto Trading Signals</span>
-                    </h1>
-                    <p class="hero-description">
-                        LuxQuant Algorithm helps traders identify market opportunities
-                        through advanced quantitative analysis. Systematic, objective, and
-                        data-driven signals powered by sophisticated algorithms.
-                    </p>
+                    <h1 class="hero-title">Premium Algorithm-Powered<br><span class="highlight">Crypto Trading Signals</span></h1>
+                    <p class="hero-description">LuxQuant Algorithm helps traders identify market opportunities through advanced quantitative analysis. Systematic, objective, and data-driven signals powered by sophisticated algorithms.</p>
                     <div class="hero-cta">
                         <a href="#pricing" class="btn btn-primary btn-large">Start Trading Now</a>
                         <a href="#features" class="btn btn-secondary btn-large">Learn More</a>
@@ -2212,10 +416,7 @@
                 <div class="hero-globe-section">
                     <div class="hero-text-content">
                         <h2>Trusted by Traders <span class="grad">Worldwide</span></h2>
-                        <p style="color: var(--text-secondary); margin-top: 16px">
-                            Our algorithm-powered signals reach traders across the globe.
-                            Join our growing community.
-                        </p>
+                        <p style="color: var(--text-secondary); margin-top: 16px;">Our algorithm-powered signals reach traders across the globe. Join our growing community.</p>
                     </div>
                     <div class="globe-container">
                         <div id="globe"></div>
@@ -2246,61 +447,24 @@
                 </div>
                 <div class="trust-grid">
                     <div class="trust-card">
-                        <div class="trust-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10" />
-                                <polyline points="12,6 12,12 16,14" />
-                            </svg>
-                        </div>
+                        <div class="trust-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div>
                         <div class="trust-card-value">Save Time</div>
-                        <div class="trust-card-desc">
-                            Trade objectively without spending hours analyzing charts
-                            manually
-                        </div>
+                        <div class="trust-card-desc">Trade objectively without spending hours analyzing charts manually</div>
                     </div>
                     <div class="trust-card">
-                        <div class="trust-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10" />
-                                <circle cx="12" cy="12" r="6" />
-                                <circle cx="12" cy="12" r="2" />
-                            </svg>
-                        </div>
+                        <div class="trust-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
                         <div class="trust-card-value">Adaptive</div>
-                        <div class="trust-card-desc">
-                            Algorithm adjusts targets & risk levels based on market
-                            conditions
-                        </div>
+                        <div class="trust-card-desc">Algorithm adjusts targets & risk levels based on market conditions</div>
                     </div>
                     <div class="trust-card">
-                        <div class="trust-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10" />
-                                <line x1="2" y1="12" x2="22" y2="12" />
-                                <path
-                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                            </svg>
-                        </div>
+                        <div class="trust-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
                         <div class="trust-card-value">Global</div>
-                        <div class="trust-card-desc">
-                            Serving traders worldwide with reliable signals across all
-                            timezones
-                        </div>
+                        <div class="trust-card-desc">Serving traders worldwide with reliable signals across all timezones</div>
                     </div>
                     <div class="trust-card">
-                        <div class="trust-card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2" />
-                            </svg>
-                        </div>
+                        <div class="trust-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></svg></div>
                         <div class="trust-card-value">24/7</div>
-                        <div class="trust-card-desc">
-                            Non-stop market monitoring so you never miss an opportunity
-                        </div>
+                        <div class="trust-card-desc">Non-stop market monitoring so you never miss an opportunity</div>
                     </div>
                 </div>
             </div>
@@ -2311,216 +475,32 @@
                 <div class="section-header">
                     <p class="section-label">Algorithm Features</p>
                     <h2 class="section-title">Advanced Quantitative Technology</h2>
-                    <p class="section-desc">
-                        Sophisticated algorithms analyzing market patterns to generate
-                        systematic trading signals.
-                    </p>
+                    <p class="section-desc">Sophisticated algorithms analyzing market patterns to generate systematic trading signals.</p>
                 </div>
                 <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10" />
-                                <circle cx="12" cy="12" r="6" />
-                                <circle cx="12" cy="12" r="2" />
-                            </svg>
-                        </div>
-                        <h3 class="feature-title">Precision Signals</h3>
-                        <p class="feature-desc">
-                            Algorithm detects optimal entry and exit zones based on
-                            real-time market data analysis.
-                        </p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2" />
-                            </svg>
-                        </div>
-                        <h3 class="feature-title">Real-Time Alerts</h3>
-                        <p class="feature-desc">
-                            Instant notifications via Telegram when algorithm detects
-                            important price zones.
-                        </p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <line x1="18" y1="20" x2="18" y2="10" />
-                                <line x1="12" y1="20" x2="12" y2="4" />
-                                <line x1="6" y1="20" x2="6" y2="14" />
-                            </svg>
-                        </div>
-                        <h3 class="feature-title">Advanced Analytics</h3>
-                        <p class="feature-desc">
-                            Volume ranking monitoring and risk level indicators processed
-                            automatically.
-                        </p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                            </svg>
-                        </div>
-                        <h3 class="feature-title">Risk Management</h3>
-                        <p class="feature-desc">
-                            Every signal includes stop-loss levels to protect your capital
-                            systematically.
-                        </p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                <polyline points="14,2 14,8 20,8" />
-                                <line x1="16" y1="13" x2="8" y2="13" />
-                                <line x1="16" y1="17" x2="8" y2="17" />
-                            </svg>
-                        </div>
-                        <h3 class="feature-title">Track Record</h3>
-                        <p class="feature-desc">
-                            Transparent historical performance tracking—no false promises,
-                            just data.
-                        </p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                            </svg>
-                        </div>
-                        <h3 class="feature-title">24/7 Algorithm</h3>
-                        <p class="feature-desc">
-                            Automated quantitative analysis that never sleeps, never misses
-                            signals.
-                        </p>
-                    </div>
+                    <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><h3 class="feature-title">Precision Signals</h3><p class="feature-desc">Algorithm detects optimal entry and exit zones based on real-time market data analysis.</p></div>
+                    <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></svg></div><h3 class="feature-title">Real-Time Alerts</h3><p class="feature-desc">Instant notifications via Telegram when algorithm detects important price zones.</p></div>
+                    <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><h3 class="feature-title">Advanced Analytics</h3><p class="feature-desc">Volume ranking monitoring and risk level indicators processed automatically.</p></div>
+                    <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 class="feature-title">Risk Management</h3><p class="feature-desc">Every signal includes stop-loss levels to protect your capital systematically.</p></div>
+                    <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><h3 class="feature-title">Track Record</h3><p class="feature-desc">Transparent historical performance tracking—no false promises, just data.</p></div>
+                    <div class="feature-card"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><h3 class="feature-title">24/7 Algorithm</h3><p class="feature-desc">Automated quantitative analysis that never sleeps, never misses signals.</p></div>
                 </div>
             </div>
         </section>
 
         <section class="vip-section">
             <div class="container">
-                <div class="section-header">
-                    <p class="section-label">Algorithm Access</p>
-                    <h2 class="section-title">See LuxQuant Algorithm in Action</h2>
-                    <p class="section-desc">
-                        Real screenshots from our Telegram channels
-                    </p>
-                </div>
+                <div class="section-header"><p class="section-label">Algorithm Access</p><h2 class="section-title">See LuxQuant Algorithm in Action</h2><p class="section-desc">Real screenshots from our Telegram channels</p></div>
                 <div class="vip-grid">
                     <div class="phone-wrapper">
-                        <div class="phone-mockup">
-                            <div class="phone-notch">
-                                <div class="phone-speaker"></div>
-                                <div class="phone-camera"></div>
-                            </div>
-                            <div class="phone-screen">
-                                <div class="carousel-container" id="carouselContainer">
-                                    <div class="carousel-slide">
-                                        <img src="fiturlq1.png" alt="Feature 1" />
-                                    </div>
-                                    <div class="carousel-slide">
-                                        <img src="fiturlq2.png" alt="Feature 2" />
-                                    </div>
-                                    <div class="carousel-slide">
-                                        <img src="fiturlq3.png" alt="Feature 3" />
-                                    </div>
-                                    <div class="carousel-slide">
-                                        <img src="fiturlq4.png" alt="Feature 4" />
-                                    </div>
-                                    <div class="carousel-slide">
-                                        <img src="fiturlq5.png" alt="Feature 5" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-nav">
-                            <button class="carousel-btn" id="prevBtn">‹</button>
-                            <div class="carousel-dots" id="carouselDots">
-                                <span class="carousel-dot active" data-slide="0"></span><span class="carousel-dot"
-                                    data-slide="1"></span><span class="carousel-dot" data-slide="2"></span><span
-                                    class="carousel-dot" data-slide="3"></span><span class="carousel-dot"
-                                    data-slide="4"></span>
-                            </div>
-                            <button class="carousel-btn" id="nextBtn">›</button>
-                        </div>
+                        <div class="phone-mockup"><div class="phone-notch"><div class="phone-speaker"></div><div class="phone-camera"></div></div><div class="phone-screen"><div class="carousel-container" id="carouselContainer"><div class="carousel-slide"><img src="fiturlq1.png" alt="Feature 1"></div><div class="carousel-slide"><img src="fiturlq2.png" alt="Feature 2"></div><div class="carousel-slide"><img src="fiturlq3.png" alt="Feature 3"></div><div class="carousel-slide"><img src="fiturlq4.png" alt="Feature 4"></div><div class="carousel-slide"><img src="fiturlq5.png" alt="Feature 5"></div></div></div></div>
+                        <div class="carousel-nav"><button class="carousel-btn" id="prevBtn">‹</button><div class="carousel-dots" id="carouselDots"><span class="carousel-dot active" data-slide="0"></span><span class="carousel-dot" data-slide="1"></span><span class="carousel-dot" data-slide="2"></span><span class="carousel-dot" data-slide="3"></span><span class="carousel-dot" data-slide="4"></span></div><button class="carousel-btn" id="nextBtn">›</button></div>
                     </div>
                     <div class="vip-features-list">
-                        <div class="vip-feature-item">
-                            <div class="vip-feature-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-                                    <polyline points="3.27,6.96 12,12.01 20.73,6.96" />
-                                    <line x1="12" y1="22.08" x2="12" y2="12" />
-                                </svg>
-                            </div>
-                            <div class="vip-feature-content">
-                                <h4>Algorithm-Powered Analysis</h4>
-                                <p>
-                                    Advanced quantitative algorithms analyze market patterns
-                                    24/7.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="vip-feature-item">
-                            <div class="vip-feature-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2" />
-                                </svg>
-                            </div>
-                            <div class="vip-feature-content">
-                                <h4>Instant Notifications</h4>
-                                <p>
-                                    Real-time alerts directly to your Telegram when important
-                                    zones detected.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="vip-feature-item">
-                            <div class="vip-feature-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <line x1="18" y1="20" x2="18" y2="10" />
-                                    <line x1="12" y1="20" x2="12" y2="4" />
-                                    <line x1="6" y1="20" x2="6" y2="14" />
-                                </svg>
-                            </div>
-                            <div class="vip-feature-content">
-                                <h4>Complete Trade Setup</h4>
-                                <p>
-                                    Every signal includes entry, targets (TP1-TP4), stop-loss,
-                                    and risk assessment.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="vip-feature-item">
-                            <div class="vip-feature-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="3" />
-                                    <path
-                                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-                                </svg>
-                            </div>
-                            <div class="vip-feature-content">
-                                <h4>Support & AI Consultant</h4>
-                                <p>
-                                    24/7 support team plus AI consultant for market insights.
-                                </p>
-                            </div>
-                        </div>
+                        <div class="vip-feature-item"><div class="vip-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27,6.96 12,12.01 20.73,6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div><div class="vip-feature-content"><h4>Algorithm-Powered Analysis</h4><p>Advanced quantitative algorithms analyze market patterns 24/7.</p></div></div>
+                        <div class="vip-feature-item"><div class="vip-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/></svg></div><div class="vip-feature-content"><h4>Instant Notifications</h4><p>Real-time alerts directly to your Telegram when important zones detected.</p></div></div>
+                        <div class="vip-feature-item"><div class="vip-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><div class="vip-feature-content"><h4>Complete Trade Setup</h4><p>Every signal includes entry, targets (TP1-TP4), stop-loss, and risk assessment.</p></div></div>
+                        <div class="vip-feature-item"><div class="vip-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div><div class="vip-feature-content"><h4>Support & AI Consultant</h4><p>24/7 support team plus AI consultant for market insights.</p></div></div>
                     </div>
                 </div>
             </div>
@@ -2531,484 +511,49 @@
                 <div class="performance-grid">
                     <div class="performance-content">
                         <p class="section-label">Daily Updated</p>
-                        <h2>
-                            Trade Systematically with
-                            <span style="color: var(--gold)">LuxQuant Algorithm</span>
-                        </h2>
-                        <p>
-                            Our quantitative algorithms analyze market patterns around the
-                            clock. See real performance data updated daily.
-                        </p>
+                        <h2>Trade Systematically with <span style="color: var(--gold)">LuxQuant Algorithm</span></h2>
+                        <p>Our quantitative algorithms analyze market patterns around the clock. See real performance data updated daily.</p>
                         <div class="stats-grid">
-                            <div class="stat-card">
-                                <div class="stat-value gold">86.54%</div>
-                                <div class="stat-label">Overall Win Rate</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-value green">97.02%</div>
-                                <div class="stat-label">Completion Rate</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-value gold">4.48</div>
-                                <div class="stat-label">Avg Risk:Reward</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-value green">+18.35%</div>
-                                <div class="stat-label">Avg TP4 Gain</div>
-                            </div>
+                            <div class="stat-card"><div class="stat-value gold">86.54%</div><div class="stat-label">Overall Win Rate</div></div>
+                            <div class="stat-card"><div class="stat-value green">97.02%</div><div class="stat-label">Completion Rate</div></div>
+                            <div class="stat-card"><div class="stat-value gold">4.48</div><div class="stat-label">Avg Risk:Reward</div></div>
+                            <div class="stat-card"><div class="stat-value green">+18.35%</div><div class="stat-label">Avg TP4 Gain</div></div>
                         </div>
                     </div>
                     <div class="dashboard-preview">
-                        <div class="dashboard-header">
-                            <span class="dashboard-title">LuxQuant Dashboard</span><span
-                                class="dashboard-live">LIVE</span>
-                        </div>
-                        <a href="https://luxquantlivedata.streamlit.app/" target="_blank" rel="noopener"
-                            class="dashboard-image-link">
-                            <img src="LuxQuant Performance Dashboard.png" alt="Dashboard" class="dashboard-image" />
-                            <div class="dashboard-overlay">
-                                <span class="dashboard-overlay-icon">🔗</span><span class="dashboard-overlay-text">Click
-                                    to Open Live Platform</span>
-                            </div>
+                        <div class="dashboard-header"><span class="dashboard-title">LuxQuant Dashboard</span><span class="dashboard-live">LIVE</span></div>
+                        <a href="https://luxquantlivedata.streamlit.app/" target="_blank" rel="noopener" class="dashboard-image-link">
+                            <img src="LuxQuant Performance Dashboard.png" alt="Dashboard" class="dashboard-image">
+                            <div class="dashboard-overlay"><span class="dashboard-overlay-icon">🔗</span><span class="dashboard-overlay-text">Click to Open Live Platform</span></div>
                         </a>
-                        <div class="dashboard-cta">
-                            <a href="https://luxquantlivedata.streamlit.app/" target="_blank" rel="noopener"
-                                class="btn btn-primary">Open Live Dashboard ↗</a>
-                        </div>
+                        <div class="dashboard-cta"><a href="https://luxquantlivedata.streamlit.app/" target="_blank" rel="noopener" class="btn btn-primary">Open Live Dashboard ↗</a></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- WHAT USERS SAY -->
-        <section id="reviews" class="reviews-section">
+        <section id="testimonials" class="testimonials-section">
             <div class="container">
-                <div class="reviews-header">
-                    <p class="section-label">Real Experiences</p>
-                    <h2 class="section-title">What Users Say</h2>
-                    <p class="reviews-subtitle">
-                        Honest feedback from our community members around the world
-                    </p>
-                </div>
-
-                <div class="reviews-masonry">
-                    <!-- Featured Review -->
-                    <div class="review-card featured">
-                        <span class="review-date">Jan 2025</span>
-                        <div class="review-quote-icon">"</div>
-                        <div class="review-rating">
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                        </div>
-                        <p class="review-text">
-                            LuxQuant completely changed how I approach trading. The
-                            systematic signals removed all the emotional decision-making
-                            that used to cost me money. After 3 months, my portfolio is up
-                            significantly just following their algorithm. The VIP support
-                            team is incredibly responsive too!
-                        </p>
-                        <div class="review-author">
-                            <div class="review-avatar">MR</div>
-                            <div class="review-author-info">
-                                <div class="review-author-name">Michael Rodriguez</div>
-                                <div class="review-author-role">Full-time Trader, Miami</div>
-                            </div>
-                            <div class="review-verified">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>Verified
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Review 2 -->
-                    <div class="review-card">
-                        <span class="review-date">Dec 2024</span>
-                        <div class="review-quote-icon">"</div>
-                        <div class="review-rating">
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                        </div>
-                        <p class="review-text">
-                            As a university student, I don't have time to analyze charts all
-                            day. LuxQuant signals let me trade between classes. Already
-                            covered my subscription cost in the first week!
-                        </p>
-                        <div class="review-author">
-                            <div class="review-avatar">SK</div>
-                            <div class="review-author-info">
-                                <div class="review-author-name">Sarah Kim</div>
-                                <div class="review-author-role">Student, Seoul</div>
-                            </div>
-                            <div class="review-verified">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>Verified
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Review 3 -->
-                    <div class="review-card">
-                        <span class="review-date">Jan 2025</span>
-                        <div class="review-quote-icon">"</div>
-                        <div class="review-rating">
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                        </div>
-                        <p class="review-text">
-                            The algorithm's consistency is remarkable. Clear risk settings
-                            on every signal make it easy to manage my positions. Very
-                            systematic approach.
-                        </p>
-                        <div class="review-author">
-                            <div class="review-avatar">AG</div>
-                            <div class="review-author-info">
-                                <div class="review-author-name">Ahmad Gunawan</div>
-                                <div class="review-author-role">Business Owner, Jakarta</div>
-                            </div>
-                            <div class="review-verified">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>Verified
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Review 4 -->
-                    <div class="review-card">
-                        <span class="review-date">Nov 2024</span>
-                        <div class="review-quote-icon">"</div>
-                        <div class="review-rating">
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                        </div>
-                        <p class="review-text">
-                            I was skeptical at first but tried the free channel. The
-                            accuracy convinced me to go VIP. Best investment I've made!
-                        </p>
-                        <div class="review-author">
-                            <div class="review-avatar">JC</div>
-                            <div class="review-author-info">
-                                <div class="review-author-name">James Chen</div>
-                                <div class="review-author-role">
-                                    Software Engineer, Singapore
-                                </div>
-                            </div>
-                            <div class="review-verified">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>Verified
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Review 5 -->
-                    <div class="review-card">
-                        <span class="review-date">Dec 2024</span>
-                        <div class="review-quote-icon">"</div>
-                        <div class="review-rating">
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                            <svg class="star" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                            </svg>
-                        </div>
-                        <p class="review-text">
-                            Finally found a signal service that actually delivers. The
-                            leverage calculations are super helpful for risk management.
-                        </p>
-                        <div class="review-author">
-                            <div class="review-avatar">EW</div>
-                            <div class="review-author-info">
-                                <div class="review-author-name">Emma Williams</div>
-                                <div class="review-author-role">Finance Analyst, London</div>
-                            </div>
-                            <div class="review-verified">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>Verified
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="reviews-stats-bar">
-                    <div class="reviews-stat">
-                        <div class="reviews-stat-value">4.9/5</div>
-                        <div class="reviews-stat-label">Average Rating</div>
-                    </div>
-                    <div class="reviews-stat">
-                        <div class="reviews-stat-value">500+</div>
-                        <div class="reviews-stat-label">Happy Users</div>
-                    </div>
-                    <div class="reviews-stat">
-                        <div class="reviews-stat-value">25+</div>
-                        <div class="reviews-stat-label">Countries</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FREE INTELLIGENCE SECTION -->
-        <section id="free-intel" class="free-intel-section">
-            <div class="container">
-                <div class="free-intel-grid">
-                    <div class="free-intel-content">
-                        <div class="free-badge">Free Access Available</div>
-                        <h2>
-                            Try Our <span class="highlight">Free Intelligence</span> Signals
-                        </h2>
-                        <p>
-                            Not ready to commit? No problem! Join our free Telegram channel
-                            and experience LuxQuant's algorithm-powered signals with limited
-                            features. See real results before upgrading.
-                        </p>
-
-                        <div class="free-features-list">
-                            <div class="free-feature-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                                    <polyline points="20 6 9 17 4 12" />
-                                </svg>
-                                <span>Free algorithm-generated trade signals</span>
-                            </div>
-                            <div class="free-feature-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                                    <polyline points="20 6 9 17 4 12" />
-                                </svg>
-                                <span>Entry, TP targets & leverage calculations</span>
-                            </div>
-                            <div class="free-feature-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                                    <polyline points="20 6 9 17 4 12" />
-                                </svg>
-                                <span>Shared after TP2 hit (delayed signals)</span>
-                            </div>
-                            <div class="free-feature-item">
-                                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                                    <polyline points="20 6 9 17 4 12" />
-                                </svg>
-                                <span>Perfect for testing our accuracy</span>
-                            </div>
-                        </div>
-
-                        <div class="telegram-cta-box">
-                            <div class="telegram-icon-box">
-                                <svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
-                                </svg>
-                            </div>
-                            <div class="telegram-cta-content">
-                                <h4>@LuxQuantSignal</h4>
-                                <p>1,300+ members already joined</p>
-                            </div>
-                            <a href="https://t.me/LuxQuantSignal" target="_blank" class="btn-telegram">
-                                Join Free Channel
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <line x1="5" y1="12" x2="19" y2="12" />
-                                    <polyline points="12 5 19 12 12 19" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="free-intel-preview">
-                        <div class="intel-phone-mockup">
-                            <div class="intel-phone-notch"></div>
-                            <div class="intel-phone-screen">
-                                <!-- ADD YOUR SCREENSHOT HERE -->
-                                <img src="free-intel-screenshot.png" alt="LuxQuant Free Intelligence" />
-                            </div>
-                        </div>
-                        <div class="intel-stats-floating">
-                            <div class="intel-stat-badge">
-                                <span class="value">1,307</span>
-                                <span class="label">Subscribers</span>
-                            </div>
-                            <div class="intel-stat-badge">
-                                <span class="value">100%</span>
-                                <span class="label">Free</span>
-                            </div>
-                            <div class="intel-stat-badge">
-                                <span class="value">24/7</span>
-                                <span class="label">Active</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="section-header"><p class="section-label">Success Stories</p><h2 class="section-title">What Traders Say</h2></div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"LuxQuant Algorithm is excellent. The systematic approach helps with discipline. First trial already proven."</p><div class="testimonial-author"><div class="testimonial-avatar">AG</div><div><div class="testimonial-name">Il**m A G</div><div class="testimonial-role">Business Owner</div></div><span class="testimonial-verified">Verified</span></div></div>
+                    <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"Great algorithm! I can work while trading. Just follow the signals. No more hours analyzing charts."</p><div class="testimonial-author"><div class="testimonial-avatar">FM</div><div><div class="testimonial-name">Fab**a FMZ</div><div class="testimonial-role">University Student</div></div><span class="testimonial-verified">Verified</span></div></div>
+                    <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"The algorithm is quite consistent presenting relevant data with clear risk settings. Very systematic."</p><div class="testimonial-author"><div class="testimonial-avatar">RG</div><div><div class="testimonial-name">R**n*ld G</div><div class="testimonial-role">Crypto Investor</div></div><span class="testimonial-verified">Verified</span></div></div>
                 </div>
             </div>
         </section>
 
         <section id="pricing" class="pricing-section">
             <div class="container">
-                <div class="section-header">
-                    <p class="section-label">Membership</p>
-                    <h2 class="section-title">Access LuxQuant Algorithm</h2>
-                    <p class="section-desc">
-                        One-time payment for lifetime algorithm access
-                    </p>
-                </div>
+                <div class="section-header"><p class="section-label">Membership</p><h2 class="section-title">Access LuxQuant Algorithm</h2><p class="section-desc">One-time payment for lifetime algorithm access</p></div>
                 <div class="pricing-card">
                     <span class="pricing-badge">Best Value</span>
-                    <div class="pricing-header">
-                        <h3 class="pricing-title">Lifetime Access</h3>
-                        <div class="pricing-price">
-                            <span class="pricing-currency">$</span><span class="pricing-amount"
-                                id="priceAmount">400</span><span class="pricing-period">/lifetime</span>
-                        </div>
-                        <span class="pricing-note">One-time payment • USDT only</span>
-                    </div>
-                    <div class="referral-box">
-                        <div class="referral-title">🎁 Have KOL Referral Code?</div>
-                        <div class="referral-subtitle">Enter code to get 5% discount</div>
-                        <div class="referral-input-group">
-                            <input type="text" id="referralCode" class="referral-input" placeholder="Enter code..."
-                                maxlength="20" /><button class="referral-btn" id="verifyBtn">Apply</button>
-                        </div>
-                        <div class="referral-status" id="referralStatus"></div>
-                        <div class="generated-code" id="generatedCode">
-                            <div style="font-size: 12px; color: var(--text-secondary)">
-                                🎉 Your Access Code:
-                            </div>
-                            <div class="generated-code-value" id="accessCodeDisplay"></div>
-                            <div style="font-size: 11px; color: var(--positive)">
-                                ✅ 5% discount activated!
-                            </div>
-                            <button class="copy-btn" id="copyBtn">Copy Code</button>
-                        </div>
-                    </div>
-                    <div class="discount-info" id="discountInfo">
-                        <div>
-                            Regular: <span style="text-decoration: line-through">$400</span>
-                        </div>
-                        <div style="color: var(--positive); font-weight: 700">
-                            Discounted: $380 (5% OFF)
-                        </div>
-                    </div>
-                    <div class="pricing-features">
-                        <div class="pricing-feature">
-                            <span class="pricing-check">✓</span><span class="pricing-feature-text">Complete
-                                algorithm-generated trade setups</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <span class="pricing-check">✓</span><span class="pricing-feature-text">Real-time
-                                notifications via Telegram</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <span class="pricing-check">✓</span><span class="pricing-feature-text">Analysis with volume
-                                ranking</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <span class="pricing-check">✓</span><span class="pricing-feature-text">Risk info for
-                                systematic management</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <span class="pricing-check">✓</span><span class="pricing-feature-text">24/7 Support</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <span class="pricing-check">✓</span><span class="pricing-feature-text">Access to AI
-                                Consultant</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <span class="pricing-check">✓</span><span class="pricing-feature-text">Algorithm development
-                                updates</span>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary pricing-cta" id="accessBtn">
-                        <span id="btnText">Get Lifetime Access</span>
-                    </button>
-                    <p class="pricing-guarantee">
-                        💡 No referral code? Subscribe directly at regular price
-                    </p>
+                    <div class="pricing-header"><h3 class="pricing-title">Lifetime Access</h3><div class="pricing-price"><span class="pricing-currency">$</span><span class="pricing-amount" id="priceAmount">400</span><span class="pricing-period">/lifetime</span></div><span class="pricing-note">One-time payment • USDT only</span></div>
+                    <div class="referral-box"><div class="referral-title">🎁 Have KOL Referral Code?</div><div class="referral-subtitle">Enter code to get 5% discount</div><div class="referral-input-group"><input type="text" id="referralCode" class="referral-input" placeholder="Enter code..." maxlength="20"><button class="referral-btn" id="verifyBtn">Apply</button></div><div class="referral-status" id="referralStatus"></div><div class="generated-code" id="generatedCode"><div style="font-size: 12px; color: var(--text-secondary);">🎉 Your Access Code:</div><div class="generated-code-value" id="accessCodeDisplay"></div><div style="font-size: 11px; color: var(--positive);">✅ 5% discount activated!</div><button class="copy-btn" id="copyBtn">Copy Code</button></div></div>
+                    <div class="discount-info" id="discountInfo"><div>Regular: <span style="text-decoration: line-through;">$400</span></div><div style="color: var(--positive); font-weight: 700;">Discounted: $380 (5% OFF)</div></div>
+                    <div class="pricing-features"><div class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Complete algorithm-generated trade setups</span></div><div class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Real-time notifications via Telegram</span></div><div class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Analysis with volume ranking</span></div><div class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Risk info for systematic management</span></div><div class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">24/7 Support</span></div><div class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Access to AI Consultant</span></div><div class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Algorithm development updates</span></div></div>
+                    <button class="btn btn-primary pricing-cta" id="accessBtn"><span id="btnText">Get Lifetime Access</span></button>
+                    <p class="pricing-guarantee">💡 No referral code? Subscribe directly at regular price</p>
                 </div>
             </div>
         </section>
@@ -3017,19 +562,9 @@
             <div class="container">
                 <div class="cta-card">
                     <div class="cta-content">
-                        <h2 class="cta-title">
-                            Ready to Trade
-                            <span style="color: var(--gold)">Systematically</span>?
-                        </h2>
-                        <p class="cta-desc">
-                            Join traders worldwide who trust LuxQuant Algorithm for
-                            consistent results.
-                        </p>
-                        <div class="cta-buttons">
-                            <a href="#pricing" class="btn btn-primary btn-large">Get Started Now</a><a
-                                href="https://t.me/luxquantadmin" target="_blank"
-                                class="btn btn-secondary btn-large">Contact Support</a>
-                        </div>
+                        <h2 class="cta-title">Ready to Trade <span style="color: var(--gold)">Systematically</span>?</h2>
+                        <p class="cta-desc">Join traders worldwide who trust LuxQuant Algorithm for consistent results.</p>
+                        <div class="cta-buttons"><a href="#pricing" class="btn btn-primary btn-large">Get Started Now</a><a href="https://t.me/luxquantadmin" target="_blank" class="btn btn-secondary btn-large">Contact Support</a></div>
                     </div>
                 </div>
             </div>
@@ -3037,47 +572,12 @@
 
         <section class="social-section">
             <div class="container">
-                <div class="section-header">
-                    <p class="section-label">Connect</p>
-                    <h2 class="section-title">Follow Us</h2>
-                </div>
+                <div class="section-header"><p class="section-label">Connect</p><h2 class="section-title">Follow Us</h2></div>
                 <div class="social-grid">
-                    <a href="https://t.me/luxquantadmin" target="_blank" class="social-card">
-                        <div class="social-icon">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg"
-                                alt="Telegram" />
-                        </div>
-                        <div class="social-name">Telegram</div>
-                        <div class="social-handle">Join community</div>
-                    </a>
-                    <a href="https://x.com/luxquanttrade" target="_blank" class="social-card">
-                        <div class="social-icon" style="background: #000">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
-                                <path
-                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                            </svg>
-                        </div>
-                        <div class="social-name">X (Twitter)</div>
-                        <div class="social-handle">@luxquanttrade</div>
-                    </a>
-                    <a href="https://instagram.com/luxquanttrade" target="_blank" class="social-card">
-                        <div class="social-icon">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"
-                                alt="Instagram" />
-                        </div>
-                        <div class="social-name">Instagram</div>
-                        <div class="social-handle">@luxquanttrade</div>
-                    </a>
-                    <a href="https://tiktok.com/@luxquanttrade" target="_blank" class="social-card">
-                        <div class="social-icon">
-                            <svg viewBox="0 0 24 24" fill="white" width="40" height="40">
-                                <path
-                                    d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-                            </svg>
-                        </div>
-                        <div class="social-name">TikTok</div>
-                        <div class="social-handle">@luxquanttrade</div>
-                    </a>
+                    <a href="https://t.me/luxquantadmin" target="_blank" class="social-card"><div class="social-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram"></div><div class="social-name">Telegram</div><div class="social-handle">Join community</div></a>
+                    <a href="https://x.com/luxquanttrade" target="_blank" class="social-card"><div class="social-icon" style="background: #000;"><svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div><div class="social-name">X (Twitter)</div><div class="social-handle">@luxquanttrade</div></a>
+                    <a href="https://instagram.com/luxquanttrade" target="_blank" class="social-card"><div class="social-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram"></div><div class="social-name">Instagram</div><div class="social-handle">@luxquanttrade</div></a>
+                    <a href="https://tiktok.com/@luxquanttrade" target="_blank" class="social-card"><div class="social-icon"><svg viewBox="0 0 24 24" fill="white" width="40" height="40"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg></div><div class="social-name">TikTok</div><div class="social-handle">@luxquanttrade</div></a>
                 </div>
             </div>
         </section>
@@ -3086,66 +586,12 @@
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="#" class="logo"><img
-                            src="https://raw.githubusercontent.com/Dwiyulianto31072k4/luxquant/main/luxquant%20logo.png"
-                            alt="LuxQuant" class="logo-img" style="width: 40px; height: 40px" /><span class="logo-text"
-                            style="font-size: 20px">LuxQuant</span></a>
-                    <p class="footer-brand-desc">
-                        Premium algorithm-powered crypto trading signals. Systematic,
-                        objective, and data-driven.
-                    </p>
-                </div>
-                <div class="footer-column">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#performance">Performance</a></li>
-                        <li><a href="#testimonials">Reviews</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Support</h4>
-                    <ul>
-                        <li>
-                            <a href="https://t.me/luxquantadmin" target="_blank">Contact Us</a>
-                        </li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Terms</a></li>
-                        <li><a href="#">Privacy</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Community</h4>
-                    <ul>
-                        <li>
-                            <a href="https://t.me/luxquantadmin" target="_blank">Telegram</a>
-                        </li>
-                        <li>
-                            <a href="https://x.com/luxquanttrade" target="_blank">Twitter / X</a>
-                        </li>
-                        <li>
-                            <a href="https://instagram.com/luxquanttrade" target="_blank">Instagram</a>
-                        </li>
-                        <li>
-                            <a href="https://tiktok.com/@luxquanttrade" target="_blank">TikTok</a>
-                        </li>
-                    </ul>
-                </div>
+                <div class="footer-brand"><a href="#" class="logo"><img src="https://raw.githubusercontent.com/Dwiyulianto31072k4/luxquant/main/luxquant%20logo.png" alt="LuxQuant" class="logo-img" style="width: 40px; height: 40px;"><span class="logo-text" style="font-size: 20px;">LuxQuant</span></a><p class="footer-brand-desc">Premium algorithm-powered crypto trading signals. Systematic, objective, and data-driven.</p></div>
+                <div class="footer-column"><h4>Quick Links</h4><ul><li><a href="#features">Features</a></li><li><a href="#performance">Performance</a></li><li><a href="#testimonials">Reviews</a></li><li><a href="#pricing">Pricing</a></li></ul></div>
+                <div class="footer-column"><h4>Support</h4><ul><li><a href="https://t.me/luxquantadmin" target="_blank">Contact Us</a></li><li><a href="#">FAQ</a></li><li><a href="#">Terms</a></li><li><a href="#">Privacy</a></li></ul></div>
+                <div class="footer-column"><h4>Community</h4><ul><li><a href="https://t.me/luxquantadmin" target="_blank">Telegram</a></li><li><a href="https://x.com/luxquanttrade" target="_blank">Twitter / X</a></li><li><a href="https://instagram.com/luxquanttrade" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@luxquanttrade" target="_blank">TikTok</a></li></ul></div>
             </div>
-            <div class="footer-bottom">
-                <div class="footer-logo-center">
-                    <div class="footer-line"></div>
-                    <span class="footer-logo-text">LuxQuant Algorithm</span>
-                    <div class="footer-line"></div>
-                </div>
-                <p class="footer-copyright">© 2025 LuxQuant. All rights reserved.</p>
-                <p class="footer-disclaimer">
-                    Trading involves risk. Past performance is not indicative of future
-                    results.
-                </p>
-            </div>
+            <div class="footer-bottom"><div class="footer-logo-center"><div class="footer-line"></div><span class="footer-logo-text">LuxQuant Algorithm</span><div class="footer-line"></div></div><p class="footer-copyright">© 2025 LuxQuant. All rights reserved.</p><p class="footer-disclaimer">Trading involves risk. Past performance is not indicative of future results.</p></div>
         </div>
     </footer>
 
@@ -3154,70 +600,43 @@
     <script src="https://unpkg.com/three-globe@2.24.4/dist/three-globe.min.js"></script>
 
     <script>
-        window.addEventListener("load", () => {
-            setTimeout(() => {
-                document.getElementById("loader").classList.add("hidden");
-            }, 1200);
-        });
+        window.addEventListener('load', () => { setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 1200); });
 
         const cryptoData = [
-            { symbol: "BTC", cmcId: 1, price: 104892, change: 2.34 },
-            { symbol: "ETH", cmcId: 1027, price: 3342, change: 4.12 },
-            { symbol: "BNB", cmcId: 1839, price: 698, change: -0.87 },
-            { symbol: "SOL", cmcId: 5426, price: 258, change: 6.45 },
-            { symbol: "XRP", cmcId: 52, price: 3.12, change: 1.23 },
-            { symbol: "ADA", cmcId: 2010, price: 0.98, change: -1.45 },
-            { symbol: "DOGE", cmcId: 74, price: 0.42, change: 3.21 },
-            { symbol: "LINK", cmcId: 1975, price: 28.45, change: 2.87 },
+            { symbol: 'BTC', cmcId: 1, price: 104892, change: 2.34 },
+            { symbol: 'ETH', cmcId: 1027, price: 3342, change: 4.12 },
+            { symbol: 'BNB', cmcId: 1839, price: 698, change: -0.87 },
+            { symbol: 'SOL', cmcId: 5426, price: 258, change: 6.45 },
+            { symbol: 'XRP', cmcId: 52, price: 3.12, change: 1.23 },
+            { symbol: 'ADA', cmcId: 2010, price: 0.98, change: -1.45 },
+            { symbol: 'DOGE', cmcId: 74, price: 0.42, change: 3.21 },
+            { symbol: 'LINK', cmcId: 1975, price: 28.45, change: 2.87 },
         ];
 
         function createTicker() {
-            const track = document.getElementById("tickerTrack");
-            const items = cryptoData
-                .map(
-                    (c) =>
-                        `<div class="ticker-item"><img class="ticker-icon" src="https://s2.coinmarketcap.com/static/img/coins/64x64/${c.cmcId}.png" alt="${c.symbol}"><span class="ticker-symbol">${c.symbol}</span><span class="ticker-price">$${c.price.toLocaleString()}</span><span class="ticker-change ${c.change >= 0 ? "positive" : "negative"}">${c.change >= 0 ? "+" : ""}${c.change.toFixed(2)}%</span></div>`,
-                )
-                .join("");
+            const track = document.getElementById('tickerTrack');
+            const items = cryptoData.map(c => `<div class="ticker-item"><img class="ticker-icon" src="https://s2.coinmarketcap.com/static/img/coins/64x64/${c.cmcId}.png" alt="${c.symbol}"><span class="ticker-symbol">${c.symbol}</span><span class="ticker-price">$${c.price.toLocaleString()}</span><span class="ticker-change ${c.change >= 0 ? 'positive' : 'negative'}">${c.change >= 0 ? '+' : ''}${c.change.toFixed(2)}%</span></div>`).join('');
             track.innerHTML = items + items;
         }
         createTicker();
 
-        const header = document.getElementById("header");
-        window.addEventListener("scroll", () => {
-            header.classList.toggle("scrolled", window.scrollY > 50);
-        });
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 50); });
 
         let currentSlide = 0;
         const totalSlides = 5;
-        const container = document.getElementById("carouselContainer");
-        const dots = document.querySelectorAll(".carousel-dot");
+        const container = document.getElementById('carouselContainer');
+        const dots = document.querySelectorAll('.carousel-dot');
 
         function updateCarousel() {
             container.style.transform = `translateX(-${currentSlide * 100}%)`;
-            dots.forEach((d, i) =>
-                d.classList.toggle("active", i === currentSlide),
-            );
+            dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
         }
 
-        document.getElementById("nextBtn").addEventListener("click", () => {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateCarousel();
-        });
-        document.getElementById("prevBtn").addEventListener("click", () => {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateCarousel();
-        });
-        dots.forEach((dot, i) => {
-            dot.addEventListener("click", () => {
-                currentSlide = i;
-                updateCarousel();
-            });
-        });
-        setInterval(() => {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateCarousel();
-        }, 5000);
+        document.getElementById('nextBtn').addEventListener('click', () => { currentSlide = (currentSlide + 1) % totalSlides; updateCarousel(); });
+        document.getElementById('prevBtn').addEventListener('click', () => { currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; updateCarousel(); });
+        dots.forEach((dot, i) => { dot.addEventListener('click', () => { currentSlide = i; updateCarousel(); }); });
+        setInterval(() => { currentSlide = (currentSlide + 1) % totalSlides; updateCarousel(); }, 5000);
 
         const locations = [
             { lat: -6.2, lng: 106.8 },
@@ -3234,110 +653,65 @@
             { lat: 52.5, lng: 13.4 },
         ];
 
-        const validCodes = [
-            "03451Lux",
-            "02847Lux",
-            "SM138",
-            "MRCOWHALE",
-            "BHYUKNGLO",
-            "FARIDWHALEBTC",
-            "ERIKDI",
-            "thomatomb",
-            "tss07",
-            "brndn",
-            "febrian",
-            "crossteam",
-            "Neilsen",
-            "CYBRFI",
-            "ejeha",
-            "ndratraderalgo",
-            "DODO",
-            "CUANLAGI",
-            "scobedo",
-        ];
+        const validCodes = ['03451Lux', '02847Lux', 'SM138', 'MRCOWHALE', 'BHYUKNGLO', 'FARIDWHALEBTC', 'ERIKDI', 'thomatomb', 'tss07', 'brndn', 'febrian', 'crossteam', 'Neilsen', 'CYBRFI', 'ejeha', 'ndratraderalgo', 'DODO', 'CUANLAGI', 'scobedo'];
         let isValidReferral = false;
-        let generatedAccessCode = "";
+        let generatedAccessCode = '';
 
-        document.getElementById("verifyBtn").addEventListener("click", () => {
-            const code = document.getElementById("referralCode").value.trim();
-            const status = document.getElementById("referralStatus");
-            const genCode = document.getElementById("generatedCode");
-            const discountInfo = document.getElementById("discountInfo");
+        document.getElementById('verifyBtn').addEventListener('click', () => {
+            const code = document.getElementById('referralCode').value.trim();
+            const status = document.getElementById('referralStatus');
+            const genCode = document.getElementById('generatedCode');
+            const discountInfo = document.getElementById('discountInfo');
 
-            if (!code) {
-                status.textContent = "Please enter a referral code";
-                status.className = "referral-status error";
-                return;
-            }
+            if (!code) { status.textContent = 'Please enter a referral code'; status.className = 'referral-status error'; return; }
 
             if (validCodes.includes(code)) {
-                const suffix = Math.random()
-                    .toString(36)
-                    .substring(2, 10)
-                    .toUpperCase();
+                const suffix = Math.random().toString(36).substring(2, 10).toUpperCase();
                 generatedAccessCode = `${code}-${suffix}`;
                 isValidReferral = true;
-                status.textContent = "🎉 Valid code! 5% discount applied.";
-                status.className = "referral-status success";
-                document.getElementById("accessCodeDisplay").textContent =
-                    generatedAccessCode;
-                genCode.classList.add("show");
-                discountInfo.classList.add("show");
-                document.getElementById("priceAmount").textContent = "380";
-                document.getElementById("btnText").textContent =
-                    "Get Discounted Access ($380)";
-                document.getElementById("referralCode").disabled = true;
-                document.getElementById("verifyBtn").disabled = true;
-                document.getElementById("verifyBtn").textContent = "Applied ✅";
+                status.textContent = '🎉 Valid code! 5% discount applied.';
+                status.className = 'referral-status success';
+                document.getElementById('accessCodeDisplay').textContent = generatedAccessCode;
+                genCode.classList.add('show');
+                discountInfo.classList.add('show');
+                document.getElementById('priceAmount').textContent = '380';
+                document.getElementById('btnText').textContent = 'Get Discounted Access ($380)';
+                document.getElementById('referralCode').disabled = true;
+                document.getElementById('verifyBtn').disabled = true;
+                document.getElementById('verifyBtn').textContent = 'Applied ✅';
             } else {
-                status.textContent = "❌ Invalid code. Subscribe at regular price.";
-                status.className = "referral-status error";
+                status.textContent = '❌ Invalid code. Subscribe at regular price.';
+                status.className = 'referral-status error';
                 isValidReferral = false;
             }
         });
 
-        document.getElementById("copyBtn").addEventListener("click", async () => {
+        document.getElementById('copyBtn').addEventListener('click', async () => {
             await navigator.clipboard.writeText(generatedAccessCode);
-            document.getElementById("copyBtn").textContent = "Copied! ✅";
-            setTimeout(() => {
-                document.getElementById("copyBtn").textContent = "Copy Code";
-            }, 2000);
+            document.getElementById('copyBtn').textContent = 'Copied! ✅';
+            setTimeout(() => { document.getElementById('copyBtn').textContent = 'Copy Code'; }, 2000);
         });
 
-        document.getElementById("accessBtn").addEventListener("click", () => {
+        document.getElementById('accessBtn').addEventListener('click', () => {
             let message;
             if (isValidReferral && generatedAccessCode) {
                 message = `Hi! I want to subscribe to LuxQuant Algorithm Lifetime Access with KOL discount.\n\n💰 Price: $380 (5% KOL Discount)\n🎯 Access Code: ${generatedAccessCode}\n\nPlease process my subscription.`;
             } else {
                 message = `Hi! I want to subscribe to LuxQuant Algorithm Lifetime Access.\n\n💰 Price: $400 (Regular Price)\n\nPlease process my subscription.`;
             }
-            window.open(
-                `https://t.me/luxquantadmin?text=${encodeURIComponent(message)}`,
-                "_blank",
-            );
+            window.open(`https://t.me/luxquantadmin?text=${encodeURIComponent(message)}`, '_blank');
         });
 
-        const globeContainer = document.getElementById("globe");
+        const globeContainer = document.getElementById('globe');
         if (globeContainer) {
             const scene = new THREE.Scene();
-            const renderer = new THREE.WebGLRenderer({
-                antialias: true,
-                alpha: true,
-            });
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
             renderer.setClearColor(0x000000, 0);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            renderer.setSize(
-                globeContainer.clientWidth,
-                globeContainer.clientHeight,
-            );
+            renderer.setSize(globeContainer.clientWidth, globeContainer.clientHeight);
             globeContainer.appendChild(renderer.domElement);
 
-            const camera = new THREE.PerspectiveCamera(
-                50,
-                globeContainer.clientWidth / globeContainer.clientHeight,
-                0.1,
-                2000,
-            );
+            const camera = new THREE.PerspectiveCamera(50, globeContainer.clientWidth / globeContainer.clientHeight, 0.1, 2000);
             camera.position.set(0, 0, 280);
 
             const controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -3353,70 +727,27 @@
             scene.add(dir);
 
             const globe = new ThreeGlobe()
-                .globeImageUrl(
-                    "https://unpkg.com/three-globe/example/img/earth-night.jpg",
-                )
-                .bumpImageUrl(
-                    "https://unpkg.com/three-globe/example/img/earth-topology.png",
-                )
+                .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
+                .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
                 .showAtmosphere(true)
-                .atmosphereColor("#d4a853")
+                .atmosphereColor('#d4a853')
                 .atmosphereAltitude(0.2);
 
             scene.add(globe);
 
-            const pointsData = locations.map((loc) => ({
-                lat: loc.lat,
-                lng: loc.lng,
-                color: "#d4a853",
-            }));
-            const arcsData = locations.slice(1).map((loc) => ({
-                startLat: 25.0,
-                startLng: 121.5,
-                endLat: loc.lat,
-                endLng: loc.lng,
-                color: "#ffffff",
-            }));
+            const pointsData = locations.map(loc => ({ lat: loc.lat, lng: loc.lng, color: '#d4a853' }));
+            const arcsData = locations.slice(1).map(loc => ({ startLat: 25.0, startLng: 121.5, endLat: loc.lat, endLng: loc.lng, color: '#ffffff' }));
 
-            globe
-                .pointsData(pointsData)
-                .pointColor("color")
-                .pointRadius(0.6)
-                .pointAltitude(0.01);
-            globe
-                .arcsData(arcsData)
-                .arcColor("color")
-                .arcStroke(0.4)
-                .arcDashLength(0.4)
-                .arcDashGap(0.2)
-                .arcDashAnimateTime(3000);
+            globe.pointsData(pointsData).pointColor('color').pointRadius(0.6).pointAltitude(0.01);
+            globe.arcsData(arcsData).arcColor('color').arcStroke(0.4).arcDashLength(0.4).arcDashGap(0.2).arcDashAnimateTime(3000);
 
-            function animate() {
-                requestAnimationFrame(animate);
-                controls.update();
-                renderer.render(scene, camera);
-            }
+            function animate() { requestAnimationFrame(animate); controls.update(); renderer.render(scene, camera); }
             animate();
 
-            window.addEventListener("resize", () => {
-                camera.aspect =
-                    globeContainer.clientWidth / globeContainer.clientHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(
-                    globeContainer.clientWidth,
-                    globeContainer.clientHeight,
-                );
-            });
+            window.addEventListener('resize', () => { camera.aspect = globeContainer.clientWidth / globeContainer.clientHeight; camera.updateProjectionMatrix(); renderer.setSize(globeContainer.clientWidth, globeContainer.clientHeight); });
         }
 
-        document.querySelectorAll('a[href^="#"]').forEach((a) => {
-            a.addEventListener("click", (e) => {
-                e.preventDefault();
-                const target = document.querySelector(a.getAttribute("href"));
-                if (target) target.scrollIntoView({ behavior: "smooth" });
-            });
-        });
+        document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', e => { e.preventDefault(); const target = document.querySelector(a.getAttribute('href')); if (target) target.scrollIntoView({ behavior: 'smooth' }); }); });
     </script>
 </body>
-
 </html>
