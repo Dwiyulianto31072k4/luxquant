@@ -1,6 +1,6 @@
 // =====================================================
 // LUXQUANT - MAIN JAVASCRIPT
-// Version: 6.1 - With Mobile Menu Support
+// Version: 6.2 - Modern Mobile Menu
 // =====================================================
 
 console.log('🚀 LuxQuant Main.js Loading...');
@@ -56,11 +56,10 @@ const state = {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('📄 DOM Ready - Initializing LuxQuant...');
     
-    // Initialize all modules
     initLoader();
     initTicker();
     initHeader();
-    initMobileMenu();  // NEW: Mobile menu initialization
+    initMobileMenu();
     initCarousel();
     initSmoothScroll();
     
@@ -82,42 +81,63 @@ function initLoader() {
 }
 
 // =====================================================
-// MOBILE MENU MODULE (NEW)
+// MOBILE MENU MODULE - MODERN OVERLAY STYLE
 // =====================================================
 function initMobileMenu() {
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileNav = document.getElementById('mobileNav');
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const closeBtn = document.querySelector('.mobile-nav-close');
+    const navLinks = document.querySelectorAll('.mobile-nav-links a');
     
-    if (!mobileMenuBtn || !mobileNav) {
+    if (!menuBtn || !mobileNav) {
         console.log('⚠️ Mobile menu elements not found');
         return;
     }
     
-    // Toggle menu on button click
-    mobileMenuBtn.addEventListener('click', function() {
-        this.classList.toggle('active');
-        mobileNav.classList.toggle('active');
-        
-        // Prevent body scroll when menu is open
-        document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+    function openMenu() {
+        mobileNav.classList.add('active');
+        menuBtn.classList.add('active');
+        document.body.classList.add('menu-open');
+    }
+    
+    function closeMenu() {
+        mobileNav.classList.remove('active');
+        menuBtn.classList.remove('active');
+        document.body.classList.remove('menu-open');
+    }
+    
+    function toggleMenu() {
+        if (mobileNav.classList.contains('active')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    }
+    
+    // Toggle on button click
+    menuBtn.addEventListener('click', toggleMenu);
+    
+    // Close button
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeMenu);
+    }
+    
+    // Close on link click
+    navLinks.forEach(link => {
+        link.addEventListener('click', closeMenu);
     });
     
-    // Close menu when clicking a link
-    const mobileNavLinks = mobileNav.querySelectorAll('a');
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            mobileMenuBtn.classList.remove('active');
-            mobileNav.classList.remove('active');
-            document.body.style.overflow = '';
-        });
+    // Close on backdrop click
+    mobileNav.addEventListener('click', function(e) {
+        if (e.target === mobileNav) {
+            closeMenu();
+        }
     });
     
-    // Close menu on escape key
+    // Close on Escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
-            mobileMenuBtn.classList.remove('active');
-            mobileNav.classList.remove('active');
-            document.body.style.overflow = '';
+            closeMenu();
         }
     });
     
@@ -129,14 +149,12 @@ function initMobileMenu() {
 // =====================================================
 function initTicker() {
     console.log('📊 Initializing Real-time Ticker...');
-    
     fetchCryptoData();
     setInterval(fetchCryptoData, CONFIG.ticker.updateInterval);
 }
 
 async function fetchCryptoData() {
     if (state.crypto.isLoading) return;
-    
     state.crypto.isLoading = true;
     console.log('📡 Fetching crypto prices...');
     
@@ -220,9 +238,7 @@ function formatCoinGeckoData(data) {
 
 function formatCoinloreData(data) {
     const symbolMap = {};
-    CONFIG.cryptoList.forEach(c => {
-        symbolMap[c.symbol] = c;
-    });
+    CONFIG.cryptoList.forEach(c => { symbolMap[c.symbol] = c; });
     
     return data
         .filter(item => symbolMap[item.symbol])
