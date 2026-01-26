@@ -33,7 +33,6 @@
     <!-- Price Ticker -->
     <div class="ticker-wrapper">
         <div class="ticker-track" id="tickerTrack">
-            <!-- Ticker items will be injected by main.js -->
             <div class="ticker-item loading">
                 <span class="ticker-symbol">Loading...</span>
                 <span class="ticker-price">Fetching live prices</span>
@@ -41,7 +40,6 @@
         </div>
     </div>
 
-    <!-- Header -->
     <!-- Header -->
     <header id="header">
         <div class="container">
@@ -59,25 +57,35 @@
                 </nav>
                 <div class="header-cta"><a href="#pricing" class="btn btn-primary">Get Access</a></div>
 
-                <!-- ✅ TAMBAHAN 1: Hamburger Button -->
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
+                <!-- Hamburger Button -->
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
             </div>
         </div>
-
-        <!-- ✅ TAMBAHAN 2: Mobile Navigation Overlay -->
-        <div class="mobile-nav" id="mobileNav">
-            <a href="#features">Features</a>
-            <a href="#performance">Performance</a>
-            <a href="#testimonials">Reviews</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#pricing" class="btn btn-primary"
-                style="margin: 20px 24px; display: block; text-align: center;">Get Access</a>
-        </div>
     </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-close">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </div>
+        <div class="mobile-nav-content">
+            <ul class="mobile-nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#performance">Performance</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+            <div class="mobile-nav-cta">
+                <a href="#pricing" class="btn">Get Access</a>
+            </div>
+        </div>
+    </div>
 
     <main>
         <!-- Hero Section -->
@@ -101,7 +109,6 @@
                             traders across the globe. Join our growing community.</p>
                     </div>
                     <div class="globe-container">
-                        <!-- Globe Loading Animation -->
                         <div class="globe-loader" id="globeLoader">
                             <div class="globe-spinner"></div>
                             <span class="globe-loader-text">Loading Globe...</span>
@@ -179,15 +186,13 @@
             </div>
         </section>
 
-
-
+        <!-- Architecture Section -->
         <section id="architecture" class="architecture-section">
             <div class="bg-ambient">
                 <div class="bg-grid"></div>
             </div>
 
             <div class="container">
-                <!-- Header -->
                 <div class="section-header">
                     <p class="section-label">How It Works</p>
                     <h2 class="section-title">System <span style="color: var(--gold)">Architecture</span></h2>
@@ -197,7 +202,6 @@
 
                 <!-- Desktop Architecture Grid -->
                 <div class="architecture-desktop">
-                    <!-- 1. Data Sources -->
                     <div class="arch-data-sources">
                         <div class="arch-source-card">
                             <div class="arch-source-icon">
@@ -251,51 +255,35 @@
                         </div>
                     </div>
 
-                    <!-- 2. Connector: Sources → Pipeline -->
                     <div class="arch-connector">
                         <svg viewBox="0 0 100 200" preserveAspectRatio="none">
                             <path class="conn-line-glow" d="M 0 30 Q 35 30, 55 70 Q 75 110, 100 100" />
                             <path class="conn-line-glow" d="M 0 100 C 30 100, 70 100, 100 100" />
                             <path class="conn-line-glow" d="M 0 170 Q 35 170, 55 130 Q 75 90, 100 100" />
-
                             <path id="arch-c1-top" class="conn-line" d="M 0 30 Q 35 30, 55 70 Q 75 110, 100 100" />
                             <path id="arch-c1-mid" class="conn-line" d="M 0 100 C 30 100, 70 100, 100 100" />
                             <path id="arch-c1-bot" class="conn-line" d="M 0 170 Q 35 170, 55 130 Q 75 90, 100 100" />
-
                             <circle class="conn-particle" r="4" fill="#ef4444">
-                                <animateMotion dur="1.8s" repeatCount="indefinite">
-                                    <mpath href="#arch-c1-top" />
-                                </animateMotion>
+                                <animateMotion dur="1.8s" repeatCount="indefinite"><mpath href="#arch-c1-top" /></animateMotion>
                             </circle>
                             <circle class="conn-particle" r="2.5" fill="#ef4444">
-                                <animateMotion dur="1.8s" begin="0.6s" repeatCount="indefinite">
-                                    <mpath href="#arch-c1-top" />
-                                </animateMotion>
+                                <animateMotion dur="1.8s" begin="0.6s" repeatCount="indefinite"><mpath href="#arch-c1-top" /></animateMotion>
                             </circle>
                             <circle class="conn-particle" r="4" fill="#ef4444">
-                                <animateMotion dur="1.5s" repeatCount="indefinite">
-                                    <mpath href="#arch-c1-mid" />
-                                </animateMotion>
+                                <animateMotion dur="1.5s" repeatCount="indefinite"><mpath href="#arch-c1-mid" /></animateMotion>
                             </circle>
                             <circle class="conn-particle" r="2.5" fill="#ef4444">
-                                <animateMotion dur="1.5s" begin="0.5s" repeatCount="indefinite">
-                                    <mpath href="#arch-c1-mid" />
-                                </animateMotion>
+                                <animateMotion dur="1.5s" begin="0.5s" repeatCount="indefinite"><mpath href="#arch-c1-mid" /></animateMotion>
                             </circle>
                             <circle class="conn-particle" r="4" fill="#ef4444">
-                                <animateMotion dur="1.8s" begin="0.3s" repeatCount="indefinite">
-                                    <mpath href="#arch-c1-bot" />
-                                </animateMotion>
+                                <animateMotion dur="1.8s" begin="0.3s" repeatCount="indefinite"><mpath href="#arch-c1-bot" /></animateMotion>
                             </circle>
                             <circle class="conn-particle" r="2.5" fill="#ef4444">
-                                <animateMotion dur="1.8s" begin="0.9s" repeatCount="indefinite">
-                                    <mpath href="#arch-c1-bot" />
-                                </animateMotion>
+                                <animateMotion dur="1.8s" begin="0.9s" repeatCount="indefinite"><mpath href="#arch-c1-bot" /></animateMotion>
                             </circle>
                         </svg>
                     </div>
 
-                    <!-- 3. Data Pipeline -->
                     <div class="arch-pipeline">
                         <div class="arch-pipeline-container">
                             <div class="arch-pipeline-frame">
@@ -319,25 +307,19 @@
                         </div>
                     </div>
 
-                    <!-- 4. Connector: Pipeline → Algorithm -->
                     <div class="arch-connector">
                         <svg viewBox="0 0 100 200" preserveAspectRatio="none">
                             <path class="conn-line-glow" d="M 0 100 C 30 95, 70 105, 100 100" />
                             <path id="arch-c2" class="conn-line" d="M 0 100 C 30 95, 70 105, 100 100" />
                             <circle class="conn-particle" r="4" fill="#ef4444">
-                                <animateMotion dur="1.2s" repeatCount="indefinite">
-                                    <mpath href="#arch-c2" />
-                                </animateMotion>
+                                <animateMotion dur="1.2s" repeatCount="indefinite"><mpath href="#arch-c2" /></animateMotion>
                             </circle>
                             <circle class="conn-particle" r="2.5" fill="#ef4444">
-                                <animateMotion dur="1.2s" begin="0.4s" repeatCount="indefinite">
-                                    <mpath href="#arch-c2" />
-                                </animateMotion>
+                                <animateMotion dur="1.2s" begin="0.4s" repeatCount="indefinite"><mpath href="#arch-c2" /></animateMotion>
                             </circle>
                         </svg>
                     </div>
 
-                    <!-- 5. Algorithm Core -->
                     <div class="arch-algorithm">
                         <div class="arch-badge-container">
                             <div class="arch-badge-rings">
@@ -356,25 +338,19 @@
                         </div>
                     </div>
 
-                    <!-- 6. Connector: Algorithm → Output -->
                     <div class="arch-connector">
                         <svg viewBox="0 0 100 200" preserveAspectRatio="none">
                             <path class="conn-line-glow" d="M 0 100 C 30 105, 70 95, 100 100" />
                             <path id="arch-c3" class="conn-line" d="M 0 100 C 30 105, 70 95, 100 100" />
                             <circle class="conn-particle" r="5" fill="#ef4444">
-                                <animateMotion dur="1.5s" repeatCount="indefinite">
-                                    <mpath href="#arch-c3" />
-                                </animateMotion>
+                                <animateMotion dur="1.5s" repeatCount="indefinite"><mpath href="#arch-c3" /></animateMotion>
                             </circle>
                             <circle class="conn-particle" r="3" fill="#ef4444">
-                                <animateMotion dur="1.5s" begin="0.5s" repeatCount="indefinite">
-                                    <mpath href="#arch-c3" />
-                                </animateMotion>
+                                <animateMotion dur="1.5s" begin="0.5s" repeatCount="indefinite"><mpath href="#arch-c3" /></animateMotion>
                             </circle>
                         </svg>
                     </div>
 
-                    <!-- 7. Output -->
                     <div class="arch-output-card">
                         <div class="arch-output-header">
                             <div class="arch-output-icon">
@@ -383,29 +359,12 @@
                                 </svg>
                             </div>
                             <div class="arch-output-content">
-                                <h4 class="arch-output-title">Output for <span class="highlight">Potential Trade</span>
-                                </h4>
-                                <p class="arch-output-desc">High-probability signals delivered instantly to your device
-                                </p>
+                                <h4 class="arch-output-title">Output for <span class="highlight">Potential Trade</span></h4>
+                                <p class="arch-output-desc">High-probability signals delivered instantly to your device</p>
                                 <div class="arch-output-features">
-                                    <span class="arch-feature-tag">
-                                        <svg viewBox="0 0 24 24">
-                                            <polyline points="20 6 9 17 4 12" />
-                                        </svg>
-                                        Instant Alert
-                                    </span>
-                                    <span class="arch-feature-tag">
-                                        <svg viewBox="0 0 24 24">
-                                            <polyline points="20 6 9 17 4 12" />
-                                        </svg>
-                                        Risk Analysis
-                                    </span>
-                                    <span class="arch-feature-tag">
-                                        <svg viewBox="0 0 24 24">
-                                            <polyline points="20 6 9 17 4 12" />
-                                        </svg>
-                                        Entry Points
-                                    </span>
+                                    <span class="arch-feature-tag"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>Instant Alert</span>
+                                    <span class="arch-feature-tag"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>Risk Analysis</span>
+                                    <span class="arch-feature-tag"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>Entry Points</span>
                                 </div>
                             </div>
                         </div>
@@ -414,7 +373,6 @@
 
                 <!-- Mobile Architecture Flow -->
                 <div class="architecture-mobile">
-                    <!-- Data Sources Mobile -->
                     <div class="arch-data-sources-mobile">
                         <div class="arch-source-card">
                             <div class="arch-source-icon">
@@ -473,7 +431,6 @@
                         <div class="particle"></div>
                     </div>
 
-                    <!-- Pipeline Mobile -->
                     <div class="arch-mobile-element">
                         <div class="arch-pipeline">
                             <div class="arch-pipeline-container">
@@ -504,7 +461,6 @@
                         <div class="particle"></div>
                     </div>
 
-                    <!-- Algorithm Mobile -->
                     <div class="arch-mobile-element">
                         <div class="arch-algorithm">
                             <div class="arch-badge-container">
@@ -530,7 +486,6 @@
                         <div class="particle"></div>
                     </div>
 
-                    <!-- Output Mobile -->
                     <div class="arch-mobile-element">
                         <div class="arch-output-card">
                             <div class="arch-output-header">
@@ -540,29 +495,12 @@
                                     </svg>
                                 </div>
                                 <div class="arch-output-content">
-                                    <h4 class="arch-output-title">Output for <span class="highlight">Potential
-                                            Trade</span></h4>
-                                    <p class="arch-output-desc">High-probability signals delivered instantly to your
-                                        device</p>
+                                    <h4 class="arch-output-title">Output for <span class="highlight">Potential Trade</span></h4>
+                                    <p class="arch-output-desc">High-probability signals delivered instantly to your device</p>
                                     <div class="arch-output-features">
-                                        <span class="arch-feature-tag">
-                                            <svg viewBox="0 0 24 24">
-                                                <polyline points="20 6 9 17 4 12" />
-                                            </svg>
-                                            Instant Alert
-                                        </span>
-                                        <span class="arch-feature-tag">
-                                            <svg viewBox="0 0 24 24">
-                                                <polyline points="20 6 9 17 4 12" />
-                                            </svg>
-                                            Risk Analysis
-                                        </span>
-                                        <span class="arch-feature-tag">
-                                            <svg viewBox="0 0 24 24">
-                                                <polyline points="20 6 9 17 4 12" />
-                                            </svg>
-                                            Entry Points
-                                        </span>
+                                        <span class="arch-feature-tag"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>Instant Alert</span>
+                                        <span class="arch-feature-tag"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>Risk Analysis</span>
+                                        <span class="arch-feature-tag"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>Entry Points</span>
                                     </div>
                                 </div>
                             </div>
@@ -570,7 +508,6 @@
                     </div>
                 </div>
 
-                <!-- Description -->
                 <div class="arch-description">
                     <p class="arch-description-text">
                         Operating 24/7 with real-time market monitoring and lightning-fast execution, powered by an
@@ -581,78 +518,64 @@
             </div>
         </section>
 
-
         <!-- Features Section -->
         <section id="features" class="features-section">
             <div class="container">
                 <div class="section-header">
                     <p class="section-label">Algorithm Features</p>
                     <h2 class="section-title">Advanced Quantitative Technology</h2>
-                    <p class="section-desc">Sophisticated algorithms analyzing market patterns to generate systematic
-                        trading signals.</p>
+                    <p class="section-desc">Sophisticated algorithms analyzing market patterns to generate systematic trading signals.</p>
                 </div>
                 <div class="features-grid">
                     <div class="feature-card">
-                        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round">
+                        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10" />
                                 <circle cx="12" cy="12" r="6" />
                                 <circle cx="12" cy="12" r="2" />
                             </svg></div>
                         <h3 class="feature-title">Precision Signals</h3>
-                        <p class="feature-desc">Algorithm detects optimal entry and exit zones based on real-time market
-                            data analysis.</p>
+                        <p class="feature-desc">Algorithm detects optimal entry and exit zones based on real-time market data analysis.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round">
+                        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2" />
                             </svg></div>
                         <h3 class="feature-title">Real-Time Alerts</h3>
-                        <p class="feature-desc">Instant notifications via Telegram when algorithm detects important
-                            price zones.</p>
+                        <p class="feature-desc">Instant notifications via Telegram when algorithm detects important price zones.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round">
+                        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="18" y1="20" x2="18" y2="10" />
                                 <line x1="12" y1="20" x2="12" y2="4" />
                                 <line x1="6" y1="20" x2="6" y2="14" />
                             </svg></div>
                         <h3 class="feature-title">Advanced Analytics</h3>
-                        <p class="feature-desc">Volume ranking monitoring and risk level indicators processed
-                            automatically.</p>
+                        <p class="feature-desc">Volume ranking monitoring and risk level indicators processed automatically.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round">
+                        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                             </svg></div>
                         <h3 class="feature-title">Risk Management</h3>
-                        <p class="feature-desc">Every signal includes stop-loss levels to protect your capital
-                            systematically.</p>
+                        <p class="feature-desc">Every signal includes stop-loss levels to protect your capital systematically.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round">
+                        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                                 <polyline points="14,2 14,8 20,8" />
                                 <line x1="16" y1="13" x2="8" y2="13" />
                                 <line x1="16" y1="17" x2="8" y2="17" />
                             </svg></div>
                         <h3 class="feature-title">Track Record</h3>
-                        <p class="feature-desc">Transparent historical performance tracking—no false promises, just
-                            data.</p>
+                        <p class="feature-desc">Transparent historical performance tracking—no false promises, just data.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round">
+                        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
                                 <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                             </svg></div>
                         <h3 class="feature-title">24/7 Algorithm</h3>
-                        <p class="feature-desc">Automated quantitative analysis that never sleeps, never misses signals.
-                        </p>
+                        <p class="feature-desc">Automated quantitative analysis that never sleeps, never misses signals.</p>
                     </div>
                 </div>
             </div>
@@ -683,20 +606,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="carousel-nav"><button class="carousel-btn" id="prevBtn">‹</button>
-                            <div class="carousel-dots" id="carouselDots"><span class="carousel-dot active"
-                                    data-slide="0"></span><span class="carousel-dot" data-slide="1"></span><span
-                                    class="carousel-dot" data-slide="2"></span><span class="carousel-dot"
-                                    data-slide="3"></span><span class="carousel-dot" data-slide="4"></span></div><button
-                                class="carousel-btn" id="nextBtn">›</button>
+                        <div class="carousel-nav">
+                            <button class="carousel-btn" id="prevBtn">‹</button>
+                            <div class="carousel-dots" id="carouselDots">
+                                <span class="carousel-dot active" data-slide="0"></span>
+                                <span class="carousel-dot" data-slide="1"></span>
+                                <span class="carousel-dot" data-slide="2"></span>
+                                <span class="carousel-dot" data-slide="3"></span>
+                                <span class="carousel-dot" data-slide="4"></span>
+                            </div>
+                            <button class="carousel-btn" id="nextBtn">›</button>
                         </div>
                     </div>
                     <div class="vip-features-list">
                         <div class="vip-feature-item">
-                            <div class="vip-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path
-                                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                            <div class="vip-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
                                     <polyline points="3.27,6.96 12,12.01 20.73,6.96" />
                                     <line x1="12" y1="22.08" x2="12" y2="12" />
                                 </svg></div>
@@ -706,8 +631,7 @@
                             </div>
                         </div>
                         <div class="vip-feature-item">
-                            <div class="vip-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                            <div class="vip-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2" />
                                 </svg></div>
                             <div class="vip-feature-content">
@@ -716,8 +640,7 @@
                             </div>
                         </div>
                         <div class="vip-feature-item">
-                            <div class="vip-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                            <div class="vip-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <line x1="18" y1="20" x2="18" y2="10" />
                                     <line x1="12" y1="20" x2="12" y2="4" />
                                     <line x1="6" y1="20" x2="6" y2="14" />
@@ -728,11 +651,9 @@
                             </div>
                         </div>
                         <div class="vip-feature-item">
-                            <div class="vip-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round">
+                            <div class="vip-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="12" cy="12" r="3" />
-                                    <path
-                                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
                                 </svg></div>
                             <div class="vip-feature-content">
                                 <h4>Support & AI Consultant</h4>
@@ -751,8 +672,7 @@
                     <div class="performance-content">
                         <p class="section-label">Daily Updated</p>
                         <h2>Trade Systematically with <span style="color: var(--gold)">LuxQuant Algorithm</span></h2>
-                        <p>Our quantitative algorithms analyze market patterns around the clock. See real performance
-                            data updated daily.</p>
+                        <p>Our quantitative algorithms analyze market patterns around the clock. See real performance data updated daily.</p>
                         <div class="stats-grid">
                             <div class="stat-card">
                                 <div class="stat-value gold">86.54%</div>
@@ -773,16 +693,18 @@
                         </div>
                     </div>
                     <div class="dashboard-preview">
-                        <div class="dashboard-header"><span class="dashboard-title">LuxQuant Dashboard</span><span
-                                class="dashboard-live">LIVE</span></div>
-                        <a href="https://luxquantlivedata.streamlit.app/" target="_blank" rel="noopener"
-                            class="dashboard-image-link">
+                        <div class="dashboard-header">
+                            <span class="dashboard-title">LuxQuant Dashboard</span>
+                            <span class="dashboard-live">LIVE</span>
+                        </div>
+                        <a href="https://luxquantlivedata.streamlit.app/" target="_blank" rel="noopener" class="dashboard-image-link">
                             <img src="LuxQuant Performance Dashboard.png" alt="Dashboard" class="dashboard-image">
-                            <div class="dashboard-overlay"><span class="dashboard-overlay-icon">🔗</span><span
-                                    class="dashboard-overlay-text">Click to Open Live Platform</span></div>
+                            <div class="dashboard-overlay">
+                                <span class="dashboard-overlay-icon">🔗</span>
+                                <span class="dashboard-overlay-text">Click to Open Live Platform</span>
+                            </div>
                         </a>
-                        <div class="dashboard-cta"><a href="https://luxquantlivedata.streamlit.app/" target="_blank"
-                                rel="noopener" class="btn btn-primary">Open Live Dashboard ↗</a></div>
+                        <div class="dashboard-cta"><a href="https://luxquantlivedata.streamlit.app/" target="_blank" rel="noopener" class="btn btn-primary">Open Live Dashboard ↗</a></div>
                     </div>
                 </div>
             </div>
@@ -798,38 +720,38 @@
                 <div class="testimonials-grid">
                     <div class="testimonial-card">
                         <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"LuxQuant Algorithm is excellent. The systematic approach helps with
-                            discipline. First trial already proven."</p>
+                        <p class="testimonial-text">"LuxQuant Algorithm is excellent. The systematic approach helps with discipline. First trial already proven."</p>
                         <div class="testimonial-author">
                             <div class="testimonial-avatar">AG</div>
                             <div>
                                 <div class="testimonial-name">Il**m A G</div>
                                 <div class="testimonial-role">Business Owner</div>
-                            </div><span class="testimonial-verified">Verified</span>
+                            </div>
+                            <span class="testimonial-verified">Verified</span>
                         </div>
                     </div>
                     <div class="testimonial-card">
                         <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"Great algorithm! I can work while trading. Just follow the signals.
-                            No more hours analyzing charts."</p>
+                        <p class="testimonial-text">"Great algorithm! I can work while trading. Just follow the signals. No more hours analyzing charts."</p>
                         <div class="testimonial-author">
                             <div class="testimonial-avatar">FM</div>
                             <div>
                                 <div class="testimonial-name">Fab**a FMZ</div>
                                 <div class="testimonial-role">University Student</div>
-                            </div><span class="testimonial-verified">Verified</span>
+                            </div>
+                            <span class="testimonial-verified">Verified</span>
                         </div>
                     </div>
                     <div class="testimonial-card">
                         <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"The algorithm is quite consistent presenting relevant data with
-                            clear risk settings. Very systematic."</p>
+                        <p class="testimonial-text">"The algorithm is quite consistent presenting relevant data with clear risk settings. Very systematic."</p>
                         <div class="testimonial-author">
                             <div class="testimonial-avatar">RG</div>
                             <div>
                                 <div class="testimonial-name">R**n*ld G</div>
                                 <div class="testimonial-role">Crypto Investor</div>
-                            </div><span class="testimonial-verified">Verified</span>
+                            </div>
+                            <span class="testimonial-verified">Verified</span>
                         </div>
                     </div>
                 </div>
@@ -848,22 +770,26 @@
                     <span class="pricing-badge">Best Value</span>
                     <div class="pricing-header">
                         <h3 class="pricing-title">Lifetime Access</h3>
-                        <div class="pricing-price"><span class="pricing-currency">$</span><span class="pricing-amount"
-                                id="priceAmount">400</span><span class="pricing-period">/lifetime</span></div><span
-                            class="pricing-note">One-time payment • USDT only</span>
+                        <div class="pricing-price">
+                            <span class="pricing-currency">$</span>
+                            <span class="pricing-amount" id="priceAmount">400</span>
+                            <span class="pricing-period">/lifetime</span>
+                        </div>
+                        <span class="pricing-note">One-time payment • USDT only</span>
                     </div>
                     <div class="referral-box">
                         <div class="referral-title">🎁 Have KOL Referral Code?</div>
                         <div class="referral-subtitle">Enter code to get 5% discount</div>
-                        <div class="referral-input-group"><input type="text" id="referralCode" class="referral-input"
-                                placeholder="Enter code..." maxlength="20"><button class="referral-btn"
-                                id="verifyBtn">Apply</button></div>
+                        <div class="referral-input-group">
+                            <input type="text" id="referralCode" class="referral-input" placeholder="Enter code..." maxlength="20">
+                            <button class="referral-btn" id="verifyBtn">Apply</button>
+                        </div>
                         <div class="referral-status" id="referralStatus"></div>
                         <div class="generated-code" id="generatedCode">
                             <div style="font-size: 12px; color: var(--text-secondary);">🎉 Your Access Code:</div>
                             <div class="generated-code-value" id="accessCodeDisplay"></div>
-                            <div style="font-size: 11px; color: var(--positive);">✅ 5% discount activated!</div><button
-                                class="copy-btn" id="copyBtn">Copy Code</button>
+                            <div style="font-size: 11px; color: var(--positive);">✅ 5% discount activated!</div>
+                            <button class="copy-btn" id="copyBtn">Copy Code</button>
                         </div>
                     </div>
                     <div class="discount-info" id="discountInfo">
@@ -871,23 +797,15 @@
                         <div style="color: var(--positive); font-weight: 700;">Discounted: $380 (5% OFF)</div>
                     </div>
                     <div class="pricing-features">
-                        <div class="pricing-feature"><span class="pricing-check">✓</span><span
-                                class="pricing-feature-text">Complete algorithm-generated trade setups</span></div>
-                        <div class="pricing-feature"><span class="pricing-check">✓</span><span
-                                class="pricing-feature-text">Real-time notifications via Telegram</span></div>
-                        <div class="pricing-feature"><span class="pricing-check">✓</span><span
-                                class="pricing-feature-text">Analysis with volume ranking</span></div>
-                        <div class="pricing-feature"><span class="pricing-check">✓</span><span
-                                class="pricing-feature-text">Risk info for systematic management</span></div>
-                        <div class="pricing-feature"><span class="pricing-check">✓</span><span
-                                class="pricing-feature-text">24/7 Support</span></div>
-                        <div class="pricing-feature"><span class="pricing-check">✓</span><span
-                                class="pricing-feature-text">Access to AI Consultant</span></div>
-                        <div class="pricing-feature"><span class="pricing-check">✓</span><span
-                                class="pricing-feature-text">Algorithm development updates</span></div>
+                        <div class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Complete algorithm-generated trade setups</span></div>
+                        <div class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Real-time notifications via Telegram</span></div>
+                        <div class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Analysis with volume ranking</span></div>
+                        <div class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Risk info for systematic management</span></div>
+                        <div class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">24/7 Support</span></div>
+                        <div class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Access to AI Consultant</span></div>
+                        <div class="pricing-feature"><span class="pricing-check">✓</span><span class="pricing-feature-text">Algorithm development updates</span></div>
                     </div>
-                    <button class="btn btn-primary pricing-cta" id="accessBtn"><span id="btnText">Get Lifetime
-                            Access</span></button>
+                    <button class="btn btn-primary pricing-cta" id="accessBtn"><span id="btnText">Get Lifetime Access</span></button>
                     <p class="pricing-guarantee">💡 No referral code? Subscribe directly at regular price</p>
                 </div>
             </div>
@@ -898,13 +816,12 @@
             <div class="container">
                 <div class="cta-card">
                     <div class="cta-content">
-                        <h2 class="cta-title">Ready to Trade <span style="color: var(--gold)">Systematically</span>?
-                        </h2>
-                        <p class="cta-desc">Join traders worldwide who trust LuxQuant Algorithm for consistent results.
-                        </p>
-                        <div class="cta-buttons"><a href="#pricing" class="btn btn-primary btn-large">Get Started
-                                Now</a><a href="https://t.me/luxquantadmin" target="_blank"
-                                class="btn btn-secondary btn-large">Contact Support</a></div>
+                        <h2 class="cta-title">Ready to Trade <span style="color: var(--gold)">Systematically</span>?</h2>
+                        <p class="cta-desc">Join traders worldwide who trust LuxQuant Algorithm for consistent results.</p>
+                        <div class="cta-buttons">
+                            <a href="#pricing" class="btn btn-primary btn-large">Get Started Now</a>
+                            <a href="https://t.me/luxquantadmin" target="_blank" class="btn btn-secondary btn-large">Contact Support</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -919,34 +836,22 @@
                 </div>
                 <div class="social-grid">
                     <a href="https://t.me/luxquantadmin" target="_blank" class="social-card">
-                        <div class="social-icon"><img
-                                src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg"
-                                alt="Telegram"></div>
+                        <div class="social-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram"></div>
                         <div class="social-name">Telegram</div>
                         <div class="social-handle">Join community</div>
                     </a>
                     <a href="https://x.com/luxquanttrade" target="_blank" class="social-card">
-                        <div class="social-icon" style="background: #000;"><svg width="32" height="32"
-                                viewBox="0 0 24 24" fill="white">
-                                <path
-                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                            </svg></div>
+                        <div class="social-icon" style="background: #000;"><svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg></div>
                         <div class="social-name">X (Twitter)</div>
                         <div class="social-handle">@luxquanttrade</div>
                     </a>
                     <a href="https://instagram.com/luxquanttrade" target="_blank" class="social-card">
-                        <div class="social-icon"><img
-                                src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"
-                                alt="Instagram"></div>
+                        <div class="social-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram"></div>
                         <div class="social-name">Instagram</div>
                         <div class="social-handle">@luxquanttrade</div>
                     </a>
                     <a href="https://tiktok.com/@luxquanttrade" target="_blank" class="social-card">
-                        <div class="social-icon" style="background: #000; border-radius: 12px; padding: 8px;"><svg
-                                viewBox="0 0 24 24" fill="white" width="32" height="32">
-                                <path
-                                    d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-                            </svg></div>
+                        <div class="social-icon" style="background: #000; border-radius: 12px; padding: 8px;"><svg viewBox="0 0 24 24" fill="white" width="32" height="32"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" /></svg></div>
                         <div class="social-name">TikTok</div>
                         <div class="social-handle">@luxquanttrade</div>
                     </a>
@@ -959,12 +864,12 @@
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-brand"><a href="#" class="logo"><img
-                            src="https://raw.githubusercontent.com/Dwiyulianto31072k4/luxquant/main/luxquant%20logo.png"
-                            alt="LuxQuant" class="logo-img" style="width: 40px; height: 40px;"><span class="logo-text"
-                            style="font-size: 20px;">LuxQuant</span></a>
-                    <p class="footer-brand-desc">Premium algorithm-powered crypto trading signals. Systematic,
-                        objective, and data-driven.</p>
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <img src="https://raw.githubusercontent.com/Dwiyulianto31072k4/luxquant/main/luxquant%20logo.png" alt="LuxQuant" class="logo-img" style="width: 40px; height: 40px;">
+                        <span class="logo-text" style="font-size: 20px;">LuxQuant</span>
+                    </a>
+                    <p class="footer-brand-desc">Premium algorithm-powered crypto trading signals. Systematic, objective, and data-driven.</p>
                 </div>
                 <div class="footer-column">
                     <h4>Quick Links</h4>
@@ -996,12 +901,12 @@
             </div>
             <div class="footer-bottom">
                 <div class="footer-logo-center">
-                    <div class="footer-line"></div><span class="footer-logo-text">LuxQuant Algorithm</span>
+                    <div class="footer-line"></div>
+                    <span class="footer-logo-text">LuxQuant Algorithm</span>
                     <div class="footer-line"></div>
                 </div>
                 <p class="footer-copyright">© 2025 LuxQuant. All rights reserved.</p>
-                <p class="footer-disclaimer">Trading involves risk. Past performance is not indicative of future
-                    results.</p>
+                <p class="footer-disclaimer">Trading involves risk. Past performance is not indicative of future results.</p>
             </div>
         </div>
     </footer>
