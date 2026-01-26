@@ -2142,30 +2142,384 @@ footer {
 }
 
 @media (max-width: 768px) {
-    nav { display: none; }
+    nav { display: none !important; }
+    .header-cta { display: none; }
+    .mobile-menu-btn { display: flex; }
+    .mobile-nav { display: block; }
     
     .hero-cta {
         flex-direction: column;
         align-items: center;
     }
     
-    .features-grid,
-    .testimonials-grid,
-    .trust-grid,
+    /* Trust Grid - 2 columns compact */
+    .trust-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px;
+    }
+    
+    .trust-card {
+        padding: 20px 16px;
+        text-align: center;
+    }
+    
+    .trust-card-icon {
+        width: 48px;
+        height: 48px;
+        margin: 0 auto 12px;
+    }
+    
+    .trust-card-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .trust-card-value {
+        font-size: 16px;
+        margin-bottom: 6px;
+    }
+    
+    .trust-card-desc {
+        font-size: 11px;
+        line-height: 1.4;
+    }
+    
+    /* Features Grid - 2 columns compact */
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px;
+    }
+    
+    .feature-card {
+        padding: 20px 16px;
+    }
+    
+    .feature-icon {
+        width: 44px;
+        height: 44px;
+        margin-bottom: 12px;
+    }
+    
+    .feature-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .feature-title {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    
+    .feature-desc {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+    
+    /* Testimonials - 1 column but compact */
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .testimonial-card {
+        padding: 20px;
+    }
+    
+    /* Social Grid - 2 columns */
     .social-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px;
     }
     
+    .social-card {
+        padding: 20px 16px;
+    }
+    
+    .social-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 12px;
+    }
+    
+    .social-name {
+        font-size: 14px;
+    }
+    
+    .social-handle {
+        font-size: 11px;
+    }
+    
+    /* Footer */
     .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
     }
     
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+    
+    /* Stats - 2 columns */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px;
+    }
+    
+    .stat-card {
+        padding: 16px 12px;
+    }
+    
+    .stat-value {
+        font-size: 24px;
+    }
+    
+    .stat-label {
+        font-size: 10px;
+    }
+    
+    /* Pricing */
+    .pricing-card {
+        padding: 28px 20px;
+        margin: 0 16px;
+    }
+    
+    .pricing-badge {
+        top: 16px;
+        right: 16px;
+        font-size: 10px;
+        padding: 4px 10px;
+    }
+    
+    .pricing-header {
+        padding-top: 16px;
+    }
+    
+    .pricing-title {
+        font-size: 24px;
+    }
+    
+    .pricing-amount {
+        font-size: 48px;
+    }
+    
+    /* CTA */
     .cta-card { padding: 48px 24px; }
     .cta-buttons { flex-direction: column; }
-    .pricing-card { padding: 32px 24px; }
+    
+    /* Phone mockup */
     .phone-mockup { transform: scale(0.9); }
-    .stats-grid { grid-template-columns: 1fr; }
+    
+    /* Section padding reduce */
+    .trust-section,
+    .features-section,
+    .testimonials-section,
+    .social-section {
+        padding: 60px 0;
+    }
+    
+    .section-header {
+        margin-bottom: 40px;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+}
+
+/* ===== SMALL MOBILE (480px) ===== */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 16px;
+    }
+    
+    /* Trust Grid - tetap 2 kolom tapi lebih kecil */
+    .trust-grid {
+        gap: 10px;
+    }
+    
+    .trust-card {
+        padding: 16px 12px;
+    }
+    
+    .trust-card-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px;
+    }
+    
+    .trust-card-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .trust-card-value {
+        font-size: 14px;
+    }
+    
+    .trust-card-desc {
+        font-size: 10px;
+    }
+    
+    /* Features Grid - tetap 2 kolom */
+    .features-grid {
+        gap: 10px;
+    }
+    
+    .feature-card {
+        padding: 16px 12px;
+    }
+    
+    .feature-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px;
+    }
+    
+    .feature-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .feature-title {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+    
+    .feature-desc {
+        font-size: 11px;
+    }
+    
+    /* Social */
+    .social-card {
+        padding: 16px 12px;
+    }
+    
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px;
+    }
+    
+    .social-name {
+        font-size: 13px;
+    }
+    
+    /* Pricing compact */
+    .pricing-card {
+        padding: 24px 16px;
+        margin: 0 12px;
+    }
+    
+    .pricing-title {
+        font-size: 22px;
+    }
+    
+    .pricing-amount {
+        font-size: 42px;
+    }
+    
+    .referral-box {
+        padding: 16px 14px;
+    }
+    
+    .referral-title {
+        font-size: 14px;
+    }
+    
+    .referral-subtitle {
+        font-size: 11px;
+    }
+    
+    /* Stats */
+    .stat-value {
+        font-size: 20px;
+    }
+    
+    /* Section titles */
+    .section-title {
+        font-size: 24px;
+    }
+    
+    .section-desc {
+        font-size: 14px;
+    }
+    
+    /* Ticker */
+    .ticker-wrapper {
+        height: 40px;
+    }
+    
+    .ticker-item {
+        padding: 0 16px;
+        font-size: 12px;
+        height: 40px;
+    }
+    
+    /* Header */
+    header {
+        top: 40px;
+    }
+    
+    .logo-img {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .logo-text {
+        font-size: 16px;
+    }
+    
+    /* Hero */
+    .hero {
+        padding-top: 110px;
+    }
+    
+    .hero-title {
+        font-size: 28px;
+    }
+    
+    .hero-description {
+        font-size: 14px;
+    }
+    
+    .globe-container {
+        max-width: 280px;
+    }
+}
+
+/* ===== VERY SMALL MOBILE (375px) ===== */
+@media (max-width: 375px) {
+    .trust-card {
+        padding: 14px 10px;
+    }
+    
+    .trust-card-value {
+        font-size: 13px;
+    }
+    
+    .feature-card {
+        padding: 14px 10px;
+    }
+    
+    .feature-title {
+        font-size: 12px;
+    }
+    
+    .feature-desc {
+        font-size: 10px;
+    }
+    
+    .pricing-amount {
+        font-size: 36px;
+    }
+    
+    .section-title {
+        font-size: 22px;
+    }
+    
+    .hero-title {
+        font-size: 24px;
+    }
 }
 
 /* =====================================================
