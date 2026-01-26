@@ -1390,6 +1390,757 @@ footer {
     }
 }
 
+
+/* ===== SYSTEM ARCHITECTURE SECTION ===== */
+/* Tambahkan CSS ini ke bagian bawah file style.css */
+
+.architecture-section {
+    padding: var(--section-padding) 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.architecture-section .bg-ambient {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.architecture-section .bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(rgba(212, 168, 83, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 168, 83, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black, transparent);
+}
+
+/* Desktop Grid */
+.architecture-desktop {
+    display: grid;
+    grid-template-columns: 220px 1fr 130px 1fr 140px 1fr 240px;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 60px;
+}
+
+/* Mobile Flow */
+.architecture-mobile {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 40px;
+}
+
+/* Connectors */
+.arch-connector {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.arch-connector svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.conn-line {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 2;
+    opacity: 0.6;
+}
+
+.conn-line-glow {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 6;
+    opacity: 0.1;
+    filter: blur(2px);
+}
+
+.conn-particle {
+    filter: drop-shadow(0 0 4px #ef4444) drop-shadow(0 0 8px #ef4444) drop-shadow(0 0 12px #ef4444);
+}
+
+.connector-vertical {
+    width: 3px;
+    height: 60px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.connector-vertical::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--gold), rgba(212, 168, 83, 0.3));
+    border-radius: 2px;
+}
+
+.connector-vertical .particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #ef4444;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #ef4444, 0 0 16px #ef4444;
+    animation: particleDown 1.5s ease-in-out infinite;
+}
+
+.connector-vertical .particle:nth-child(2) {
+    animation-delay: 0.5s;
+    width: 4px;
+    height: 4px;
+}
+
+@keyframes particleDown {
+    0% { top: 0; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+/* Data Sources */
+.arch-data-sources {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.arch-source-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.arch-source-card:hover {
+    border-color: var(--border-gold);
+    transform: translateX(4px);
+}
+
+.arch-source-card:nth-child(1) .arch-source-icon { --accent: #00d4ff; }
+.arch-source-card:nth-child(2) .arch-source-icon { --accent: #a855f7; }
+.arch-source-card:nth-child(3) .arch-source-icon { --accent: #22c55e; }
+
+.arch-source-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.4s ease;
+}
+
+.arch-source-card:hover .arch-source-icon {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.arch-source-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--accent);
+    fill: none;
+    stroke-width: 2;
+}
+
+.arch-source-info h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 3px;
+    color: var(--text-primary);
+}
+
+.arch-source-info p {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.arch-live-indicator {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.arch-live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--positive);
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+    animation: archPulse 2s ease-in-out infinite;
+}
+
+.arch-live-text {
+    font-size: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--positive);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: all 0.3s ease;
+}
+
+.arch-source-card:hover .arch-live-text {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@keyframes archPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.5); }
+}
+
+/* Data Pipeline */
+.arch-pipeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.arch-pipeline-container {
+    position: relative;
+    width: 120px;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.arch-pipeline-frame {
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--bg-card);
+    overflow: hidden;
+}
+
+.arch-pipeline-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, 
+        rgba(212, 168, 83, 0.08) 0%, 
+        transparent 30%,
+        transparent 70%,
+        rgba(212, 168, 83, 0.05) 100%
+    );
+}
+
+.arch-pipeline-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(212, 168, 83, 0.15), transparent 70%);
+    filter: blur(20px);
+    animation: pipeGlow 3s ease-in-out infinite;
+}
+
+@keyframes pipeGlow {
+    0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.2); }
+}
+
+.arch-pipeline-layers {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 20px 15px;
+}
+
+.arch-pipeline-layer {
+    height: 22px;
+    background: linear-gradient(90deg, 
+        rgba(212, 168, 83, 0.05) 0%,
+        rgba(212, 168, 83, 0.2) 50%,
+        rgba(212, 168, 83, 0.05) 100%
+    );
+    border: 1px solid rgba(212, 168, 83, 0.2);
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+}
+
+.arch-pipeline-layer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(212, 168, 83, 0.5), 
+        rgba(240, 216, 144, 0.3),
+        transparent
+    );
+    animation: dataFlow 2s ease-in-out infinite;
+}
+
+.arch-pipeline-layer:nth-child(1) { width: 70px; }
+.arch-pipeline-layer:nth-child(2) { width: 80px; }
+.arch-pipeline-layer:nth-child(3) { width: 90px; }
+.arch-pipeline-layer:nth-child(4) { width: 80px; }
+.arch-pipeline-layer:nth-child(5) { width: 70px; }
+
+.arch-pipeline-layer:nth-child(1)::before { animation-delay: 0s; }
+.arch-pipeline-layer:nth-child(2)::before { animation-delay: 0.2s; }
+.arch-pipeline-layer:nth-child(3)::before { animation-delay: 0.4s; }
+.arch-pipeline-layer:nth-child(4)::before { animation-delay: 0.6s; }
+.arch-pipeline-layer:nth-child(5)::before { animation-delay: 0.8s; }
+
+@keyframes dataFlow {
+    0% { left: -50%; opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { left: 150%; opacity: 0; }
+}
+
+.arch-pipeline-corner {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border: 1px solid var(--gold);
+    opacity: 0.4;
+}
+
+.arch-pipeline-corner.top-left { top: 8px; left: 8px; border-right: none; border-bottom: none; }
+.arch-pipeline-corner.top-right { top: 8px; right: 8px; border-left: none; border-bottom: none; }
+.arch-pipeline-corner.bottom-left { bottom: 8px; left: 8px; border-right: none; border-top: none; }
+.arch-pipeline-corner.bottom-right { bottom: 8px; right: 8px; border-left: none; border-top: none; }
+
+.arch-pipeline-labels {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    margin-top: 14px;
+}
+
+.arch-pipeline-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+    display: block;
+}
+
+.arch-pipeline-sublabel {
+    font-size: 9px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 3px;
+    display: block;
+}
+
+/* Algorithm Core */
+.arch-algorithm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.arch-badge-container {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arch-badge-rings {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.arch-badge-rings svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.arch-ring-outer {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 1;
+    opacity: 0.3;
+}
+
+.arch-ring-inner {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 1.5;
+    opacity: 0.5;
+}
+
+.arch-ring-dashed {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 1;
+    stroke-dasharray: 4 4;
+    opacity: 0.4;
+    animation: ringRotate 30s linear infinite;
+    transform-origin: center;
+}
+
+@keyframes ringRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.arch-badge-glow {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.arch-badge-glow::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        transparent 60deg,
+        rgba(212, 168, 83, 0.3) 90deg,
+        transparent 120deg,
+        transparent 360deg
+    );
+    animation: badgeRotate 4s linear infinite;
+}
+
+@keyframes badgeRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.arch-badge-inner {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: var(--bg-card);
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        0 0 40px rgba(212, 168, 83, 0.25),
+        inset 0 0 30px rgba(212, 168, 83, 0.05);
+    z-index: 2;
+    transition: all 0.4s ease;
+}
+
+.arch-badge-inner:hover {
+    transform: scale(1.05);
+    box-shadow: 
+        0 0 60px rgba(212, 168, 83, 0.35),
+        inset 0 0 30px rgba(212, 168, 83, 0.08);
+}
+
+.arch-code-symbol {
+    font-size: 32px;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 4px;
+}
+
+.arch-algo-title {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.arch-algo-subtitle {
+    font-size: 8px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1px;
+}
+
+/* Output Card */
+.arch-output-card {
+    padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.arch-output-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.5;
+}
+
+.arch-output-card:hover {
+    border-color: var(--border-gold);
+    transform: translateX(-4px);
+}
+
+.arch-output-header {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+}
+
+.arch-output-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(212, 168, 83, 0.15), rgba(212, 168, 83, 0.05));
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.4s ease;
+}
+
+.arch-output-card:hover .arch-output-icon {
+    border-color: var(--gold);
+    box-shadow: 0 0 30px rgba(212, 168, 83, 0.3);
+}
+
+.arch-output-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--gold);
+    filter: drop-shadow(0 0 10px rgba(212, 168, 83, 0.5));
+}
+
+.arch-output-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.arch-output-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+.arch-output-title .highlight {
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.arch-output-desc {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+.arch-output-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.arch-feature-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 10px;
+    background: rgba(212, 168, 83, 0.08);
+    border: 1px solid rgba(212, 168, 83, 0.15);
+    border-radius: 6px;
+    font-size: 10px;
+    color: var(--gold);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.arch-feature-tag:hover {
+    background: rgba(212, 168, 83, 0.15);
+    border-color: var(--gold);
+}
+
+.arch-feature-tag svg {
+    width: 10px;
+    height: 10px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 2;
+}
+
+/* Description */
+.arch-description {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+}
+
+.arch-description::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.arch-description-text {
+    font-family: var(--font-display);
+    font-size: clamp(16px, 2.5vw, 22px);
+    font-weight: 400;
+    line-height: 1.9;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
+    .architecture-desktop {
+        grid-template-columns: 200px 1fr 120px 1fr 130px 1fr 220px;
+    }
+}
+
+@media (max-width: 960px) {
+    .architecture-desktop { display: none; }
+    .architecture-mobile { display: flex; }
+
+    .arch-data-sources-mobile {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .arch-source-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 12px;
+    }
+
+    .arch-source-info h4 { font-size: 12px; }
+    .arch-source-info p { font-size: 9px; }
+
+    .arch-live-indicator {
+        position: static;
+        margin-top: 8px;
+        justify-content: center;
+    }
+
+    .arch-live-text {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .arch-mobile-element {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .arch-output-card { width: 100%; }
+}
+
+@media (max-width: 640px) {
+    .arch-data-sources-mobile {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+    }
+
+    .arch-source-card {
+        flex-direction: row;
+        text-align: left;
+        padding: 16px;
+    }
+
+    .arch-live-indicator {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        margin-top: 0;
+    }
+
+    .arch-pipeline-container { transform: scale(0.9); }
+
+    .arch-badge-container {
+        width: 140px;
+        height: 140px;
+    }
+
+    .arch-badge-inner {
+        width: 85px;
+        height: 85px;
+    }
+
+    .arch-code-symbol { font-size: 26px; }
+    .arch-output-card { padding: 20px; }
+    .connector-vertical { height: 50px; }
+}
+
 @media (max-width: 768px) {
     nav { display: none; }
     
