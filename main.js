@@ -1,6 +1,6 @@
 // =====================================================
 // LUXQUANT - MAIN JAVASCRIPT
-// Version: 6.0 - Modular Real-time Crypto Ticker
+// Version: 6.1 - With Mobile Menu Support
 // =====================================================
 
 console.log('🚀 LuxQuant Main.js Loading...');
@@ -20,8 +20,8 @@ const CONFIG = {
         }
     },
     ticker: {
-        updateInterval: 60000,      // Update setiap 60 detik
-        animationDuration: '80s'    // Durasi scroll animation
+        updateInterval: 60000,
+        animationDuration: '80s'
     },
     cryptoList: [
         { id: 'bitcoin', symbol: 'BTC', name: 'Bitcoin', cmcId: 1 },
@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initLoader();
     initTicker();
     initHeader();
+    initMobileMenu();  // NEW: Mobile menu initialization
     initCarousel();
     initSmoothScroll();
     
@@ -81,15 +82,55 @@ function initLoader() {
 }
 
 // =====================================================
+// MOBILE MENU MODULE (NEW)
+// =====================================================
+function initMobileMenu() {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    
+    if (!mobileMenuBtn || !mobileNav) {
+        console.log('⚠️ Mobile menu elements not found');
+        return;
+    }
+    
+    // Toggle menu on button click
+    mobileMenuBtn.addEventListener('click', function() {
+        this.classList.toggle('active');
+        mobileNav.classList.toggle('active');
+        
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+    });
+    
+    // Close menu when clicking a link
+    const mobileNavLinks = mobileNav.querySelectorAll('a');
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            mobileMenuBtn.classList.remove('active');
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+    
+    // Close menu on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+            mobileMenuBtn.classList.remove('active');
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+    
+    console.log('📱 Mobile menu initialized!');
+}
+
+// =====================================================
 // TICKER MODULE - REAL-TIME CRYPTO PRICES
 // =====================================================
 function initTicker() {
     console.log('📊 Initializing Real-time Ticker...');
     
-    // Fetch data immediately
     fetchCryptoData();
-    
-    // Set up periodic updates
     setInterval(fetchCryptoData, CONFIG.ticker.updateInterval);
 }
 
@@ -100,10 +141,8 @@ async function fetchCryptoData() {
     console.log('📡 Fetching crypto prices...');
     
     try {
-        // Try CoinGecko first
         let data = await fetchFromCoinGecko();
         
-        // Fallback to Coinlore if CoinGecko fails
         if (!data) {
             console.log('⚠️ CoinGecko failed, trying Coinlore...');
             data = await fetchFromCoinlore();
@@ -198,7 +237,6 @@ function formatCoinloreData(data) {
 }
 
 function getFallbackData() {
-    // Fallback static data jika semua API gagal
     return [
         { symbol: 'BTC', name: 'Bitcoin', cmcId: 1, price: 104500, change: 2.15 },
         { symbol: 'ETH', name: 'Ethereum', cmcId: 1027, price: 3380, change: 3.42 },
@@ -218,7 +256,6 @@ function renderTicker(data) {
         return;
     }
     
-    // Create ticker HTML
     const tickerHTML = data.map(crypto => {
         const changeClass = crypto.change >= 0 ? 'positive' : 'negative';
         const changePrefix = crypto.change >= 0 ? '+' : '';
@@ -235,7 +272,6 @@ function renderTicker(data) {
         `;
     }).join('');
     
-    // Duplicate untuk seamless scrolling (3x untuk smooth loop)
     tickerTrack.innerHTML = tickerHTML + tickerHTML + tickerHTML;
 }
 
@@ -295,7 +331,6 @@ function initCarousel() {
         updateCarousel();
     }
     
-    // Event listeners
     if (nextBtn) nextBtn.addEventListener('click', nextSlide);
     if (prevBtn) prevBtn.addEventListener('click', prevSlide);
     
@@ -306,7 +341,6 @@ function initCarousel() {
         });
     });
     
-    // Auto-play
     setInterval(nextSlide, 5000);
 }
 
@@ -362,7 +396,7 @@ function debounce(func, wait) {
 }
 
 // =====================================================
-// EXPORTS (for debugging in console)
+// EXPORTS
 // =====================================================
 window.LuxQuant = {
     state,
